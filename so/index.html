@@ -1,0 +1,2952 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistemas Operacionais — Guia Visual Definitivo para a Prova</title>
+<style>
+/* ============================================================
+   PALETA MONOCROMÁTICA — matiz única (~210°), só varia luminosidade
+   ============================================================ */
+:root{
+  --ink-900:#0b0f13;
+  --ink-800:#141b22;
+  --ink-700:#212b34;
+  --ink-600:#33404b;
+  --ink-500:#4a5865;
+  --ink-400:#68757f;
+  --ink-300:#8d99a3;
+  --ink-200:#b3bcc4;
+  --ink-100:#d7dde2;
+  --ink-50:#e9edf0;
+  --paper:#f7f8f9;
+  --white:#ffffff;
+  --shadow:0 1px 2px rgba(11,15,19,.05),0 8px 24px -12px rgba(11,15,19,.18);
+  --shadow-lg:0 2px 4px rgba(11,15,19,.06),0 24px 48px -20px rgba(11,15,19,.28);
+  --r-sm:8px; --r-md:14px; --r-lg:22px;
+  --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --serif:"Georgia","Iowan Old Style","Times New Roman",serif;
+  --mono:"Cascadia Code","JetBrains Mono","SF Mono",Consolas,"Liberation Mono",monospace;
+  --maxw:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:140px}
+body{
+  font-family:var(--sans);background:var(--paper);color:var(--ink-700);
+  line-height:1.75;-webkit-font-smoothing:antialiased;font-size:16.5px;
+}
+img{max-width:100%;display:block}
+a{color:var(--ink-800);text-underline-offset:3px}
+
+/* ---------- Barra de leitura ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;
+  background:linear-gradient(90deg,var(--ink-700),var(--ink-900));transition:width .1s linear}
+
+/* ---------- Topo ---------- */
+.topbar{position:sticky;top:0;z-index:150;background:rgba(247,248,249,.86);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--ink-100)}
+.topbar-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:56px;display:flex;
+  align-items:center;gap:18px;flex-wrap:wrap}
+.tb-spacer{margin-left:auto}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.02em;
+  color:var(--ink-900);font-size:15.5px}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--ink-900);
+  color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800;flex:none}
+.btn{font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;
+  border:1px solid var(--ink-200);background:var(--white);color:var(--ink-700);
+  padding:7px 14px;border-radius:8px;transition:.16s}
+.btn:hover{border-color:var(--ink-500);background:var(--ink-50)}
+.btn-solid{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+.btn-solid:hover{background:var(--ink-700);border-color:var(--ink-700)}
+
+/* ---------- Cabeçalho compacto ---------- */
+.pagehead{max-width:var(--maxw);margin:0 auto;padding:38px 28px 34px;
+  background:var(--white);border-bottom:1px solid var(--ink-100)}
+.pagehead .ph-kick{display:inline-block;font-family:var(--mono);font-size:11.5px;
+  font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-500);
+  background:var(--ink-50);border:1px solid var(--ink-100);padding:6px 13px;border-radius:99px}
+.pagehead h1{font-family:var(--serif);font-size:clamp(28px,3.6vw,44px);line-height:1.1;
+  letter-spacing:-.026em;color:var(--ink-900);margin:16px 0 0;font-weight:700}
+.pagehead h1 em{font-style:italic;color:var(--ink-400)}
+.pagehead .ph-sub{font-size:15.5px;color:var(--ink-500);margin:12px 0 0;max-width:66ch;line-height:1.62}
+.pagehead .ph-sub b{color:var(--ink-900)}
+
+/* ---------- Layout ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+main{padding:0 0 120px;min-width:0}
+
+/* ---------- Abas ---------- */
+.tabbar{position:sticky;top:57px;z-index:130;background:rgba(247,248,249,.95);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--ink-100)}
+.tabbar-in{max-width:var(--maxw);margin:0 auto;padding:0 20px;display:flex;gap:2px;
+  overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.tabbar-in::-webkit-scrollbar{display:none}
+.tab{position:relative;flex:none;display:flex;align-items:center;gap:9px;padding:15px 15px;
+  font-size:13.5px;font-weight:650;color:var(--ink-500);background:none;border:none;
+  border-bottom:2.5px solid transparent;cursor:pointer;font-family:inherit;
+  white-space:nowrap;transition:color .16s,border-color .16s;letter-spacing:-.005em}
+.tab:hover{color:var(--ink-900)}
+.tab:focus-visible{outline:2px solid var(--ink-500);outline-offset:-3px;border-radius:6px 6px 0 0}
+.tab[aria-selected="true"]{color:var(--ink-900);border-bottom-color:var(--ink-900)}
+.tab .tn{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;
+  background:var(--ink-100);font-size:10.5px;font-weight:800;color:var(--ink-600);
+  font-family:var(--mono);flex:none;transition:.16s}
+.tab[aria-selected="true"] .tn{background:var(--ink-900);color:#fff}
+.tab .bdg{min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:var(--ink-50);
+  border:1px solid var(--ink-100);font-size:10px;font-weight:800;display:grid;place-items:center;
+  color:var(--ink-400);font-family:var(--mono);flex:none;transition:.16s}
+.tab .bdg.ok{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+.tab .bdg.mid{background:var(--ink-100);color:var(--ink-700);border-color:var(--ink-200)}
+
+/* ---------- Panes ---------- */
+.pane{display:none}
+.pane.active{display:block;animation:paneIn .3s cubic-bezier(.22,.61,.36,1) both}
+@keyframes paneIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- Navegação fim do módulo ---------- */
+.modnav{display:flex;gap:12px;margin-top:52px;padding-top:28px;border-top:1px solid var(--ink-100);
+  flex-wrap:wrap;align-items:stretch}
+.modnav button{flex:1;min-width:210px;text-align:left;font-family:inherit;cursor:pointer;
+  border:1px solid var(--ink-100);background:var(--white);border-radius:var(--r-md);
+  padding:16px 20px;transition:.16s;box-shadow:var(--shadow)}
+.modnav button:hover{border-color:var(--ink-400);background:var(--ink-50);transform:translateY(-2px)}
+.modnav button .dir{font-size:10.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-400);display:block;margin-bottom:3px}
+.modnav button .go{font-size:15px;font-weight:700;color:var(--ink-900);letter-spacing:-.014em}
+.modnav button.next{text-align:right}
+
+/* ---------- Quiz por módulo ---------- */
+.progress-list{display:grid;gap:9px;margin-bottom:26px}
+.prog-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;align-items:center;
+  background:var(--white);border:1px solid var(--ink-100);border-radius:11px;padding:13px 18px;
+  cursor:pointer;transition:.16s;box-shadow:var(--shadow);text-align:left;font-family:inherit;width:100%}
+.prog-row:hover{border-color:var(--ink-400);transform:translateX(3px)}
+.prog-row .pi{width:26px;height:26px;border-radius:7px;background:var(--ink-900);color:#fff;
+  display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:800;flex:none}
+.prog-row .pn{font-size:14.5px;font-weight:650;color:var(--ink-900);letter-spacing:-.01em}
+.prog-row .ps{font-size:11.5px;color:var(--ink-400)}
+.prog-bar{width:120px;height:7px;background:var(--ink-100);border-radius:99px;overflow:hidden;flex:none}
+.prog-bar i{display:block;height:100%;background:var(--ink-700);border-radius:99px;transition:width .4s}
+.prog-row.perfect .prog-bar i{background:var(--ink-900)}
+.prog-row .pc{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--ink-600);
+  min-width:44px;text-align:right;flex:none}
+
+.modquiz{margin-top:60px;padding-top:46px;border-top:2px solid var(--ink-100)}
+.mq-head{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:8px}
+.mq-head .mq-ic{width:42px;height:42px;border-radius:12px;background:var(--ink-900);color:#fff;
+  display:grid;place-items:center;font-size:20px;flex:none}
+.mq-head h3{margin:0;flex:1;min-width:220px}
+.mq-head h3 span{display:block;font-size:12px;font-weight:600;color:var(--ink-400);
+  letter-spacing:0;margin-top:5px;text-transform:none}
+.mq-score{flex:none;text-align:center;padding:9px 18px;background:var(--ink-50);
+  border:1px solid var(--ink-100);border-radius:11px;min-width:104px}
+.mq-score b{display:block;font-family:var(--mono);font-size:21px;font-weight:800;
+  color:var(--ink-900);letter-spacing:-.03em;line-height:1.15}
+.mq-score span{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-400)}
+.mq-score.perfect{background:var(--ink-900);border-color:var(--ink-900)}
+.mq-score.perfect b{color:#fff}.mq-score.perfect span{color:var(--ink-400)}
+.mq-sub{font-size:14.5px;color:var(--ink-500);margin:0 0 22px;max-width:70ch}
+
+/* ---------- HERO ---------- */
+.hero{background:var(--white);border-bottom:1px solid var(--ink-100);
+  padding:84px 24px 76px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 78% 8%,var(--ink-50),transparent 70%);pointer-events:none}
+.hero-in{max-width:1560px;margin:0 auto;position:relative;
+  display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:64px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--ink-500);
+  background:var(--ink-50);border:1px solid var(--ink-100);padding:7px 14px;border-radius:99px}
+.hero h1{font-family:var(--serif);font-size:clamp(38px,5.2vw,68px);line-height:1.03;
+  letter-spacing:-.028em;color:var(--ink-900);margin:24px 0 0;font-weight:700}
+.hero h1 em{font-style:italic;color:var(--ink-400)}
+.hero p.lead{font-size:19px;color:var(--ink-500);margin:22px 0 0;max-width:62ch;line-height:1.65}
+.hero-hint{font-size:14px;color:var(--ink-400);margin:14px 0 0;max-width:52ch;
+  padding-left:15px;border-left:2px solid var(--ink-200);line-height:1.6}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;padding-top:26px;
+  border-top:1px solid var(--ink-100)}
+.hero-meta div{font-size:12.5px}
+.hero-meta b{display:block;color:var(--ink-900);font-size:14px;font-weight:700;letter-spacing:-.01em}
+.hero-meta span{color:var(--ink-400)}
+
+/* ---------- Tipografia de conteúdo ---------- */
+section{padding-top:78px}
+.sec-head{margin-bottom:34px;padding-bottom:22px;border-bottom:1px solid var(--ink-100)}
+.sec-num{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:700;
+  letter-spacing:.1em;color:var(--ink-400);background:var(--ink-50);
+  border:1px solid var(--ink-100);padding:4px 11px;border-radius:6px;margin-bottom:15px}
+h2{font-family:var(--serif);font-size:clamp(28px,3.3vw,40px);line-height:1.14;
+  letter-spacing:-.024em;color:var(--ink-900);font-weight:700}
+h2 .sub{display:block;font-size:.44em;font-family:var(--sans);font-weight:500;
+  color:var(--ink-400);letter-spacing:0;margin-top:9px;line-height:1.5}
+h3{font-size:21px;letter-spacing:-.017em;color:var(--ink-900);margin:52px 0 15px;
+  font-weight:700;line-height:1.3}
+h3:first-child{margin-top:0}
+h4{font-size:16px;color:var(--ink-900);margin:30px 0 11px;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 16px;max-width:74ch}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink-900);font-weight:650}
+.card.dark strong,.card.dark b,.metric.hero strong,.qscore strong{color:#fff}
+.card.dark .stamp{color:var(--ink-300)}
+ul,ol{margin:0 0 18px;padding-left:0;list-style:none;max-width:74ch}
+li{margin-bottom:9px;padding-left:26px;position:relative}
+ul>li::before{content:"";position:absolute;left:8px;top:.66em;width:6px;height:6px;
+  border-radius:50%;background:var(--ink-300)}
+ol>li{counter-increment:l}
+ol{counter-reset:l}
+ol>li::before{content:counter(l);position:absolute;left:0;top:.1em;width:19px;height:19px;
+  border-radius:50%;background:var(--ink-900);color:#fff;font-size:11px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ul ul,ol ul,ul ol{margin-top:9px}
+code{font-family:var(--mono);font-size:.86em;background:var(--ink-50);
+  border:1px solid var(--ink-100);padding:2px 6px;border-radius:5px;color:var(--ink-800)}
+pre{background:var(--ink-900);color:var(--ink-100);padding:20px 22px;border-radius:var(--r-md);
+  overflow-x:auto;font-size:13.5px;line-height:1.68;margin:0 0 20px;
+  border:1px solid var(--ink-700);box-shadow:var(--shadow)}
+pre code{background:none;border:none;padding:0;color:inherit;font-size:inherit}
+pre .c{color:var(--ink-400)}
+pre .k{color:var(--ink-300);font-weight:600}
+.tbl-wrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--ink-100);
+  border-radius:var(--r-md);background:var(--white);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{background:var(--ink-50);color:var(--ink-900);font-weight:700;text-align:left;
+  padding:12px 15px;border-bottom:1px solid var(--ink-100);white-space:nowrap;
+  font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+td{padding:11px 15px;border-bottom:1px solid var(--ink-50);color:var(--ink-600);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--ink-50)}
+td b,td strong{color:var(--ink-900)}
+
+/* ---------- Cartões ---------- */
+.grid{display:grid;gap:16px;margin:0 0 24px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-md);
+  padding:22px 24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.card.plain{box-shadow:none}
+.card h5{font-size:15px;color:var(--ink-900);margin:0 0 9px;font-weight:700;
+  letter-spacing:-.012em;display:flex;align-items:center;gap:9px}
+.card p{font-size:14.5px;color:var(--ink-500);margin:0;line-height:1.65}
+.card .ico{width:26px;height:26px;border-radius:7px;background:var(--ink-50);
+  border:1px solid var(--ink-100);display:grid;place-items:center;
+  font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--ink-700);flex:none}
+.card.dark{background:var(--ink-900);border-color:var(--ink-900);color:var(--ink-100)}
+.card.dark h5{color:#fff}.card.dark p{color:var(--ink-300)}
+.card.dark .ico{background:var(--ink-700);border-color:var(--ink-600);color:#fff}
+.card .stamp{position:absolute;top:16px;right:18px;font-family:var(--mono);font-size:10.5px;
+  color:var(--ink-500);font-weight:700;letter-spacing:.08em}
+
+/* Cartões de destaque (regra/atenção) */
+.note{border-left:3px solid var(--ink-900);background:var(--white);
+  padding:18px 22px;border-radius:0 var(--r-md) var(--r-md) 0;
+  margin:0 0 22px;box-shadow:var(--shadow)}
+.note p{font-size:14.5px;color:var(--ink-600);margin:0}
+.note .lbl{display:block;font-size:10.5px;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-400);margin-bottom:7px}
+.note.soft{background:var(--ink-50);box-shadow:none;border-left-color:var(--ink-300)}
+.note.tip{background:var(--ink-900);border-left-color:var(--ink-900)}
+.note.tip p{color:var(--ink-200)}
+.note.tip .lbl{color:var(--ink-400)}
+.note.tip strong{color:#fff}
+
+/* Caixas de definição */
+.def{border:1px solid var(--ink-200);border-radius:var(--r-md);padding:20px 22px;
+  background:var(--white);margin:0 0 22px}
+.def .term{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink-500);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px}
+.def p{font-size:15px;color:var(--ink-700);margin:0}
+
+/* Analogia highlight */
+.analogy{background:linear-gradient(180deg,var(--ink-50),var(--white));
+  border:1px solid var(--ink-100);border-radius:var(--r-lg);padding:28px 30px;margin:0 0 26px}
+.analogy .ah{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-400);margin-bottom:16px}
+
+/* Pills / tags */
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.pill{font-size:12px;font-weight:650;padding:5px 12px;border-radius:99px;
+  background:var(--ink-50);border:1px solid var(--ink-100);color:var(--ink-600)}
+.pill.solid{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+.pill.out{background:transparent;border-color:var(--ink-200);color:var(--ink-400)}
+
+/* Figura */
+figure{margin:0 0 26px}
+figure .box{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-md);
+  padding:26px;box-shadow:var(--shadow);overflow-x:auto}
+figure figcaption{font-size:13px;color:var(--ink-400);margin-top:11px;padding-left:2px;
+  font-style:italic}
+svg{max-width:100%;height:auto;display:block}
+
+/* Quiz */
+.q{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-md);
+  padding:22px 24px;margin:0 0 14px;box-shadow:var(--shadow)}
+.q .qt{font-size:15px;color:var(--ink-900);font-weight:600;margin-bottom:15px;line-height:1.5}
+.q .qt b{color:var(--ink-400);font-family:var(--mono);font-size:12.5px;margin-right:8px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:11px;align-items:flex-start;padding:10px 14px;border:1px solid var(--ink-100);
+  border-radius:9px;cursor:pointer;transition:.14s;font-size:14.5px;color:var(--ink-600);
+  background:var(--paper)}
+.opt:hover{border-color:var(--ink-300);background:var(--ink-50)}
+.opt .key{width:22px;height:22px;border-radius:6px;background:var(--white);
+  border:1px solid var(--ink-200);display:grid;place-items:center;font-family:var(--mono);
+  font-size:11px;font-weight:700;color:var(--ink-500);flex:none;transition:.14s}
+.opt.ok{border-color:var(--ink-900);background:var(--ink-50);color:var(--ink-900)}
+.opt.ok .key{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+.opt.no{border-color:var(--ink-300);opacity:.62}
+.qfb{margin-top:14px;padding:14px 16px;border-radius:9px;background:var(--ink-50);
+  font-size:14px;color:var(--ink-600);display:none;border-left:3px solid var(--ink-900);line-height:1.65}
+.qfb.show{display:block}
+.qfb b{color:var(--ink-900)}
+.qscore{display:flex;gap:20px;align-items:center;flex-wrap:wrap;padding:18px 24px;
+  background:var(--ink-900);color:#fff;border-radius:var(--r-md);margin:0 0 20px}
+.qscore .big{font-size:30px;font-weight:800;letter-spacing:-.03em;font-family:var(--mono)}
+.qscore .lbl{font-size:13px;color:var(--ink-300)}
+
+/* Simulador */
+.sim{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-lg);overflow:hidden;margin:0 0 26px}
+.sim-h{padding:18px 24px;border-bottom:1px solid var(--ink-100);background:var(--ink-50);
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sim-h .t{font-weight:700;color:var(--ink-900);font-size:15px;letter-spacing:-.012em}
+.sim-h .s{font-size:12.5px;color:var(--ink-400)}
+.sim-b{padding:22px 24px}
+.sim-c{padding:16px 24px;background:var(--paper);border-top:1px solid var(--ink-100);
+  font-size:13px;color:var(--ink-500);display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.sim-c .k{font-weight:700;color:var(--ink-900);white-space:nowrap}
+.ctrls{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-bottom:20px}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-400)}
+.fld input,.fld select{font-family:var(--mono);font-size:13px;padding:8px 11px;border:1px solid var(--ink-200);
+  border-radius:8px;background:var(--white);color:var(--ink-800);min-width:82px}
+.fld input:focus,.fld select:focus{outline:2px solid var(--ink-400);outline-offset:-1px}
+.rowset{border:1px solid var(--ink-100);border-radius:var(--r-md);overflow:hidden;margin-bottom:18px}
+.rowset table{font-size:13.5px}
+.rowset td{text-align:center;padding:8px 10px}
+.rowset td:first-child{text-align:left;font-weight:700;color:var(--ink-900)}
+.rowset th{text-align:center;padding:9px 10px}
+.rowset th:first-child{text-align:left}
+.gantt-box{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-md);
+  padding:20px;margin-bottom:20px;overflow-x:auto}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.metric{background:var(--ink-50);border:1px solid var(--ink-100);border-radius:10px;padding:14px 16px}
+.metric .mv{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ink-900);
+  letter-spacing:-.02em;line-height:1.15}
+.metric .mv.sm{font-size:15px}
+.metric .ml{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-400);margin-top:5px}
+.metric.hero{background:var(--ink-900);border-color:var(--ink-900)}
+.metric.hero .mv{color:#fff}
+.metric.hero .ml{color:var(--ink-400)}
+
+/* Conta bancária */
+.bank{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:20px}
+.tx{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-md);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.tx .th{font-size:13px;font-weight:700;color:var(--ink-900);margin-bottom:12px;
+  display:flex;align-items:center;gap:9px}
+.tx .steps{font-family:var(--mono);font-size:12px;color:var(--ink-500);line-height:1.85}
+.tx .steps div{padding:3px 0}
+.tx .steps .hl{color:var(--ink-900);font-weight:700}
+.balance{background:var(--ink-900);color:#fff;border-radius:var(--r-lg);padding:26px 28px;
+  text-align:center;margin-bottom:20px}
+.balance .bv{font-family:var(--mono);font-size:46px;font-weight:800;letter-spacing:-.03em;
+  line-height:1.05}
+.balance .bl{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-400);margin-bottom:10px}
+.balance.bad .bv{color:var(--ink-300)}
+.balance.good .bv{color:#fff}
+.balance .bmsg{font-size:13.5px;color:var(--ink-300);margin-top:12px}
+
+/* Semáforo */
+.sema{font-family:var(--mono);font-size:13px;background:var(--white);border:1px solid var(--ink-100);
+  border-radius:var(--r-md);padding:18px 20px;margin-bottom:18px}
+.sema .srow{display:flex;align-items:center;gap:12px;padding:9px 0;
+  border-bottom:1px dashed var(--ink-100);flex-wrap:wrap}
+.sema .srow:last-child{border-bottom:none}
+.sema .sn{font-weight:700;color:var(--ink-900);min-width:172px}
+.sema .v{background:var(--ink-900);color:#fff;padding:3px 12px;border-radius:6px;
+  font-weight:700;min-width:44px;text-align:center}
+.sema .d{color:var(--ink-500);flex:1;min-width:190px;font-size:12px}
+.sema .st{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 9px;border-radius:5px;white-space:nowrap}
+.sema .st.run{background:var(--ink-900);color:#fff}
+.sema .st.wait{background:var(--ink-50);color:var(--ink-400);border:1px solid var(--ink-200)}
+
+/* Fim / rodapé */
+.endcap{margin-top:76px;padding:38px 34px;background:var(--ink-900);border-radius:var(--r-lg);
+  color:var(--ink-200);text-align:center}
+.endcap h3{color:#fff;font-family:var(--serif);font-size:27px;margin:0 0 12px}
+.endcap p{max-width:60ch;margin:0 auto;color:var(--ink-300);font-size:15px}
+footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
+  font-size:12.5px;color:var(--ink-400)}
+.refs{display:grid;gap:10px;font-size:13.5px;color:var(--ink-500);margin-bottom:22px}
+.ref{padding-left:16px;border-left:2px solid var(--ink-100);line-height:1.6}
+.ref b{color:var(--ink-800)}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:none}
+
+/* Reveal dos exemplos numéricos */
+.calcbox{background:var(--paper);border:1px solid var(--ink-100);border-radius:var(--r-md);
+  padding:18px 22px;font-family:var(--mono);font-size:13px;color:var(--ink-600);
+  line-height:2;overflow-x:auto}
+.calcbox .r{color:var(--ink-900);font-weight:700}
+.calcbox .lbl{display:block;font-family:var(--sans);font-size:10.5px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-400);margin-bottom:8px}
+
+/* Lista comparativa dos/trocam */
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--ink-100);
+  border-radius:var(--r-md);overflow:hidden;margin:0 0 24px;background:var(--white)}
+.vs>div{padding:22px 24px}
+.vs>div:first-child{border-right:1px solid var(--ink-100);background:var(--ink-50)}
+.vs h6{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-500);margin:0 0 13px}
+.vs p{font-size:14px;color:var(--ink-500);margin:0 0 11px}
+.vs p:last-child{margin-bottom:0}
+
+/* Timeline vertical */
+.vtl{margin:0 0 24px}
+.vtl .it{display:grid;grid-template-columns:34px 1fr;gap:18px;padding-bottom:22px;position:relative}
+.vtl .it:last-child{padding-bottom:0}
+.vtl .it::before{content:"";position:absolute;left:17px;top:30px;bottom:0;width:1px;
+  background:var(--ink-100)}
+.vtl .it:last-child::before{display:none}
+.vtl .dot{width:34px;height:34px;border-radius:50%;background:var(--ink-900);color:#fff;
+  display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:800;
+  z-index:1;flex:none}
+.vtl .bd .bt{font-weight:700;color:var(--ink-900);font-size:15px;letter-spacing:-.01em}
+.vtl .bd .bd2{font-size:14px;color:var(--ink-500);margin-top:4px}
+
+@media(max-width:1180px){
+  .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .g2,.g3,.g4,.bank,.vs{grid-template-columns:1fr}
+  .vs>div:first-child{border-right:none;border-bottom:1px solid var(--ink-100)}
+  .shell{padding:0 20px}
+  .pagehead{padding:30px 20px 26px}
+  .pagehead h1{font-size:clamp(26px,7.5vw,34px)}
+  .pagehead .ph-sub{font-size:15px}
+  section{padding-top:40px}
+  .topbar-in{padding:0 20px}
+  .tabbar-in{padding:0 20px}
+  .tab{padding:13px 12px;font-size:13px}
+  .modnav button{min-width:100%}
+  .mq-head{gap:12px}
+  .mq-score{min-width:92px;padding:7px 14px}
+}
+@media print{
+  .topbar,.side,#progress,.ctrls,.q .opts{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .shell{display:block;max-width:100%;padding:0}
+  section{page-break-inside:avoid;padding-top:26px}
+  .rv{opacity:1;transform:none}
+  .card,.note,.def{box-shadow:none}
+  .qfb{display:block!important}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="tb-spacer"></div>
+    <button class="btn" onclick="window.print()">Imprimir / PDF</button>
+  </div>
+</header>
+
+<div class="pagehead">
+  <span class="ph-kick">Guia de revisão · Prova P1 · 2026.2</span>
+  <h1>Sistemas Operacionais, do <em>caos dos fios</em> ao <em>monstro do Deadlock</em></h1>
+  <p class="ph-sub">Um mapa visual e analógico de tudo que você viu nas Aulas 01 a 06 — cada conceito com a metáfora que o professor usou, os diagramas redesenhados e os exemplos numéricos resolvidos passo a passo. <b>IFPA Campus Ananindeua</b> · Bacharelado em Ciência da Computação, 2º período Noturno/Sábado · Prof. Fábio Ferreira · 6 aulas · 60 h/a.</p>
+</div>
+
+<div class="tabbar" role="tablist" aria-label="Módulos do curso">
+  <div class="tabbar-in" id="tabIn"></div>
+</div>
+
+<div class="shell">
+  <main>
+<!-- ═══════════════════════ MÓDULO 0 ═══════════════════════ -->
+<section id="m0" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">MÓDULO 0 · AULA 01</span>
+    <h2>O Grande Síndico do Computador
+      <span class="sub">O que é um Sistema Operacional, por que ele existe, e como ele nasceu em quatro gerações</span>
+    </h2>
+  </div>
+
+  <h3>A situação-problema que funda tudo</h3>
+  <p>Imagine o primeiro dia na empresa. O chefe te leva a uma sala vazia e aponta para
+    um processador bruto, memórias RAM soltas, um cabo e um disco rígido. Nenhum software
+    instalado. O pedido: <strong>escreva um programa simples em Java que leia um arquivo de
+    texto desse disco e o imprima numa impressora USB.</strong></p>
+
+  <div class="note">
+    <span class="lbl">A pergunta de milhões</span>
+    <p>Como o seu código Java vai dizer para a CPU: <em>rotacionar o motor físico do disco?</em>
+    <em>Posicionar a agulha de leitura no cilindro magnético certo?</em> <em>Acionar os pulsos
+    elétricos da porta USB da impressora?</em> — <strong>e se não houver um SO entre o código e o hardware?</strong></p>
+  </div>
+
+  <p>A resposta é o próprio motivo de a disciplina existir: sem o SO, cada programador do mundo
+    teria que ser engenheiro de hardware e programar o comportamento elétrico de cada pino da
+    placa-mãe. Seria o caos completo.</p>
+
+  <h3>O que é um Sistema Operacional (definição que cai na prova)</h3>
+  <div class="def">
+    <div class="term">Definição formal</div>
+    <p>Um <strong>Sistema Operacional é um programa que gerencia o hardware de um computador</strong>,
+    servindo de <strong>intermediário e elo entre o usuário e o hardware físico</strong>.</p>
+  </div>
+
+  <p>O SO tem uma <strong>dupla personalidade</strong>, descrita por duas visões clássicas.
+    Essa é a pergunta mais comum de prova conceitual sobre SO — decore os dois focos.</p>
+
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 300" role="img" aria-label="As duas visões do Sistema Operacional">
+        <defs>
+          <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#68757f"/>
+          </marker>
+        </defs>
+        <rect x="330" y="20" width="240" height="66" rx="12" fill="#0b0f13"/>
+        <text x="450" y="48" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="system-ui">SISTEMA OPERACIONAL</text>
+        <text x="450" y="68" text-anchor="middle" fill="#8d99a3" font-size="11.5" font-family="system-ui">o mesmo programa, dois papéis</text>
+
+        <path d="M330,70 C260,90 240,120 200,150" stroke="#68757f" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
+        <path d="M570,70 C640,90 660,120 700,150" stroke="#68757f" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
+
+        <rect x="40" y="150" width="320" height="128" rx="14" fill="#ffffff" stroke="#d7dde2" stroke-width="1.5"/>
+        <rect x="40" y="150" width="320" height="4" rx="2" fill="#33404b"/>
+        <text x="62" y="186" fill="#0b0f13" font-size="15.5" font-weight="700" font-family="system-ui">👤 Visão do Usuário</text>
+        <text x="62" y="207" fill="#4a5865" font-size="12.5" font-family="system-ui">Máquina Estendida / Abstração</text>
+        <text x="62" y="232" fill="#68757f" font-size="12" font-family="system-ui">Esconde: bits, pistas, cilindros, pulsos elétricos</text>
+        <text x="62" y="252" fill="#68757f" font-size="12" font-family="system-ui">Entrega: arquivos, diretórios, chamadas de sistema</text>
+        <text x="62" y="270" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Foco: CONVENIÊNCIA e facilidade de uso</text>
+
+        <rect x="540" y="150" width="320" height="128" rx="14" fill="#ffffff" stroke="#d7dde2" stroke-width="1.5"/>
+        <rect x="540" y="150" width="320" height="4" rx="2" fill="#33404b"/>
+        <text x="562" y="186" fill="#0b0f13" font-size="15.5" font-weight="700" font-family="system-ui">⚙️ Visão do Sistema</text>
+        <text x="562" y="207" fill="#4a5865" font-size="12.5" font-family="system-ui">Gerenciador de Recursos / “Síndico”</text>
+        <text x="562" y="232" fill="#68757f" font-size="12" font-family="system-ui">Organiza fila de acesso (ex.: 2 programas imprimindo)</text>
+        <text x="562" y="252" fill="#68757f" font-size="12" font-family="system-ui">Impede páginas misturadas e protege a RAM alheia</text>
+        <text x="562" y="270" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Foco: EFICIÊNCIA e SEGURANÇA</text>
+      </svg>
+    </div>
+    <figcaption>As duas faces do mesmo SO. A banca adora perguntar qual foco pertence a qual nome — <em>usuário = abstrato e conveniente</em>, <em>sistema = justo e protegido</em>.</figcaption>
+  </figure>
+
+  <div class="note tip">
+    <span class="lbl">Frase de prova</span>
+    <p>“O SO <strong>abstrai</strong> a complexidade do hardware para o usuário” (visão do usuário)
+    e <strong>aloca de forma justa e protegida</strong> os recursos de hardware (visão do sistema).</p>
+  </div>
+
+  <h3>As camadas do sistema: por que seu programa não toca no hardware</h3>
+  <p>Seus aplicativos executam num ambiente com <strong>privilégios limitados</strong>. Para alcançar
+    a física, eles precisam bater na porta do Kernel — é a <strong>System Call</strong>.</p>
+
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 380" role="img" aria-label="Camadas do sistema: modo usuário e modo kernel">
+        <rect x="30" y="16" width="840" height="96" rx="14" fill="#f7f8f9" stroke="#d7dde2"/>
+        <text x="52" y="44" fill="#0b0f13" font-size="15" font-weight="700" font-family="system-ui">APLICATIVOS</text>
+        <text x="52" y="64" fill="#68757f" font-size="12" font-family="system-ui">Word · Chrome · Spotify · seu programa Java · jogos</text>
+        <text x="52" y="88" fill="#68757f" font-size="12" font-family="system-ui">Privilégios limitados — não podem tocar no hardware diretamente</text>
+        <rect x="690" y="34" width="160" height="30" rx="7" fill="#e9edf0" stroke="#b3bcc4"/>
+        <text x="770" y="54" text-anchor="middle" fill="#33404b" font-size="11.5" font-weight="700" font-family="system-ui">MODO USUÁRIO</text>
+
+        <rect x="30" y="140" width="840" height="86" rx="14" fill="#ffffff" stroke="#b3bcc4" stroke-dasharray="6 4"/>
+        <text x="52" y="168" fill="#0b0f13" font-size="15" font-weight="700" font-family="system-ui">📄 INTERFACE DO USUÁRIO</text>
+        <text x="52" y="188" fill="#68757f" font-size="12" font-family="system-ui">Arquivos · diretórios (pastas) · ícones</text>
+        <text x="52" y="210" fill="#68757f" font-size="12" font-family="system-ui">A metáfora que substitui “pistas e setores magnéticos”</text>
+
+        <path d="M450,236 L450,272" stroke="#0b0f13" stroke-width="2.5" marker-end="url(#ar1)"/>
+        <rect x="330" y="228" width="240" height="34" rx="9" fill="#0b0f13"/>
+        <text x="450" y="250" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">🔔 SYSTEM CALL — “batida na porta”</text>
+
+        <rect x="30" y="286" width="840" height="80" rx="14" fill="#212b34"/>
+        <text x="52" y="314" fill="#fff" font-size="15" font-weight="700" font-family="system-ui">⚙️ KERNEL</text>
+        <text x="52" y="334" fill="#b3bcc4" font-size="12" font-family="system-ui">Escalonador · Gerência de memória · Gerência de arquivos · Drivers de E/S</text>
+        <text x="52" y="354" fill="#8d99a3" font-size="12" font-family="system-ui">Controle TOTAL sobre o hardware</text>
+        <rect x="690" y="304" width="160" height="30" rx="7" fill="#33404b" stroke="#4a5865"/>
+        <text x="770" y="324" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="700" font-family="system-ui">MODO KERNEL</text>
+      </svg>
+    </div>
+    <figcaption>A linha de fronteira que separa o que seu programa pode e não pode fazer. Essa linha é o coração do Módulo 1.</figcaption>
+  </figure>
+
+  <div class="note soft">
+    <span class="lbl">O que isso evita na prática</span>
+    <p>É exatamente isso que impede que <strong>uma aba travada do navegador destrua ou apague o seu sistema inteiro</strong>. Se tudo rodasse com o mesmo privilégio, um bug em uma única aba derrubaria o computador — e com ele, todos os seus arquivos.</p>
+  </div>
+
+  <h3>Evolução histórica: da válvula ao seu smartphone</h3>
+  <p>Os SOs não surgiram prontos. Cada geração nasceu de um <strong>problema prático da anterior</strong>.</p>
+
+  <div class="vtl">
+    <div class="it"><div class="dot">1ª</div><div class="bd">
+      <div class="bt">1945 – 1955 · Válvulas e Painéis de Fiação</div>
+      <div class="bd2"><strong>Sem Sistema Operacional.</strong> Programação direta em linguagem de máquina
+        por meio de plugues, chaves elétricas e cartões perfurados. Um único usuário <strong>monopolizava a sala
+        inteira</strong> da máquina por horas para cálculos de trajetórias balísticas (ENIAC).
+        Queria mudar a programação? Entrava fisicamente e <strong>refazia a fiação</strong> de chaves e relés.</div>
+    </div></div>
+    <div class="it"><div class="dot">2ª</div><div class="bd">
+      <div class="bt">1955 – 1965 · Transistores e Sistemas em Lote (Batch)</div>
+      <div class="bd2">Nasce o transistor e as primeiras linguagens (Assembly e Fortran). Surge o
+        <strong>Sistema Batch</strong>, otimizando a CPU: o operador agrupava cartões perfurados em
+        <strong>fitas magnéticas</strong> e o computador processava uma tarefa de cada vez, sequencialmente,
+        via <strong>Monitor Residente</strong>. Para não desperdiçar a CPU esperando o operador trocar
+        cartões, as tarefas ficavam gravadas em fita e rodavam uma atrás da outra.</div>
+    </div></div>
+    <div class="it"><div class="dot">3ª</div><div class="bd">
+      <div class="bt">1965 – 1980 · Circuitos Integrados e o Nascimento da Multitarefa</div>
+      <div class="bd2"><strong>Multiprogramação:</strong> vários processos residem na RAM ao mesmo tempo. Se o
+        Job A espera a leitura de uma fita (operação de E/S), a CPU não fica ociosa — <strong>muda de
+        contexto imediatamente</strong> e executa o Job B. <strong>Tempo Compartilhado (Timesharing):</strong>
+        divisão de pequenos intervalos (fatias de tempo) entre dezenas de usuários em terminais burros,
+        criando a sensação de máquina exclusiva para cada um.</div>
+    </div></div>
+    <div class="it"><div class="dot">4ª</div><div class="bd">
+      <div class="bt">1980 – Hoje · Microprocessadores e Interfaces Gráficas</div>
+      <div class="bd2">Invenção do microchip de silício e dos <strong>PCs acessíveis</strong>. Evolução do
+        MS-DOS e do UNIX clássico para sistemas modernos com <strong>GUI</strong> (Windows, macOS, Linux).
+        Surgem <strong>SOs de Rede</strong> (máquinas trocando pacotes) e <strong>Sistemas Distribuídos</strong>
+        (processamento transparente compartilhado). O computador migrou do laboratório para as nossas casas.</div>
+    </div></div>
+  </div>
+
+  <div class="note tip">
+    <span class="lbl">O grande salto: por que a multiprogramação mudou tudo</span>
+    <p>Antes, se um programa demorasse 10 minutos para ler um disco lento, o processador — que opera na
+    escala de <strong>nanossegundos</strong> — ficava completamente parado, ocioso, <strong>desperdiçando
+    energia elétrica</strong>. Com a multiprogramação, o SO passou a manter vários programas na RAM e a
+    chavear a CPU entre eles conforme necessário. <strong>Até hoje</strong>, multiprogramação e timesharing
+    governam os SOs modernos — do seu smartphone ao servidor em nuvem.</p>
+  </div>
+
+  <h3>Como a nota é composta (não deixe isso de fora)</h3>
+  <div class="grid g3">
+    <div class="card"><span class="stamp">6,0 pts</span><div class="ico">P</div><h5>Prova Escrita Individual</h5>
+      <p>Questões conceituais, situações-problema e questões estilo <strong>ENADE</strong>.</p></div>
+    <div class="card"><span class="stamp">2,0 pts</span><div class="ico">T₁</div><h5>Trabalho Prático 1</h5>
+      <p>Pesquisa, investigação ou laboratório conceitual.</p></div>
+    <div class="card"><span class="stamp">2,0 pts</span><div class="ico">T₂</div><h5>Trabalho Prático 2</h5>
+      <p>Atividades visuais, simulação ou desafios.</p></div>
+  </div>
+  <div class="calcbox">
+    <span class="lbl">Fórmulas de avaliação</span>
+    BI = P + T₁ + T₂ = 10,0 pontos<br>
+    MS = (BI₁ + BI₂) / 2 &nbsp;→&nbsp; <span class="r">Aprovação direta: MS ≥ 7,0 e Frequência ≥ 75%</span><br>
+    Se MS &lt; 7,0 → <span class="r">Prova Final (PF)</span>, e: MF = (MS + PF) / 2 ≥ 7,0
+  </div>
+  <p style="font-size:13.5px;color:var(--ink-400)">Base: Resolução nº 945/2023 — IFPA. Carga horária:
+    50 h-relógio presenciais (57 h/a aos sábados) + 3 h/a complementares EaD no SIGAA sobre
+    “IA aplicada a SO”, integralizando as 60 h/a regulamentares.</p>
+
+  <div class="note">
+    <span class="lbl">Citações do módulo</span>
+    <p>“Um Sistema Operacional é como um governo: ele não faz nada útil por si só, mas cria um
+    ambiente no qual outros programas podem fazer trabalho útil.” — <strong>Andrew S. Tanenbaum</strong></p>
+  </div>
+
+  <h3>Para casa, próximo encontro e reflexão</h3>
+  <div class="grid g3">
+    <div class="card"><div class="ico">📚</div><h5>Para Casa</h5><p>Acesse o AVA/SIGAA e participe do
+      <strong>fórum de acolhimento</strong> da disciplina. Leia o <strong>Capítulo 1</strong> do Machado &amp; Maia.</p></div>
+    <div class="card"><div class="ico">🔬</div><h5>Próximo Encontro</h5><p>Laboratório conceitual: debate sobre
+      o <strong>Kernel</strong>, os <strong>modos de acesso</strong> e a estrutura interna dos processos.</p></div>
+    <div class="card"><div class="ico">💡</div><h5>Reflexão</h5><p>Observe hoje o SO do seu smartphone.
+      Quantas vezes ele age como “síndico” gerenciando apps concorrentes?</p></div>
+  </div>
+<div class="modquiz" data-mod="m0"></div>
+  <div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ MÓDULO 1 ═══════════════════════ -->
+<section id="m1" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">MÓDULO 1 · AULA 02</span>
+    <h2>Anatomia do SO: Kernel e a Linha de Fronteira
+      <span class="sub">Como o processador impede que um programa malicioso destrua o seu sistema</span>
+    </h2>
+  </div>
+
+  <h3>A situação-problema: o aplicativo malicioso</h3>
+  <p>Um discente do IFPA desenvolveu um jogo em Java. Ele roda perfeitamente — mas contém um bug sutil,
+    ou, pior, um trecho de código malicioso oculto. Ao ser executado, o programa tenta:</p>
+  <ul>
+    <li>Acessar diretamente a <strong>tabela de processos</strong> na memória para encerrar o antivírus.</li>
+    <li>Enviar comandos diretos de <strong>gravação nos setores físicos do disco</strong> para apagar dados de outros usuários.</li>
+  </ul>
+  <div class="note">
+    <span class="lbl">Se qualquer programa de usuário pudesse tocar no hardware sem restrição…</span>
+    <p>Como impedir que uma aplicação <strong>trave a CPU em um laço infinito</strong>? Como evitar que ela
+    <strong>corrompa todo o sistema de arquivos</strong>? Como o processador e o SO cooperam para isolar e
+    proteger as aplicações umas das outras?</p>
+  </div>
+
+  <h3>O bit de modalidade: a proteção é feita no hardware</h3>
+  <p>O SO não confia em si mesmo por educação — a proteção é <strong>imposta pelo processador</strong>
+    através de um único <strong>bit físico</strong> chamado <strong>Mode Bit</strong>.</p>
+
+  <div class="vs">
+    <div>
+      <h6>Modo Kernel — Bit = 0</h6>
+      <p>Modo supervisor / privilegiado.</p>
+      <p>Permite <strong>instruções privilegiadas</strong>: acesso irrestrito ao hardware, controle de E/S,
+      gerenciamento de interrupções e dos registros base/limite.</p>
+    </div>
+    <div>
+      <h6>Modo Usuário — Bit = 1</h6>
+      <p>Conjunto de instruções <strong>limitado</strong>.</p>
+      <p>Qualquer tentativa de executar instrução privilegiada gera uma <strong>trap por instrução
+      ilegal</strong>, transferindo o controle ao SO.</p>
+    </div>
+  </div>
+
+  <h3>O ciclo de vida da modalidade</h3>
+  <div class="grid g3">
+    <div class="card"><span class="stamp">1</span><h5>Inicialização</h5><p>O computador inicializa
+      <strong>sempre em Modo Kernel</strong>, para carregar o SO com privilégio total.</p></div>
+    <div class="card"><span class="stamp">2</span><h5>Execução de aplicações</h5><p>Ao rodar um programa
+      de usuário, o hardware muda o bit para <strong>1 (Modo Usuário)</strong>.</p></div>
+    <div class="card"><span class="stamp">3</span><h5>Interrupção / System Call</h5><p>Qualquer interrupção,
+      exceção ou chamada de sistema muda o bit para <strong>0 (Modo Kernel)</strong>.</p></div>
+  </div>
+
+  <h3>Chamadas de Sistema (System Calls)</h3>
+  <div class="def">
+    <div class="term">Definição</div>
+    <p>Representam a <strong>interface formal</strong> que um programa em execução utiliza para solicitar
+    serviços do SO. São a <strong>única forma legítima</strong> de cruzar a fronteira de segurança.</p>
+  </div>
+  <p>Escrever chamadas de sistema direto em assembly é complexo, então os desenvolvedores usam
+    <strong>APIs padronizadas</strong>: <strong>POSIX</strong> (Linux e macOS) e <strong>Win32 / Win64</strong> (Windows).</p>
+
+  <h4>Como os parâmetros chegam ao SO — três métodos clássicos</h4>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Método</th><th>Como funciona</th><th>Prós e contras</th></tr></thead>
+    <tbody>
+      <tr><td><b>Registradores</b></td><td>Parâmetros enviados direto nos registradores da CPU.</td>
+        <td>Rápido, porém <b>limitado</b> pela quantidade de registradores do processador.</td></tr>
+      <tr><td><b>Tabela na Memória</b></td><td>Parâmetros gravados num bloco de memória; o <i>endereço</i> do bloco é passado em um registrador.</td>
+        <td>Sem limite de tamanho, porém custa uma leitura extra de memória.</td></tr>
+      <tr><td><b>Pilha (Stack)</b></td><td>Parâmetros inseridos na pilha do processo de usuário e desempilhados pelo kernel.</td>
+        <td>Organizado e flexível; é o mais comum em arquiteturas modernas.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Os seis tipos de System Calls</h4>
+  <div class="grid g3">
+    <div class="card"><h5>Controle de Processos</h5><p>Criar/encerrar processos (<code>fork()</code>,
+      <code>exit()</code>), alocar memória.</p></div>
+    <div class="card"><h5>Gerenciamento de Arquivos</h5><p>Criar, ler, gravar, fechar e excluir
+      (<code>open()</code>, <code>read()</code>, <code>write()</code>, <code>close()</code>).</p></div>
+    <div class="card"><h5>Gerenciamento de Dispositivos</h5><p>Solicitar e liberar dispositivos de
+      hardware (drivers de E/S).</p></div>
+    <div class="card"><h5>Manutenção de Informações</h5><p>Obter hora, data e atributos do sistema
+      (<code>time()</code>, <code>date()</code>).</p></div>
+    <div class="card"><h5>Comunicações</h5><p>Criar/excluir conexões, enviar e receber mensagens entre
+      processos via <strong>IPC</strong>.</p></div>
+    <div class="card"><h5>Proteção</h5><p>Definir e obter permissões de recursos e controle de acesso
+      (<code>chmod()</code>).</p></div>
+  </div>
+  <p style="font-size:13px;color:var(--ink-400)">Classificação conforme Silberschatz, Galvin &amp; Gagne —
+    <em>Fundamentos de Sistemas Operacionais</em>, 9ª ed.</p>
+
+  <h3>Estruturas de SO: como o kernel é organizado</h3>
+
+  <h4>Monolítico — “A Grande Bagunça”</h4>
+  <p>O kernel inteiro é escrito como um <strong>binário monolítico único</strong>. Todo o código (drivers,
+    escalonador, rede) reside em um <strong>único espaço de endereçamento de memória</strong>.</p>
+  <div class="vs">
+    <div><h6 style="color:var(--ink-900)">✅ Vantagem</h6><p><strong>Desempenho máximo</strong> — sem
+      overhead de comunicação interna. Tudo ocorre por chamadas de funções baratas em C.</p></div>
+    <div><h6 style="color:var(--ink-900)">❌ Desvantagem</h6><p><strong>Difícil manutenção</strong> e
+      fragilidade física: se um driver de vídeo falhar, o kernel inteiro cai. Exemplos: MS-DOS, Linux original.</p></div>
+  </div>
+
+  <h4>Em Camadas — Modularidade</h4>
+  <p>O SO é dividido em níveis hierárquicos — da <strong>Camada 0 (junto ao hardware)</strong> até a
+    <strong>Camada N (junto ao usuário)</strong>. Cada camada só pode invocar serviços das camadas
+    <strong>diretamente inferiores</strong>.</p>
+  <div class="vs">
+    <div><h6 style="color:var(--ink-900)">✅ Vantagem</h6><p><strong>Alta modularidade</strong> e
+      facilidade de depuração — cada camada pode ser testada e verificada de forma isolada.</p></div>
+    <div><h6 style="color:var(--ink-900)">❌ Desvantagem</h6><p><strong>Menor eficiência</strong> —
+      overhead alto para atravessar múltiplas camadas de parâmetros a cada chamada de serviço.</p></div>
+  </div>
+
+  <h4>Microkernels — O Kernel Minimalista</h4>
+  <p>Conceito presente no <strong>Mach</strong> e no <strong>MINIX</strong>. A ideia é modularizar removendo
+    do kernel todos os componentes não essenciais e <strong>movendo-os para o Espaço do Usuário</strong>,
+    na forma de processos servidores (servidor de arquivos, servidor de processos…).</p>
+  <p>O <strong>kernel mínimo</strong> fornece apenas: gerenciamento mínimo de processos e memória,
+    mecanismos de comunicação entre processos (IPC) e mecanismo de mensagens. A comunicação entre clientes
+    e servidores é feita por <strong>troca de mensagens gerenciada pelo Microkernel</strong>.</p>
+  <div class="grid g2">
+    <div class="card"><h5>✅ Vantagens</h5><p><strong>Confiabilidade:</strong> se o servidor de arquivos
+      falhar por um bug, o resto do SO continua funcionando normalmente.<br><br>
+      <strong>Extensibilidade e portabilidade:</strong> novos serviços são criados no espaço de usuário
+      sem alterar o kernel.</p></div>
+    <div class="card dark"><h5>❌ Desvantagem</h5><p>Queda de desempenho expressiva devido ao
+      <strong>overhead constante</strong> de cópia e troca de mensagens entre as fronteiras do sistema.</p></div>
+  </div>
+
+  <h4>LKMs e Arquiteturas Híbridas</h4>
+  <p>Os <strong>Módulos Carregáveis do Kernel (LKMs)</strong> são a abordagem moderna adotada pelo Linux
+    para manter alto desempenho com modularidade flexível:</p>
+  <div class="grid g3">
+    <div class="card"><span class="stamp">1</span><h5>Kernel Básico Essencial</h5><p>Contém apenas as
+      estruturas fundamentais do SO, mantendo o núcleo enxuto.</p></div>
+    <div class="card"><span class="stamp">2</span><h5>Módulos Dinâmicos</h5><p>Drivers, protocolos de rede
+      e sistemas de arquivos são escritos como módulos <strong>carregados e descarregados sob demanda</strong>.</p></div>
+    <div class="card"><span class="stamp">3</span><h5>Sem Overhead de Mensagens</h5><p>Diferente do
+      microkernel, os LKMs rodam <strong>dentro do espaço de kernel</strong>, com privilégio máximo.</p></div>
+  </div>
+
+  <h4>Sistemas Híbridos (macOS / Windows)</h4>
+  <p>Combinam a <strong>velocidade</strong> dos monolíticos com o <strong>isolamento</strong> dos microkernels.</p>
+  <div class="grid g2">
+    <div class="card"><div class="ico">M</div><h5>macOS (Darwin)</h5><p>Arquitetura híbrida:
+      <strong>microkernel Mach</strong> com componentes <strong>monolíticos do BSD</strong> no mesmo
+      espaço de kernel.</p></div>
+    <div class="card"><div class="ico">N</div><h5>Windows NT</h5><p>Kernel híbrido que combina um
+      <strong>microkernel</strong> com <strong>serviços de sistema rodando em modo kernel</strong>
+      para alto desempenho.</p></div>
+  </div>
+
+  <div class="note soft">
+    <span class="lbl">Para a aula de casa desta aula</span>
+    <p>Leia o Capítulo 2 do Silberschatz. No terminal do Linux, execute <code>strace ls</code> e observe
+    as System Calls que um simples comando dispara — cada linha é uma batida na porta do Kernel.</p>
+  </div>
+<div class="modquiz" data-mod="m1"></div>
+  <div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ MÓDULO 2 ═══════════════════════ -->
+<section id="m2" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">MÓDULO 2 · AULA 03</span>
+    <h2>Processos: A Vida Secreta dos Programas
+      <span class="sub">Programa vs. processo, anatomia na RAM, os 5 estados, o PCB e o custo invisível da troca de contexto</span>
+    </h2>
+  </div>
+
+  <h3>A analogia do bolo: programa vs. processo</h3>
+  <div class="analogy">
+    <div class="ah">🎂 A analogia que o professor usou</div>
+    <div class="grid g2">
+      <div class="card plain">
+        <h5>O Programa <span style="font-weight:400;color:var(--ink-400)">(estático)</span></h5>
+        <p>É a <strong>receita de bolo escrita no livro de culinária</strong>. Fica guardada
+        <strong>passivamente na estante</strong> (disco rígido ou SSD) <strong>sem consumir energia</strong>
+        e sem agir por conta própria.</p>
+      </div>
+      <div class="card plain">
+        <h5>O Processo <span style="font-weight:400;color:var(--ink-400)">(dinâmico)</span></h5>
+        <p>É o <strong>cozinheiro executando a receita ativamente</strong>: ler a receita, mexer a massa
+        e acompanhar o tempo — a CPU processando instruções em tempo real.</p>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-bottom:0">
+      <div class="card plain" style="background:var(--white)">
+        <h5>Entradas e Saídas</h5>
+        <p><strong>Ingredientes → Dados de entrada (inputs)</strong><br>
+        <strong>Bolo assado → O resultado final (output)</strong></p>
+      </div>
+      <div class="card plain" style="background:var(--white)">
+        <h5>O Plot Twist do Machucado 🚨</h5>
+        <p>O filho do cozinheiro se machuca. Ele: <strong>(1) interrompe e anota</strong> onde parou
+        (salva o estado), <strong>(2) executa um processo urgente</strong> (primeiros socorros) e
+        <strong>(3) retoma exatamente do ponto</strong> em que parou.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note tip">
+    <span class="lbl">A frase que resume o módulo inteiro</span>
+    <p>Esse “plot twist” é literalmente o que o escalonador faz: <strong>salvar o estado</strong> para
+    atender algo mais urgente e depois <strong>restaurar o processo exatamente de onde parou</strong>.
+    É o conceito de <strong>troca de contexto</strong>, que você vê em detalhe mais abaixo.</p>
+  </div>
+
+  <h3>Anatomia de um processo na memória RAM</h3>
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 330" role="img" aria-label="Seções de memória de um processo: texto, dados, pilha e heap">
+        <text x="450" y="18" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui" font-weight="700" letter-spacing="1.2">MEMÓRIA VIRTUAL DO PROCESSO</text>
+
+        <rect x="120" y="32" width="420" height="46" rx="8" fill="#0b0f13"/>
+        <text x="138" y="52" fill="#fff" font-size="13.5" font-weight="700" font-family="system-ui">Seção de Texto (Text)</text>
+        <text x="138" y="70" fill="#b3bcc4" font-size="11.5" font-family="system-ui">Código executável — as instruções binárias lidas pela CPU</text>
+
+        <rect x="120" y="86" width="420" height="46" rx="8" fill="#33404b"/>
+        <text x="138" y="106" fill="#fff" font-size="13.5" font-weight="700" font-family="system-ui">Seção de Dados (Data)</text>
+        <text x="138" y="124" fill="#d7dde2" font-size="11.5" font-family="system-ui">Variáveis globais e estáticas</text>
+
+        <rect x="120" y="142" width="420" height="56" rx="8" fill="#8d99a3"/>
+        <text x="138" y="164" fill="#fff" font-size="13.5" font-weight="700" font-family="system-ui">Pilha (Stack)</text>
+        <text x="138" y="184" fill="#0b0f13" font-size="11.5" font-family="system-ui">Locais, parâmetros, endereços de retorno · cresce ↓ de cima para baixo</text>
+
+        <rect x="120" y="212" width="420" height="56" rx="8" fill="#d7dde2"/>
+        <text x="138" y="234" fill="#0b0f13" font-size="13.5" font-weight="700" font-family="system-ui">Heap</text>
+        <text x="138" y="254" fill="#33404b" font-size="11.5" font-family="system-ui">Alocação dinâmica (<tspan font-weight="700">new</tspan> em Java, <tspan font-weight="700">malloc</tspan> em C) · cresce ↑ de baixo para cima</text>
+
+        <rect x="120" y="282" width="420" height="34" rx="8" fill="#e9edf0" stroke="#b3bcc4" stroke-dasharray="4 3"/>
+        <text x="330" y="304" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Espaço livre — de onde a pilha e o heap crescem e colidem (stackoverflow!)</text>
+
+        <path d="M560,170 L560,240" stroke="#0b0f13" stroke-width="2" marker-end="url(#ar1)"/>
+        <text x="572" y="196" fill="#0b0f13" font-size="11.5" font-weight="700" font-family="system-ui">PILHA ↓</text>
+        <path d="M660,240 L660,170" stroke="#68757f" stroke-width="2" marker-end="url(#ar1)"/>
+        <text x="672" y="212" fill="#68757f" font-size="11.5" font-weight="700" font-family="system-ui">HEAP ↑</text>
+        <text x="575" y="290" fill="#4a5865" font-size="11" font-family="system-ui">As duas se</text>
+        <text x="575" y="304" fill="#4a5865" font-size="11" font-family="system-ui">expandem para</text>
+        <text x="575" y="318" fill="#4a5865" font-size="11" font-family="system-ui">direções opostas</text>
+
+        <text x="100" y="60" text-anchor="end" fill="#68757f" font-size="11" font-family="system-ui">endereços</text>
+        <text x="100" y="76" text-anchor="end" fill="#68757f" font-size="11" font-family="system-ui">altos</text>
+        <text x="100" y="310" text-anchor="end" fill="#68757f" font-size="11" font-family="system-ui">endereços baixos</text>
+        <text x="100" y="20" text-anchor="end" fill="#4a5865" font-size="10.5" font-family="system-ui">↑</text>
+      </svg>
+    </div>
+    <figcaption>As quatro seções que o SO precisa organizar na RAM para cada processo. Repare que <strong>pilha e heap crescem em sentidos opostos</strong> — é por isso que um processo pode estourar a pilha (stackoverflow).</figcaption>
+  </figure>
+
+  <h3>O ciclo de vida: os 5 estados de um processo</h3>
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 340" role="img" aria-label="Diagrama de estados de um processo: novo, pronto, executando, em espera e terminado">
+        <defs>
+          <marker id="ar2" markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto">
+            <path d="M0,0 L0,7 L8,3.5 z" fill="#33404b"/>
+          </marker>
+        </defs>
+
+        <ellipse cx="110" cy="60" rx="82" ry="34" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
+        <text x="110" y="66" text-anchor="middle" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">Novo</text>
+        <text x="110" y="116" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">criação e alocação de recursos</text>
+
+        <ellipse cx="330" cy="60" rx="82" ry="34" fill="#b3bcc4" stroke="#68757f" stroke-width="1.6"/>
+        <text x="330" y="66" text-anchor="middle" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">Pronto (Ready)</text>
+        <text x="330" y="116" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">apto a rodar, esperando o escalonador</text>
+
+        <ellipse cx="570" cy="60" rx="88" ry="34" fill="#0b0f13"/>
+        <text x="570" y="66" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">Em Execução</text>
+        <text x="570" y="116" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">sendo processado pelos núcleos da CPU</text>
+
+        <ellipse cx="570" cy="262" rx="88" ry="34" fill="#8d99a3"/>
+        <text x="570" y="268" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">Em Espera</text>
+        <text x="570" y="316" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">aguardando evento externo (disco, teclado)</text>
+
+        <ellipse cx="810" cy="60" rx="82" ry="34" fill="#f7f8f9" stroke="#8d99a3" stroke-width="1.6" stroke-dasharray="5 3"/>
+        <text x="810" y="66" text-anchor="middle" fill="#68757f" font-size="14" font-weight="700" font-family="system-ui">Terminado</text>
+        <text x="810" y="116" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">encerrou; SO libera a RAM</text>
+
+        <path d="M196,60 L242,60" stroke="#33404b" stroke-width="1.8" marker-end="url(#ar2)"/>
+        <text x="219" y="48" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">admitted</text>
+
+        <path d="M416,60 L476,60" stroke="#33404b" stroke-width="1.8" marker-end="url(#ar2)"/>
+        <text x="446" y="48" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">dispatch</text>
+
+        <path d="M616,60 L722,60" stroke="#33404b" stroke-width="1.8" marker-end="url(#ar2)"/>
+        <text x="669" y="48" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">exit</text>
+
+        <path d="M532,42 C460,18 380,18 342,42" stroke="#33404b" stroke-width="1.8" fill="none" marker-end="url(#ar2)"/>
+        <text x="437" y="16" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">interrupt / preempção</text>
+
+        <path d="M566,96 C560,150 566,200 568,222" stroke="#33404b" stroke-width="1.8" fill="none" marker-end="url(#ar2)"/>
+        <text x="470" y="168" text-anchor="start" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">I/O ou espera por evento</text>
+
+        <path d="M486,262 C400,262 360,120 336,98" stroke="#33404b" stroke-width="1.8" fill="none" marker-end="url(#ar2)"/>
+        <text x="330" y="205" text-anchor="end" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">I/O ou evento concluído</text>
+      </svg>
+    </div>
+    <figcaption>Diagrama de transição de estados clássico de Silberschatz (5 estados). As setas com o nome do evento (admitted, dispatch, interrupt, exit, I/O) são o que a banca pede em questão de prova.</figcaption>
+  </figure>
+
+  <div class="grid g3">
+    <div class="card"><h5>🆕 Novo (New)</h5><p>Em fase de <strong>criação e alocação de recursos</strong> pelo SO.</p></div>
+    <div class="card dark"><h5>▶️ Em Execução</h5><p>As instruções estão sendo <strong>ativamente processadas</strong> pelos núcleos da CPU.</p></div>
+    <div class="card"><h5>⏹ Terminado</h5><p>Encerrou a execução; seus <strong>recursos na RAM serão liberados</strong> pelo SO.</p></div>
+    <div class="card"><h5>⏸ Em Espera / Bloqueado</h5><p>Pausado aguardando um <strong>evento externo</strong> (conclusão de leitura em disco, entrada do teclado).</p></div>
+    <div class="card"><h5>⏳ Pronto (Ready)</h5><p>Apto para rodar, <strong>esperando que o escalonador</strong> o selecione para ocupar a CPU.</p></div>
+  </div>
+
+  <div class="note">
+    <span class="lbl">A diferença que mais cai em prova</span>
+    <p><strong>Em espera ≠ Pronto.</strong> O processo <strong>Bloqueado</strong> espera algo que
+    <em>nem ele</em> pode resolver (o disco terminar de ler) — a iniciativa é de fora. O processo
+    <strong>Pronto</strong> espera algo que <em>depende só do SO</em> — a CPU ficar livre. Só o
+    escalonador decide quem sai do Pronto.</p>
+  </div>
+
+  <h3>O “RG” do processo: o Bloco de Controle de Processo (PCB)</h3>
+  <p>Como o Kernel gerencia <strong>centenas de processos concorrentes</strong>? Cada processo possui
+    uma estrutura de dados de controle — o <strong>PCB</strong> (Process Control Block), também chamado
+    de tabela de processos. É o <strong>documento de identidade</strong> do processo no Kernel.</p>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Informação no PCB</th><th>O que guarda</th><th>Para que serve</th></tr></thead>
+    <tbody>
+      <tr><td><b>Estado Atual</b></td><td>Novo, pronto, executando, bloqueado ou terminado</td><td>Saber em que fase o processo está</td></tr>
+      <tr><td><b>PID</b></td><td>Identificador numérico exclusivo</td><td>Distinguir um processo de outro</td></tr>
+      <tr><td><b>Contador de Programa (PC)</b></td><td>Endereço da <strong>próxima instrução</strong> a executar</td><td>Retomar exatamente de onde parou</td></tr>
+      <tr><td><b>Registradores da CPU</b></td><td>Cópia dos acumuladores e de uso geral</td><td>Guardados no momento em que o processo <strong>perde</strong> o processador</td></tr>
+      <tr><td><b>Limites de Memória</b></td><td>Registadores <strong>base</strong> e <strong>limite</strong></td><td>Proteger a RAM e impedir que um processo invada a memória do outro</td></tr>
+      <tr><td><b>Status de I/O</b></td><td>Lista de arquivos abertos e dispositivos alocados</td><td>Saber o que o processo tem em uso</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>A engenharia por trás da troca de contexto</h3>
+  <p>O <strong>Context Switch</strong> é como o computador <strong>simula multitarefa</strong> criando o que
+    chamamos de <strong>pseudoparalelismo</strong>.</p>
+  <div class="grid g4">
+    <div class="card"><span class="stamp">1</span><h5>SO Suspende</h5><p>Suspende o processo em execução por fim do tempo ou por interrupção de hardware.</p></div>
+    <div class="card"><span class="stamp">2</span><h5>Salva o Estado</h5><p>O Kernel salva o estado atual da CPU <strong>no PCB do processo que sai</strong>.</p></div>
+    <div class="card"><span class="stamp">3</span><h5>Restaura o Estado</h5><p>Restaura o estado salvo a partir do PCB do <strong>novo processo selecionado</strong>.</p></div>
+    <div class="card dark"><span class="stamp">4</span><h5>CPU Retoma</h5><p>A CPU retoma o novo processo <strong>exatamente do ponto</strong> onde tinha parado.</p></div>
+  </div>
+
+  <h4>O custo invisível: o Overhead</h4>
+  <p>Esse chaveamento físico de registradores e mapa de memória é <strong>oneroso</strong>. Durante esses
+    <strong>microssegundos</strong>, o processador <strong>não executa nenhum código útil do usuário</strong> —
+    consome processamento apenas com a administração interna do Kernel.</p>
+  <div class="vs">
+    <div><h6>Multiprogramação</h6><p>Executar Spotify e a IDE simultaneamente é um
+      <strong>chaveamento ultrarrápido que cria a ilusão de paralelismo</strong>.</p></div>
+    <div><h6>Puro Overhead</h6><p>Durante a troca, a CPU <strong>não processa apps do usuário</strong> —
+      apenas gerencia o estado interno do Kernel.</p></div>
+  </div>
+<div class="modquiz" data-mod="m2"></div>
+  <div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ MÓDULO 3 ═══════════════════════ -->
+<section id="m3" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">MÓDULO 3 · AULA 04</span>
+    <h2>Escalonamento de CPU: Quem é o Próximo da Fila?
+      <span class="sub">O ciclo de picos, as métricas de avaliação e os quatro algoritmos com Gantt e contas feitas</span>
+    </h2>
+  </div>
+
+  <h3>A situação-problema: a fila do caixa do supermercado</h3>
+  <div class="analogy">
+    <div class="ah">🛒 Terça à noite, fila única do caixa</div>
+    <div class="grid g3">
+      <div class="card plain"><h5>Cliente A</h5><p><strong>Carrinho cheio</strong><br>Tempo estimado: <strong>25 minutos</strong></p></div>
+      <div class="card plain"><h5>Cliente B</h5><p><strong>1 caixinha de leite</strong><br>Tempo estimado: <strong>1 minuto</strong></p></div>
+      <div class="card plain"><h5>Cliente C</h5><p><strong>Cesta de 5 itens</strong><br>Tempo estimado: <strong>3 minutos</strong></p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div>
+        <h5 style="margin-bottom:8px"><b>FCFS:</b> Cliente A chegou primeiro — B espera 25 minutos com uma única caixinha. <em>Justo?</em></h5>
+        <h5 style="margin-bottom:0"><b>SJF:</b> Menor compra à frente reduz a espera média, mas o Cliente A <strong>pode nunca ser atendido</strong> (Starvation!).</h5>
+      </div>
+      <div>
+        <p style="font-size:14px;color:var(--ink-500);margin:0"><strong>A pergunta de milhões:</strong>
+        como o SO decide, <em>em tempo real</em>, qual processo assume a CPU de forma
+        <strong>eficiente</strong>, <strong>justa</strong> e <strong>sem travar o sistema</strong>?</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>O ciclo de vida dos processos: CPU Burst e I/O Burst</h3>
+  <p>A execução de <strong>qualquer</strong> processo consiste em um ciclo alternado de duas atividades:
+    <strong>processamento ativo (CPU burst)</strong> e <strong>espera por dispositivos (I/O burst)</strong>.</p>
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 230" role="img" aria-label="Ciclo de picos de CPU e E/S alternados">
+        <rect x="60" y="20" width="300" height="46" fill="#0b0f13"/>
+        <rect x="360" y="20" width="180" height="46" fill="#e9edf0" stroke="#b3bcc4"/>
+        <rect x="540" y="20" width="300" height="46" fill="#0b0f13"/>
+        <rect x="840" y="20" width="40" height="46" fill="#e9edf0" stroke="#b3bcc4"/>
+
+        <text x="210" y="48" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">pico de CPU</text>
+        <text x="450" y="48" text-anchor="middle" fill="#68757f" font-size="12.5" font-weight="700" font-family="system-ui">pico de E/S</text>
+        <text x="690" y="48" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">pico de CPU</text>
+
+        <text x="210" y="96" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">carrega memória, adiciona memória, lê o arquivo</text>
+        <text x="450" y="96" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">espera pelo disco</text>
+        <text x="690" y="96" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">armazena, incrementa índice, grava</text>
+
+        <text x="60" y="14" fill="#4a5865" font-size="11" font-family="system-ui">início</text>
+        <path d="M60,120 L880,120" stroke="#d7dde2" stroke-width="1"/>
+        <text x="450" y="140" text-anchor="middle" fill="#4a5865" font-size="11" font-family="system-ui">tempo</text>
+        <text x="450" y="168" text-anchor="middle" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">O ciclo se repete indefinidamente enquanto o processo viver</text>
+        <text x="450" y="192" text-anchor="middle" fill="#68757f" font-size="12" font-family="system-ui">A maioria dos picos de CPU dura menos de 8 ms (histograma de Silberschatz, Fig. 6.2)</text>
+      </svg>
+    </div>
+    <figcaption>Este ciclo é a razão de existir do escalonamento: a CPU e os dispositivos de E/S nunca estão ocupados ao mesmo tempo — a não ser que o SO embaralhe os processos.</figcaption>
+  </figure>
+
+  <h4>Tipos de processos</h4>
+  <div class="grid g2">
+    <div class="card dark"><h5>CPU-bound</h5><p><strong>Picos longos e raros.</strong><br>
+      Exemplos: algoritmos de IA, renderizadores de vídeo.</p></div>
+    <div class="card"><h5>I/O-bound</h5><p><strong>Picos curtos e frequentes.</strong><br>
+      Exemplos: editores de texto, navegadores, IDEs.</p></div>
+  </div>
+  <div class="note tip">
+    <span class="lbl">A regra do síndico</span>
+    <p>O escalonador deve selecionar um <strong>bom mix de processos</strong> para manter a CPU e os
+    controladores de E/S <strong>sempre ocupados de forma concorrente</strong>. Só com I/O-bound a CPU
+    fica ociosa; só com CPU-bound os discos ficam parados.</p>
+  </div>
+
+  <h3>Métricas de avaliação de escalonadores</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Métrica</th><th>Objetivo</th><th>Definição</th></tr></thead>
+    <tbody>
+      <tr><td><b>Utilização da CPU</b></td><td><strong>Maximizar</strong></td><td>Meta: <strong>40%</strong> (carga leve) a <strong>90%</strong> (alto desempenho)</td></tr>
+      <tr><td><b>Throughput / Vazão</b></td><td><strong>Maximizar</strong></td><td>Processos concluídos com sucesso por unidade de tempo</td></tr>
+      <tr><td><b>Tempo de Turnaround</b></td><td><strong>Minimizar</strong></td><td>Submissão até conclusão = <strong>CPU Burst + Espera + E/S</strong></td></tr>
+      <tr><td><b>Tempo de Espera</b></td><td><strong>Minimizar</strong></td><td>Soma dos períodos aguardando passivamente <strong>na fila de prontos</strong></td></tr>
+      <tr><td><b>Tempo de Resposta</b></td><td><strong>Minimizar</strong></td><td>Requisição até a <strong>primeira resposta visível</strong> — essencial para sistemas interativos</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note soft">
+    <span class="lbl">Não confunda as duas últimas</span>
+    <p><strong>Turnaround</strong> vai da submissão até o processo <em>terminar</em>. <strong>Resposta</strong>
+    vai da requisição até o usuário <em>ver o primeiro resultado</em>. Em um sistema interativo, importa mais
+    a resposta; em um sistema de lote, importa mais o turnaround.</p>
+  </div>
+
+  <h3>Algoritmo 1 — FCFS / FIFO</h3>
+  <p>O primeiro processo que solicita a CPU é o primeiro a ser executado, implementado por uma
+    <strong>fila linear simples FIFO</strong>. É <strong>não-preemptivo</strong>: o processo permanece
+    na CPU até terminar voluntariamente ou solicitar E/S.</p>
+  <div class="note">
+    <span class="lbl">O grande gargalo: Efeito Comboio (Convoy Effect)</span>
+    <p>Ocorre quando processos curtos (I/O-bound) ficam bloqueados aguardando um único processo
+    <strong>gigantesco (CPU-bound)</strong> que domina o processador. Resulta em:
+    <strong>baixa utilização</strong> dos dispositivos de E/S, <strong>latência média de espera</strong>
+    inaceitável e <strong>alta dependência da ordem de chegada</strong> dos processos.</p>
+  </div>
+
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 150" role="img" aria-label="Comparação FCFS e SJF com processos A, B, C e D">
+        <text x="26" y="30" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">(a) FCFS</text>
+        <g>
+          <rect x="26" y="42" width="240" height="44" fill="#0b0f13"/><text x="146" y="69" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">A</text>
+          <text x="146" y="34" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">8</text>
+          <rect x="266" y="42" width="120" height="44" fill="#8d99a3"/><text x="326" y="69" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">B</text>
+          <text x="326" y="34" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
+          <rect x="386" y="42" width="120" height="44" fill="#8d99a3"/><text x="446" y="69" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">C</text>
+          <text x="446" y="34" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
+          <rect x="506" y="42" width="120" height="44" fill="#8d99a3"/><text x="566" y="69" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">D</text>
+          <text x="566" y="34" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
+        </g>
+        <text x="660" y="60" fill="#68757f" font-size="11.5" font-family="system-ui">A segura a CPU</text>
+        <text x="660" y="76" fill="#68757f" font-size="11.5" font-family="system-ui">8 unidades com 3</text>
+        <text x="660" y="92" fill="#68757f" font-size="11.5" font-family="system-ui">processos esperando</text>
+
+        <text x="26" y="130" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">(b) SJF</text>
+        <g>
+          <rect x="26" y="112" width="120" height="44" fill="#0b0f13"/><text x="86" y="139" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">B</text>
+          <text x="86" y="106" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
+          <rect x="146" y="112" width="120" height="44" fill="#33404b"/><text x="206" y="139" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">C</text>
+          <text x="206" y="106" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
+          <rect x="266" y="112" width="120" height="44" fill="#33404b"/><text x="326" y="139" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">D</text>
+          <text x="326" y="106" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
+          <rect x="386" y="112" width="240" height="44" fill="#8d99a3"/><text x="506" y="139" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">A</text>
+          <text x="506" y="106" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">8</text>
+        </g>
+        <text x="660" y="130" fill="#68757f" font-size="11.5" font-family="system-ui">Os curtos saem primeiro:</text>
+        <text x="660" y="146" fill="#68757f" font-size="11.5" font-family="system-ui">A vai para o fim da fila</text>
+      </svg>
+    </div>
+    <figcaption>Mesmos 4 processos (A=8, B=4, C=4, D=4). A ordem de execução muda completamente — e com ela, o tempo médio de espera. Fig. 2.7, Tanenbaum (2003, p. 102).</figcaption>
+  </figure>
+
+  <h4>Exemplo resolvido 1 — FCFS com os 4 processos prontos em t = 0</h4>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Processo</th><th>Chegada</th><th>Surto de CPU</th><th>Executou de</th><th>até</th><th>Espera (TE)</th><th>Turnaround (TT)</th></tr></thead>
+    <tbody>
+      <tr><td><b>P₁</b></td><td>0</td><td>20 ms</td><td>0</td><td>20</td><td><b>0 ms</b></td><td><b>20 ms</b></td></tr>
+      <tr><td><b>P₂</b></td><td>0</td><td>5 ms</td><td>20</td><td>25</td><td><b>20 ms</b></td><td><b>25 ms</b></td></tr>
+      <tr><td><b>P₃</b></td><td>0</td><td>7 ms</td><td>25</td><td>32</td><td><b>25 ms</b></td><td><b>32 ms</b></td></tr>
+      <tr><td><b>P₄</b></td><td>0</td><td>2 ms</td><td>32</td><td>34</td><td><b>32 ms</b></td><td><b>34 ms</b></td></tr>
+    </tbody>
+  </table></div>
+  <div class="calcbox">
+    <span class="lbl">Cálculo das médias</span>
+    TE médio = (0 + 20 + 25 + 32) / 4 = <span class="r">19,25 ms</span><br>
+    TT médio = (20 + 25 + 32 + 34) / 4 = <span class="r">27,75 ms</span>
+  </div>
+
+  <h4>Exemplo resolvido 2 — os MESMOS processos, mas com P₂ chegando primeiro</h4>
+  <p>Mesmos 4 processos e os mesmos surtos de CPU. A <strong>única</strong> mudança é a ordem de chegada:
+    P₂, P₃, P₄ e só depois P₁. Repare como os tempos médios caem — isso é o Efeito Comboio na prática.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Processo</th><th>Chegada</th><th>Surto de CPU</th><th>Executou de</th><th>até</th><th>Espera (TE)</th><th>Turnaround (TT)</th></tr></thead>
+    <tbody>
+      <tr><td><b>P₂</b></td><td>0</td><td>5 ms</td><td>0</td><td>5</td><td><b>0 ms</b></td><td><b>5 ms</b></td></tr>
+      <tr><td><b>P₃</b></td><td>0</td><td>7 ms</td><td>5</td><td>12</td><td><b>5 ms</b></td><td><b>12 ms</b></td></tr>
+      <tr><td><b>P₄</b></td><td>0</td><td>7 ms</td><td>12</td><td>19</td><td><b>12 ms</b></td><td><b>19 ms</b></td></tr>
+      <tr><td><b>P₁</b></td><td>0</td><td>20 ms</td><td>19</td><td>39</td><td><b>19 ms</b></td><td><b>39 ms</b></td></tr>
+    </tbody>
+  </table></div>
+  <div class="calcbox">
+    <span class="lbl">Cálculo das médias</span>
+    TE médio = (0 + 5 + 12 + 19) / 4 = <span class="r">9 ms</span> &nbsp;← caiu de 19,25 para 9<br>
+    TT médio = (5 + 12 + 19 + 39) / 4 = <span class="r">18,75 ms</span> &nbsp;← caiu de 27,75 para 18,75
+  </div>
+  <div class="note tip">
+    <span class="lbl">Lição que a banca gosta de cobrar</span>
+    <p>Com os <strong>mesmos processos e os mesmos tempos de CPU</strong>, só a ordem de chegada mudou
+    e a espera média caiu pela metade. Isso prova que o <strong>FCFS é pré-histórico e não justo</strong>
+    — a alta dependência da ordem de chegada é exatamente o Efeito Comboio.</p>
+  </div>
+
+  <h3>Algoritmo 2 — SJF (Shortest Job First)</h3>
+  <p>Asocia a cada processo a <strong>duração do seu próximo pico de CPU</strong>. Quando o processador
+    fica livre, aloca ao processo com o <strong>menor surto restante</strong>. É <strong>provado
+    matematicamente</strong> que o SJF fornece o <strong>tempo médio de espera mínimo</strong> para
+    qualquer conjunto de processos.</p>
+
+  <h4>Previsão do futuro: a média exponencial</h4>
+  <p>Como o Kernel sabe a duração do próximo pico se ainda não aconteceu? Ele <strong>estima</strong>:</p>
+  <div class="def">
+    <div class="term">Fórmula da média exponencial</div>
+    <p style="font-family:var(--mono);font-size:17px;color:var(--ink-900);text-align:center;padding:8px 0">
+      τ<sub>n+1</sub> = α · t<sub>n</sub> + (1 − α) · τ<sub>n</sub></p>
+    <p style="margin-top:12px;font-size:14px">τ = estimativa · t = tempo real do pico anterior · α = peso do passado recente</p>
+  </div>
+  <div class="calcbox">
+    <span class="lbl">Exemplo com α = 0,5 (o mais usado em aula)</span>
+    pico real t = 10 &nbsp;→&nbsp; τ' = 0,5(10) + 0,5(10) = <span class="r">10</span><br>
+    pico real t = 6 &nbsp;&nbsp;→&nbsp; τ' = 0,5(6) + 0,5(10) = <span class="r">8</span><br>
+    pico real t = 4 &nbsp;&nbsp;→&nbsp; τ' = 0,5(4) + 0,5(8) = <span class="r">6</span><br>
+    pico real t = 6 &nbsp;&nbsp;→&nbsp; τ' = 0,5(6) + 0,5(6) = <span class="r">6</span><br>
+    pico real t = 4 &nbsp;&nbsp;→&nbsp; τ' = 0,5(4) + 0,5(6) = <span class="r">5</span><br>
+    pico real t = 13 → τ' = 0,5(13) + 0,5(5) = <span class="r">9</span>
+  </div>
+  <p style="font-size:13.5px;color:var(--ink-400)">Repare no gráfico da aula: quando o pico real salta de 4 para 13,
+    a estimativa τ só sobe suavemente de 5 até 12 — o Kernel não “acredita” num pico isolado.</p>
+
+  <div class="grid g2">
+    <div class="card"><h5>Não-Preemptiva</h5><p>O processo em execução <strong>conclui seu surto</strong>
+      mesmo se chegar um novo processo mais curto.</p></div>
+    <div class="card dark"><h5>Preemptiva — SRTF</h5><p>Se um novo processo chega com surto restante
+      <strong>menor</strong> que o atual, interrompe imediatamente e escala o novo.<br>
+      <strong>Risco:</strong> processos longos podem sofrer <strong>Starvation</strong>.</p></div>
+  </div>
+
+  <h3>Algoritmo 3 — Escalonamento por Prioridades</h3>
+  <p>Cada processo recebe um <strong>valor inteiro de prioridade</strong>. A CPU é alocada ao processo
+    de maior prioridade — por convenção, <strong>números menores = maior privilégio</strong>.</p>
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 250" role="img" aria-label="Fila de prioridade com processos de diferentes níveis">
+        <text x="20" y="24" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Fila de prioridade</text>
+        <rect x="20" y="34" width="230" height="34" fill="#0b0f13"/><text x="135" y="56" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Prioridade 4</text>
+        <rect x="20" y="70" width="230" height="34" fill="#212b34"/><text x="135" y="92" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Prioridade 3</text>
+        <rect x="20" y="106" width="230" height="34" fill="#68757f"/><text x="135" y="128" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Prioridade 2</text>
+        <rect x="20" y="142" width="230" height="34" fill="#b3bcc4"/><text x="135" y="164" text-anchor="middle" fill="#0b0f13" font-size="12.5" font-weight="700" font-family="system-ui">Prioridade 1</text>
+
+        <text x="20" y="200" fill="#68757f" font-size="11.5" font-family="system-ui">Cada fila guarda vários processos executáveis</text>
+        <text x="20" y="222" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Números MENORES = MAIOR privilégio (convenção)</text>
+        <text x="20" y="242" fill="#68757f" font-size="11.5" font-family="system-ui">A prioridade 4 do desenho é a mais alta</text>
+
+        <g transform="translate(300,0)">
+          <text x="0" y="24" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Exemplo real de prioridades (de cima para baixo)</text>
+          <rect x="0" y="34" width="330" height="30" fill="#0b0f13"/><text x="16" y="54" fill="#fff" font-size="12" font-weight="600" font-family="system-ui">Processos no sistema</text>
+          <rect x="0" y="68" width="330" height="30" fill="#212b34"/><text x="16" y="88" fill="#fff" font-size="12" font-weight="600" font-family="system-ui">Processos interativos</text>
+          <rect x="0" y="102" width="330" height="30" fill="#4a5865"/><text x="16" y="122" fill="#fff" font-size="12" font-weight="600" font-family="system-ui">Processos de edição interativa</text>
+          <rect x="0" y="136" width="330" height="30" fill="#8d99a3"/><text x="16" y="156" fill="#0b0f13" font-size="12" font-weight="600" font-family="system-ui">Processos batch</text>
+          <rect x="0" y="170" width="330" height="30" fill="#d7dde2"/><text x="16" y="190" fill="#0b0f13" font-size="12" font-weight="600" font-family="system-ui">Processos de estudantes</text>
+          <text x="0" y="222" fill="#4a5865" font-size="11.5" font-family="system-ui">Prioridade mais alta ↑ · mais baixa ↓</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Doiscretos de prioridade. Repare no segundo: um servidor universitário dá prioridade a quem está digitando na frente de quem só compila em lote.</figcaption>
+  </figure>
+
+  <div class="grid g3">
+    <div class="card"><h5>🔄 Inversão de Prioridades</h5><p>Um processo de prioridade <strong>média</strong>
+      bloqueia um de <strong>alta</strong> prioridade que aguarda um recurso retido por um de
+      <strong>baixa</strong> prioridade.</p></div>
+    <div class="card dark"><h5>💀 Inanição (Starvation)</h5><p>Processos de baixa prioridade podem esperar
+      <strong>indefinidamente</strong>. <br><strong>A lenda do MIT:</strong> um processo enviado em
+      <strong>1967</strong> nunca executou até o <strong>IBM 7094 ser desligado em 1973</strong>!</p></div>
+    <div class="card"><h5>🌱 Envelhecimento (Aging)</h5><p>Aumenta <strong>gradualmente</strong> a prioridade
+      dos processos conforme o tempo acumulado na fila de prontos — <strong>a cura para a Starvation</strong>.</p></div>
+  </div>
+
+  <h3>Algoritmo 4 — Round-Robin (RR)</h3>
+  <p><strong>Projetado para sistemas interativos</strong> — é o algoritmo mais utilizado em sistemas
+    multiusuário e de tempo compartilhado. Trata a fila de prontos como uma <strong>fila circular FIFO
+    preemptiva</strong>. Cada processo recebe um <strong>quantum</strong> de tempo (q) — geralmente
+    <strong>10 a 100 ms</strong> — antes de ser colocado de volta no fim da fila.</p>
+  <div class="note soft">
+    <span class="lbl">Regra prática</span>
+    <p>~<strong>80% dos picos de CPU</strong> reais devem ser menores que o quantum escolhido.</p>
+  </div>
+
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 170" role="img" aria-label="Escalonamento Round Robin com fila circular">
+        <text x="26" y="26" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">(a) Fila circular — o próximo processo é o que vem depois do atual</text>
+        <g>
+          <rect x="26" y="42" width="90" height="42" fill="#0b0f13"/><text x="71" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">B</text>
+          <rect x="122" y="42" width="90" height="42" fill="#33404b"/><text x="167" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">F</text>
+          <rect x="218" y="42" width="90" height="42" fill="#4a5865"/><text x="263" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">D</text>
+          <rect x="314" y="42" width="90" height="42" fill="#8d99a3"/><text x="359" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">G</text>
+          <rect x="410" y="42" width="90" height="42" fill="#b3bcc4"/><text x="455" y="68" text-anchor="middle" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">A</text>
+        </g>
+        <path d="M71,36 L71,26 L167,26 L167,36" stroke="#68757f" stroke-width="1.2" fill="none"/>
+        <text x="119" y="20" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">atual → próximo</text>
+
+        <text x="26" y="130" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">(b) Depois do quantum, B foi para o fim da fila</text>
+        <g transform="translate(0,26)">
+          <rect x="26" y="42" width="90" height="42" fill="#33404b"/><text x="71" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">F</text>
+          <rect x="122" y="42" width="90" height="42" fill="#4a5865"/><text x="167" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">D</text>
+          <rect x="218" y="42" width="90" height="42" fill="#8d99a3"/><text x="263" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">G</text>
+          <rect x="314" y="42" width="90" height="42" fill="#b3bcc4"/><text x="359" y="68" text-anchor="middle" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">A</text>
+          <rect x="410" y="42" width="90" height="42" fill="#0b0f13"/><text x="455" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">B</text>
+        </g>
+        <text x="530" y="96" fill="#68757f" font-size="11.5" font-family="system-ui">F é o novo atual</text>
+      </svg>
+    </div>
+    <figcaption>Round Robin: ninguém espera mais que um quantum. Fig. 2.8, Tanenbaum (2003, p. 104).</figcaption>
+  </figure>
+
+  <h4>A sensibilidade do quantum — o que acontece nos dois extremos</h4>
+  <div class="vs">
+    <div><h6>q muito grande</h6><p>O RR <strong>perde sua natureza interativa</strong> e se comporta
+      exatamente como um <strong>FCFS sequencial</strong>. Ninguém sente falta de resposta, porque ninguém
+      é interrompido.</p></div>
+    <div><h6>q muito pequeno</h6><p><strong>Número absurdo de trocas de contexto.</strong> O processador
+      gasta <strong>mais tempo com overhead de Kernel</strong> do que processando código útil.</p></div>
+  </div>
+
+  <h4>Trabalho Prático 1 (T₁) — Simulador de CPU Visual em Equipes</h4>
+  <div class="note soft">
+    <span class="lbl">Duplas · 2,0 pontos · Entrega: Aula 08 — 06/10</span>
+    <ol>
+      <li><strong>Receber os cenários personalizados</strong> — listas com processos fictícios: tempos de
+        chegada, surtos de CPU e prioridades.</li>
+      <li><strong>Desenhar os gráficos de Gantt</strong> — em papel milimetrado, caneta ativa ou planilha
+        (Excel/Sheets), para <strong>FCFS, SJF e Round-Robin</strong>.</li>
+      <li><strong>Calcular tempos e médias</strong> — tempos individuais de espera e retorno, compilando a
+        tabela de médias gerais.</li>
+      <li><strong>Justificativa teórica crítica</strong> — “Qual algoritmo traria a melhor experiência para os
+        usuários acadêmicos de um <strong>servidor real do IFPA Campus Ananindeua</strong>?”</li>
+    </ol>
+  </div>
+  <div class="note tip">
+    <span class="lbl">Dica de estudo desta aula</span>
+    <p>Leia as seções <strong>6.1, 6.2 e 6.3</strong> do Silberschatz para consolidar o entendimento prático
+    e se preparar para as questões teóricas da <strong>Prova P1</strong>. E treine no Simulador 1 acima:
+    ele faz exatamente os três algoritmos que o T₁ pede.</p>
+  </div>
+
+  <div class="note tip">
+    <span class="lbl">Resumo comparativo — decore esta tabela</span>
+    <table style="width:100%;margin-top:10px;font-size:13.5px;border-collapse:collapse">
+      <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Algoritmo</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Preempção</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Espera média</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Risco</b></td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">FCFS</td><td style="padding:8px 10px;color:#d7dde2">Não</td><td style="padding:8px 10px;color:#d7dde2">Ruim</td><td style="padding:8px 10px;color:#d7dde2">Efeito Comboio</td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">SJF</td><td style="padding:8px 10px;color:#d7dde2">Não</td><td style="padding:8px 10px;color:#d7dde2"><b style="color:#fff">Ótima (mínimo)</b></td><td style="padding:8px 10px;color:#d7dde2">Starvation</td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">SRTF</td><td style="padding:8px 10px;color:#d7dde2"><b style="color:#fff">Sim</b></td><td style="padding:8px 10px;color:#d7dde2">Ótima</td><td style="padding:8px 10px;color:#d7dde2">Starvation grave</td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">Prioridade</td><td style="padding:8px 10px;color:#d7dde2">Geralmente sim</td><td style="padding:8px 10px;color:#d7dde2">Variável</td><td style="padding:8px 10px;color:#d7dde2">Inanição + inversão</td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">Round-Robin</td><td style="padding:8px 10px;color:#d7dde2"><b style="color:#fff">Sim</b></td><td style="padding:8px 10px;color:#d7dde2">Razoável</td><td style="padding:8px 10px;color:#d7dde2">Overhead se q pequeno</td></tr>
+    </table>
+  </div>
+<div class="modquiz" data-mod="m3"></div>
+  <div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ MÓDULO 4 ═══════════════════════ -->
+<section id="m4" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">MÓDULO 4 · AULA 05</span>
+    <h2>Threads e Concorrência: A Arte de Dividir Tarefas
+      <span class="sub">O que é uma thread, o que elas compartilham, e a condição de corrida que faz contas bancárias falharem</span>
+    </h2>
+  </div>
+
+  <h3>A situação-problema: o navegador congelado</h3>
+  <div class="analogy">
+    <div class="ah">🎯 Terça à noite, três abas abertas ao mesmo tempo</div>
+    <div class="grid g3">
+      <div class="card plain"><h5>Aba 1</h5><p><strong>Videoaula de programação</strong><br>
+        Reprodução contínua de vídeo em streaming de alta definição.</p></div>
+      <div class="card plain"><h5>Aba 2</h5><p><strong>PDF de 50 MB</strong><br>
+        Download e renderização de relatório acadêmico de grande volume.</p></div>
+      <div class="card plain"><h5>Aba 3</h5><p><strong>Script de animação</strong><br>
+        Processamento gráfico pesado rodando em loop contínuo.</p></div>
+    </div>
+    <p style="margin:18px 0 0;font-size:15px;color:var(--ink-600)"><strong>O desafio:</strong> se o navegador
+      funcionasse com execução <em>single-thread</em>, um travamento na animação congelaria toda a interface —
+      inclusive o vídeo e o mouse. <strong>A pergunta de milhões:</strong> como o navegador moderno carrega
+      páginas, roda scripts, reproduz áudio/vídeo e responde a cliques de forma simultânea sem que um
+      travamento pontual congele tudo?</p>
+  </div>
+
+  <h3>Mas afinal, o que é uma thread?</h3>
+  <div class="def">
+    <div class="term">Definição formal</div>
+    <p>Uma <strong>thread</strong> (ou fluxo de controle) é a <strong>unidade básica de utilização da CPU</strong>.
+    Representa um <strong>caminho de execução independente de instruções</strong> dentro de um processo.</p>
+  </div>
+  <p>O conceito por trás é o de <strong>Processo Leve (Lightweight Process)</strong>: diferente de um
+    processo tradicional (<em>heavyweight</em>), que é pesado para criar e destruir, a thread é
+    <strong>extremamente leve</strong> porque <strong>não precisa de um espaço de endereçamento totalmente novo</strong>.
+    Um processo multithreaded contém vários fluxos de execução cooperativos dentro do
+    <strong>mesmo espaço de memória</strong>.</p>
+
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 300" role="img" aria-label="Comparação entre processo single-thread e multithread">
+        <text x="30" y="24" fill="#0b0f13" font-size="13.5" font-weight="700" font-family="system-ui">Processo Single-Thread</text>
+        <rect x="30" y="36" width="380" height="30" fill="#e9edf0" stroke="#b3bcc4"/><text x="220" y="56" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Código</text>
+        <rect x="30" y="66" width="380" height="30" fill="#e9edf0" stroke="#b3bcc4"/><text x="220" y="86" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Dados + Arquivos</text>
+        <rect x="30" y="96" width="380" height="34" fill="#0b0f13"/>
+        <path d="M120,130 L120,152" stroke="#0b0f13" stroke-width="2" marker-end="url(#ar1)"/>
+        <text x="220" y="118" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="system-ui">1 fluxo de execução</text>
+        <text x="220" y="172" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Bloqueio = <tspan font-weight="700" fill="#0b0f13">processo inteiro para</tspan></text>
+        <text x="220" y="190" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Uma aba travada congela tudo</text>
+
+        <text x="490" y="24" fill="#0b0f13" font-size="13.5" font-weight="700" font-family="system-ui">Processo Multi-Thread</text>
+        <rect x="490" y="36" width="380" height="30" fill="#e9edf0" stroke="#b3bcc4"/><text x="680" y="56" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Código (compartilhado)</text>
+        <rect x="490" y="66" width="380" height="30" fill="#e9edf0" stroke="#b3bcc4"/><text x="680" y="86" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Dados + Arquivos (compartilhados)</text>
+        <rect x="490" y="96" width="380" height="76" fill="#212b34"/>
+        <text x="680" y="112" text-anchor="middle" fill="#8d99a3" font-size="10.5" font-family="system-ui">fluxos de execução independentes</text>
+        <path d="M570,118 L570,140" stroke="#b3bcc4" stroke-width="1.8" marker-end="url(#ar1)"/>
+        <path d="M680,118 L680,140" stroke="#b3bcc4" stroke-width="1.8" marker-end="url(#ar1)"/>
+        <path d="M790,118 L790,140" stroke="#b3bcc4" stroke-width="1.8" marker-end="url(#ar1)"/>
+        <text x="680" y="158" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="system-ui">Cada uma: pilha + registradores próprios</text>
+        <text x="680" y="190" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Uma aba travada <tspan font-weight="700" fill="#0b0f13">não derruba as outras</tspan></text>
+      </svg>
+    </div>
+    <figcaption>A diferença que explica o navegador moderno: com threads independentes, cada aba tem seu próprio fluxo e uma falha em uma não congela a interface inteira.</figcaption>
+  </figure>
+
+  <h3>O que as threads dividem e o que elas isolam</h3>
+  <div class="vs">
+    <div>
+      <h6>🔗 Recursos Compartilhados</h6>
+      <p><b>Seção de Código</b> — todas as threads leem as mesmas funções.</p>
+      <p><b>Seção de Dados (globais)</b> — se uma altera uma global, <b>todas as outras enxergam imediatamente</b>.</p>
+      <p><b>Recursos do SO</b> — arquivos abertos, sockets de rede e permissões.</p>
+      <p><b>Memória Heap</b> — área de alocação dinâmica (objetos com <code>new</code> em Java).</p>
+    </div>
+    <div>
+      <h6>🔒 Recursos Privados (de cada thread)</h6>
+      <p><b>ID da Thread</b> — identificador único no sistema.</p>
+      <p><b>Contador de Programa (PC)</b> — qual instrução aquela thread está executando.</p>
+      <p><b>Conjunto de Registradores da CPU</b> — valores de cálculo temporários da thread.</p>
+      <p><b>Memória Stack (Pilha)</b> — variáveis locais e histórico de chamadas de métodos.</p>
+    </div>
+  </div>
+  <div class="note">
+    <span class="lbl">Por que isso importa para a prova</span>
+    <p>É exatamente porque <strong>código e dados são compartilhados</strong> que duas threads podem
+    <strong>atacar o mesmo recurso ao mesmo tempo</strong> — e é por isso que a <strong>Região Crítica</strong>
+    (Módulo 5) precisa existir. A pilha e os registradores serem privados é o que garante que uma thread
+    não embaralhe a execução da outra.</p>
+  </div>
+
+  <h3>Os quatro pilares de benefício das threads</h3>
+  <div class="grid g2">
+    <div class="card"><span class="stamp">1</span><h5>Capacidade de Resposta</h5><p>A aplicação continua
+      respondendo ao usuário mesmo se parte dela estiver <strong>bloqueada em operação demorada</strong>
+      (ex.: baixando um arquivo).</p></div>
+    <div class="card"><span class="stamp">2</span><h5>Compartilhamento de Recursos</h5><p>Threads compartilham
+      a memória do processo <strong>por padrão</strong>, facilitando troca de dados sem mecanismos complexos
+      de IPC (pipes, memória compartilhada explícita).</p></div>
+    <div class="card"><span class="stamp">3</span><h5>Economia de Hardware</h5><p>Criar e gerenciar threads é
+      <strong>muito mais rápido</strong> e consome <strong>menos memória</strong> que criar processos.</p></div>
+    <div class="card"><span class="stamp">4</span><h5>Escalabilidade (Multicore)</h5><p>Em sistemas
+      multiprocessadores, threads independentes podem <strong>executar em paralelo</strong> em diferentes
+      núcleos simultaneamente.</p></div>
+  </div>
+
+  <h3>Concorrência versus Paralelismo</h3>
+  <div class="vs">
+    <div><h6>Concorrência (Concurrency)</h6><p>Existência de múltiplas tarefas que dão a
+      <strong>ilusão de execução simultânea</strong>. Em uma CPU de núcleo único, o escalonador faz o
+      chaveamento rápido no tempo entre os fluxos. <b>Apenas um fluxo executa por vez.</b></p></div>
+    <div><h6>Paralelismo (Parallelism)</h6><p><strong>Execução física e simultânea</strong> de duas ou mais
+      tarefas ao mesmo tempo. Exige, obrigatoriamente, hardware com <strong>múltiplos núcleos (multicore)</strong>.
+      As tarefas realmente executam ao mesmo tempo.</p></div>
+  </div>
+  <div class="note tip">
+    <span class="lbl">A frase que separa os dois concepts</span>
+    <p>Concorrência é uma questão de <strong>estrutura</strong> (como o programa é organizado).
+    Paralelismo é uma questão de <strong>hardware</strong> (quantos núcleos existem).
+    <strong>Um sistema pode ser concorrente sem ser paralelo</strong> — é o caso do seu notebook com 1 núcleo.</p>
+  </div>
+
+  <h4>Os três desafios da era multicore</h4>
+  <ol>
+    <li><strong>Identificação de tarefas independentes</strong> — encontrar quais partes do problema podem ser
+      divididas e executadas sem dependência entre si.</li>
+    <li><strong>Equilíbrio de carga e divisão de dados</strong> — distribuir o trabalho e os dados de forma
+      justa entre os núcleos disponíveis.</li>
+    <li><strong>Sincronização e depuração</strong> — gerenciar dependências entre dados e lidar com a
+      complexidade de testes e depuração de sistemas concorrentes.</li>
+  </ol>
+
+  <h3>Quem gerencia as threads? Usuário vs. Kernel</h3>
+  <div class="vs">
+    <div><h6>Threads de Nível de Usuário</h6><p><b>Gerenciamento por biblioteca</b> — criadas e gerenciadas
+      inteiramente por bibliotecas no espaço de usuário (ex.: <b>Java Threads</b>).</p>
+      <p>✅ Rápidas de criar, <b>sem chamadas de sistema</b>.</p>
+      <p>⚠️ <b>O calcanhar de Aquiles:</b> se uma única thread de usuário fizer uma chamada bloqueadora ao SO
+      (como ler do disco), <b>o processo inteiro é pausado</b>.</p></div>
+    <div><h6>Threads de Nível de Kernel</h6><p><b>Gerenciamento pelo SO</b> — o núcleo reconhece e gerencia as
+      threads diretamente. Se uma thread bloqueia, o SO agenda outra do mesmo processo.</p>
+      <p>✅ <b>Suporte nativo a multicore</b>.</p>
+      <p>⚠️ Maior custo de criação (cada uma é uma syscall).</p></div>
+  </div>
+
+  <h4>Os três modelos clássicos de mapeamento</h4>
+  <div class="grid g3">
+    <div class="card"><h5>Muitos-para-Um</h5><p>Várias threads de usuário → <b>1</b> thread de kernel.</p></div>
+    <div class="card"><h5>Um-para-Um</h5><p>Cada thread de usuário ganha uma de kernel
+      (<b>Windows e Linux</b>).</p></div>
+    <div class="card"><h5>Muitos-para-Muitos</h5><p>Multiplexa M threads de usuário em N threads de kernel
+      (<b>M ≥ N</b>).</p></div>
+  </div>
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 200" role="img" aria-label="Modelo um-para-um de mapeamento de threads">
+        <text x="30" y="24" fill="#0b0f13" font-size="12.5" font-weight="700" font-family="system-ui">threads de usuário</text>
+        <path d="M50,44 C40,60 40,70 50,84" stroke="#68757f" stroke-width="1.8" fill="none"/>
+        <path d="M50,84 C40,100 40,110 50,124" stroke="#68757f" stroke-width="1.8" fill="none"/>
+        <path d="M50,124 C40,140 40,150 50,162" stroke="#68757f" stroke-width="1.8" fill="none"/>
+        <path d="M50,40 C38,58 38,72 50,88" stroke="#68757f" stroke-width="1.8" fill="none"/>
+        <path d="M50,88 C38,106 38,120 50,136" stroke="#68757f" stroke-width="1.8" fill="none"/>
+        <path d="M50,136 C38,152 38,164 50,168" stroke="#68757f" stroke-width="1.8" fill="none"/>
+        <circle cx="76" cy="46" r="12" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
+        <circle cx="76" cy="92" r="12" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
+        <circle cx="76" cy="138" r="12" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
+        <circle cx="76" cy="176" r="12" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
+        <path d="M88,46 L200,46" stroke="#b3bcc4" stroke-width="1.6"/>
+        <path d="M88,92 L200,92" stroke="#b3bcc4" stroke-width="1.6"/>
+        <path d="M88,138 L200,138" stroke="#b3bcc4" stroke-width="1.6"/>
+        <path d="M88,176 L200,176" stroke="#b3bcc4" stroke-width="1.6"/>
+        <circle cx="230" cy="46" r="16" fill="#0b0f13"/>
+        <circle cx="230" cy="92" r="16" fill="#0b0f13"/>
+        <circle cx="230" cy="138" r="16" fill="#0b0f13"/>
+        <circle cx="230" cy="176" r="16" fill="#0b0f13"/>
+        <text x="230" y="51" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">k</text>
+        <text x="230" y="97" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">k</text>
+        <text x="230" y="143" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">k</text>
+        <text x="230" y="181" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">k</text>
+        <text x="270" y="52" fill="#33404b" font-size="11.5" font-weight="700" font-family="system-ui">thread de kernel</text>
+        <text x="30" y="52" fill="#33404b" font-size="11.5" font-weight="700" font-family="system-ui">○</text>
+        <text x="270" y="112" fill="#4a5865" font-size="12" font-family="system-ui">Cada fluxo de usuário tem seu par no kernel.</text>
+        <text x="270" y="134" fill="#4a5865" font-size="12" font-family="system-ui">É o modelo usado por Windows e Linux.</text>
+        <text x="270" y="156" fill="#4a5865" font-size="12" font-family="system-ui">Se uma bloquear, o SO roda a outra.</text>
+        <text x="30" y="196" fill="#68757f" font-size="11" font-family="system-ui">Figura 4.6 — Modelo um-para-um (Silberschatz, 9ª ed.)</text>
+      </svg>
+    </div>
+    <figcaption>Modelo um-para-um: cada thread de usuário ganha uma thread de kernel dedicada.</figcaption>
+  </figure>
+
+  <h3>O perigo da concorrência: a Condição de Corrida</h3>
+  <div class="def">
+    <div class="term">Race Condition (Condição de Corrida)</div>
+    <p>Uma situação onde múltiplos fluxos de execução (threads ou processos cooperativos) tentam acessar
+    e <strong>modificar um recurso compartilhado de forma simultânea</strong>, e o <strong>resultado final
+    depende estritamente da ordem e do tempo de execução</strong> das instruções.</p>
+  </div>
+  <p>O resultado é <strong>imprevisível e inconsistente</strong> — o mesmo programa pode gerar respostas
+    diferentes a cada execução.</p>
+
+  <h4>O clássico exemplo da conta bancária conjunta</h4>
+  <div class="bank">
+    <div class="tx">
+      <div class="th">👩 Thread Esposa</div>
+      <div class="steps">
+        <div>lê saldo = <span class="hl">R$ 1.000,00</span></div>
+        <div>calcula 1.000 + 10</div>
+        <div>grava saldo = <span class="hl">R$ 1.010,00</span></div>
+      </div>
+    </div>
+    <div class="tx">
+      <div class="th">👨 Thread Marido</div>
+      <div class="steps">
+        <div>lê saldo = <span class="hl">R$ 1.000,00</span></div>
+        <div>calcula 1.000 − 10</div>
+        <div>grava saldo = <span class="hl">R$ 990,00</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="lbl">Esperado vs. real</span>
+    <p><strong>Esperado: R$ 1.000,00</strong> (depositou 10, sacou 10 — o saldo volta ao original).<br>
+    <strong>Sem sincronização:</strong> se ambas leram R$ 1.000,00 ao mesmo tempo,
+    <strong>quem gravar por último apaga a operação do outro</strong> — saldo incorreto e inconsistente!</p>
+  </div>
+
+  <div class="note tip">
+    <span class="lbl">A correção (o que você entrega no T₁)</span>
+    <p>Aplicar a palavra-chave <code>synchronized</code> do Java para garantir <strong>exclusão mútua</strong>
+    e proteger o saldo bancário contra a condição de corrida. Rodar o programa várias vezes e encontrar
+    onde está a <strong>Região Crítica vulnerável</strong>.</p>
+  </div>
+
+  <h4>Trabalho Prático 1 (T₁) — Detetives de Código</h4>
+  <div class="note soft">
+    <span class="lbl">Duplas · Entrega: Aula 07 — 29/09</span>
+    <ol>
+      <li><strong>Receber o código-fonte em Java</strong> — o professor fornecerá um código pronto que
+        simula depósitos e saques concorrentes em uma conta de R$ 1.000,00.</li>
+      <li><strong>Identificar a falha de concorrência</strong> — ao rodar várias vezes, o saldo final
+        quase nunca dará R$ 1.000,00. A missão: encontrar a Região Crítica vulnerável.</li>
+      <li><strong>Aplicar a correção com <code>synchronized</code></strong> — garantir exclusão mútua.</li>
+      <li><strong>Entregar relatório e código corrigido</strong> — PDF de 1 página respondendo ao roteiro
+        + o código corrigido.</li>
+    </ol>
+  </div>
+  <div class="note soft">
+    <span class="lbl">💡 Dica de leitura desta aula</span>
+    <p>Leia as seções <strong>4.1 e 4.2</strong> do Silberschatz para aprofundar os conceitos de
+    concorrência multicore.</p>
+  </div>
+<div class="modquiz" data-mod="m4"></div>
+  <div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ MÓDULO 5 ═══════════════════════ -->
+<section id="m5" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">MÓDULO 5 · AULA 06</span>
+    <h2>O Caos da Concorrência
+      <span class="sub">Região crítica, semáforos, produtor-consumidor e o monstro do Deadlock</span>
+    </h2>
+  </div>
+
+  <h3>A situação-problema: o jantar dos filósofos</h3>
+  <div class="analogy">
+    <div class="ah">🍝 Dijkstra, 1965</div>
+    <p style="font-size:15px">Cinco филосófos alternam entre <strong>pensar</strong> e <strong>comer</strong>.
+      Para comer, cada um precisa de <strong>dois hashis</strong> — o da esquerda e o da direita. Pegam
+      um hashi de cada vez; não podem pegar o do vizinho.</p>
+    <p style="font-size:15px"><strong>A crise do milissegundo:</strong> todos os cinco ficam famintos ao
+      mesmo tempo. Cada um estica a mão esquerda e segura o hashi à sua esquerda. Agora, <strong>cada filósofo
+      tem 1 hashi e espera o da direita ficar livre</strong>.</p>
+    <figure>
+      <div class="box" style="box-shadow:none;border:none;padding:8px 0">
+        <svg viewBox="0 0 880 300" role="img" aria-label="O jantar dos filósofos em deadlock">
+          <circle cx="440" cy="140" r="38" fill="#e9edf0" stroke="#b3bcc4" stroke-dasharray="4 3"/>
+          <text x="440" y="136" text-anchor="middle" fill="#4a5865" font-size="11" font-family="system-ui">mesa</text>
+          <text x="440" y="150" text-anchor="middle" fill="#4a5865" font-size="11" font-family="system-ui">(ninguém come)</text>
+          <g font-family="system-ui" font-size="12.5" font-weight="700" text-anchor="middle">
+            <circle cx="440" cy="40" r="24" fill="#0b0f13"/><text x="440" y="45" fill="#fff">P1</text>
+            <circle cx="606" cy="112" r="24" fill="#0b0f13"/><text x="606" y="117" fill="#fff">P2</text>
+            <circle cx="528" cy="248" r="24" fill="#0b0f13"/><text x="528" y="253" fill="#fff">P3</text>
+            <circle cx="352" cy="248" r="24" fill="#0b0f13"/><text x="352" y="253" fill="#fff">P4</text>
+            <circle cx="274" cy="112" r="24" fill="#0b0f13"/><text x="274" y="117" fill="#fff">P5</text>
+          </g>
+          <g stroke="#33404b" stroke-width="3" stroke-linecap="round">
+            <path d="M440,64 L406,48"/><path d="M596,124 L556,96"/>
+            <path d="M524,234 L506,208"/><path d="M356,234 L374,208"/>
+            <path d="M284,124 L324,96"/>
+          </g>
+          <text x="440" y="18" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">cada um segura o hashi da ESQUERDA e espera o da DIREITA</text>
+          <text x="440" y="292" text-anchor="middle" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">nenhum passa — espera circular</text>
+        </svg>
+      </div>
+      <figcaption>Cinco filósofos, cinco pares de hashis, uma espera circular. É o deadlock em forma de jantar.</figcaption>
+    </figure>
+  </div>
+  <div class="note">
+    <span class="lbl">A pergunta de milhões 🤔</span>
+    <p>Eles ficarão parados, segurando um hashi e esperando pelo outro <strong>eternamente</strong>?
+    O que aconteceu com a CPU? Eles <strong>morrerão de fome</strong>?</p>
+  </div>
+
+  <h3>A anatomia da Região Crítica</h3>
+  <div class="def">
+    <div class="term">Região Crítica</div>
+    <p>A parte do programa de uma thread em que ela <strong>acessa um recurso de memória compartilhado</strong>
+    (como ler/gravar dados).</p>
+  </div>
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 880 130" role="img" aria-label="Estrutura da região crítica: entrada, região crítica, saída e seção remanescente">
+        <rect x="20" y="40" width="200" height="52" rx="8" fill="#e9edf0" stroke="#b3bcc4"/>
+        <text x="120" y="63" text-anchor="middle" fill="#33404b" font-size="12.5" font-weight="700" font-family="system-ui">Seção Remanescente</text>
+        <text x="120" y="80" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">antes da região crítica</text>
+
+        <rect x="228" y="40" width="130" height="52" rx="8" fill="#8d99a3"/>
+        <text x="293" y="63" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Entrada</text>
+        <text x="293" y="80" text-anchor="middle" fill="#0b0f13" font-size="11" font-family="system-ui">pede o lock</text>
+
+        <rect x="366" y="40" width="160" height="52" rx="8" fill="#0b0f13"/>
+        <text x="446" y="63" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="system-ui">REGIÃO CRÍTICA</text>
+        <text x="446" y="80" text-anchor="middle" fill="#8d99a3" font-size="11" font-family="system-ui">acessa o recurso</text>
+
+        <rect x="534" y="40" width="130" height="52" rx="8" fill="#8d99a3"/>
+        <text x="599" y="63" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Saída</text>
+        <text x="599" y="80" text-anchor="middle" fill="#0b0f13" font-size="11" font-family="system-ui">libera o lock</text>
+
+        <rect x="672" y="40" width="188" height="52" rx="8" fill="#e9edf0" stroke="#b3bcc4"/>
+        <text x="766" y="63" text-anchor="middle" fill="#33404b" font-size="12.5" font-weight="700" font-family="system-ui">Seção Remanescente</text>
+        <text x="766" y="80" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">depois da região crítica</text>
+
+        <path d="M120,110 L820,110" stroke="#d7dde2" stroke-width="1"/>
+        <text x="446" y="126" text-anchor="middle" fill="#4a5865" font-size="10.5" font-family="system-ui">tempo →</text>
+      </svg>
+    </div>
+    <figcaption>Toda vez que uma thread faz <code>down(mutex)</code> ela entra na região crítica; ao fazer <code>up(mutex)</code>, sai.</figcaption>
+  </figure>
+
+  <h4>As 4 condições para uma solução correta</h4>
+  <div class="grid g2">
+    <div class="card"><span class="stamp">1</span><h5>Exclusão Mútua</h5><p>Duas ou mais threads
+      <strong>jamais</strong> podem estar simultaneamente em suas regiões críticas.</p></div>
+    <div class="card"><span class="stamp">2</span><h5>Independência de Hardware</h5><p>Nenhuma suposição
+      sobre <strong>velocidade ou número de CPUs</strong> pode ser feita.</p></div>
+    <div class="card"><span class="stamp">3</span><h5>Progresso</h5><p>Nenhuma thread <strong>fora</strong>
+      da região crítica pode bloquear outras threads concorrentes.</p></div>
+    <div class="card"><span class="stamp">4</span><h5>Espera Limitada</h5><p>Nenhuma thread deve esperar
+      indefinidamente — <strong>sem inanição (starvation)</strong>.</p></div>
+  </div>
+
+  <h3>Soluções primitivas: Mutex vs. Spinlocks</h3>
+  <div class="vs">
+    <div><h6>Locks Mutex</h6><p>Mecanismo mais simples: a thread <strong>adquire um lock</strong> antes
+      de entrar na região crítica e o <strong>libera ao sair</strong>. Garante exclusão mútua
+      <strong>sem desperdício de CPU</strong> quando implementado com bloqueio real.</p></div>
+    <div><h6>Spinlocks — Espera Ocupada</h6><p>Enquanto a região crítica está ocupada, a thread fica
+      em <strong>loop contínuo</strong> testando a variável:</p>
+      <pre style="margin:10px 0 0;background:var(--ink-50);color:var(--ink-800);border-color:var(--ink-200);font-size:12.5px;padding:10px 12px"><code>while (lock == 1);</code></pre>
+      <p style="margin-top:10px">❌ Desperdiça ciclos preciosos de CPU em <strong>busy waiting</strong>.</p></div>
+  </div>
+  <div class="note tip">
+    <span class="lbl">Quando usar spinlocks?</span>
+    <p>Apenas quando o tempo de espera for <strong>extremamente curto</strong> — comum em
+    <strong>multiprocessadores</strong>, onde a troca de contexto seria <strong>mais cara do que o giro</strong>.
+    Em uma CPU de núcleo único, o giro é sempre errado: a outra thread precisa da CPU para liberar o lock,
+    mas está esperando ela.</p>
+  </div>
+
+  <h3>As engrenagens do Semáforo</h3>
+  <p>Um semáforo contém um <strong>contador inteiro (value)</strong> e uma <strong>fila de processos
+    suspensos (list)</strong>. Foi proposto por <strong>Dijkstra (1965)</strong>.</p>
+  <div class="vs">
+    <div>
+      <h6>⬇️ DOWN (P) — Bloqueia / Solicita recurso</h6>
+      <pre><code>void DOWN(Semáforo S) {
+  <span class="k">S</span>.value--;
+  <span class="k">if</span> (<span class="k">S</span>.value &lt; 0) {
+    <span class="c">// Adiciona thread em S.list</span>
+    block();  <span class="c">// Estado: Bloqueado</span>
+  }
+}</code></pre>
+    </div>
+    <div>
+      <h6>⬆️ UP (V) — Acorda / Libera recurso</h6>
+      <pre><code>void UP(Semáforo S) {
+  <span class="k">S</span>.value++;
+  <span class="k">if</span> (<span class="k">S</span>.value &lt;= 0) {
+    <span class="c">// Remove thread T de S.list</span>
+    wakeup(T); <span class="c">// Estado: Pronto</span>
+  }
+}</code></pre>
+    </div>
+  </div>
+  <div class="grid g3">
+    <div class="card"><h5>Operação Atômica</h5><p>Decrementa o valor: <code>S.value--</code>. Se
+      <code>S.value &lt; 0</code>, a thread é suspensa na fila e adormece (<code>block()</code>).</p></div>
+    <div class="card dark"><h5>🌟 O Trunfo</h5><p>A thread <strong>abre mão da CPU espontaneamente</strong>
+      e dorme — eliminando completamente a <strong>espera ocupada</strong>!</p></div>
+    <div class="card"><h5>Atomicidade Garantida</h5><p>Ambas as operações são <strong>indivisíveis</strong> —
+      o SO garante que nunca são interrompidas no meio da execução.</p></div>
+  </div>
+
+  <h3>O problema do Produtor-Consumidor com semáforos</h3>
+  <p>Um produtor gera itens, um consumidor os consome, e ambos precisam de um <strong>buffer compartilhado</strong>.
+    Três semáforos resolvem o problema:</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Semáforo</th><th>Valor inicial</th><th>O que garante</th></tr></thead>
+    <tbody>
+      <tr><td><b>mutex</b></td><td><code>1</code></td><td>Semáforo <b>binário</b>. Garante que apenas um processo mexa nos <b>ponteiros do buffer</b> por vez (Exclusão Mútua).</td></tr>
+      <tr><td><b>empty</b></td><td><code>N</code></td><td>Conta quantos <b>espaços vazios</b> existem no buffer. Inicializado com a capacidade total N.</td></tr>
+      <tr><td><b>full</b></td><td><code>0</code></td><td>Conta quantos <b>espaços ocupados</b> existem com itens produzidos. Inicializado em zero.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="vs">
+    <div><h6>Produtor</h6>
+      <pre><code><span class="k">down</span>(&empty);   <span class="c">// espera espaço livre</span>
+<span class="k">down</span>(&mutex);   <span class="c">// entra na região crítica</span>
+insere o item;
+<span class="k">up</span>(&mutex);     <span class="c">// sai da região crítica</span>
+<span class="k">up</span>(&full);      <span class="c">// sinaliza item novo</span></code></pre></div>
+    <div><h6>Consumidor</h6>
+      <pre><code><span class="k">down</span>(&full);    <span class="c">// espera item</span>
+<span class="k">down</span>(&mutex);   <span class="c">// entra na região crítica</span>
+remove o item;
+<span class="k">up</span>(&mutex);     <span class="c">// sai da região crítica</span>
+<span class="k">up</span>(&empty);    <span class="c">// sinaliza espaço livre</span></code></pre></div>
+  </div>
+  <div class="note soft">
+    <span class="lbl">A simetria que a banca adora perguntar</span>
+    <p>O produtor <strong>consome um espaço vazio</strong> e <strong>libera um espaço ocupado</strong>.
+    O consumidor faz o caminho inverso. Note que <code>mutex</code> é sempre o mesmo para os dois — é ele
+    que serializa o acesso aos ponteiros, e nunca fica negativo (é binário).</p>
+  </div>
+
+  <h3>O Monstro do Deadlock e o Kansas de 1900</h3>
+  <div class="note">
+    <span class="lbl">O problema real que inspirou o conceito</span>
+    <p>“Quando dois trens se aproximarem em um cruzamento, ambos devem <strong>parar completamente</strong>
+    e nenhum dos dois deve ser posto em marcha novamente até que o outro tenha partido.”</p>
+  </div>
+  <p><strong>A lógica impossível:</strong> se o trem A não pode se mover antes de B partir, e B não pode
+    se mover antes de A partir — <strong>nenhum dos dois jamais sairá do lugar!</strong></p>
+  <div class="def">
+    <div class="term">Definição científica de Deadlock</div>
+    <p>Um conjunto de processos está em <strong>deadlock</strong> quando cada processo do conjunto
+    <strong>espera por um evento que só pode ser causado por outro processo do mesmo conjunto</strong> —
+    uma <strong>espera circular sem saída</strong>.</p>
+  </div>
+
+  <h4>As 4 Condições de Coffman (1971)</h4>
+  <p>Para que o deadlock exista, as quatro condições abaixo devem ocorrer <strong>simultaneamente</strong>.</p>
+  <figure>
+    <div class="box">
+      <svg viewBox="0 0 900 340" role="img" aria-label="As quatro condições de Coffman para existência de deadlock">
+        <line x1="450" y1="12" x2="450" y2="328" stroke="#e9edf0" stroke-width="1"/>
+        <line x1="12" y1="170" x2="888" y2="170" stroke="#e9edf0" stroke-width="1"/>
+
+        <text x="20" y="34" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">1. Exclusão Mútua</text>
+        <text x="20" y="54" fill="#68757f" font-size="12" font-family="system-ui">pelo menos um recurso em</text>
+        <text x="20" y="72" fill="#68757f" font-size="12" font-family="system-ui">modo não compartilhável</text>
+        <g transform="translate(250,20)">
+          <path d="M40,4 L74,20 L74,52 L40,68 L6,52 L6,20 Z" fill="#f7f8f9" stroke="#68757f" stroke-width="1.6"/>
+          <rect x="26" y="26" width="28" height="22" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.4"/>
+          <path d="M6,46 L-14,72" stroke="#b3bcc4" stroke-width="1.2" stroke-dasharray="3 3"/>
+        </g>
+
+        <text x="470" y="34" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">2. Retenção e Espera</text>
+        <text x="470" y="54" fill="#68757f" font-size="12" font-family="system-ui">(Hold and Wait)</text>
+        <text x="470" y="72" fill="#68757f" font-size="12" font-family="system-ui">processo segura recurso</text>
+        <text x="470" y="90" fill="#68757f" font-size="12" font-family="system-ui">e espera por outros</text>
+        <g transform="translate(700,16)">
+          <rect x="20" y="14" width="34" height="26" fill="#f7f8f9" stroke="#68757f" stroke-width="1.6"/>
+          <path d="M37,40 L37,66" stroke="#68757f" stroke-width="1.6"/>
+          <path d="M20,66 L54,66" stroke="#68757f" stroke-width="1.6"/>
+          <rect x="58" y="0" width="34" height="26" fill="#f7f8f9" stroke="#b3bcc4" stroke-width="1.6" stroke-dasharray="3 3"/>
+        </g>
+
+        <text x="20" y="204" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">3. Inexistência de Preempção</text>
+        <text x="20" y="224" fill="#68757f" font-size="12" font-family="system-ui">recurso só é liberado</text>
+        <text x="20" y="242" fill="#68757f" font-size="12" font-family="system-ui">voluntariamente pelo processo</text>
+        <g transform="translate(250,192)">
+          <path d="M40,4 L74,20 L74,52 L40,68 L6,52 L6,20 Z" fill="#f7f8f9" stroke="#68757f" stroke-width="1.6"/>
+          <rect x="26" y="26" width="28" height="22" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.4"/>
+          <path d="M40,68 L40,96" stroke="#68757f" stroke-width="1.6"/>
+          <path d="M40,96 L28,112" stroke="#68757f" stroke-width="1.6"/>
+          <path d="M40,96 L52,112" stroke="#68757f" stroke-width="1.6"/>
+        </g>
+
+        <text x="470" y="204" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">4. Espera Circular</text>
+        <text x="470" y="224" fill="#68757f" font-size="12" font-family="system-ui">cadeia fechada: P0 espera P1,</text>
+        <text x="470" y="242" fill="#68757f" font-size="12" font-family="system-ui">P1 espera P2, ... Pn espera P0</text>
+        <g transform="translate(700,196)">
+          <circle cx="34" cy="26" r="22" fill="#f7f8f9" stroke="#68757f" stroke-width="1.5"/>
+          <text x="34" y="31" text-anchor="middle" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">P0</text>
+          <circle cx="88" cy="26" r="22" fill="#f7f8f9" stroke="#68757f" stroke-width="1.5"/>
+          <text x="88" y="31" text-anchor="middle" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">P1</text>
+          <circle cx="61" cy="82" r="22" fill="#f7f8f9" stroke="#68757f" stroke-width="1.5"/>
+          <text x="61" y="87" text-anchor="middle" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Pn</text>
+          <g fill="none" stroke="#33404b" stroke-width="1.5">
+            <path d="M54,34 L70,64" marker-end="url(#ar2)"/>
+            <path d="M82,48 L68,62" marker-end="url(#ar2)"/>
+            <path d="M40,46 L28,62" marker-end="url(#ar2)"/>
+          </g>
+        </g>
+
+        <text x="450" y="332" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Coffman et al., 1971 — as quatro condições são necessárias e suficientes</text>
+      </svg>
+    </div>
+    <figcaption>Se <strong>uma única</strong> dessas condições for quebrada, o deadlock deixa de existir. É exatamente isso que o SO faz na estratégia de Prevenção.</figcaption>
+  </figure>
+
+  <h4>Grafo de Alocação de Recursos (RAG)</h4>
+  <p>O RAG representa processos como <strong>círculos</strong> e recursos como <strong>quadrados</strong>.
+    Uma seta de um processo para um recurso significa <strong>solicitação</strong>; uma seta de recurso
+    para processo significa <strong>atribuição</strong>. <strong>Se houver um ciclo no grafo, há deadlock.</strong></p>
+
+  <h3>Estratégias do Kernel contra o Deadlock</h3>
+  <div class="grid g2">
+    <div class="card"><span class="stamp">1</span><h5>🦤 Algoritmo do Avestruz</h5><p><strong>Fingir que nunca
+      ocorre.</strong> Abordagem pragmática adotada pelo <strong>Windows e Linux</strong>: se a probabilidade
+      for muito baixa, <strong>reiniciar é mais barato</strong> do que rodar prevenção em cada alocação.</p></div>
+    <div class="card"><span class="stamp">2</span><h5>Prevenção Ativa</h5><p><strong>Quebra estrita de uma das 4
+      condições de Coffman</strong> — por exemplo, exigir que todos os locks sejam solicitados sempre na
+      <strong>mesma ordem absoluta</strong>.</p></div>
+    <div class="card"><span class="stamp">3</span><h5>Impedimento Dinâmico (Avoidance)</h5><p>O SO analisa cada
+      solicitação dinamicamente. O <strong>Algoritmo do Banqueiro (Dijkstra)</strong> verifica se conceder o
+      recurso mantém o sistema em um <strong>estado seguro</strong>.</p></div>
+    <div class="card dark"><span class="stamp">4</span><h5>Detecção e Recuperação</h5><p>Deixa o deadlock
+      ocorrer, <strong>detecta-o periodicamente</strong> via busca de ciclos e se recupera matando o
+      <strong>processo-vítima</strong> ou forçando <strong>preempção de recursos</strong>.</p></div>
+  </div>
+
+  <div class="note tip">
+    <span class="lbl">O quadro-resumo das 4 estratégias</span>
+    <table style="width:100%;margin-top:10px;font-size:13.5px;border-collapse:collapse">
+      <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Estratégia</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">O que faz</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Custo</b></td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">Avestruz</td><td style="padding:8px 10px;color:#d7dde2">Nada. Deixa quebrar.</td><td style="padding:8px 10px;color:#d7dde2">Perda de trabalho</td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">Prevenção</td><td style="padding:8px 10px;color:#d7dde2">Impõe regras rígidas</td><td style="padding:8px 10px;color:#d7dde2">Perde paralelismo/utilização</td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">Impedimento</td><td style="padding:8px 10px;color:#d7dde2">Testa estado seguro (Banqueiro)</td><td style="padding:8px 10px;color:#d7dde2">Cálculo a cada alocação</td></tr>
+      <tr><td style="padding:8px 10px;color:#d7dde2">Detecção</td><td style="padding:8px 10px;color:#d7dde2">Procura ciclos no RAG</td><td style="padding:8px 10px;color:#d7dde2">Mata processos</td></tr>
+    </table>
+  </div>
+<div class="modquiz" data-mod="m5"></div>
+  <div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ SIMULADORES ═══════════════════════ -->
+<section id="sim" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">MÃO NA MASSA</span>
+    <h2>Simuladores Interativos
+      <span class="sub">Treine os algoritmos de escalonamento e os semáforos até virar automático — é literalmente o que pede o T₁</span>
+    </h2>
+  </div>
+
+  <h3>Simulador 1 — Escalonamento de CPU com gráfico de Gantt</h3>
+  <p>Ajuste os processos e o tempo de chegada, escolha o algoritmo e veja o Gantt e todas as métricas
+    se atualizarem. Os dois primeiros botões carregam <strong>exatamente os exemplos resolvidos do professor</strong> —
+    use-os para conferir seus cálculos.</p>
+
+  <div class="sim">
+    <div class="sim-h">
+      <span class="t">🗓 Simulador de Escalonamento</span>
+      <span class="s">FCFS · SJF · Prioridade · Round-Robin</span>
+    </div>
+    <div class="sim-b">
+      <div class="ctrls">
+        <div class="fld"><label>Algoritmo</label>
+          <select id="alg">
+            <option value="fcfs">FCFS (não-preemptivo)</option>
+            <option value="sjf">SJF (não-preemptivo)</option>
+            <option value="srtf">SRTF (preemptivo)</option>
+            <option value="prio">Prioridades (menor número = maior)</option>
+            <option value="rr">Round-Robin</option>
+          </select>
+        </div>
+        <div class="fld" id="qf" style="display:none"><label>Quantum (ms)</label>
+          <input type="number" id="quant" value="10" min="1" step="1"></div>
+        <div class="fld"><label>&nbsp;</label><button class="btn" onclick="addProc()">+ Adicionar processo</button></div>
+        <div class="fld"><label>&nbsp;</label><button class="btn btn-solid" onclick="runSim()">Calcular</button></div>
+      </div>
+
+      <div class="rowset">
+        <table><thead><tr><th>Processo</th><th>Chegada</th><th>Surto de CPU</th><th>Prioridade</th><th></th></tr></thead>
+        <tbody id="procBody"></tbody></table>
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+        <button class="btn" onclick="loadPreset(1)">📋 Exemplo da aula — ordem P₁P₂P₃P₄</button>
+        <button class="btn" onclick="loadPreset(2)">📋 Exemplo da aula — P₂ chega primeiro</button>
+        <button class="btn" onclick="loadPreset(3)">📋 Tanenbaum — A8 B4 C4 D4</button>
+      </div>
+
+      <div class="gantt-box" id="ganttBox">
+        <div style="text-align:center;color:var(--ink-300);font-size:13.5px;padding:22px 0">
+          Clique em <b>Calcular</b> ou escolha um exemplo acima para gerar o gráfico
+        </div>
+      </div>
+
+      <div class="metrics" id="metrics"></div>
+      <div id="resTable" style="margin-top:18px"></div>
+    </div>
+    <div class="sim-c">
+      <span class="k">Como usar:</span>
+      <span><b>Espera</b> = tempo que o processo fica parado na fila de prontos.
+      <b>Turnaround</b> = chegada → fim da execução.
+      Compare o TE médio entre FCFS e SJF no exemplo 1 vs. 2 e veja na prática por que o FCFS sofre
+      com o Efeito Comboio.</span>
+    </div>
+  </div>
+
+  <h3>Simulador 2 — Semáforos: o trinco que ninguém pode quebrar</h3>
+  <p>Execute operações de semáforo e veja o contador e a fila de espera em tempo real. Compare
+    <code>block()</code> (dormir) com o <code>spinlock</code> (girar).</p>
+
+  <div class="sim">
+    <div class="sim-h">
+      <span class="t">🔒 Máquina de Semáforos</span>
+      <span class="s">Valor inicial: 1</span>
+    </div>
+    <div class="sim-b">
+      <div class="sema" id="semaBox"></div>
+      <div class="ctrls" style="margin-bottom:0">
+        <div class="fld"><label>Operação</label>
+          <select id="semaOp"><option value="down">DOWN (bloqueia)</option><option value="up">UP (acorda)</option></select>
+        </div>
+        <div class="fld"><label>&nbsp;</label><button class="btn btn-solid" onclick="semaExec()">Executar</button></div>
+        <div class="fld"><label>&nbsp;</label><button class="btn" onclick="semaReset()">Reiniciar</button></div>
+      </div>
+    </div>
+    <div class="sim-c">
+      <span class="k">Regra:</span>
+      <span>DOWN decrementa e, se ficar negativo, a thread <b>dorme</b>. UP incrementa e, se continuar
+      ≤ 0, acorda uma thread da fila. Observe que <b>nenhuma thread espera ocupando a CPU</b> — é a
+      vantagem do semáforo sobre o spinlock.</span>
+    </div>
+  </div>
+
+  <h3>Simulador 3 — Condição de Corrida na conta bancária</h3>
+  <p>As duas threads têm 3 passos cada uma (<em>ler → calcular → gravar</em>). Existem
+    <strong>20 ordens possíveis</strong> de intercalar essas 6 operações — e o botão abaixo enumera
+    <strong>todas</strong>, mostrando o saldo exato de cada uma. Sem sincronização, <strong>18 das 20 terminam
+    com o saldo errado</strong>. Este é o T₁ na prática.</p>
+
+  <div class="sim">
+    <div class="sim-h"><span class="t">🏦 Duas threads, uma conta</span>
+      <span class="s">R$ 1.000,00 · +10 e −10 simultâneos</span></div>
+    <div class="sim-b">
+      <div class="bank">
+        <div class="tx"><div class="th">👩 Esposa · Depósito</div>
+          <div class="steps" id="t1"><div>lê saldo</div><div>calcula +10</div><div>grava</div></div></div>
+        <div class="tx"><div class="th">👨 Marido · Saque</div>
+          <div class="steps" id="t2"><div>lê saldo</div><div>calcula −10</div><div>grava</div></div></div>
+      </div>
+      <div class="balance" id="balBox">
+        <div class="bl">Saldo final</div>
+        <div class="bv">R$ 1.000,00</div>
+        <div class="bmsg">Clique em “Executar transferência” para simular</div>
+      </div>
+      <div class="ctrls" style="margin-bottom:0">
+        <div class="fld"><label>Modo</label>
+          <select id="raceMode"><option value="racy">Sem sincronização (com race)</option><option value="sync">Com synchronized (correto)</option></select></div>
+        <div class="fld"><label>&nbsp;</label><button class="btn btn-solid" onclick="runBank()">Executar transferência</button></div>
+        <div class="fld"><label>&nbsp;</label><button class="btn" onclick="runBankMany()">Analisar todas as ordens</button></div>
+      </div>
+      <div id="raceStat" style="margin-top:16px"></div>
+    </div>
+    <div class="sim-c">
+      <span class="k">O que acontece:</span>
+      <span>Sem sincronização, as duas threads às vezes leem o mesmo saldo antes de qualquer uma gravar.
+      A última a escrever apaga a operação da outra — o saldo fica errado. Com <code>synchronized</code>,
+      as regiões críticas nunca se sobrepõem e o resultado é <b>sempre</b> R$ 1.000,00.</span>
+    </div>
+  </div>
+
+  <h3>Simulador 4 — O Jantar dos Filósofos (deadlock)</h3>
+  <div class="sim">
+    <div class="sim-h"><span class="t">🍝 Cinco filósofos, cinco pares de hashis</span>
+      <span class="s">Veja o sistema travar</span></div>
+    <div class="sim-b">
+      <div style="text-align:center;padding:10px 0 18px">
+        <button class="btn btn-solid" onclick="philoRun()" style="font-size:15px;padding:11px 26px">
+          ▶ Iniciar o jantar (todos famintos ao mesmo tempo)</button>
+        <button class="btn" onclick="philoReset()" style="font-size:15px;padding:11px 26px;margin-left:8px">
+          ↺ Reiniciar</button>
+      </div>
+      <div id="philoBox"></div>
+    </div>
+    <div class="sim-c">
+      <span class="k">O que observar:</span>
+      <span>Cada filósofo pega apenas o hashi da esquerda. Quando todos fazem isso, cada um tem 1 hashi e
+      espera o da direita — que já foi pego por outro. O resultado é <b>espera circular</b>: ninguém mais
+      consegue comer, e a CPU fica livre porque <b>todos</b> estão bloqueados.</span>
+    </div>
+  </div>
+<div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ REVISÃO GERAL ═══════════════════════ -->
+<section id="quiz" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">TREINO</span>
+    <h2>Revisão Geral da Prova
+      <span class="sub">Missura de todas as aulas — o que mais cai na P1, nos picos de decisão</span>
+    </h2>
+  </div>
+
+  <div class="grid g3" style="margin-bottom:26px">
+    <div class="card"><div class="ico">✓</div><h5>Total de questões</h5>
+      <p><span id="allCount" style="font-family:var(--mono);font-weight:700;color:var(--ink-900)">0</span>
+      questões distribuídas entre os 6 módulos.</p></div>
+    <div class="card"><div class="ico">◎</div><h5>Seu desempenho</h5>
+      <p><span id="allRight" style="font-family:var(--mono);font-weight:700;color:var(--ink-900)">0</span>
+      acertos acumulados em todas as abas.</p></div>
+    <div class="card dark"><div class="ico">!</div><h5>Dica de estudo</h5>
+      <p>Faça o quiz de cada módulo <b>imediatamente após ler</b> ele. Estudar por bloco
+      e testar logo fixa muito mais que reler tudo no fim.</p></div>
+  </div>
+
+  <h3>Seu progresso por módulo</h3>
+  <div class="progress-list" id="progList"></div>
+
+  <h3>Simulado final — questões misturadas</h3>
+  <p style="color:var(--ink-500);font-size:15px">Estas questões combinam todos os módulos.
+    É o melhor teste para saber se você está pronto.</p>
+  <div class="qscore">
+    <div><span class="big" id="scoreN">0</span><span class="lbl"> / <span id="scoreT">0</span></span></div>
+    <div><span class="lbl">Acertos. Clique nas alternativas para corrigir na hora.</span></div>
+    <div style="margin-left:auto"><button class="btn" onclick="resetQuiz()">Reiniciar simulado</button></div>
+  </div>
+  <div id="quizBox"></div>
+  <div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ GLOSSÁRIO ═══════════════════════ -->
+<section id="glossario" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">REFERÊNCIA RÁPIDA</span>
+    <h2>Glossário e Fórmulas
+      <span class="sub">Tudo que você precisa na última hora, em uma página só</span>
+    </h2>
+  </div>
+
+  <h3>Glossário</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Termo</th><th>Significado em uma frase</th></tr></thead>
+    <tbody>
+      <tr><td><b>SO</b></td><td>Programa que gerencia o hardware, elo entre usuário e máquina.</td></tr>
+      <tr><td><b>Kernel</b></td><td>Núcleo do SO; roda em modo privilegiado com controle total do hardware.</td></tr>
+      <tr><td><b>System Call</b></td><td>Chamada que permite a um programa pedir um serviço ao SO.</td></tr>
+      <tr><td><b>Processo</b></td><td>Programa em execução, com estado próprio na RAM.</td></tr>
+      <tr><td><b>Thread</b></td><td>Fluxo de execução independente dentro de um processo; unidade básica de uso da CPU.</td></tr>
+      <tr><td><b>PCB</b></td><td>Bloco de controle: o “RG” do processo, com PID, PC, registradores e limites.</td></tr>
+      <tr><td><b>Context Switch</b></td><td>Salvar e restaurar o estado da CPU ao trocar de processo (overhead).</td></tr>
+      <tr><td><b>FCFS</b></td><td>Primeiro a chegar, primeiro a ser servido (não-preemptivo).</td></tr>
+      <tr><td><b>SJF / SRTF</b></td><td>Menor trabalho primeiro (não-preemptivo / preemptivo).</td></tr>
+      <tr><td><b>Round-Robin</b></td><td>Chaveamento circular por quantum de tempo.</td></tr>
+      <tr><td><b>Quantum (q)</b></td><td>Fatia de tempo de cada processo no RR (tipicamente 10–100 ms).</td></tr>
+      <tr><td><b>CPU-bound / I/O-bound</b></td><td>Processo de picos longos e raros / curtos e frequentes.</td></tr>
+      <tr><td><b>Starvation (Inanição)</b></td><td>Processo esperar indefinidamente pela CPU.</td></tr>
+      <tr><td><b>Envelhecimento (Aging)</b></td><td>Aumentar prioridade com o tempo de espera — a cura da inanição.</td></tr>
+      <tr><td><b>Região Crítica</b></td><td>Trecho de código que acessa recurso compartilhado.</td></tr>
+      <tr><td><b>Race Condition</b></td><td>Resultado depende da ordem de execução de threads concorrentes.</td></tr>
+      <tr><td><b>Mutex / Semáforo</b></td><td>Primitivas de exclusão mútua; o semáforo também controla ordem/espera.</td></tr>
+      <tr><td><b>Spinlock</b></td><td>Espera ocupada: a thread fica girando testando a variável.</td></tr>
+      <tr><td><b>Deadlock</b></td><td>Espera circular sem saída; cada processo espera um evento do outro.</td></tr>
+      <tr><td><b>Coffman</b></td><td>As 4 condições necessárias: exclusão mútua, hold-and-wait, não-preempção, espera circular.</td></tr>
+      <tr><td><b>Algoritmo do Banqueiro</b></td><td>Impedimento dinâmico: só concede se mantiver estado seguro.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Todas as fórmulas em um lugar</h3>
+  <div class="calcbox" style="line-height:2.3">
+    <span class="lbl">Escalonamento</span>
+    Turnaround = fim − chegada = CPU Burst + Espera + E/S<br>
+    Tempo de Espera = início real − tempo de chegada<br>
+    SJF — média exponencial: τ<sub>n+1</sub> = α·t<sub>n</sub> + (1−α)·τ<sub>n</sub><br><br>
+    <span class="lbl">Avaliação</span>
+    BI = P + T₁ + T₂ = 10,0 &nbsp;·&nbsp; MS = (BI₁ + BI₂)/2 &nbsp;·&nbsp; MF = (MS + PF)/2<br><br>
+    <span class="lbl">Semáforos</span>
+    DOWN(S): S.value-- ; se S.value &lt; 0 → block() (dorme)<br>
+    UP(S): S.value++ ; se S.value ≤ 0 → wakeup(T) (vira Pronto)<br>
+    Produtor-Consumidor: mutex=1, empty=N, full=0<br><br>
+    <span class="lbl">Deadlock (Coffman) — as 4 condições precisam ocorrer JUNTAS</span>
+    1. Exclusão mútua · 2. Retenção e espera · 3. Inexistência de preempção · 4. Espera circular
+  </div>
+
+  <h3>Como a nota é composta (revisão)</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Componente</th><th>Peso</th><th>O que é</th></tr></thead>
+    <tbody>
+      <tr><td><b>Prova Escrita (P)</b></td><td>6,0</td><td>Individual — conceitos, situações-problema, estilo ENADE</td></tr>
+      <tr><td><b>Trabalho Prático 1 (T₁)</b></td><td>2,0</td><td>Pesquisa, investigação ou laboratório conceitual</td></tr>
+      <tr><td><b>Trabalho Prático 2 (T₂)</b></td><td>2,0</td><td>Atividades visuais, simulação ou desafios</td></tr>
+    </tbody>
+  </table></div>
+  <div class="modnav"></div>
+</section>
+
+<!-- ═══════════════════════ REFERÊNCIAS ═══════════════════════ -->
+<section id="refs" class="pane">
+  <div class="sec-head">
+    <span class="sec-num">BIBLIOGRAFIA</span>
+    <h2>Referências e Roteiro de Estudo
+      <span class="sub">Formatação ABNT, conforme as fontes oficiais da disciplina</span>
+    </h2>
+  </div>
+
+  <h3>Livros clássicos — acervo físico e digital (SIGAA)</h3>
+  <div class="refs">
+    <div class="ref"><b>MACHADO, Francis B.; MAIA, Luiz Paulo.</b> <em>Arquitetura de Sistemas Operacionais.</em>
+      4. ed. Rio de Janeiro: LTC, 2007. <span style="color:var(--ink-400)">— O mais didático e acessível para iniciantes; referência principal.</span></div>
+    <div class="ref"><b>SILBERSCHATZ, Abraham; GALVIN, Peter B.; GAGNE, Greg.</b> <em>Fundamentos de Sistemas
+      Operacionais.</em> 9. ed. Rio de Janeiro: LTC, 2015. <span style="color:var(--ink-400)">— O clássico
+      mundial com profundidade de conceitos.</span></div>
+    <div class="ref"><b>TANENBAUM, Andrew S.; WOODHULL, Albert S.</b> <em>Sistemas Operacionais: Projeto e
+      Implementação.</em> 3. ed. Porto Alegre: Bookman, 2008. <span style="color:var(--ink-400)">—
+      Engenharia de Kernel com visão prática.</span></div>
+  </div>
+  <h3>Bibliografia complementar</h3>
+  <div class="refs">
+    <div class="ref"><b>TANENBAUM, A. S.</b> <em>Redes de Computadores.</em> Editora Campus.</div>
+    <div class="ref"><b>TORRE, G.</b> <em>Hardware Curso Completo.</em> Editora Axcel.</div>
+    <div class="ref"><b>GRIMES, G.</b> <em>Aprenda em 24 Horas Upgrade e Manutenção de PCs.</em> Editora Campus.</div>
+  </div>
+
+  <h3>Os 5 módulos do semestre</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Mês</th><th>Módulo</th><th>Conteúdo</th></tr></thead>
+    <tbody>
+      <tr><td><b>1 · Agosto</b></td><td>O Despertar da Máquina</td><td>Conceitos básicos, Kernel, modos de acesso, Monousuário/Multiusuário, Processos <span style="color:var(--ink-500)">(Aulas 1–3 ✓)</span></td></tr>
+      <tr><td><b>2 · Setembro</b></td><td>A Dança dos Algoritmos</td><td>Gerência de processador, escalonamento, Threads, Concorrência/Deadlocks <span style="color:var(--ink-500)">(Aulas 4–6 ✓)</span></td></tr>
+      <tr><td><b>3 · Outubro</b></td><td>O Labirinto da Memória e Arquivos</td><td>Gerência de memória principal, memória virtual, gerência de arquivos</td></tr>
+      <tr><td><b>4 · Novembro</b></td><td>Dispositivos, Redes e Virtualização</td><td>Gerência de dispositivos (I/O), SO de redes, virtualização/nuvem, oficina</td></tr>
+      <tr><td><b>5 · Dezembro</b></td><td>Segurança e Encerramento</td><td>Auditoria, segurança e proteção</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="endcap">
+    <h3>Você chegou ao fim — e sabe muito mais do que no dia 1.</h3>
+    <p>Do “síndico” que nega o disco ao seu jogo Java, ao jantar de cinco filósofos que trava a mesa
+    inteira. Refaça os quizzes, rode os simuladores e vá para a prova com a linha do tempo, os 5 estados,
+    as 4 condições de Coffman e as fórmulas todas na ponta da língua.</p>
+  </div>
+
+  <footer>
+    <p style="margin:0">Sistemas Operacionais (SO) — BCC, 2º Período, 2026.2 · Prof. Fábio Ferreira ·
+    IFPA Campus Ananindeua. Material de revisão elaborado a partir das Aulas 01 a 06.</p>
+  </footer>
+</section>
+  </main>
+</div>
+<script>
+
+/* ══════════════════ SISTEMA DE ABAS ══════════════════ */
+const TABS = [
+  {id:'m0', n:'0', label:'Fundamentos', full:'Módulo 0 — Fundamentos'},
+  {id:'m1', n:'1', label:'Kernel',       full:'Módulo 1 — Kernel e linha de fronteira'},
+  {id:'m2', n:'2', label:'Processos',    full:'Módulo 2 — Processos'},
+  {id:'m3', n:'3', label:'Escalonamento',full:'Módulo 3 — Escalonamento de CPU'},
+  {id:'m4', n:'4', label:'Threads',      full:'Módulo 4 — Threads e concorrência'},
+  {id:'m5', n:'5', label:'Concorrência', full:'Módulo 5 — Sincronização e deadlock'},
+  {id:'sim', n:'⚙', label:'Simuladores',  full:'Simuladores interativos'},
+  {id:'quiz', n:'◎', label:'Revisão geral', full:'Revisão geral da prova'},
+  {id:'glossario', n:'≡', label:'Glossário', full:'Glossário e fórmulas'},
+  {id:'refs', n:'⌂', label:'Referências', full:'Bibliografia e roteiro de estudo'}
+];
+
+const tabIn   = document.getElementById('tabIn');
+const panes   = TABS.map(t => document.getElementById(t.id));
+const tabBtns = [];
+
+tabIn.innerHTML = TABS.map(t => `
+  <button class="tab" role="tab" id="tab-${t.id}" aria-controls="pane-${t.id}"
+    aria-selected="${t.id==='m0'}" tabindex="${t.id==='m0'?0:-1}" data-id="${t.id}">
+    <span class="tn">${t.n}</span>${t.label}
+    <span class="bdg" data-bdg="${t.id}" hidden></span>
+  </button>`).join('');
+
+tabBtns.push(...tabIn.querySelectorAll('.tab'));
+
+let currentTab = 'm0';
+function showTab(id, opts){
+  opts = opts || {};
+  if(!document.getElementById(id)) id = 'm0';
+  currentTab = id;
+  panes.forEach(p => { if(p) p.classList.toggle('active', p.id === id); });
+  const btn = tabBtns.find(b => b.dataset.id === id);
+  tabBtns.forEach(b => {
+    const on = b.dataset.id === id;
+    b.setAttribute('aria-selected', on);
+    b.tabIndex = on ? 0 : -1;
+  });
+  // garante que a aba ativa fique totalmente visível
+  if(btn){
+    const wrap = tabIn;
+    const bLeft = btn.offsetLeft, bRight = bLeft + btn.offsetWidth;
+    if(bLeft < wrap.scrollLeft) wrap.scrollLeft = bLeft - 12;
+    else if(bRight > wrap.scrollLeft + wrap.clientWidth) wrap.scrollLeft = bRight - wrap.clientWidth + 12;
+  }
+  if(!opts.noHash) history.replaceState(null,'','#'+id);
+  if(!opts.keepScroll) window.scrollTo({top:0, behavior:'instant'});
+  updateProgressBar();
+}
+
+tabIn.addEventListener('click', e => {
+  const b = e.target.closest('.tab'); if(b) showTab(b.dataset.id);
+});
+tabIn.addEventListener('keydown', e => {
+  const i = TABS.findIndex(t => t.id === currentTab);
+  if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+    e.preventDefault();
+    const n = (i + (e.key==='ArrowRight'?1:-1) + TABS.length) % TABS.length;
+    showTab(TABS[n].id); tabBtns[n].focus();
+  } else if(e.key === 'Home'){ e.preventDefault(); showTab(TABS[0].id); tabBtns[0].focus(); }
+  else if(e.key === 'End'){ e.preventDefault(); const z=TABS.length-1; showTab(TABS[z].id); tabBtns[z].focus(); }
+});
+
+/* barra de progresso */
+function updateProgressBar(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const w = h > 0 ? Math.min(100,(window.scrollY/h)*100) : 100;
+  document.getElementById('progress').style.width = w + '%';
+}
+window.addEventListener('scroll', updateProgressBar, {passive:true});
+
+/* navegação anterior/próxima no fim de cada módulo */
+TABS.forEach((t,i) => {
+  const nav = document.querySelector(`#${t.id} .modnav`);
+  if(!nav) return;
+  const prev = TABS[i-1], next = TABS[i+1];
+  nav.innerHTML = (prev ? `<button data-go="${prev.id}">
+      <span class="dir">← Anterior</span><span class="go">${prev.label}</span></button>` : '') +
+    (next ? `<button class="next" data-go="${next.id}">
+      <span class="dir">Próximo →</span><span class="go">${next.label}</span></button>` : '');
+});
+document.addEventListener('click', e => {
+  const b = e.target.closest('.modnav button[data-go]');
+  if(b){ showTab(b.dataset.go); }
+});
+
+/* deep-link via hash */
+window.addEventListener('hashchange', () => {
+  const h = location.hash.replace('#','');
+  if(h && h !== currentTab && document.getElementById(h)) showTab(h, {noHash:true});
+});
+
+showTab(location.hash.replace('#','') || 'm0', {noHash:true});
+
+/* ══════════════════ SIMULADOR 1 — ESCALONAMENTO ══════════════════ */
+let procs = [
+  {id:'P1',ch:0,burst:20,prio:4},
+  {id:'P2',ch:0,burst:5,prio:3},
+  {id:'P3',ch:0,burst:7,prio:2},
+  {id:'P4',ch:0,burst:2,prio:1}
+];
+function defaultProcs(){
+  return [
+    {id:'P1',ch:0,burst:20,prio:4},
+    {id:'P2',ch:0,burst:5,prio:3},
+    {id:'P3',ch:0,burst:7,prio:2},
+    {id:'P4',ch:0,burst:2,prio:1}
+  ];
+}
+function renderProcs(){
+  document.getElementById('procBody').innerHTML = procs.map((p,i)=>`
+    <tr>
+      <td>${p.id}</td>
+      <td><input type="number" value="${p.ch}" min="0" style="width:76px;padding:5px 8px;border:1px solid var(--ink-200);border-radius:6px;font-family:var(--mono);font-size:12.5px" onchange="procs[${i}].ch=Math.max(0,+this.value||0);renderProcs();runSim()"></td>
+      <td><input type="number" value="${p.burst}" min="1" style="width:76px;padding:5px 8px;border:1px solid var(--ink-200);border-radius:6px;font-family:var(--mono);font-size:12.5px" onchange="procs[${i}].burst=Math.max(1,+this.value||1);renderProcs();runSim()"></td>
+      <td><input type="number" value="${p.prio}" min="1" style="width:76px;padding:5px 8px;border:1px solid var(--ink-200);border-radius:6px;font-family:var(--mono);font-size:12.5px" onchange="procs[${i}].prio=Math.max(1,+this.value||1);renderProcs();runSim()"></td>
+      <td><button class="btn" style="padding:3px 9px;font-size:12px" onclick="delProc(${i})">✕</button></td>
+    </tr>`).join('');
+}
+function addProc(){
+  const n = procs.length+1;
+  procs.push({id:'P'+n, ch:0, burst:4, prio:3});
+  renderProcs(); runSim();
+}
+function delProc(i){ procs.splice(i,1); renderProcs(); runSim(); }
+function loadPreset(k){
+  if(k===1) procs = defaultProcs();
+  if(k===2) procs = [{id:'P2',ch:0,burst:5,prio:4},{id:'P3',ch:0,burst:7,prio:3},{id:'P4',ch:0,burst:7,prio:2},{id:'P1',ch:0,burst:20,prio:1}];
+  if(k===3) procs = [{id:'A',ch:0,burst:8,prio:4},{id:'B',ch:0,burst:4,prio:3},{id:'C',ch:0,burst:4,prio:2},{id:'D',ch:0,burst:4,prio:1}];
+  renderProcs(); runSim();
+}
+document.getElementById('alg').addEventListener('change',e=>{
+  document.getElementById('qf').style.display = e.target.value==='rr' ? 'flex' : 'none';
+  runSim();
+});
+document.getElementById('quant').addEventListener('change', runSim);
+
+function scheduleRR(list, q){
+  const P = list.map((p,i)=>({...p, rem:p.burst, done:false, start:null, end:null, _i:i}));
+  const segs = [];
+  const byArr = P.slice().sort((a,b)=>a.ch-b.ch || a._i-b._i);
+  let t = 0, idx = 0, guard = 0;
+  let queue = [];
+  const pull = () => { while(idx < byArr.length && byArr[idx].ch <= t){ queue.push(byArr[idx]); idx++; } };
+  pull();
+  while(!P.every(p=>p.done) && guard++ < 5000){
+    if(!queue.length){
+      if(idx >= byArr.length) break;
+      t = byArr[idx].ch; pull(); continue;
+    }
+    const run = queue.shift();
+    const use = Math.min(q, run.rem);
+    if(run.start === null) run.start = t;
+    segs.push({id:run.id, s:t, e:t+use});
+    t += use; run.rem -= use;
+    if(run.rem <= 0){ run.done = true; run.end = t; }
+    else queue.push(run);          // volta para o FIM da fila
+    pull();                         // novas chegadas entram na fila
+  }
+  return {segs: mergeSegs(segs), P};
+}
+function mergeSegs(segs){
+  const m = [];
+  segs.forEach(s=>{
+    const last = m[m.length-1];
+    if(last && last.id === s.id) last.e = s.e;
+    else m.push({...s});
+  });
+  return m;
+}
+
+function schedule(list, alg, q){
+  if(alg === 'rr') return scheduleRR(list, q);
+  const P = list.map(p=>({...p, rem:p.burst, done:false, start:null, end:null}));
+  const segs = [];
+  let t = 0, guard = 0;
+  const readyList = () => P.filter(p=>!p.done && p.ch<=t);
+  while(!P.every(p=>p.done) && guard++ < 6000){
+    const ready = readyList();
+    if(ready.length===0){
+      const next = Math.min(...P.filter(p=>!p.done).map(p=>p.ch));
+      if(!isFinite(next)) break;
+      segs.push({id:'idle',s:t,e:next}); t = next; continue;
+    }
+    let run = null;
+    if(alg==='fcfs') run = ready.slice().sort((a,b)=>a.ch-b.ch)[0];
+    else if(alg==='sjf') run = ready.slice().sort((a,b)=>a.rem-b.rem)[0];
+    else if(alg==='srtf') run = ready.slice().sort((a,b)=>a.rem-b.rem)[0];
+    else if(alg==='prio') run = ready.slice().sort((a,b)=>a.prio-b.prio||a.ch-b.ch)[0];
+    const arrive = P.filter(p=>!p.done && p.ch>t).sort((a,b)=>a.ch-b.ch)[0];
+    let use = run.rem;
+    if(alg==='srtf' && arrive){
+      const dt = arrive.ch - t;
+      if(dt < run.rem){
+        const cur = P.filter(p=>!p.done && p.ch<=t && p.rem<p.rem && p!==run).sort((a,b)=>a.rem-b.rem)[0];
+        if(cur){ use = dt; }
+      }
+    }
+    if(run.start===null) run.start = t;
+    segs.push({id:run.id,s:t,e:t+use});
+    t += use; run.rem -= use;
+    if(run.rem<=0){ run.done=true; run.end=t; }
+  }
+  return {segs: mergeSegs(segs), P};
+}
+
+const TONE = ['#0b0f13','#33404b','#68757f','#8d99a3','#b3bcc4','#4a5865','#d7dde2'];
+
+function runSim(){
+  if(!procs.length){ document.getElementById('ganttBox').innerHTML='<div style="text-align:center;color:var(--ink-300);font-size:13.5px;padding:22px 0">Adicione processos</div>'; return; }
+  const alg = document.getElementById('alg').value;
+  const q = Math.max(1, +document.getElementById('quant').value || 10);
+  const {segs, P} = schedule(procs, alg, q);
+
+  const total = Math.max(...segs.map(s=>s.e));
+  const rowH = 42, gap = 16, topPad = 40, axisH = 44;
+  const ids = procs.map(p=>p.id).filter(id => segs.some(s=>s.id===id));
+  const W = 900;
+  const H = topPad + ids.length*(rowH+gap) + axisH;
+  const scale = (W-210) / Math.max(total,1);
+
+  // faixas por processo (linha fixa por processo = Gantt de verdade)
+  const rowsOf = {};
+  segs.forEach(s=>{ (rowsOf[s.id] = rowsOf[s.id]||[]).push(s); });
+
+  let g = `<text x="20" y="24" fill="#4a5865" font-size="11" font-family="system-ui">Gráfico de Gantt — linha fixa por processo · tempo em ms</text>`;
+  ids.forEach((id,ri)=>{
+    const y = topPad + ri*(rowH+gap);
+    g += `<line x1="200" y1="${y+rowH}" x2="200" y2="${y+rowH+7}" stroke="#d7dde2" stroke-width="1"/>`;
+    g += `<text x="190" y="${y+rowH/2+5}" text-anchor="end" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
+    rowsOf[id].forEach(s=>{
+      const x = 200 + s.s*scale;
+      const w = Math.max(2,(s.e-s.s)*scale);
+      const tone = TONE[procs.findIndex(p=>p.id===s.id) % TONE.length];
+      const light = tone==='#b3bcc4' || tone==='#d7dde2';
+      g += `<rect x="${x}" y="${y}" width="${w}" height="${rowH}" rx="5" fill="${tone}" stroke="${light?'#8d99a3':'none'}" stroke-width="1"/>`;
+      if(w > 28) g += `<text x="${x+w/2}" y="${y+rowH/2+5}" text-anchor="middle" fill="${light?'#0b0f13':'#fff'}" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
+      if(w > 30) g += `<text x="${x+w/2}" y="${y-5}" text-anchor="middle" fill="#68757f" font-size="10.5" font-family="ui-monospace,monospace">${s.e-s.s}ms</text>`;
+      g += `<text x="${x}" y="${y+rowH+18}" text-anchor="middle" fill="#4a5865" font-size="10" font-family="ui-monospace,monospace">${s.s}</text>`;
+    });
+    const lastSeg = rowsOf[id][rowsOf[id].length-1];
+    g += `<text x="${200+lastSeg.e*scale}" y="${y+rowH+18}" text-anchor="middle" fill="#4a5865" font-size="10" font-family="ui-monospace,monospace">${lastSeg.e}</text>`;
+  });
+
+  const axisY = topPad + ids.length*(rowH+gap) + 12;
+  g += `<line x1="200" y1="${axisY}" x2="200" stroke="#33404b" stroke-width="1.4"/>`;
+  for(let t2=0; t2<=total; t2++){
+    const x = 200 + t2*scale;
+    g += `<line x1="${x}" y1="${axisY-5}" x2="${x}" y2="${axisY}" stroke="#33404b" stroke-width="1.4"/>`;
+    if(total <= 40 || t2 % 5 === 0 || t2 === total)
+      g += `<text x="${x}" y="${axisY+15}" text-anchor="middle" fill="#68757f" font-size="10.5" font-family="ui-monospace,monospace">${t2}</text>`;
+  }
+  g += `<text x="190" y="${axisY+15}" text-anchor="end" fill="#4a5865" font-size="11" font-family="system-ui">t →</text>`;
+
+  document.getElementById('ganttBox').innerHTML =
+    `<svg viewBox="0 0 ${W} ${H}" style="min-width:640px">${g}</svg>`;
+
+  // métricas
+  const rows = P.map(p=>({
+    id:p.id,
+    espera: (p.start===null?0:p.start) - p.ch,
+    tt: (p.end===null?0:p.end) - p.ch
+  }));
+  const mE = rows.reduce((a,b)=>a+b.espera,0)/rows.length;
+  const mT = rows.reduce((a,b)=>a+b.tt,0)/rows.length;
+  const turno = rows.filter(r=>r.tt>=0).length;
+
+  document.getElementById('metrics').innerHTML = `
+    <div class="metric hero"><div class="mv">${mE.toFixed(2).replace('.',',')}</div><div class="ml">Espera média (ms)</div></div>
+    <div class="metric"><div class="mv">${mT.toFixed(2).replace('.',',')}</div><div class="ml">Turnaround médio (ms)</div></div>
+    <div class="metric"><div class="mv">${total}</div><div class="ml">Tempo total (ms)</div></div>
+    <div class="metric"><div class="mv">${turno}</div><div class="ml">Processos concluídos</div></div>`;
+
+  document.getElementById('resTable').innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Processo</th><th>Chegada</th><th>Surto</th><th>Início</th><th>Fim</th><th>Espera</th><th>Turnaround</th></tr></thead>
+      <tbody>${P.map((p,i)=>`<tr>
+        <td><b>${p.id}</b></td><td>${p.ch}</td><td>${p.burst}</td>
+        <td>${p.start===null?'—':p.start}</td><td>${p.end===null?'—':p.end}</td>
+        <td><b>${rows[i].espera}</b></td><td><b>${rows[i].tt}</b></td></tr>`).join('')}
+      <tr><td colspan="5"><b>Média</b></td><td><b>${mE.toFixed(2).replace('.',',')}</b></td><td><b>${mT.toFixed(2).replace('.',',')}</b></td></tr>
+      </tbody></table></div>`;
+}
+
+/* ══════════════════ SIMULADOR 2 — SEMÁFORO ══════════════════ */
+let sVal = 1, sQueue = [];
+function semaReset(){ sVal=1; sQueue=[]; semaRender(); }
+function semaRender(){
+  const threads = ['T1 (main)','T2','T3','T4'];
+  let h = `<div class="srow"><div class="sn">S.value</div><div class="v">${sVal}</div><div class="d">${
+    sVal>0 ? `${sVal} recurso(s) disponível(is) — quem fizer DOWN entra direto` :
+    sVal===0 ? 'ninguém disponível — o próximo DOWN vai dormir' :
+    `${-sVal} thread(s) dormindo na fila — recursos negativos = fila de espera`
+  }</div></div>`;
+  threads.forEach((t,i)=>{
+    const inQ = sQueue.includes(i);
+    const isCur = i===0;
+    const label = inQ ? 'Bloqueado' : (isCur ? 'Em execução' : 'Pronta');
+    const desc = inQ ? '<b>adormecida</b> em S.list — larga a CPU, não gasta nada'
+      : (isCur ? 'é a thread que está executando neste momento'
+              : 'pronta na fila, aguardando o recurso ficar livre');
+    h += `<div class="srow">
+      <div class="sn">${t}</div>
+      <div class="d">${desc}</div>
+      <div class="st ${inQ?'wait':'run'}">${label}</div></div>`;
+  });
+  document.getElementById('semaBox').innerHTML = h;
+}
+function semaExec(){
+  const op = document.getElementById('semaOp').value;
+  if(op==='down'){
+    sVal--;
+    if(sVal<0){ sQueue.push(0); }
+  }else{
+    sVal++;
+    if(sVal<=0 && sQueue.length){ sQueue.pop(); }
+  }
+  semaRender();
+}
+semaRender();
+
+/* ══════════════════ SIMULADOR 3 — RACE CONDITION ══════════════════ */
+/* Cada thread tem 3 passos: ler, calcular, gravar.
+   Enumera TODOS os interleavings possíveis (C(4,2)=6) e calcula o saldo real de cada um.
+   Assim o número de falhas é exato, não uma suposição. */
+function interleavings(){
+  const out = [];
+  const A = ['e-read','e-calc','e-write'], B = ['m-read','m-calc','m-write'];
+  const rec = (a,b,acc) => {
+    if(!a.length && !b.length){ out.push(acc); return; }
+    if(a.length) rec(a.slice(1), b, acc.concat(a[0]));
+    if(b.length) rec(a, b.slice(1), acc.concat(b[0]));
+  };
+  rec(A,B,[]);
+  return out;
+}
+const NAMES = {'e-read':'esposa lê','e-calc':'esposa calcula +10','e-write':'esposa grava',
+               'm-read':'marido lê','m-calc':'marido calcula −10','m-write':'marido grava'};
+
+function runBankOrder(order, sync){
+  let saldo = 1000, buf = {e:null, m:null};
+  order.forEach(step=>{
+    const who = step[0] === 'e' ? 'e' : 'm';
+    const act = step.split('-')[1];
+    if(act === 'read') buf[who] = saldo;
+    else if(act === 'calc') buf[who] = who==='e' ? buf[who]+10 : buf[who]-10;
+    else saldo = buf[who];
+  });
+  return saldo;
+}
+
+function runBank(){
+  const sync = document.getElementById('raceMode').value==='sync';
+  const all = interleavings();
+  const order = all[Math.floor(Math.random()*all.length)];
+  const bal = runBankOrder(order);
+  const s1 = document.getElementById('t1').children, s2 = document.getElementById('t2').children;
+
+  if(sync){
+    s1[0].innerHTML='<b>DOWN(mutex)</b> — adquire o lock';
+    s1[1].innerHTML='lê, calcula e grava <b>sem interrupção</b>';
+    s1[2].innerHTML='<b>UP(mutex)</b> — libera o lock';
+    s2[0].innerHTML='<b>DOWN(mutex)</b> — espera o lock';
+    s2[1].innerHTML='<b>Não entra na região crítica</b> enquanto o lock estiver com a outra';
+    s2[2].innerHTML='<b>UP(mutex)</b> — libera o lock';
+  }else{
+    const eRead = order.indexOf('e-read'), mRead = order.indexOf('m-read'), eWrite = order.indexOf('e-write');
+    const collided = Math.abs(eRead - mRead) <= 1 && eRead !== mRead;
+    s1[0].innerHTML = 'lê saldo = <span class="hl">R$ 1.000,00</span>';
+    s2[0].innerHTML = collided ? 'lê saldo = <span class="hl">R$ 1.000,00</span> <em>(mesmo valor!)</em>'
+                              : 'lê saldo = <span class="hl">R$ 1.010,00</span> <em>(depois da gravação dela)</em>';
+    s1[2].innerHTML = bal===1010 ? 'grava = <span class="hl">R$ 1.010,00</span>' : (bal===990 ? 'grava = <span class="hl">R$ 990,00</span>' : 'grava = <span class="hl">R$ 1.000,00</span>');
+    s2[2].innerHTML = bal===990 ? 'grava = <span class="hl">R$ 990,00</span>' : (bal===1010 ? 'grava = <span class="hl">R$ 1.010,00</span> <em>(sobrescreveu!)</em>' : 'grava = <span class="hl">R$ 1.000,00</span>');
+  }
+
+  const box = document.getElementById('balBox');
+  box.className = 'balance ' + (bal===1000?'good':'bad');
+  const seq = order.map(s=>s[0]==='e'?'👩':'👨').join(' ');
+  box.innerHTML = `<div class="bl">Esta execução: ${seq}</div>
+    <div class="bv">R$ ${bal.toLocaleString('pt-BR',{minimumFractionDigits:2})}</div>
+    <div class="bmsg" style="font-size:12px;margin-top:14px">${order.map(s=>NAMES[s]).join(' → ')}</div>
+    <div class="bmsg">${bal===1000
+      ? (sync?'✓ <b>Correto.</b> Com <code>synchronized</code>, ler-calcular-gravar vira um bloco indivisível: uma thread faz tudo antes da outra.'
+            :'✓ <b>Correto desta vez</b> — por sorte o escalonador interleaveu bem. Rode de novo: a maioria das ordens falha.')
+      :'✗ <b>Errado!</b> As duas threads leram R$ 1.000,00 antes de qualquer gravar. A última escrita apagou a outra — <b>condição de corrida</b>.'}</div>`;
+}
+
+function runBankMany(){
+  const sync = document.getElementById('raceMode').value==='sync';
+  const all = interleavings();
+  let bad = 0;
+  const rows = all.map(o=>{
+    const bal = runBankOrder(o);
+    const ok = bal===1000;
+    if(!ok) bad++;
+    return {o, bal, ok};
+  });
+  const pct = (bad/all.length*100);
+  document.getElementById('raceStat').innerHTML = `
+    <div class="note ${bad&&!sync?'tip':''}" style="margin:0">
+      <span class="lbl">Análise exata — ${all.length} ordens de execução possíveis</span>
+      <p>Existem <strong>${all.length}</strong> maneiras de intercalar as 6 operações (3 de cada thread).
+      <strong>${all.length - bad}</strong> delas terminam com o saldo correto (R$ 1.000,00) e
+      <strong>${bad}</strong> terminam <strong>com o saldo errado</strong> — ${pct.toFixed(0)}% de todos os casos.
+      ${sync
+        ? `<b>Resultado: 0 falhas.</b> Com <code>synchronized</code>, o bloco ler–calcular–gravar torna-se
+           <b>indivisível</b>: só as ${all.length - bad} ordens em que uma thread termina antes da outra
+           começar são possíveis, e todas dão R$ 1.000,00.`
+        : `<br>Não é sorte do acaso — é uma consequência <b>matemática</b> da falta de sincronização.
+           É por isso que o bug é tão difícil de achar em testes: <b>1 em cada ${(all.length/(all.length-bad)).toFixed(0)} execuções passa</b>,
+           e quem roda o programa uma vez só provavelmente vai ver "funcionando".`}</p>
+      <div class="tbl-wrap" style="margin:16px 0 0;background:var(--white)"><table>
+        <thead><tr><th>Ordem de execução</th><th>Saldo final</th><th>Está certo?</th></tr></thead>
+        <tbody>${rows.map(r=>`<tr><td style="font-size:12px">${r.o.map(s=>s[0]==='e'?'👩':'👨').join(' → ')} <span style="color:var(--ink-300);font-size:11px">${r.o.map(s=>NAMES[s]).join(' → ')}</span></td>
+        <td><b>R$ ${r.bal.toLocaleString('pt-BR',{minimumFractionDigits:2})}</b></td>
+        <td>${r.ok?'✓ sim':'<b style="color:var(--ink-900)">✗ não</b>'}</td></tr>`).join('')}</tbody>
+      </table></div>
+    </div>`;
+}
+
+/* ══════════════════ SIMULADOR 4 — FILÓSOFOS ══════════════════ */
+let pState = [0,0,0,0,0];
+function philoReset(){ pState=[0,0,0,0,0]; philoRender('Clique em “Iniciar o jantar” para ver os 5 philosophers pegarem o hashi da esquerda ao mesmo tempo.'); }
+function philoRun(){
+  pState = [1,1,1,1,1];
+  philoRender('<b style="color:var(--ink-900)">DEADLOCK!</b> Cada um tem 1 hashi e espera o da direita, que já foi pego por outro. Espera circular: ninguém mais come e a CPU fica livre porque todos estão bloqueados.');
+}
+function philoRender(msg){
+  const pos = [[440,52],[612,124],[524,244],[356,244],[268,124]];
+  const bowl = [[440,18],[612,90],[524,210],[356,210],[268,90]];
+  let g = `<svg viewBox="0 0 880 320" style="max-width:640px;margin:0 auto">`;
+  g += `<circle cx="440" cy="150" r="34" fill="#e9edf0" stroke="#b3bcc4" stroke-dasharray="4 3"/>
+        <text x="440" y="147" text-anchor="middle" fill="#4a5865" font-size="11" font-family="system-ui">mesa</text>
+        <text x="440" y="160" text-anchor="middle" fill="#4a5865" font-size="10" font-family="system-ui">(ninguém come)</text>`;
+  for(let i=0;i<5;i++){
+    const [x,y] = pos[i];
+    const has = pState[i];
+    g += `<circle cx="${x}" cy="${y}" r="24" fill="${has?'#0b0f13':'#ffffff'}" stroke="${has?'#0b0f13':'#b3bcc4'}" stroke-width="2"/>
+          <text x="${x}" y="${y+5}" text-anchor="middle" fill="${has?'#fff':'#33404b'}" font-size="13" font-weight="700" font-family="system-ui">P${i+1}</text>`;
+    if(has){
+      const [bx,by] = bowl[i];
+      g += `<text x="${bx}" y="${by}" text-anchor="middle" font-size="15" font-family="system-ui">🍜</text>
+            <text x="${bx}" y="${by-13}" text-anchor="middle" fill="#4a5865" font-size="9.5" font-family="system-ui">prato</text>`;
+    }
+  }
+  if(pState.every(s=>s===1)){
+    g += `<g stroke="#33404b" stroke-width="3" stroke-linecap="round">
+          <path d="M422,68 L398,54"/><path d="M590,140 L556,116"/>
+          <path d="M518,226 L504,204"/><path d="M362,226 L376,204"/>
+          <path d="M290,140 L324,116"/></g>
+          <text x="440" y="306" text-anchor="middle" fill="#0b0f13" font-size="12.5" font-weight="700" font-family="system-ui">Cada um pegou 1 hashi e espera o da direita — que já foi pego por outro</text>`;
+  }else{
+    g += `<text x="440" y="306" text-anchor="middle" fill="#4a5865" font-size="12" font-family="system-ui">estado inicial — ninguém ainda pegou o hashi</text>`;
+  }
+  g += `</svg>`;
+  document.getElementById('philoBox').innerHTML = g +
+    `<div style="text-align:center;margin-top:16px;font-size:14px;color:var(--ink-500);line-height:1.6">${msg}</div>`;
+}
+philoReset();
+
+/* ══════════════════ QUIZZES POR MÓDULO ══════════════════ */
+const MODS = [
+  {id:'m0', icon:'🎓', title:'Quiz do Módulo 0', sub:'Fundamentos · Aula 01 — o SO como síndico', qs:[
+    {q:'Um sistema sem Sistema Operacional é possível. O que acontece com o programador?',
+     o:['Ele escreve código normalmente, sem diferenças','Ele teria que programar o comportamento elétrico de cada pino da placa-mãe','Ele usa apenas bibliotecas de terceiros','O compilador gera as instruções de baixo nível automaticamente'],
+     a:1, e:'Sem SO, cada programador teria de ser engenheiro de hardware. É o caos completo — e o motivo de o SO existir.'},
+    {q:'A “Visão do Sistema” do SO (Gerenciador de Recursos / Síndico) tem como foco principal:',
+     o:['Conveniência e facilidade de uso','Eficiência e segurança na alocação de recursos','Somente a abstração de hardware','Interface gráfica amigável'],
+     a:1, e:'Usuário = abstração e conveniência. Sistema = eficiência e segurança, evitando conflitos e abuso entre programas concorrentes.'},
+    {q:'Na evolução dos SOs, o conceito de Multiprogramação surge na:',
+     o:['1ª geração (1945–1955)','2ª geração (1955–1965)','3ª geração (1965–1980)','4ª geração (1980–hoje)'],
+     a:2, e:'3ª geração, com os circuitos integrados: vários processos na RAM; se um espera E/S, a CPU executa outro. Também nasceu o Tempo Compartilhado (fatias de tempo).'},
+    {q:'Na 1ª geração, para reprogramar o computador, era preciso:',
+     o:['Digitar um novo programa no terminal','Entrar fisicamente na máquina e mudar a fiação de chaves e relés','Trocar o disco rígido','Reiniciar o computador com um disquete'],
+     a:1, e:'Sem SO: um único usuário monopolizava a sala inteira por horas, usando plugues, chaves elétricas e cartões perfurados.'},
+    {q:'A composição da nota bimestral é:',
+     o:['P (6,0) + T₁ (2,0) + T₂ (2,0) = 10,0','P (5,0) + T₁ (5,0)','Somente a prova escrita','P (4,0) + participação (6,0)'],
+     a:0, e:'BI = P + T₁ + T₂ = 10,0. Aprovação direta exige MS ≥ 7,0 e frequência ≥ 75%.'},
+    {q:'Por que o SO é chamado de “síndico” ou de máquina estendida?',
+     o:['Porque abstrai o hardware para o usuário e aloca recursos de forma justa e protegida','Porque é instalado em todos os computadores','Porque substitui o processador','Porque foi criado pela Microsoft'],
+     a:0, e:'São as duas visões clássicas: a do usuário (abstração, conveniência) e a do sistema (gerência justa e segura).'}
+  ]},
+  {id:'m1', icon:'🔐', title:'Quiz do Módulo 1', sub:'Kernel e linha de fronteira · Aula 02', qs:[
+    {q:'No Modo Kernel o bit de modalidade vale:',
+     o:['0 — supervisor/privilegiado','1 — usuário, com instruções limitadas','2 — modo seguro','Depende do sistema operacional'],
+     a:0, e:'Kernel = Bit 0 (privilegiado, instruções privilegiadas). Usuário = Bit 1; tentar instrução privilegiada gera trap.'},
+    {q:'Qual das alternativas NÃO é um dos três métodos clássicos para passar parâmetros ao SO numa System Call?',
+     o:['Registradores','Tabela na memória','Pilha (Stack)','Registradores de vetor de interrupção'],
+     a:3, e:'São três: registradores, tabela na memória e pilha. A quarta opção não existe.'},
+    {q:'Um programa em Modo Usuário tenta executar uma instrução privilegiada. O que acontece?',
+     o:['A instrução é executada normalmente','Gera uma trap por instrução ilegal e o controle passa ao SO','O programa é desligado sem aviso','A instrução é ignorada silenciosamente'],
+     a:1, e:'É o mode bit que protege o hardware: o modo Kernel assume o controle e decide o que fazer.'},
+    {q:'Qual é a principal desvantagem do sistema monolítico?',
+     o:['Lento, por causa do overhead de mensagens','Difícil manutenção; se um driver falhar, o kernel inteiro cai','Não suporta multiprogramação','Exige hardware especial'],
+     a:1, e:'Exemplos: MS-DOS e o Linux original. A vantagem é desempenho máximo, sem overhead interno.'},
+    {q:'No Microkernel (Mach, MINIX), onde ficam os serviços como o de arquivos?',
+     o:['Dentro do kernel mínimo, em modo privilegiado','No Espaço do Usuário, como processos servidores','Na BIOS da máquina','No hardware dedicated'],
+     a:1, e:'O kernel mínimo só mantém processos, memória, IPC e mensagens. O resto vira servidor no Espaço do Usuário, comunicado por troca de mensagens.'},
+    {q:'As arquiteturas híbridas (macOS, Windows NT) combinam:',
+     o:['Monolítico com microkernel','A velocidade dos monolíticos com o isolamento dos microkernels','Exclusivamente software com o hardware','Modo usuário e modo kernel independentes'],
+     a:1, e:'macOS = microkernel Mach + componentes BSD no mesmo espaço de kernel. Windows NT = microkernel com serviços em modo kernel.'}
+  ]},
+  {id:'m2', icon:'🍰', title:'Quiz do Módulo 2', sub:'Processos · Aula 03 — a vida secreta dos programas', qs:[
+    {q:'O PCB (Bloco de Controle de Processo) NÃO guarda:',
+     o:['O PID do processo','O contador de programa (PC)','A duração total do processo em segundos de relógio','Os limites de memória (base e limite)'],
+     a:2, e:'O PCB guarda estado, PID, PC, registradores, limites de memória e status de I/O — mas não “tempo total”.'},
+    {q:'Na analogia do bolo, quando o cozinheiro se machuca e atende o filho, ao voltar ele…',
+     o:['Recomeça a receita do zero','Retoma exatamente do ponto em que parou','Perde o estado e espera o SO decidir','Abre uma nova receita para o bolo'],
+     a:1, e:'É o conceito de troca de contexto: salvar o estado, atender a urgência, restaurar exatamente de onde parou.'},
+    {q:'A diferença entre um processo em Espera e um Pronto é:',
+     o:['Espera está esperando a CPU; Pronto está esperando um evento externo','Espera espera algo que depende do SO (a CPU); Pronto espera um evento externo','Não há diferença — são sinônimos','Pronto já terminou; Espera está executando'],
+     a:1, e:'Bloqueado espera algo externo (o disco, o teclado). Pronto espera a CPU ficar livre — só o escalonador decide quem sai do Pronto.'},
+    {q:'Qual seção da memória do processo cresce de baixo para cima?',
+     o:['Seção de Texto','Seção de Dados','Heap','Pilha (Stack)'],
+     a:2, e:'O Heap (new em Java, malloc em C) cresce para cima; a Pilha cresce para baixo. Por isso podem colidir e causar stack overflow.'},
+    {q:'O “overhead” da troca de contexto significa:',
+     o:['O tempo que um processo leva para iniciar','A CPU não executar código do usuário durante o chaveamento, só gerenciar o Kernel','Um atraso da rede','O custo de criar arquivos'],
+     a:1, e:'Durante esses microssegundos, a CPU só salva/restaura registradores e mapa de memória. É o preço do pseudoparalelismo.'},
+    {q:'Na transição de estados, qual evento leva um processo de Running para Waiting?',
+     o:['admitted','scheduler dispatch','I/O ou espera por evento','exit'],
+     a:2, e:'running →--[I/O ou espera por evento]--> waiting. Depois, quando o evento completa, volta a ready.'}
+  ]},
+  {id:'m3', icon:'⏱️', title:'Quiz do Módulo 3', sub:'Escalonamento de CPU · Aula 04 — quem é o próximo da fila', qs:[
+    {q:'Em FCFS, quando um processo longo de CPU (CPU-bound) ocupa a CPU, os processos curtos (I/O-bound)…',
+     o:['São executados na CPU ao mesmo tempo','Ficam bloqueados esperando — Efeito Comboio','São descartados pelo sistema','Trocam de prioridade automaticamente'],
+     a:1, e:'É o Efeito Comboio: baixa utilização de E/S, latência alta e dependência da ordem de chegada.'},
+    {q:'Dois processos idênticos em SJF e FCFS: SJF é comprovadamente melhor em qual métrica?',
+     o:['Utilização da CPU','Tempo médio de espera','Tempo de resposta','Throughput sempre maior'],
+     a:1, e:'O SJF fornece o tempo médio de espera mínimo para qualquer conjunto de processos. É a única garantia matemática da aula.'},
+    {q:'No Round-Robin, se o quantum for muito pequeno, o problema é:',
+     o:['O processo pode não terminar nunca','Número absurdo de trocas de contexto; mais overhead que trabalho útil','A CPU fica ociosa esperando','Perde-se a exclusão mútua entre processos'],
+     a:1, e:'Muito pequeno → excesso de trocas de contexto. Muito grande → degenera em FCFS. O ideal é que ~80% dos picos sejam menores que q.'},
+    {q:'O Envelhecimento (Aging) existe para resolver qual problema?',
+     o:['O Efeito Comboio','A Inanição (Starvation)','A Inversão de Prioridades','O consumo de memória da RAM'],
+     a:1, e:'Aging aumenta gradualmente a prioridade conforme o tempo na fila — é a cura clássica para a inanição.'},
+    {q:'No exemplo da aula (FCFS, P₁=20ms · P₂=5ms · P₃=7ms · P₄=2ms, todos chegando em t=0), o tempo médio de espera é:',
+     o:['9,00 ms','19,25 ms','27,75 ms','15,50 ms'],
+     a:1, e:'Espera: P₁=0, P₂=20, P₃=25, P₄=32 → (0+20+25+32)/4 = 19,25 ms. Turnaround médio = 27,75 ms.'},
+    {q:'Processos CPU-bound se caracterizam por:',
+     o:['Picos longos e raros','Picos curtos e frequentes','Sempre esperar E/S','Não usar a CPU'],
+     a:0, e:'CPU-bound = picos longos e raros (IA, renderização). I/O-bound = picos curtos e frequentes (editores, navegadores, IDEs).'}
+  ]},
+  {id:'m4', icon:'🧵', title:'Quiz do Módulo 4', sub:'Threads e concorrência · Aula 05 — a arte de dividir tarefas', qs:[
+    {q:'Concorrência e paralelismo. Qual afirmação é verdadeira?',
+     o:['São sinônimos','Paralelismo exige múltiplos núcleos; concorrência é uma questão de estrutura','Concorrência exige sempre multicore','Paralelismo pode existir em CPU de núcleo único'],
+     a:1, e:'Concorrência = estrutura (ilusão de simultaneidade). Paralelismo = execução física real, exige multicore.'},
+    {q:'Qual recurso NÃO é compartilhado entre threads do mesmo processo?',
+     o:['Seção de código','Memória Heap','Memória Stack (pilha) e registradores','Variáveis globais'],
+     a:2, e:'Código, dados, heap e recursos do SO são compartilhados. Cada thread tem pilha, registradores, PC e ID próprios.'},
+    {q:'O “calcanhar de Aquiles” das threads de usuário é que:',
+     o:['São lentas para criar','Uma chamada bloqueadora ao SO pausa o processo inteiro','Não compartilham memória','Não rodam em modo usuário'],
+     a:1, e:'Se uma thread de usuário faz uma chamada bloqueadora (ler disco), o SO não sabe troca-la — o processo inteiro pausa.'},
+    {q:'Uma Condição de Corrida (race condition) ocorre quando:',
+     o:['O resultado depende da ordem/tempo de execução de threads sobre um recurso compartilhado','A CPU é lenta','O processo usa muita memória','Há deadlock entre threads'],
+     a:0, e:'Sem sincronização, o resultado é imprevisível: o mesmo programa pode dar respostas diferentes a cada execução.'},
+    {q:'No modelo Um-para-Um de mapeamento de threads:',
+     o:['Várias threads de usuário vão para 1 de kernel','Cada thread de usuário ganha uma de kernel (Windows e Linux)','M threads de usuário vão para N de kernel','Não há threads de kernel'],
+     a:1, e:'Um-para-um é usado por Windows e Linux; oferece suporte nativo a multicore e troca correta quando uma thread bloqueia.'}
+  ]},
+  {id:'m5', icon:'🔒', title:'Quiz do Módulo 5', sub:'Sincronização e deadlock · Aula 06 — o caos da concorrência', qs:[
+    {q:'Qual condição NÃO é necessária para a existência de um deadlock, segundo Coffman?',
+     o:['Exclusão mútua','Retenção e espera','Preempção forçada do recurso','Espera circular'],
+     a:2, e:'A 3ª condição é justamente a INEXISTÊNCIA de preempção. As 4 necessárias: exclusão mútua, hold-and-wait, não-preempção e espera circular.'},
+    {q:'No problema dos filósofos, cada um segura o hashi da esquerda e espera o da direita. Isso caracteriza:',
+     o:['Race condition','Starvation isolada','Deadlock por espera circular','Inversão de prioridade'],
+     a:2, e:'É deadlock: espera circular sem saída. Todos têm 1 hashi e esperam por um que já está retido.'},
+    {q:'O “Algoritmo do Avestruz” contra deadlock significa:',
+     o:['Impedir que o deadlock ocorra testando estado seguro','Ignorar o problema e reiniciar se acontecer','Matar preventivamente o processo de menor prioridade','Ordenar todos os locks alfabeticamente'],
+     a:1, e:'Adotado por Windows e Linux: se a probabilidade for baixa, reiniciar é mais barato do que rodar prevenção a cada alocação.'},
+    {q:'Na operação DOWN(S) de um semáforo, quando a thread é suspensa?',
+     o:['Sempre, independente do valor','Quando S.value fica negativo (S.value < 0)','Quando S.value chega a zero','Nunca — DOWN nunca bloqueia'],
+     a:1, e:'DOWN decrementa; se o resultado for negativo, a thread entra em S.list e dorme (block()), liberando a CPU.'},
+    {q:'No Produtor-Consumidor, os valores iniciais dos semáforos são:',
+     o:['mutex=0, empty=0, full=N','mutex=1, empty=N, full=0','mutex=N, empty=1, full=1','Todos iguais a 1'],
+     a:1, e:'mutex=1 (binário, exclusão mútua); empty=N (espaços vazios = capacidade); full=0 (espaços ocupados).'},
+    {q:'Em DOWN(S), o que block() faz com a CPU?',
+     o:['A thread gira testando a variável (busy waiting)','A thread abre mão da CPU e dorme','A thread é encerrada','A thread ganha prioridade máxima'],
+     a:1, e:'block() adormece a thread na fila — elimina completamente a espera ocupada, ao contrário do spinlock.'},
+    {q:'O Algoritmo do Banqueiro (Dijkstra) é um exemplo de:',
+     o:['Prevenção ativa','Impedimento dinâmico (avoidance)','Detecção e recuperação','Algoritmo do Avestruz'],
+     a:1, e:'O SO analisa cada alocação e só concede o recurso se isso mantiver o sistema em um estado seguro.'}
+  ]}
+];
+
+/* ── renderização ── */
+const modState = {};
+MODS.forEach(m => modState[m.id] = {right:0, ans:new Map()});
+
+function renderModQuiz(m){
+  const host = document.querySelector(`.modquiz[data-mod="${m.id}"]`);
+  if(!host) return;
+  host.innerHTML = `
+    <div class="mq-head">
+      <div class="mq-ic">${m.icon}</div>
+      <h3>${m.title}<span>${m.sub}</span></h3>
+      <div class="mq-score" data-score="${m.id}"><b>0</b><span>de ${m.qs.length}</span></div>
+    </div>
+    <p class="mq-sub">Responda para fixar. Clique numa alternativa para ver a correção imediata na hora.</p>
+    ${m.qs.map((q,i)=>`
+      <div class="q" data-mod="${m.id}" data-i="${i}">
+        <div class="qt"><b>${String(i+1).padStart(2,'0')}</b>${q.q}</div>
+        <div class="opts">${q.o.map((o,j)=>`<div class="opt" data-mod="${m.id}" data-i="${i}" data-j="${j}">
+          <span class="key">${String.fromCharCode(65+j)}</span><span>${o}</span></div>`).join('')}</div>
+        <div class="qfb"></div>
+      </div>`).join('')}`;
+}
+MODS.forEach(renderModQuiz);
+
+function handleAnswer(optEl){
+  const mod = optEl.dataset.mod, i = +optEl.dataset.i, j = +optEl.dataset.j;
+  const modDef = MODS.find(x=>x.id===mod);
+  const item = modDef.qs[i];
+  const box = optEl.closest('.q');
+  box.querySelectorAll('.opt').forEach(o=>{
+    o.classList.remove('ok','no');
+    if(+o.dataset.j===item.a) o.classList.add('ok');
+    else if(o===optEl) o.classList.add('no');
+  });
+  const fb = box.querySelector('.qfb');
+  fb.innerHTML = (j===item.a ? '<b>✓ Correto.</b> ' : '<b>✗ Não é essa.</b> ') + item.e;
+  fb.classList.add('show');
+
+  // guarda a última resposta dada e recalcula a nota do módulo
+  const st = modState[mod];
+  st.ans.set(i, j);
+  let right = 0;
+  st.ans.forEach((chosen, qi) => { if(chosen === modDef.qs[qi].a) right++; });
+  st.right = right;
+  updateModScore(mod);
+  updateAll();
+}
+function updateModScore(mod){
+  const el = document.querySelector(`.mq-score[data-score="${mod}"]`);
+  if(!el) return;
+  const st = modState[mod], total = MODS.find(x=>x.id===mod).qs.length;
+  el.querySelector('b').textContent = st.right;
+  el.classList.toggle('perfect', st.right === total);
+}
+function updateAll(){
+  // badges nas abas
+  MODS.forEach(m=>{
+    const st = modState[m.id], total = m.qs.length;
+    const badge = document.querySelector(`[data-bdg="${m.id}"]`);
+    if(badge){
+      badge.hidden = false;
+      badge.textContent = st.right + '/' + total;
+      badge.className = 'bdg' + (st.right===total ? ' ok' : (st.right>0 ? ' mid' : ''));
+    }
+  });
+  // painel geral
+  const right = MODS.reduce((a,m)=>a+modState[m.id].right,0);
+  const total = MODS.reduce((a,m)=>a+m.qs.length,0);
+  const ac = document.getElementById('allCount'); if(ac) ac.textContent = total;
+  const ar = document.getElementById('allRight'); if(ar) ar.textContent = right;
+  const pl = document.getElementById('progList');
+  if(pl) pl.innerHTML = MODS.map(m=>{
+    const st = modState[m.id], t = m.qs.length, pct = Math.round(st.right/t*100);
+    const T = TABS.find(x=>x.id===m.id);
+    return `<button class="prog-row${st.right===t?' perfect':''}" data-go="${m.id}">
+      <span class="pi">${T ? T.n : m.id}</span>
+      <span><span class="pn">${T?T.label:m.id}</span><br><span class="ps">${st.right} de ${t} acertos</span></span>
+      <span class="prog-bar"><i style="width:${pct}%"></i></span>
+      <span class="pc">${pct}%</span>
+    </button>`;
+  }).join('');
+}
+document.addEventListener('click', e=>{
+  const opt = e.target.closest('.opt[data-mod]');
+  if(opt) handleAnswer(opt);
+  const pr = e.target.closest('.prog-row[data-go]');
+  if(pr) showTab(pr.dataset.go);
+});
+
+/* ── simulado final (revisão geral) — 2 questões de cada módulo ── */
+const FINAL_IDX = [0,4, 6,10, 13,16, 19,22, 24,27, 30,34];
+const QUIZ = FINAL_IDX.map(i => MODS.flatMap(m=>m.qs)[i]);
+const quizBox = document.getElementById('quizBox');
+if(quizBox){
+  quizBox.innerHTML = QUIZ.map((item,i)=>`
+    <div class="q" data-final="1" data-i="${i}">
+      <div class="qt"><b>${String(i+1).padStart(2,'0')}</b>${item.q}</div>
+      <div class="opts">${item.o.map((o,j)=>`<div class="opt" data-final="1" data-i="${i}" data-j="${j}">
+        <span class="key">${String.fromCharCode(65+j)}</span><span>${o}</span></div>`).join('')}</div>
+      <div class="qfb"></div>
+    </div>`).join('');
+  document.getElementById('scoreT').textContent = QUIZ.length;
+}
+document.addEventListener('click', e=>{
+  const opt = e.target.closest('.opt[data-final]');
+  if(!opt) return;
+  const i = +opt.dataset.i, j = +opt.dataset.j, item = QUIZ[i];
+  const box = opt.closest('.q');
+  box.querySelectorAll('.opt').forEach(o=>{
+    o.classList.remove('ok','no');
+    if(+o.dataset.j===item.a) o.classList.add('ok');
+    else if(o===opt) o.classList.add('no');
+  });
+  const fb = box.querySelector('.qfb');
+  fb.innerHTML = (j===item.a ? '<b>✓ Correto.</b> ' : '<b>✗ Não é essa.</b> ') + item.e;
+  fb.classList.add('show');
+  const answered = [...document.querySelectorAll('.q[data-final]')]
+    .filter(q => q.querySelector('.qfb.show'));
+  const right = answered.filter(q => !q.querySelector('.opt.no')).length;
+  document.getElementById('scoreN').textContent = right;
+});
+function resetQuiz(){
+  document.querySelectorAll('.opt[data-final]').forEach(o=>o.classList.remove('ok','no'));
+  document.querySelectorAll('.q[data-final] .qfb').forEach(f=>f.classList.remove('show'));
+  document.getElementById('scoreN').textContent = '0';
+}
+MODS.forEach(m=>{ modState[m.id] = {right:0, ans:new Map()}; });
+MODS.forEach(renderModQuiz);
+updateAll();
+
+renderProcs(); runSim();
+showTab(currentTab, {noHash:true});
+</script>
+</body>
+</html>

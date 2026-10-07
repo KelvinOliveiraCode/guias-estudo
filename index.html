@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guias de Estudo — Sistemas Operacionais & Java Pré-POO</title>
+<meta name="description" content="Dois guias de estudo visuais: Sistemas Operacionais (Prova P1) e Java antes da POO — diagramas, exemplos resolvidos, quizzes e simuladores.">
+<style>
+:root{
+  --ink-900:#0b0f13; --ink-800:#141b22; --ink-700:#212b34; --ink-600:#33404b;
+  --ink-500:#4a5865; --ink-400:#68757f; --ink-300:#8d99a3; --ink-200:#b3bcc4;
+  --ink-100:#d7dde2; --ink-50:#e9edf0;
+  --paper:#f7f8f9; --white:#ffffff;
+  --shadow:0 1px 2px rgba(11,15,19,.05),0 8px 24px -12px rgba(11,15,19,.18);
+  --r-md:14px;
+  --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --serif:"Georgia","Iowan Old Style","Times New Roman",serif;
+  --mono:"Cascadia Code","JetBrains Mono","SF Mono",Consolas,"Liberation Mono",monospace;
+  --maxw:880px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink-700);
+  line-height:1.7;-webkit-font-smoothing:antialiased;font-size:16.5px}
+::selection{background:var(--ink-700);color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:64px 24px 80px}
+.kick{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:800;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--ink-500);
+  background:var(--ink-50);border:1px solid var(--ink-100);padding:6px 13px;border-radius:99px}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,46px);line-height:1.1;
+  letter-spacing:-.026em;color:var(--ink-900);margin:18px 0 0;font-weight:700}
+h1 em{font-style:italic;color:var(--ink-400)}
+.sub{font-size:16px;color:var(--ink-500);margin:14px 0 0;max-width:60ch}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:36px}
+.card{display:block;text-decoration:none;background:var(--white);border:1px solid var(--ink-100);
+  border-radius:var(--r-md);padding:24px 26px;box-shadow:var(--shadow);
+  transition:border-color .16s,transform .16s,box-shadow .16s;color:inherit}
+.card:hover{border-color:var(--ink-400);transform:translateY(-2px)}
+.card .tag{font-family:var(--mono);font-size:10.5px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-400)}
+.card h2{font-family:var(--serif);font-size:23px;color:var(--ink-900);
+  margin:8px 0 6px;letter-spacing:-.02em;line-height:1.2}
+.card p{font-size:14.5px;color:var(--ink-500);margin:0}
+.card .go{display:inline-block;margin-top:14px;font-size:13.5px;font-weight:700;color:var(--ink-900)}
+.card .go::after{content:" →"}
+.foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--ink-100);
+  font-size:12.5px;color:var(--ink-400)}
+@media(max-width:640px){
+  .wrap{padding:44px 20px 60px}
+  .cards{grid-template-columns:1fr}
+  h1{font-size:clamp(26px,7.5vw,34px)}
+}
+@media print{ .card .go{display:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="kick">material de revisão</span>
+  <h1>Guias de estudo <em>visuais</em></h1>
+  <p class="sub">Dois guias completos para a prova — cada conceito com a metáfora do professor, diagramas redesenhados, exemplos resolvidos passo a passo, quizzes e simuladores.</p>
+  <div class="cards">
+    <a class="card" href="so/">
+      <span class="tag">Guia de revisão · Prova P1 · 2026.2 · IFPA</span>
+      <h2>Sistemas Operacionais</h2>
+      <p>Do caos dos fios ao monstro do Deadlock — 5 módulos temáticos: fundamentos, kernel e linha de fronteira, escalonamento, memória e arquivos, concorrência e deadlocks.</p>
+      <span class="go">Abrir guia</span>
+    </a>
+    <a class="card" href="java-pre-poo.html">
+      <span class="tag">prova de Java · antes da POO</span>
+      <h2>Java Pré-POO</h2>
+      <p>De javac a ArrayList — 17 módulos com explicações em linguagem simples, exemplos de código comentados, desenhos e mini-quizzes ao fim de cada módulo.</p>
+      <span class="go">Abrir guia</span>
+    </a>
+  </div>
+  <div class="foot">Bacharelado em Ciência da Computação · 2º período · IFPA Campus Ananindeua · material elaborado a partir das aulas do Prof. Fábio Ferreira</div>
+</div>
+</body>
+</html>
