@@ -10,18 +10,18 @@
    Regra: --ink-900 = texto mais forte (claro), --paper = fundo
    ============================================================ */
 :root{
-  --ink-900:#eef2f5;
-  --ink-800:#d7dde2;
-  --ink-700:#bcc6cf;
-  --ink-600:#9aa7b2;
-  --ink-500:#7d8b96;
-  --ink-400:#5f6d78;
-  --ink-300:#46545f;
-  --ink-200:#333f4a;
-  --ink-100:#242f39;
-  --ink-50:#161e27;
-  --paper:#0b0f14;
-  --white:#121922;
+  --ink-900:#ffffff;
+  --ink-800:#f0f0f0;
+  --ink-700:#e0e0e0;
+  --ink-600:#c4c4c4;
+  --ink-500:#9e9e9e;
+  --ink-400:#787878;
+  --ink-300:#545454;
+  --ink-200:#3e3e3e;
+  --ink-100:#2e2e2e;
+  --ink-50:#1e1e1e;
+  --paper:#000000;
+  --white:#151515;
   --shadow:0 1px 2px rgba(0,0,0,.28),0 8px 24px -12px rgba(0,0,0,.5);
   --shadow-lg:0 2px 4px rgba(0,0,0,.34),0 24px 48px -20px rgba(0,0,0,.6);
   --r-sm:8px; --r-md:14px; --r-lg:22px;
@@ -38,28 +38,28 @@ body{
 }
 img{max-width:100%;display:block}
 a{color:var(--ink-800);text-underline-offset:3px}
-::selection{background:#3a4754;color:#eef2f5}
+::selection{background:#454545;color:#ffffff}
 
 /* ---------- Barra de leitura ---------- */
 #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;
   background:linear-gradient(90deg,var(--ink-700),var(--ink-900));transition:width .1s linear}
 
 /* ---------- Topo ---------- */
-.topbar{position:sticky;top:0;z-index:150;background:rgba(11,15,20,.88);
+.topbar{position:sticky;top:0;z-index:150;background:rgba(0,0,0,.88);
   backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--ink-100)}
 .topbar-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:56px;display:flex;
   align-items:center;gap:18px;flex-wrap:wrap}
 .tb-spacer{margin-left:auto}
 .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.02em;
   color:var(--ink-900);font-size:15.5px}
-.brand-mark{width:32px;height:32px;border-radius:9px;background:#eef2f5;
-  color:#0b0f14;display:grid;place-items:center;font-size:15px;font-weight:800;flex:none}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:#ffffff;
+  color:#000000;display:grid;place-items:center;font-size:15px;font-weight:800;flex:none}
 .btn{font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;
   border:1px solid var(--ink-200);background:var(--white);color:var(--ink-700);
   padding:7px 14px;border-radius:8px;transition:.16s}
 .btn:hover{border-color:var(--ink-400);background:var(--ink-50)}
-.btn-solid{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
-.btn-solid:hover{background:#c9d3db;border-color:#c9d3db}
+.btn-solid{background:#ffffff;color:#000000;border-color:#ffffff}
+.btn-solid:hover{background:#d1d1d1;border-color:#d1d1d1}
 
 /* ---------- Cabeçalho compacto ---------- */
 .pagehead{max-width:var(--maxw);margin:0 auto;padding:38px 28px 34px;
@@ -78,7 +78,7 @@ a{color:var(--ink-800);text-underline-offset:3px}
 main{padding:0 0 120px;min-width:0}
 
 /* ---------- Abas ---------- */
-.tabbar{position:sticky;top:57px;z-index:130;background:rgba(11,15,20,.94);
+.tabbar{position:sticky;top:57px;z-index:130;background:rgba(0,0,0,.94);
   backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--ink-100)}
 .tabbar-in{max-width:var(--maxw);margin:0 auto;padding:0 20px;display:flex;gap:2px;
   overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
@@ -93,11 +93,11 @@ main{padding:0 0 120px;min-width:0}
 .tab .tn{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;
   background:var(--ink-100);font-size:10.5px;font-weight:800;color:var(--ink-600);
   font-family:var(--mono);flex:none;transition:.16s}
-.tab[aria-selected="true"] .tn{background:#eef2f5;color:#0b0f14}
+.tab[aria-selected="true"] .tn{background:#ffffff;color:#000000}
 .tab .bdg{min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:var(--ink-50);
   border:1px solid var(--ink-100);font-size:10px;font-weight:800;display:grid;place-items:center;
   color:var(--ink-400);font-family:var(--mono);flex:none;transition:.16s}
-.tab .bdg.ok{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
+.tab .bdg.ok{background:#ffffff;color:#000000;border-color:#ffffff}
 .tab .bdg.mid{background:var(--ink-100);color:var(--ink-700);border-color:var(--ink-200)}
 
 /* ---------- Panes ---------- */
@@ -123,7 +123,7 @@ main{padding:0 0 120px;min-width:0}
   background:var(--white);border:1px solid var(--ink-100);border-radius:11px;padding:13px 18px;
   cursor:pointer;transition:.16s;box-shadow:var(--shadow);text-align:left;font-family:inherit;width:100%}
 .prog-row:hover{border-color:var(--ink-400);transform:translateX(3px)}
-.prog-row .pi{width:26px;height:26px;border-radius:7px;background:#eef2f5;color:#0b0f14;
+.prog-row .pi{width:26px;height:26px;border-radius:7px;background:#ffffff;color:#000000;
   display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:800;flex:none}
 .prog-row .pn{font-size:14.5px;font-weight:650;color:var(--ink-900);letter-spacing:-.01em}
 .prog-row .ps{font-size:11.5px;color:var(--ink-400)}
@@ -135,7 +135,7 @@ main{padding:0 0 120px;min-width:0}
 
 .modquiz{margin-top:60px;padding-top:46px;border-top:2px solid var(--ink-100)}
 .mq-head{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:8px}
-.mq-head .mq-ic{width:42px;height:42px;border-radius:12px;background:#eef2f5;color:#0b0f14;
+.mq-head .mq-ic{width:42px;height:42px;border-radius:12px;background:#ffffff;color:#000000;
   display:grid;place-items:center;font-size:20px;flex:none}
 .mq-head h3{margin:0;flex:1;min-width:220px}
 .mq-head h3 span{display:block;font-size:12px;font-weight:600;color:var(--ink-400);
@@ -146,15 +146,15 @@ main{padding:0 0 120px;min-width:0}
   color:var(--ink-900);letter-spacing:-.03em;line-height:1.15}
 .mq-score span{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-400)}
-.mq-score.perfect{background:#eef2f5;border-color:#eef2f5}
-.mq-score.perfect b{color:#0b0f14}.mq-score.perfect span{color:#5f6d78}
+.mq-score.perfect{background:#ffffff;border-color:#ffffff}
+.mq-score.perfect b{color:#000000}.mq-score.perfect span{color:#6a6a6a}
 .mq-sub{font-size:14.5px;color:var(--ink-500);margin:0 0 22px;max-width:70ch}
 
 /* ---------- HERO ---------- */
 .hero{background:var(--white);border-bottom:1px solid var(--ink-100);
   padding:84px 24px 76px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 55% at 78% 8%,rgba(140,160,180,.08),transparent 70%);pointer-events:none}
+  background:radial-gradient(ellipse 70% 55% at 78% 8%,rgba(156,156,156,.08),transparent 70%);pointer-events:none}
 .hero-in{max-width:1560px;margin:0 auto;position:relative;
   display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:64px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;
@@ -189,8 +189,8 @@ h4{font-size:16px;color:var(--ink-900);margin:30px 0 11px;font-weight:700;letter
 p{margin:0 0 16px;max-width:74ch}
 p:last-child{margin-bottom:0}
 strong{color:var(--ink-900);font-weight:650}
-.card.dark strong,.card.dark b,.metric.hero strong,.qscore strong{color:#eef2f5}
-.card.dark .stamp{color:#5f6d78}
+.card.dark strong,.card.dark b,.metric.hero strong,.qscore strong{color:#ffffff}
+.card.dark .stamp{color:#6a6a6a}
 ul,ol{margin:0 0 18px;padding-left:0;list-style:none;max-width:74ch}
 li{margin-bottom:9px;padding-left:26px;position:relative}
 ul>li::before{content:"";position:absolute;left:8px;top:.66em;width:6px;height:6px;
@@ -198,17 +198,17 @@ ul>li::before{content:"";position:absolute;left:8px;top:.66em;width:6px;height:6
 ol>li{counter-increment:l}
 ol{counter-reset:l}
 ol>li::before{content:counter(l);position:absolute;left:0;top:.1em;width:19px;height:19px;
-  border-radius:50%;background:#eef2f5;color:#0b0f14;font-size:11px;font-weight:700;
+  border-radius:50%;background:#ffffff;color:#000000;font-size:11px;font-weight:700;
   display:grid;place-items:center;font-family:var(--mono)}
 ul ul,ol ul,ul ol{margin-top:9px}
 code{font-family:var(--mono);font-size:.86em;background:var(--ink-50);
   border:1px solid var(--ink-100);padding:2px 6px;border-radius:5px;color:var(--ink-800)}
-pre{background:#0a0e13;color:#d7dde2;padding:20px 22px;border-radius:var(--r-md);
+pre{background:#000000;color:#e6e6e6;padding:20px 22px;border-radius:var(--r-md);
   overflow-x:auto;font-size:13.5px;line-height:1.68;margin:0 0 20px;
-  border:1px solid #2a3542;box-shadow:var(--shadow)}
+  border:1px solid #333333;box-shadow:var(--shadow)}
 pre code{background:none;border:none;padding:0;color:inherit;font-size:inherit}
-pre .c{color:#5f6d78}
-pre .k{color:#c9d3db;font-weight:600}
+pre .c{color:#6a6a6a}
+pre .k{color:#d1d1d1;font-weight:600}
 .tbl-wrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--ink-100);
   border-radius:var(--r-md);background:var(--white);box-shadow:var(--shadow)}
 table{border-collapse:collapse;width:100%;font-size:14px}
@@ -234,9 +234,9 @@ td b,td strong{color:var(--ink-900)}
 .card .ico{width:26px;height:26px;border-radius:7px;background:var(--ink-50);
   border:1px solid var(--ink-100);display:grid;place-items:center;
   font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--ink-700);flex:none}
-.card.dark{background:#0d141c;border:1px solid #2a3542;color:#9aa7b2}
-.card.dark h5{color:#eef2f5}.card.dark p{color:#7d8b96}
-.card.dark .ico{background:#242f39;border-color:#333f4a;color:#d7dde2}
+.card.dark{background:#131313;border:1px solid #333333;color:#a4a4a4}
+.card.dark h5{color:#ffffff}.card.dark p{color:#888888}
+.card.dark .ico{background:#2d2d2d;border-color:#3d3d3d;color:#e6e6e6}
 .card .stamp{position:absolute;top:16px;right:18px;font-family:var(--mono);font-size:10.5px;
   color:var(--ink-500);font-weight:700;letter-spacing:.08em}
 
@@ -248,10 +248,10 @@ td b,td strong{color:var(--ink-900)}
 .note .lbl{display:block;font-size:10.5px;font-weight:800;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ink-400);margin-bottom:7px}
 .note.soft{background:var(--ink-50);box-shadow:none;border-left-color:var(--ink-300)}
-.note.tip{background:#0d141c;border:1px solid #2a3542;border-left:3px solid #eef2f5}
-.note.tip p{color:#9aa7b2}
-.note.tip .lbl{color:#7d8b96}
-.note.tip strong{color:#eef2f5}
+.note.tip{background:#131313;border:1px solid #333333;border-left:3px solid #ffffff}
+.note.tip p{color:#a4a4a4}
+.note.tip .lbl{color:#888888}
+.note.tip strong{color:#ffffff}
 
 /* Caixas de definição */
 .def{border:1px solid var(--ink-200);border-radius:var(--r-md);padding:20px 22px;
@@ -270,7 +270,7 @@ td b,td strong{color:var(--ink-900)}
 .pills{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
 .pill{font-size:12px;font-weight:650;padding:5px 12px;border-radius:99px;
   background:var(--ink-50);border:1px solid var(--ink-100);color:var(--ink-600)}
-.pill.solid{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
+.pill.solid{background:#ffffff;color:#000000;border-color:#ffffff}
 .pill.out{background:transparent;border-color:var(--ink-200);color:var(--ink-400)}
 
 /* Figura */
@@ -295,16 +295,16 @@ svg{max-width:100%;height:auto;display:block}
   border:1px solid var(--ink-200);display:grid;place-items:center;font-family:var(--mono);
   font-size:11px;font-weight:700;color:var(--ink-500);flex:none;transition:.14s}
 .opt.ok{border-color:var(--ink-900);background:var(--ink-50);color:var(--ink-900)}
-.opt.ok .key{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
+.opt.ok .key{background:#ffffff;color:#000000;border-color:#ffffff}
 .opt.no{border-color:var(--ink-300);opacity:.62}
 .qfb{margin-top:14px;padding:14px 16px;border-radius:9px;background:var(--ink-50);
   font-size:14px;color:var(--ink-600);display:none;border-left:3px solid var(--ink-900);line-height:1.65}
 .qfb.show{display:block}
 .qfb b{color:var(--ink-900)}
 .qscore{display:flex;gap:20px;align-items:center;flex-wrap:wrap;padding:18px 24px;
-  background:#0d141c;border:1px solid #2a3542;color:#eef2f5;border-radius:var(--r-md);margin:0 0 20px}
+  background:#131313;border:1px solid #333333;color:#ffffff;border-radius:var(--r-md);margin:0 0 20px}
 .qscore .big{font-size:30px;font-weight:800;letter-spacing:-.03em;font-family:var(--mono)}
-.qscore .lbl{font-size:13px;color:#7d8b96}
+.qscore .lbl{font-size:13px;color:#888888}
 
 /* Simulador */
 .sim{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-lg);
@@ -338,9 +338,9 @@ svg{max-width:100%;height:auto;display:block}
 .metric .mv.sm{font-size:15px}
 .metric .ml{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
   color:var(--ink-400);margin-top:5px}
-.metric.hero{background:#0d141c;border:1px solid #2a3542}
-.metric.hero .mv{color:#eef2f5}
-.metric.hero .ml{color:#7d8b96}
+.metric.hero{background:#131313;border:1px solid #333333}
+.metric.hero .mv{color:#ffffff}
+.metric.hero .ml{color:#888888}
 
 /* Conta bancária */
 .bank{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:20px}
@@ -351,15 +351,15 @@ svg{max-width:100%;height:auto;display:block}
 .tx .steps{font-family:var(--mono);font-size:12px;color:var(--ink-500);line-height:1.85}
 .tx .steps div{padding:3px 0}
 .tx .steps .hl{color:var(--ink-900);font-weight:700}
-.balance{background:#0d141c;border:1px solid #2a3542;color:#eef2f5;border-radius:var(--r-lg);padding:26px 28px;
+.balance{background:#131313;border:1px solid #333333;color:#ffffff;border-radius:var(--r-lg);padding:26px 28px;
   text-align:center;margin-bottom:20px}
 .balance .bv{font-family:var(--mono);font-size:46px;font-weight:800;letter-spacing:-.03em;
   line-height:1.05}
 .balance .bl{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
-  color:#7d8b96;margin-bottom:10px}
-.balance.bad .bv{color:#8d99a3}
-.balance.good .bv{color:#eef2f5}
-.balance .bmsg{font-size:13.5px;color:#7d8b96;margin-top:12px}
+  color:#888888;margin-bottom:10px}
+.balance.bad .bv{color:#979797}
+.balance.good .bv{color:#ffffff}
+.balance .bmsg{font-size:13.5px;color:#888888;margin-top:12px}
 
 /* Semáforo */
 .sema{font-family:var(--mono);font-size:13px;background:var(--white);border:1px solid var(--ink-100);
@@ -368,19 +368,19 @@ svg{max-width:100%;height:auto;display:block}
   border-bottom:1px dashed var(--ink-100);flex-wrap:wrap}
 .sema .srow:last-child{border-bottom:none}
 .sema .sn{font-weight:700;color:var(--ink-900);min-width:172px}
-.sema .v{background:#eef2f5;color:#0b0f14;padding:3px 12px;border-radius:6px;
+.sema .v{background:#ffffff;color:#000000;padding:3px 12px;border-radius:6px;
   font-weight:700;min-width:44px;text-align:center}
 .sema .d{color:var(--ink-500);flex:1;min-width:190px;font-size:12px}
 .sema .st{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
   padding:3px 9px;border-radius:5px;white-space:nowrap}
-.sema .st.run{background:#eef2f5;color:#0b0f14}
+.sema .st.run{background:#ffffff;color:#000000}
 .sema .st.wait{background:var(--ink-50);color:var(--ink-400);border:1px solid var(--ink-200)}
 
 /* Fim / rodapé */
-.endcap{margin-top:76px;padding:38px 34px;background:#0d141c;border:1px solid #2a3542;border-radius:var(--r-lg);
-  color:#9aa7b2;text-align:center}
-.endcap h3{color:#eef2f5;font-family:var(--serif);font-size:27px;margin:0 0 12px}
-.endcap p{max-width:60ch;margin:0 auto;color:#7d8b96;font-size:15px}
+.endcap{margin-top:76px;padding:38px 34px;background:#131313;border:1px solid #333333;border-radius:var(--r-lg);
+  color:#a4a4a4;text-align:center}
+.endcap h3{color:#ffffff;font-family:var(--serif);font-size:27px;margin:0 0 12px}
+.endcap p{max-width:60ch;margin:0 auto;color:#888888;font-size:15px}
 footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   font-size:12.5px;color:var(--ink-400)}
 .refs{display:grid;gap:10px;font-size:13.5px;color:var(--ink-500);margin-bottom:22px}
@@ -416,7 +416,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 .vtl .it::before{content:"";position:absolute;left:17px;top:30px;bottom:0;width:1px;
   background:var(--ink-100)}
 .vtl .it:last-child::before{display:none}
-.vtl .dot{width:34px;height:34px;border-radius:50%;background:#eef2f5;color:#0b0f14;
+.vtl .dot{width:34px;height:34px;border-radius:50%;background:#ffffff;color:#000000;
   display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:800;
   z-index:1;flex:none}
 .vtl .bd .bt{font-weight:700;color:var(--ink-900);font-size:15px;letter-spacing:-.01em}
@@ -443,20 +443,20 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 }
 @media print{
   .topbar,.side,#progress,.ctrls,.q .opts{display:none!important}
-  body{background:#fff;font-size:11pt}
+  body{background:#ffffff;font-size:11pt}
   .shell{display:block;max-width:100%;padding:0}
   section{page-break-inside:avoid;padding-top:26px}
   .rv{opacity:1;transform:none}
   .card,.note,.def{box-shadow:none}
   .qfb{display:block!important}
-  h1,h2,h3,h4,b,strong,th,td{color:#0b0f13!important}
-  .card,.note,.def,.q,.sim,.tx,.sema,.analogy,.calcbox,.vs,.qscore,.endcap,.balance,.metric.hero,.card.dark,.note.tip{background:#fff;color:#212b34;border-color:#d7dde2}
-  pre{background:#f4f6f8;color:#0b0f13;border-color:#d7dde2}
-  pre .c{color:#4a5865}
-  pre .k{color:#0b0f13}
-  code,.kbd,.pill,.eyebrow,.sec-num,.prog-row,.opt,.modnav button,.tab .tn{background:#f4f6f8;color:#212b34;border-color:#d7dde2}
-  .card.dark h5,.card.dark p,.note.tip p,.note.tip strong,.qscore,.endcap h3,.endcap p,.balance .bv,.balance .bl,.balance .bmsg,.metric.hero .mv,.metric.hero .ml,.qscore .lbl{color:#212b34!important}
-  .prog-row .pi,.mq-head .mq-ic,.vtl .dot,.opt.ok .key,.tab[aria-selected="true"] .tn,.sema .v,.sema .st.run,.pill.solid,.btn-solid,.brand-mark,.mq-score.perfect{background:#212b34;color:#fff!important;border-color:#212b34!important}
+  h1,h2,h3,h4,b,strong,th,td{color:#000000!important}
+  .card,.note,.def,.q,.sim,.tx,.sema,.analogy,.calcbox,.vs,.qscore,.endcap,.balance,.metric.hero,.card.dark,.note.tip{background:#ffffff;color:#292929;border-color:#e6e6e6}
+  pre{background:#ffffff;color:#000000;border-color:#e6e6e6}
+  pre .c{color:#555555}
+  pre .k{color:#000000}
+  code,.kbd,.pill,.eyebrow,.sec-num,.prog-row,.opt,.modnav button,.tab .tn{background:#ffffff;color:#292929;border-color:#e6e6e6}
+  .card.dark h5,.card.dark p,.note.tip p,.note.tip strong,.qscore,.endcap h3,.endcap p,.balance .bv,.balance .bl,.balance .bmsg,.metric.hero .mv,.metric.hero .ml,.qscore .lbl{color:#292929!important}
+  .prog-row .pi,.mq-head .mq-ic,.vtl .dot,.opt.ok .key,.tab[aria-selected="true"] .tn,.sema .v,.sema .st.run,.pill.solid,.btn-solid,.brand-mark,.mq-score.perfect{background:#292929;color:#ffffff!important;border-color:#292929!important}
 }
 
 </style>
@@ -1109,15 +1109,15 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="note tip">
     <span class="lbl">Resumo comparativo — decore esta tabela</span>
     <table style="width:100%;margin-top:10px;font-size:13.5px;border-collapse:collapse">
-      <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Algoritmo</b></td>
-          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Preempção</b></td>
-          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Espera média</b></td>
-          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Risco</b></td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">FCFS</td><td style="padding:8px 10px;color:#d7dde2">Não</td><td style="padding:8px 10px;color:#d7dde2">Ruim</td><td style="padding:8px 10px;color:#d7dde2">Efeito Comboio</td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">SJF</td><td style="padding:8px 10px;color:#d7dde2">Não</td><td style="padding:8px 10px;color:#d7dde2"><b style="color:#fff">Ótima (mínimo)</b></td><td style="padding:8px 10px;color:#d7dde2">Starvation</td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">SRTF</td><td style="padding:8px 10px;color:#d7dde2"><b style="color:#fff">Sim</b></td><td style="padding:8px 10px;color:#d7dde2">Ótima</td><td style="padding:8px 10px;color:#d7dde2">Starvation grave</td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">Prioridade</td><td style="padding:8px 10px;color:#d7dde2">Geralmente sim</td><td style="padding:8px 10px;color:#d7dde2">Variável</td><td style="padding:8px 10px;color:#d7dde2">Inanição + inversão</td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">Round-Robin</td><td style="padding:8px 10px;color:#d7dde2"><b style="color:#fff">Sim</b></td><td style="padding:8px 10px;color:#d7dde2">Razoável</td><td style="padding:8px 10px;color:#d7dde2">Overhead se q pequeno</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#bababa"><b style="color:#ffffff">Algoritmo</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#bababa"><b style="color:#ffffff">Preempção</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#bababa"><b style="color:#ffffff">Espera média</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#bababa"><b style="color:#ffffff">Risco</b></td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">FCFS</td><td style="padding:8px 10px;color:#e6e6e6">Não</td><td style="padding:8px 10px;color:#e6e6e6">Ruim</td><td style="padding:8px 10px;color:#e6e6e6">Efeito Comboio</td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">SJF</td><td style="padding:8px 10px;color:#e6e6e6">Não</td><td style="padding:8px 10px;color:#e6e6e6"><b style="color:#ffffff">Ótima (mínimo)</b></td><td style="padding:8px 10px;color:#e6e6e6">Starvation</td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">SRTF</td><td style="padding:8px 10px;color:#e6e6e6"><b style="color:#ffffff">Sim</b></td><td style="padding:8px 10px;color:#e6e6e6">Ótima</td><td style="padding:8px 10px;color:#e6e6e6">Starvation grave</td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">Prioridade</td><td style="padding:8px 10px;color:#e6e6e6">Geralmente sim</td><td style="padding:8px 10px;color:#e6e6e6">Variável</td><td style="padding:8px 10px;color:#e6e6e6">Inanição + inversão</td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">Round-Robin</td><td style="padding:8px 10px;color:#e6e6e6"><b style="color:#ffffff">Sim</b></td><td style="padding:8px 10px;color:#e6e6e6">Razoável</td><td style="padding:8px 10px;color:#e6e6e6">Overhead se q pequeno</td></tr>
     </table>
   </div>
 <div class="modquiz" data-mod="m3"></div>
@@ -1492,13 +1492,13 @@ remove o item;
   <div class="note tip">
     <span class="lbl">O quadro-resumo das 4 estratégias</span>
     <table style="width:100%;margin-top:10px;font-size:13.5px;border-collapse:collapse">
-      <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Estratégia</b></td>
-          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">O que faz</b></td>
-          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#b3bcc4"><b style="color:#fff">Custo</b></td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">Avestruz</td><td style="padding:8px 10px;color:#d7dde2">Nada. Deixa quebrar.</td><td style="padding:8px 10px;color:#d7dde2">Perda de trabalho</td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">Prevenção</td><td style="padding:8px 10px;color:#d7dde2">Impõe regras rígidas</td><td style="padding:8px 10px;color:#d7dde2">Perde paralelismo/utilização</td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">Impedimento</td><td style="padding:8px 10px;color:#d7dde2">Testa estado seguro (Banqueiro)</td><td style="padding:8px 10px;color:#d7dde2">Cálculo a cada alocação</td></tr>
-      <tr><td style="padding:8px 10px;color:#d7dde2">Detecção</td><td style="padding:8px 10px;color:#d7dde2">Procura ciclos no RAG</td><td style="padding:8px 10px;color:#d7dde2">Mata processos</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#bababa"><b style="color:#ffffff">Estratégia</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#bababa"><b style="color:#ffffff">O que faz</b></td>
+          <td style="padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.18);color:#bababa"><b style="color:#ffffff">Custo</b></td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">Avestruz</td><td style="padding:8px 10px;color:#e6e6e6">Nada. Deixa quebrar.</td><td style="padding:8px 10px;color:#e6e6e6">Perda de trabalho</td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">Prevenção</td><td style="padding:8px 10px;color:#e6e6e6">Impõe regras rígidas</td><td style="padding:8px 10px;color:#e6e6e6">Perde paralelismo/utilização</td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">Impedimento</td><td style="padding:8px 10px;color:#e6e6e6">Testa estado seguro (Banqueiro)</td><td style="padding:8px 10px;color:#e6e6e6">Cálculo a cada alocação</td></tr>
+      <tr><td style="padding:8px 10px;color:#e6e6e6">Detecção</td><td style="padding:8px 10px;color:#e6e6e6">Procura ciclos no RAG</td><td style="padding:8px 10px;color:#e6e6e6">Mata processos</td></tr>
     </table>
   </div>
 <div class="modquiz" data-mod="m5"></div>
@@ -2020,7 +2020,7 @@ function schedule(list, alg, q){
   return {segs: mergeSegs(segs), P};
 }
 
-const TONE = ['#e8edf2','#c3cdd6','#9aa7b2','#7d8b96','#5f6d78','#bcc6cf','#d7dde2'];
+const TONE = ['#ececec','#cbcbcb','#a4a4a4','#888888','#6a6a6a','#c4c4c4','#dcdcdc'];
 
 function runSim(){
   if(!procs.length){ document.getElementById('ganttBox').innerHTML='<div style="text-align:center;color:var(--ink-300);font-size:13.5px;padding:22px 0">Adicione processos</div>'; return; }
@@ -2039,34 +2039,34 @@ function runSim(){
   const rowsOf = {};
   segs.forEach(s=>{ (rowsOf[s.id] = rowsOf[s.id]||[]).push(s); });
 
-  let g = `<text x="20" y="24" fill="#9aa7b2" font-size="11" font-family="system-ui">Gráfico de Gantt — linha fixa por processo · tempo em ms</text>`;
+  let g = `<text x="20" y="24" fill="#a4a4a4" font-size="11" font-family="system-ui">Gráfico de Gantt — linha fixa por processo · tempo em ms</text>`;
   ids.forEach((id,ri)=>{
     const y = topPad + ri*(rowH+gap);
-    g += `<line x1="200" y1="${y+rowH}" x2="200" y2="${y+rowH+7}" stroke="#46545f" stroke-width="1"/>`;
-    g += `<text x="190" y="${y+rowH/2+5}" text-anchor="end" fill="#e8edf2" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
+    g += `<line x1="200" y1="${y+rowH}" x2="200" y2="${y+rowH+7}" stroke="#515151" stroke-width="1"/>`;
+    g += `<text x="190" y="${y+rowH/2+5}" text-anchor="end" fill="#ececec" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
     rowsOf[id].forEach(s=>{
       const x = 200 + s.s*scale;
       const w = Math.max(2,(s.e-s.s)*scale);
       const tone = TONE[procs.findIndex(p=>p.id===s.id) % TONE.length];
-      const light = tone==='#e8edf2' || tone==='#c3cdd6' || tone==='#bcc6cf' || tone==='#d7dde2';
-      g += `<rect x="${x}" y="${y}" width="${w}" height="${rowH}" rx="5" fill="${tone}" stroke="${light?'#8d99a3':'none'}" stroke-width="1"/>`;
-      if(w > 28) g += `<text x="${x+w/2}" y="${y+rowH/2+5}" text-anchor="middle" fill="${light?'#0b0f13':'#fff'}" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
-      if(w > 30) g += `<text x="${x+w/2}" y="${y-5}" text-anchor="middle" fill="#9aa7b2" font-size="10.5" font-family="ui-monospace,monospace">${s.e-s.s}ms</text>`;
-      g += `<text x="${x}" y="${y+rowH+18}" text-anchor="middle" fill="#9aa7b2" font-size="10" font-family="ui-monospace,monospace">${s.s}</text>`;
+      const light = tone==='#ececec' || tone==='#cbcbcb' || tone==='#c4c4c4' || tone==='#dcdcdc';
+      g += `<rect x="${x}" y="${y}" width="${w}" height="${rowH}" rx="5" fill="${tone}" stroke="${light?'#979797':'none'}" stroke-width="1"/>`;
+      if(w > 28) g += `<text x="${x+w/2}" y="${y+rowH/2+5}" text-anchor="middle" fill="${light?'#000000':'#ffffff'}" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
+      if(w > 30) g += `<text x="${x+w/2}" y="${y-5}" text-anchor="middle" fill="#a4a4a4" font-size="10.5" font-family="ui-monospace,monospace">${s.e-s.s}ms</text>`;
+      g += `<text x="${x}" y="${y+rowH+18}" text-anchor="middle" fill="#a4a4a4" font-size="10" font-family="ui-monospace,monospace">${s.s}</text>`;
     });
     const lastSeg = rowsOf[id][rowsOf[id].length-1];
-    g += `<text x="${200+lastSeg.e*scale}" y="${y+rowH+18}" text-anchor="middle" fill="#9aa7b2" font-size="10" font-family="ui-monospace,monospace">${lastSeg.e}</text>`;
+    g += `<text x="${200+lastSeg.e*scale}" y="${y+rowH+18}" text-anchor="middle" fill="#a4a4a4" font-size="10" font-family="ui-monospace,monospace">${lastSeg.e}</text>`;
   });
 
   const axisY = topPad + ids.length*(rowH+gap) + 12;
-  g += `<line x1="200" y1="${axisY}" x2="200" stroke="#7d8b96" stroke-width="1.4"/>`;
+  g += `<line x1="200" y1="${axisY}" x2="200" stroke="#888888" stroke-width="1.4"/>`;
   for(let t2=0; t2<=total; t2++){
     const x = 200 + t2*scale;
-    g += `<line x1="${x}" y1="${axisY-5}" x2="${x}" y2="${axisY}" stroke="#7d8b96" stroke-width="1.4"/>`;
+    g += `<line x1="${x}" y1="${axisY-5}" x2="${x}" y2="${axisY}" stroke="#888888" stroke-width="1.4"/>`;
     if(total <= 40 || t2 % 5 === 0 || t2 === total)
-      g += `<text x="${x}" y="${axisY+15}" text-anchor="middle" fill="#9aa7b2" font-size="10.5" font-family="ui-monospace,monospace">${t2}</text>`;
+      g += `<text x="${x}" y="${axisY+15}" text-anchor="middle" fill="#a4a4a4" font-size="10.5" font-family="ui-monospace,monospace">${t2}</text>`;
   }
-  g += `<text x="190" y="${axisY+15}" text-anchor="end" fill="#9aa7b2" font-size="11" font-family="system-ui">t →</text>`;
+  g += `<text x="190" y="${axisY+15}" text-anchor="end" fill="#a4a4a4" font-size="11" font-family="system-ui">t →</text>`;
 
   document.getElementById('ganttBox').innerHTML =
     `<svg viewBox="0 0 ${W} ${H}" style="min-width:640px">${g}</svg>`;
@@ -2245,28 +2245,28 @@ function philoRender(msg){
   const pos = [[440,52],[612,124],[524,244],[356,244],[268,124]];
   const bowl = [[440,18],[612,90],[524,210],[356,210],[268,90]];
   let g = `<svg viewBox="0 0 880 320" style="max-width:640px;margin:0 auto">`;
-  g += `<circle cx="440" cy="150" r="34" fill="#e9edf0" stroke="#b3bcc4" stroke-dasharray="4 3"/>
-        <text x="440" y="147" text-anchor="middle" fill="#9aa7b2" font-size="11" font-family="system-ui">mesa</text>
-        <text x="440" y="160" text-anchor="middle" fill="#9aa7b2" font-size="10" font-family="system-ui">(ninguém come)</text>`;
+  g += `<circle cx="440" cy="150" r="34" fill="#ececec" stroke="#bababa" stroke-dasharray="4 3"/>
+        <text x="440" y="147" text-anchor="middle" fill="#a4a4a4" font-size="11" font-family="system-ui">mesa</text>
+        <text x="440" y="160" text-anchor="middle" fill="#a4a4a4" font-size="10" font-family="system-ui">(ninguém come)</text>`;
   for(let i=0;i<5;i++){
     const [x,y] = pos[i];
     const has = pState[i];
-    g += `<circle cx="${x}" cy="${y}" r="24" fill="${has?'#e8edf2':'#333f4a'}" stroke="${has?'#e8edf2':'#7d8b96'}" stroke-width="2"/>
-          <text x="${x}" y="${y+5}" text-anchor="middle" fill="${has?'#0b0f14':'#e8edf2'}" font-size="13" font-weight="700" font-family="system-ui">P${i+1}</text>`;
+    g += `<circle cx="${x}" cy="${y}" r="24" fill="${has?'#ececec':'#3d3d3d'}" stroke="${has?'#ececec':'#888888'}" stroke-width="2"/>
+          <text x="${x}" y="${y+5}" text-anchor="middle" fill="${has?'#000000':'#ececec'}" font-size="13" font-weight="700" font-family="system-ui">P${i+1}</text>`;
     if(has){
       const [bx,by] = bowl[i];
       g += `<text x="${bx}" y="${by}" text-anchor="middle" font-size="15" font-family="system-ui">🍜</text>
-            <text x="${bx}" y="${by-13}" text-anchor="middle" fill="#9aa7b2" font-size="9.5" font-family="system-ui">prato</text>`;
+            <text x="${bx}" y="${by-13}" text-anchor="middle" fill="#a4a4a4" font-size="9.5" font-family="system-ui">prato</text>`;
     }
   }
   if(pState.every(s=>s===1)){
-    g += `<g stroke="#7d8b96" stroke-width="3" stroke-linecap="round">
+    g += `<g stroke="#888888" stroke-width="3" stroke-linecap="round">
           <path d="M422,68 L398,54"/><path d="M590,140 L556,116"/>
           <path d="M518,226 L504,204"/><path d="M362,226 L376,204"/>
           <path d="M290,140 L324,116"/></g>
-          <text x="440" y="306" text-anchor="middle" fill="#e8edf2" font-size="12.5" font-weight="700" font-family="system-ui">Cada um pegou 1 hashi e espera o da direita — que já foi pego por outro</text>`;
+          <text x="440" y="306" text-anchor="middle" fill="#ececec" font-size="12.5" font-weight="700" font-family="system-ui">Cada um pegou 1 hashi e espera o da direita — que já foi pego por outro</text>`;
   }else{
-    g += `<text x="440" y="306" text-anchor="middle" fill="#9aa7b2" font-size="12" font-family="system-ui">estado inicial — ninguém ainda pegou o hashi</text>`;
+    g += `<text x="440" y="306" text-anchor="middle" fill="#a4a4a4" font-size="12" font-family="system-ui">estado inicial — ninguém ainda pegou o hashi</text>`;
   }
   g += `</svg>`;
   document.getElementById('philoBox').innerHTML = g +
