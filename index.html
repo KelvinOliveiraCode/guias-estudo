@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guias de Estudo — Sistemas Operacionais & Java Pré-POO</title>
-<meta name="description" content="Dois guias de estudo visuais: Sistemas Operacionais (Prova P1) e Java antes da POO — diagramas, exemplos resolvidos, quizzes e simuladores.">
+<title>Guias de Estudo — Sistemas Operacionais & Java Pré-POO + POO</title>
+<meta name="description" content="Dois guias de estudo diretos: Sistemas Operacionais (Prova P1) e Java do pré-POO à POO — exemplos resolvidos, quizzes e simuladores.">
 <style>
 :root{
-  --ink-900:#0b0f13; --ink-800:#141b22; --ink-700:#212b34; --ink-600:#33404b;
-  --ink-500:#4a5865; --ink-400:#68757f; --ink-300:#8d99a3; --ink-200:#b3bcc4;
-  --ink-100:#d7dde2; --ink-50:#e9edf0;
-  --paper:#f7f8f9; --white:#ffffff;
-  --shadow:0 1px 2px rgba(11,15,19,.05),0 8px 24px -12px rgba(11,15,19,.18);
+  --ink-900:#eef2f5; --ink-800:#d7dde2; --ink-700:#bcc6cf;
+  --ink-600:#9aa7b2; --ink-500:#7d8b96; --ink-400:#5f6d78;
+  --ink-300:#46545f; --ink-200:#333f4a; --ink-100:#242f39;
+  --ink-50:#161e27;
+  --paper:#0b0f14; --white:#121922;
+  --shadow:0 1px 2px rgba(0,0,0,.28),0 8px 24px -12px rgba(0,0,0,.5);
   --r-md:14px;
   --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
   --serif:"Georgia","Iowan Old Style","Times New Roman",serif;
@@ -22,7 +23,7 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--paper);color:var(--ink-700);
   line-height:1.7;-webkit-font-smoothing:antialiased;font-size:16.5px}
-::selection{background:var(--ink-700);color:#fff}
+::selection{background:#3a4754;color:#eef2f5}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:64px 24px 80px}
 .kick{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:800;
   letter-spacing:.15em;text-transform:uppercase;color:var(--ink-500);
@@ -56,19 +57,19 @@ h1 em{font-style:italic;color:var(--ink-400)}
 <body>
 <div class="wrap">
   <span class="kick">material de revisão</span>
-  <h1>Guias de estudo <em>visuais</em></h1>
-  <p class="sub">Dois guias completos para a prova — cada conceito com a metáfora do professor, diagramas redesenhados, exemplos resolvidos passo a passo, quizzes e simuladores.</p>
+  <h1>Guias de estudo <em>diretos</em></h1>
+  <p class="sub">Dois guias completos para a prova — cada conceito com a definição literal, exemplos resolvidos passo a passo, quizzes e simuladores.</p>
   <div class="cards">
     <a class="card" href="so/">
       <span class="tag">Guia de revisão · Prova P1 · 2026.2 · IFPA</span>
       <h2>Sistemas Operacionais</h2>
-      <p>Do caos dos fios ao monstro do Deadlock — 5 módulos temáticos: fundamentos, kernel e linha de fronteira, escalonamento, memória e arquivos, concorrência e deadlocks.</p>
+      <p>Dos fundamentos ao deadlock — 6 módulos temáticos: o que é o SO, kernel, processos, escalonamento, threads e concorrência.</p>
       <span class="go">Abrir guia</span>
     </a>
     <a class="card" href="java-pre-poo.html">
-      <span class="tag">prova de Java · antes da POO</span>
-      <h2>Java Pré-POO</h2>
-      <p>De javac a ArrayList — 17 módulos com explicações em linguagem simples, exemplos de código comentados, desenhos e mini-quizzes ao fim de cada módulo.</p>
+      <span class="tag">prova de Java · pré-POO + POO</span>
+      <h2>Java Pré-POO e POO</h2>
+      <p>De javac a record — 18 módulos em linguagem direta, exemplos de código literais e mini-quizzes ao fim de cada módulo.</p>
       <span class="go">Abrir guia</span>
     </a>
   </div>

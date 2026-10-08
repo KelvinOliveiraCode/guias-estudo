@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistemas Operacionais — Guia Visual Definitivo para a Prova</title>
+<title>Sistemas Operacionais — Guia Direto para a Prova</title>
 <style>
 /* ============================================================
-   PALETA MONOCROMÁTICA — matiz única (~210°), só varia luminosidade
+   PALETA ESCURA — matiz única (~210°), fundo escuro
+   Regra: --ink-900 = texto mais forte (claro), --paper = fundo
    ============================================================ */
 :root{
-  --ink-900:#0b0f13;
-  --ink-800:#141b22;
-  --ink-700:#212b34;
-  --ink-600:#33404b;
-  --ink-500:#4a5865;
-  --ink-400:#68757f;
-  --ink-300:#8d99a3;
-  --ink-200:#b3bcc4;
-  --ink-100:#d7dde2;
-  --ink-50:#e9edf0;
-  --paper:#f7f8f9;
-  --white:#ffffff;
-  --shadow:0 1px 2px rgba(11,15,19,.05),0 8px 24px -12px rgba(11,15,19,.18);
-  --shadow-lg:0 2px 4px rgba(11,15,19,.06),0 24px 48px -20px rgba(11,15,19,.28);
+  --ink-900:#eef2f5;
+  --ink-800:#d7dde2;
+  --ink-700:#bcc6cf;
+  --ink-600:#9aa7b2;
+  --ink-500:#7d8b96;
+  --ink-400:#5f6d78;
+  --ink-300:#46545f;
+  --ink-200:#333f4a;
+  --ink-100:#242f39;
+  --ink-50:#161e27;
+  --paper:#0b0f14;
+  --white:#121922;
+  --shadow:0 1px 2px rgba(0,0,0,.28),0 8px 24px -12px rgba(0,0,0,.5);
+  --shadow-lg:0 2px 4px rgba(0,0,0,.34),0 24px 48px -20px rgba(0,0,0,.6);
   --r-sm:8px; --r-md:14px; --r-lg:22px;
   --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
   --serif:"Georgia","Iowan Old Style","Times New Roman",serif;
@@ -37,27 +38,28 @@ body{
 }
 img{max-width:100%;display:block}
 a{color:var(--ink-800);text-underline-offset:3px}
+::selection{background:#3a4754;color:#eef2f5}
 
 /* ---------- Barra de leitura ---------- */
 #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;
   background:linear-gradient(90deg,var(--ink-700),var(--ink-900));transition:width .1s linear}
 
 /* ---------- Topo ---------- */
-.topbar{position:sticky;top:0;z-index:150;background:rgba(247,248,249,.86);
+.topbar{position:sticky;top:0;z-index:150;background:rgba(11,15,20,.88);
   backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--ink-100)}
 .topbar-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:56px;display:flex;
   align-items:center;gap:18px;flex-wrap:wrap}
 .tb-spacer{margin-left:auto}
 .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.02em;
   color:var(--ink-900);font-size:15.5px}
-.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--ink-900);
-  color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800;flex:none}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:#eef2f5;
+  color:#0b0f14;display:grid;place-items:center;font-size:15px;font-weight:800;flex:none}
 .btn{font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;
   border:1px solid var(--ink-200);background:var(--white);color:var(--ink-700);
   padding:7px 14px;border-radius:8px;transition:.16s}
-.btn:hover{border-color:var(--ink-500);background:var(--ink-50)}
-.btn-solid{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
-.btn-solid:hover{background:var(--ink-700);border-color:var(--ink-700)}
+.btn:hover{border-color:var(--ink-400);background:var(--ink-50)}
+.btn-solid{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
+.btn-solid:hover{background:#c9d3db;border-color:#c9d3db}
 
 /* ---------- Cabeçalho compacto ---------- */
 .pagehead{max-width:var(--maxw);margin:0 auto;padding:38px 28px 34px;
@@ -76,7 +78,7 @@ a{color:var(--ink-800);text-underline-offset:3px}
 main{padding:0 0 120px;min-width:0}
 
 /* ---------- Abas ---------- */
-.tabbar{position:sticky;top:57px;z-index:130;background:rgba(247,248,249,.95);
+.tabbar{position:sticky;top:57px;z-index:130;background:rgba(11,15,20,.94);
   backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--ink-100)}
 .tabbar-in{max-width:var(--maxw);margin:0 auto;padding:0 20px;display:flex;gap:2px;
   overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
@@ -86,16 +88,16 @@ main{padding:0 0 120px;min-width:0}
   border-bottom:2.5px solid transparent;cursor:pointer;font-family:inherit;
   white-space:nowrap;transition:color .16s,border-color .16s;letter-spacing:-.005em}
 .tab:hover{color:var(--ink-900)}
-.tab:focus-visible{outline:2px solid var(--ink-500);outline-offset:-3px;border-radius:6px 6px 0 0}
+.tab:focus-visible{outline:2px solid var(--ink-400);outline-offset:-3px;border-radius:6px 6px 0 0}
 .tab[aria-selected="true"]{color:var(--ink-900);border-bottom-color:var(--ink-900)}
 .tab .tn{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;
   background:var(--ink-100);font-size:10.5px;font-weight:800;color:var(--ink-600);
   font-family:var(--mono);flex:none;transition:.16s}
-.tab[aria-selected="true"] .tn{background:var(--ink-900);color:#fff}
+.tab[aria-selected="true"] .tn{background:#eef2f5;color:#0b0f14}
 .tab .bdg{min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:var(--ink-50);
   border:1px solid var(--ink-100);font-size:10px;font-weight:800;display:grid;place-items:center;
   color:var(--ink-400);font-family:var(--mono);flex:none;transition:.16s}
-.tab .bdg.ok{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+.tab .bdg.ok{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
 .tab .bdg.mid{background:var(--ink-100);color:var(--ink-700);border-color:var(--ink-200)}
 
 /* ---------- Panes ---------- */
@@ -121,7 +123,7 @@ main{padding:0 0 120px;min-width:0}
   background:var(--white);border:1px solid var(--ink-100);border-radius:11px;padding:13px 18px;
   cursor:pointer;transition:.16s;box-shadow:var(--shadow);text-align:left;font-family:inherit;width:100%}
 .prog-row:hover{border-color:var(--ink-400);transform:translateX(3px)}
-.prog-row .pi{width:26px;height:26px;border-radius:7px;background:var(--ink-900);color:#fff;
+.prog-row .pi{width:26px;height:26px;border-radius:7px;background:#eef2f5;color:#0b0f14;
   display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:800;flex:none}
 .prog-row .pn{font-size:14.5px;font-weight:650;color:var(--ink-900);letter-spacing:-.01em}
 .prog-row .ps{font-size:11.5px;color:var(--ink-400)}
@@ -133,7 +135,7 @@ main{padding:0 0 120px;min-width:0}
 
 .modquiz{margin-top:60px;padding-top:46px;border-top:2px solid var(--ink-100)}
 .mq-head{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:8px}
-.mq-head .mq-ic{width:42px;height:42px;border-radius:12px;background:var(--ink-900);color:#fff;
+.mq-head .mq-ic{width:42px;height:42px;border-radius:12px;background:#eef2f5;color:#0b0f14;
   display:grid;place-items:center;font-size:20px;flex:none}
 .mq-head h3{margin:0;flex:1;min-width:220px}
 .mq-head h3 span{display:block;font-size:12px;font-weight:600;color:var(--ink-400);
@@ -144,15 +146,15 @@ main{padding:0 0 120px;min-width:0}
   color:var(--ink-900);letter-spacing:-.03em;line-height:1.15}
 .mq-score span{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-400)}
-.mq-score.perfect{background:var(--ink-900);border-color:var(--ink-900)}
-.mq-score.perfect b{color:#fff}.mq-score.perfect span{color:var(--ink-400)}
+.mq-score.perfect{background:#eef2f5;border-color:#eef2f5}
+.mq-score.perfect b{color:#0b0f14}.mq-score.perfect span{color:#5f6d78}
 .mq-sub{font-size:14.5px;color:var(--ink-500);margin:0 0 22px;max-width:70ch}
 
 /* ---------- HERO ---------- */
 .hero{background:var(--white);border-bottom:1px solid var(--ink-100);
   padding:84px 24px 76px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 55% at 78% 8%,var(--ink-50),transparent 70%);pointer-events:none}
+  background:radial-gradient(ellipse 70% 55% at 78% 8%,rgba(140,160,180,.08),transparent 70%);pointer-events:none}
 .hero-in{max-width:1560px;margin:0 auto;position:relative;
   display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:64px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;
@@ -187,33 +189,33 @@ h4{font-size:16px;color:var(--ink-900);margin:30px 0 11px;font-weight:700;letter
 p{margin:0 0 16px;max-width:74ch}
 p:last-child{margin-bottom:0}
 strong{color:var(--ink-900);font-weight:650}
-.card.dark strong,.card.dark b,.metric.hero strong,.qscore strong{color:#fff}
-.card.dark .stamp{color:var(--ink-300)}
+.card.dark strong,.card.dark b,.metric.hero strong,.qscore strong{color:#eef2f5}
+.card.dark .stamp{color:#5f6d78}
 ul,ol{margin:0 0 18px;padding-left:0;list-style:none;max-width:74ch}
 li{margin-bottom:9px;padding-left:26px;position:relative}
 ul>li::before{content:"";position:absolute;left:8px;top:.66em;width:6px;height:6px;
-  border-radius:50%;background:var(--ink-300)}
+  border-radius:50%;background:var(--ink-400)}
 ol>li{counter-increment:l}
 ol{counter-reset:l}
 ol>li::before{content:counter(l);position:absolute;left:0;top:.1em;width:19px;height:19px;
-  border-radius:50%;background:var(--ink-900);color:#fff;font-size:11px;font-weight:700;
+  border-radius:50%;background:#eef2f5;color:#0b0f14;font-size:11px;font-weight:700;
   display:grid;place-items:center;font-family:var(--mono)}
 ul ul,ol ul,ul ol{margin-top:9px}
 code{font-family:var(--mono);font-size:.86em;background:var(--ink-50);
   border:1px solid var(--ink-100);padding:2px 6px;border-radius:5px;color:var(--ink-800)}
-pre{background:var(--ink-900);color:var(--ink-100);padding:20px 22px;border-radius:var(--r-md);
+pre{background:#0a0e13;color:#d7dde2;padding:20px 22px;border-radius:var(--r-md);
   overflow-x:auto;font-size:13.5px;line-height:1.68;margin:0 0 20px;
-  border:1px solid var(--ink-700);box-shadow:var(--shadow)}
+  border:1px solid #2a3542;box-shadow:var(--shadow)}
 pre code{background:none;border:none;padding:0;color:inherit;font-size:inherit}
-pre .c{color:var(--ink-400)}
-pre .k{color:var(--ink-300);font-weight:600}
+pre .c{color:#5f6d78}
+pre .k{color:#c9d3db;font-weight:600}
 .tbl-wrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--ink-100);
   border-radius:var(--r-md);background:var(--white);box-shadow:var(--shadow)}
 table{border-collapse:collapse;width:100%;font-size:14px}
 th{background:var(--ink-50);color:var(--ink-900);font-weight:700;text-align:left;
   padding:12px 15px;border-bottom:1px solid var(--ink-100);white-space:nowrap;
   font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
-td{padding:11px 15px;border-bottom:1px solid var(--ink-50);color:var(--ink-600);vertical-align:top}
+td{padding:11px 15px;border-bottom:1px solid var(--ink-100);color:var(--ink-600);vertical-align:top}
 tr:last-child td{border-bottom:none}
 tbody tr:hover{background:var(--ink-50)}
 td b,td strong{color:var(--ink-900)}
@@ -232,9 +234,9 @@ td b,td strong{color:var(--ink-900)}
 .card .ico{width:26px;height:26px;border-radius:7px;background:var(--ink-50);
   border:1px solid var(--ink-100);display:grid;place-items:center;
   font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--ink-700);flex:none}
-.card.dark{background:var(--ink-900);border-color:var(--ink-900);color:var(--ink-100)}
-.card.dark h5{color:#fff}.card.dark p{color:var(--ink-300)}
-.card.dark .ico{background:var(--ink-700);border-color:var(--ink-600);color:#fff}
+.card.dark{background:#0d141c;border:1px solid #2a3542;color:#9aa7b2}
+.card.dark h5{color:#eef2f5}.card.dark p{color:#7d8b96}
+.card.dark .ico{background:#242f39;border-color:#333f4a;color:#d7dde2}
 .card .stamp{position:absolute;top:16px;right:18px;font-family:var(--mono);font-size:10.5px;
   color:var(--ink-500);font-weight:700;letter-spacing:.08em}
 
@@ -246,10 +248,10 @@ td b,td strong{color:var(--ink-900)}
 .note .lbl{display:block;font-size:10.5px;font-weight:800;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ink-400);margin-bottom:7px}
 .note.soft{background:var(--ink-50);box-shadow:none;border-left-color:var(--ink-300)}
-.note.tip{background:var(--ink-900);border-left-color:var(--ink-900)}
-.note.tip p{color:var(--ink-200)}
-.note.tip .lbl{color:var(--ink-400)}
-.note.tip strong{color:#fff}
+.note.tip{background:#0d141c;border:1px solid #2a3542;border-left:3px solid #eef2f5}
+.note.tip p{color:#9aa7b2}
+.note.tip .lbl{color:#7d8b96}
+.note.tip strong{color:#eef2f5}
 
 /* Caixas de definição */
 .def{border:1px solid var(--ink-200);border-radius:var(--r-md);padding:20px 22px;
@@ -268,7 +270,7 @@ td b,td strong{color:var(--ink-900)}
 .pills{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
 .pill{font-size:12px;font-weight:650;padding:5px 12px;border-radius:99px;
   background:var(--ink-50);border:1px solid var(--ink-100);color:var(--ink-600)}
-.pill.solid{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+.pill.solid{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
 .pill.out{background:transparent;border-color:var(--ink-200);color:var(--ink-400)}
 
 /* Figura */
@@ -293,16 +295,16 @@ svg{max-width:100%;height:auto;display:block}
   border:1px solid var(--ink-200);display:grid;place-items:center;font-family:var(--mono);
   font-size:11px;font-weight:700;color:var(--ink-500);flex:none;transition:.14s}
 .opt.ok{border-color:var(--ink-900);background:var(--ink-50);color:var(--ink-900)}
-.opt.ok .key{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+.opt.ok .key{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
 .opt.no{border-color:var(--ink-300);opacity:.62}
 .qfb{margin-top:14px;padding:14px 16px;border-radius:9px;background:var(--ink-50);
   font-size:14px;color:var(--ink-600);display:none;border-left:3px solid var(--ink-900);line-height:1.65}
 .qfb.show{display:block}
 .qfb b{color:var(--ink-900)}
 .qscore{display:flex;gap:20px;align-items:center;flex-wrap:wrap;padding:18px 24px;
-  background:var(--ink-900);color:#fff;border-radius:var(--r-md);margin:0 0 20px}
+  background:#0d141c;border:1px solid #2a3542;color:#eef2f5;border-radius:var(--r-md);margin:0 0 20px}
 .qscore .big{font-size:30px;font-weight:800;letter-spacing:-.03em;font-family:var(--mono)}
-.qscore .lbl{font-size:13px;color:var(--ink-300)}
+.qscore .lbl{font-size:13px;color:#7d8b96}
 
 /* Simulador */
 .sim{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-lg);
@@ -336,9 +338,9 @@ svg{max-width:100%;height:auto;display:block}
 .metric .mv.sm{font-size:15px}
 .metric .ml{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
   color:var(--ink-400);margin-top:5px}
-.metric.hero{background:var(--ink-900);border-color:var(--ink-900)}
-.metric.hero .mv{color:#fff}
-.metric.hero .ml{color:var(--ink-400)}
+.metric.hero{background:#0d141c;border:1px solid #2a3542}
+.metric.hero .mv{color:#eef2f5}
+.metric.hero .ml{color:#7d8b96}
 
 /* Conta bancária */
 .bank{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:20px}
@@ -349,15 +351,15 @@ svg{max-width:100%;height:auto;display:block}
 .tx .steps{font-family:var(--mono);font-size:12px;color:var(--ink-500);line-height:1.85}
 .tx .steps div{padding:3px 0}
 .tx .steps .hl{color:var(--ink-900);font-weight:700}
-.balance{background:var(--ink-900);color:#fff;border-radius:var(--r-lg);padding:26px 28px;
+.balance{background:#0d141c;border:1px solid #2a3542;color:#eef2f5;border-radius:var(--r-lg);padding:26px 28px;
   text-align:center;margin-bottom:20px}
 .balance .bv{font-family:var(--mono);font-size:46px;font-weight:800;letter-spacing:-.03em;
   line-height:1.05}
 .balance .bl{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--ink-400);margin-bottom:10px}
-.balance.bad .bv{color:var(--ink-300)}
-.balance.good .bv{color:#fff}
-.balance .bmsg{font-size:13.5px;color:var(--ink-300);margin-top:12px}
+  color:#7d8b96;margin-bottom:10px}
+.balance.bad .bv{color:#8d99a3}
+.balance.good .bv{color:#eef2f5}
+.balance .bmsg{font-size:13.5px;color:#7d8b96;margin-top:12px}
 
 /* Semáforo */
 .sema{font-family:var(--mono);font-size:13px;background:var(--white);border:1px solid var(--ink-100);
@@ -366,19 +368,19 @@ svg{max-width:100%;height:auto;display:block}
   border-bottom:1px dashed var(--ink-100);flex-wrap:wrap}
 .sema .srow:last-child{border-bottom:none}
 .sema .sn{font-weight:700;color:var(--ink-900);min-width:172px}
-.sema .v{background:var(--ink-900);color:#fff;padding:3px 12px;border-radius:6px;
+.sema .v{background:#eef2f5;color:#0b0f14;padding:3px 12px;border-radius:6px;
   font-weight:700;min-width:44px;text-align:center}
 .sema .d{color:var(--ink-500);flex:1;min-width:190px;font-size:12px}
 .sema .st{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
   padding:3px 9px;border-radius:5px;white-space:nowrap}
-.sema .st.run{background:var(--ink-900);color:#fff}
+.sema .st.run{background:#eef2f5;color:#0b0f14}
 .sema .st.wait{background:var(--ink-50);color:var(--ink-400);border:1px solid var(--ink-200)}
 
 /* Fim / rodapé */
-.endcap{margin-top:76px;padding:38px 34px;background:var(--ink-900);border-radius:var(--r-lg);
-  color:var(--ink-200);text-align:center}
-.endcap h3{color:#fff;font-family:var(--serif);font-size:27px;margin:0 0 12px}
-.endcap p{max-width:60ch;margin:0 auto;color:var(--ink-300);font-size:15px}
+.endcap{margin-top:76px;padding:38px 34px;background:#0d141c;border:1px solid #2a3542;border-radius:var(--r-lg);
+  color:#9aa7b2;text-align:center}
+.endcap h3{color:#eef2f5;font-family:var(--serif);font-size:27px;margin:0 0 12px}
+.endcap p{max-width:60ch;margin:0 auto;color:#7d8b96;font-size:15px}
 footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   font-size:12.5px;color:var(--ink-400)}
 .refs{display:grid;gap:10px;font-size:13.5px;color:var(--ink-500);margin-bottom:22px}
@@ -414,7 +416,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 .vtl .it::before{content:"";position:absolute;left:17px;top:30px;bottom:0;width:1px;
   background:var(--ink-100)}
 .vtl .it:last-child::before{display:none}
-.vtl .dot{width:34px;height:34px;border-radius:50%;background:var(--ink-900);color:#fff;
+.vtl .dot{width:34px;height:34px;border-radius:50%;background:#eef2f5;color:#0b0f14;
   display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:800;
   z-index:1;flex:none}
 .vtl .bd .bt{font-weight:700;color:var(--ink-900);font-size:15px;letter-spacing:-.01em}
@@ -447,7 +449,16 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   .rv{opacity:1;transform:none}
   .card,.note,.def{box-shadow:none}
   .qfb{display:block!important}
+  h1,h2,h3,h4,b,strong,th,td{color:#0b0f13!important}
+  .card,.note,.def,.q,.sim,.tx,.sema,.analogy,.calcbox,.vs,.qscore,.endcap,.balance,.metric.hero,.card.dark,.note.tip{background:#fff;color:#212b34;border-color:#d7dde2}
+  pre{background:#f4f6f8;color:#0b0f13;border-color:#d7dde2}
+  pre .c{color:#4a5865}
+  pre .k{color:#0b0f13}
+  code,.kbd,.pill,.eyebrow,.sec-num,.prog-row,.opt,.modnav button,.tab .tn{background:#f4f6f8;color:#212b34;border-color:#d7dde2}
+  .card.dark h5,.card.dark p,.note.tip p,.note.tip strong,.qscore,.endcap h3,.endcap p,.balance .bv,.balance .bl,.balance .bmsg,.metric.hero .mv,.metric.hero .ml,.qscore .lbl{color:#212b34!important}
+  .prog-row .pi,.mq-head .mq-ic,.vtl .dot,.opt.ok .key,.tab[aria-selected="true"] .tn,.sema .v,.sema .st.run,.pill.solid,.btn-solid,.brand-mark,.mq-score.perfect{background:#212b34;color:#fff!important;border-color:#212b34!important}
 }
+
 </style>
 </head>
 <body>
@@ -462,8 +473,8 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 
 <div class="pagehead">
   <span class="ph-kick">Guia de revisão · Prova P1 · 2026.2</span>
-  <h1>Sistemas Operacionais, do <em>caos dos fios</em> ao <em>monstro do Deadlock</em></h1>
-  <p class="ph-sub">Um mapa visual e analógico de tudo que você viu nas Aulas 01 a 06 — cada conceito com a metáfora que o professor usou, os diagramas redesenhados e os exemplos numéricos resolvidos passo a passo. <b>IFPA Campus Ananindeua</b> · Bacharelado em Ciência da Computação, 2º período Noturno/Sábado · Prof. Fábio Ferreira · 6 aulas · 60 h/a.</p>
+  <h1>Sistemas Operacionais, dos <em>fundamentos</em> ao <em>deadlock</em></h1>
+  <p class="ph-sub">Um guia direto de tudo que você viu nas Aulas 01 a 06 — cada conceito com a definição literal, os exemplos numéricos resolvidos passo a passo e os simuladores interativos. <b>IFPA Campus Ananindeua</b> · Bacharelado em Ciência da Computação, 2º período Noturno/Sábado · Prof. Fábio Ferreira · 6 aulas · 60 h/a.</p>
 </div>
 
 <div class="tabbar" role="tablist" aria-label="Módulos do curso">
@@ -476,7 +487,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 <section id="m0" class="pane">
   <div class="sec-head">
     <span class="sec-num">MÓDULO 0 · AULA 01</span>
-    <h2>O Grande Síndico do Computador
+    <h2>O que é um Sistema Operacional
       <span class="sub">O que é um Sistema Operacional, por que ele existe, e como ele nasceu em quatro gerações</span>
     </h2>
   </div>
@@ -488,7 +499,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     texto desse disco e o imprima numa impressora USB.</strong></p>
 
   <div class="note">
-    <span class="lbl">A pergunta de milhões</span>
+    <span class="lbl">A questão</span>
     <p>Como o seu código Java vai dizer para a CPU: <em>rotacionar o motor físico do disco?</em>
     <em>Posicionar a agulha de leitura no cilindro magnético certo?</em> <em>Acionar os pulsos
     elétricos da porta USB da impressora?</em> — <strong>e se não houver um SO entre o código e o hardware?</strong></p>
@@ -508,40 +519,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <p>O SO tem uma <strong>dupla personalidade</strong>, descrita por duas visões clássicas.
     Essa é a pergunta mais comum de prova conceitual sobre SO — decore os dois focos.</p>
 
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 300" role="img" aria-label="As duas visões do Sistema Operacional">
-        <defs>
-          <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L7,3 z" fill="#68757f"/>
-          </marker>
-        </defs>
-        <rect x="330" y="20" width="240" height="66" rx="12" fill="#0b0f13"/>
-        <text x="450" y="48" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="system-ui">SISTEMA OPERACIONAL</text>
-        <text x="450" y="68" text-anchor="middle" fill="#8d99a3" font-size="11.5" font-family="system-ui">o mesmo programa, dois papéis</text>
-
-        <path d="M330,70 C260,90 240,120 200,150" stroke="#68757f" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
-        <path d="M570,70 C640,90 660,120 700,150" stroke="#68757f" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
-
-        <rect x="40" y="150" width="320" height="128" rx="14" fill="#ffffff" stroke="#d7dde2" stroke-width="1.5"/>
-        <rect x="40" y="150" width="320" height="4" rx="2" fill="#33404b"/>
-        <text x="62" y="186" fill="#0b0f13" font-size="15.5" font-weight="700" font-family="system-ui">👤 Visão do Usuário</text>
-        <text x="62" y="207" fill="#4a5865" font-size="12.5" font-family="system-ui">Máquina Estendida / Abstração</text>
-        <text x="62" y="232" fill="#68757f" font-size="12" font-family="system-ui">Esconde: bits, pistas, cilindros, pulsos elétricos</text>
-        <text x="62" y="252" fill="#68757f" font-size="12" font-family="system-ui">Entrega: arquivos, diretórios, chamadas de sistema</text>
-        <text x="62" y="270" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Foco: CONVENIÊNCIA e facilidade de uso</text>
-
-        <rect x="540" y="150" width="320" height="128" rx="14" fill="#ffffff" stroke="#d7dde2" stroke-width="1.5"/>
-        <rect x="540" y="150" width="320" height="4" rx="2" fill="#33404b"/>
-        <text x="562" y="186" fill="#0b0f13" font-size="15.5" font-weight="700" font-family="system-ui">⚙️ Visão do Sistema</text>
-        <text x="562" y="207" fill="#4a5865" font-size="12.5" font-family="system-ui">Gerenciador de Recursos / “Síndico”</text>
-        <text x="562" y="232" fill="#68757f" font-size="12" font-family="system-ui">Organiza fila de acesso (ex.: 2 programas imprimindo)</text>
-        <text x="562" y="252" fill="#68757f" font-size="12" font-family="system-ui">Impede páginas misturadas e protege a RAM alheia</text>
-        <text x="562" y="270" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Foco: EFICIÊNCIA e SEGURANÇA</text>
-      </svg>
-    </div>
-    <figcaption>As duas faces do mesmo SO. A banca adora perguntar qual foco pertence a qual nome — <em>usuário = abstrato e conveniente</em>, <em>sistema = justo e protegido</em>.</figcaption>
-  </figure>
+  
 
   <div class="note tip">
     <span class="lbl">Frase de prova</span>
@@ -553,35 +531,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <p>Seus aplicativos executam num ambiente com <strong>privilégios limitados</strong>. Para alcançar
     a física, eles precisam bater na porta do Kernel — é a <strong>System Call</strong>.</p>
 
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 380" role="img" aria-label="Camadas do sistema: modo usuário e modo kernel">
-        <rect x="30" y="16" width="840" height="96" rx="14" fill="#f7f8f9" stroke="#d7dde2"/>
-        <text x="52" y="44" fill="#0b0f13" font-size="15" font-weight="700" font-family="system-ui">APLICATIVOS</text>
-        <text x="52" y="64" fill="#68757f" font-size="12" font-family="system-ui">Word · Chrome · Spotify · seu programa Java · jogos</text>
-        <text x="52" y="88" fill="#68757f" font-size="12" font-family="system-ui">Privilégios limitados — não podem tocar no hardware diretamente</text>
-        <rect x="690" y="34" width="160" height="30" rx="7" fill="#e9edf0" stroke="#b3bcc4"/>
-        <text x="770" y="54" text-anchor="middle" fill="#33404b" font-size="11.5" font-weight="700" font-family="system-ui">MODO USUÁRIO</text>
-
-        <rect x="30" y="140" width="840" height="86" rx="14" fill="#ffffff" stroke="#b3bcc4" stroke-dasharray="6 4"/>
-        <text x="52" y="168" fill="#0b0f13" font-size="15" font-weight="700" font-family="system-ui">📄 INTERFACE DO USUÁRIO</text>
-        <text x="52" y="188" fill="#68757f" font-size="12" font-family="system-ui">Arquivos · diretórios (pastas) · ícones</text>
-        <text x="52" y="210" fill="#68757f" font-size="12" font-family="system-ui">A metáfora que substitui “pistas e setores magnéticos”</text>
-
-        <path d="M450,236 L450,272" stroke="#0b0f13" stroke-width="2.5" marker-end="url(#ar1)"/>
-        <rect x="330" y="228" width="240" height="34" rx="9" fill="#0b0f13"/>
-        <text x="450" y="250" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">🔔 SYSTEM CALL — “batida na porta”</text>
-
-        <rect x="30" y="286" width="840" height="80" rx="14" fill="#212b34"/>
-        <text x="52" y="314" fill="#fff" font-size="15" font-weight="700" font-family="system-ui">⚙️ KERNEL</text>
-        <text x="52" y="334" fill="#b3bcc4" font-size="12" font-family="system-ui">Escalonador · Gerência de memória · Gerência de arquivos · Drivers de E/S</text>
-        <text x="52" y="354" fill="#8d99a3" font-size="12" font-family="system-ui">Controle TOTAL sobre o hardware</text>
-        <rect x="690" y="304" width="160" height="30" rx="7" fill="#33404b" stroke="#4a5865"/>
-        <text x="770" y="324" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="700" font-family="system-ui">MODO KERNEL</text>
-      </svg>
-    </div>
-    <figcaption>A linha de fronteira que separa o que seu programa pode e não pode fazer. Essa linha é o coração do Módulo 1.</figcaption>
-  </figure>
+  
 
   <div class="note soft">
     <span class="lbl">O que isso evita na prática</span>
@@ -665,7 +615,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <div class="card"><div class="ico">🔬</div><h5>Próximo Encontro</h5><p>Laboratório conceitual: debate sobre
       o <strong>Kernel</strong>, os <strong>modos de acesso</strong> e a estrutura interna dos processos.</p></div>
     <div class="card"><div class="ico">💡</div><h5>Reflexão</h5><p>Observe hoje o SO do seu smartphone.
-      Quantas vezes ele age como “síndico” gerenciando apps concorrentes?</p></div>
+      Quantas vezes ele atua gerenciando apps concorrentes?</p></div>
   </div>
 <div class="modquiz" data-mod="m0"></div>
   <div class="modnav"></div>
@@ -838,142 +788,53 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 <section id="m2" class="pane">
   <div class="sec-head">
     <span class="sec-num">MÓDULO 2 · AULA 03</span>
-    <h2>Processos: A Vida Secreta dos Programas
+    <h2>Processos: Programa em Execução
       <span class="sub">Programa vs. processo, anatomia na RAM, os 5 estados, o PCB e o custo invisível da troca de contexto</span>
     </h2>
   </div>
 
-  <h3>A analogia do bolo: programa vs. processo</h3>
+  <h3>Programa vs. processo: a diferença que importa</h3>
   <div class="analogy">
-    <div class="ah">🎂 A analogia que o professor usou</div>
+    <div class="ah">Programa × processo — o mesmo código em dois estados</div>
     <div class="grid g2">
       <div class="card plain">
         <h5>O Programa <span style="font-weight:400;color:var(--ink-400)">(estático)</span></h5>
-        <p>É a <strong>receita de bolo escrita no livro de culinária</strong>. Fica guardada
-        <strong>passivamente na estante</strong> (disco rígido ou SSD) <strong>sem consumir energia</strong>
-        e sem agir por conta própria.</p>
+        <p>É o <strong>arquivo no disco</strong> (<span class="kbd">.exe</span>, <span class="kbd">.class</span>).
+        Fica <strong>passivo no armazenamento</strong> (HD ou SSD) <strong>sem consumir CPU nem RAM</strong>
+        e não faz nada sozinho.</p>
       </div>
       <div class="card plain">
         <h5>O Processo <span style="font-weight:400;color:var(--ink-400)">(dinâmico)</span></h5>
-        <p>É o <strong>cozinheiro executando a receita ativamente</strong>: ler a receita, mexer a massa
-        e acompanhar o tempo — a CPU processando instruções em tempo real.</p>
+        <p>É o <strong>programa carregado e em execução</strong>: a CPU processa suas instruções
+        em tempo real e ele ocupa memória, PID e estado próprios.</p>
       </div>
     </div>
     <div class="grid g2" style="margin-bottom:0">
       <div class="card plain" style="background:var(--white)">
         <h5>Entradas e Saídas</h5>
-        <p><strong>Ingredientes → Dados de entrada (inputs)</strong><br>
-        <strong>Bolo assado → O resultado final (output)</strong></p>
+        <p><strong>Dados de entrada (inputs)</strong> → processamento → <strong>resultado (output)</strong></p>
       </div>
       <div class="card plain" style="background:var(--white)">
-        <h5>O Plot Twist do Machucado 🚨</h5>
-        <p>O filho do cozinheiro se machuca. Ele: <strong>(1) interrompe e anota</strong> onde parou
-        (salva o estado), <strong>(2) executa um processo urgente</strong> (primeiros socorros) e
-        <strong>(3) retoma exatamente do ponto</strong> em que parou.</p>
+        <h5>Interrupção e retomada</h5>
+        <p>Um evento urgente chega. O SO: <strong>(1) salva o estado</strong> do processo,
+        <strong>(2) atende a urgência</strong> e <strong>(3) retoma exatamente do ponto</strong>
+        em que parou.</p>
       </div>
     </div>
   </div>
 
   <div class="note tip">
-    <span class="lbl">A frase que resume o módulo inteiro</span>
-    <p>Esse “plot twist” é literalmente o que o escalonador faz: <strong>salvar o estado</strong> para
+    <span class="lbl">O conceito central</span>
+    <p>É exatamente isso que o escalonador faz: <strong>salvar o estado</strong> para
     atender algo mais urgente e depois <strong>restaurar o processo exatamente de onde parou</strong>.
     É o conceito de <strong>troca de contexto</strong>, que você vê em detalhe mais abaixo.</p>
   </div>
 
   <h3>Anatomia de um processo na memória RAM</h3>
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 330" role="img" aria-label="Seções de memória de um processo: texto, dados, pilha e heap">
-        <text x="450" y="18" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui" font-weight="700" letter-spacing="1.2">MEMÓRIA VIRTUAL DO PROCESSO</text>
-
-        <rect x="120" y="32" width="420" height="46" rx="8" fill="#0b0f13"/>
-        <text x="138" y="52" fill="#fff" font-size="13.5" font-weight="700" font-family="system-ui">Seção de Texto (Text)</text>
-        <text x="138" y="70" fill="#b3bcc4" font-size="11.5" font-family="system-ui">Código executável — as instruções binárias lidas pela CPU</text>
-
-        <rect x="120" y="86" width="420" height="46" rx="8" fill="#33404b"/>
-        <text x="138" y="106" fill="#fff" font-size="13.5" font-weight="700" font-family="system-ui">Seção de Dados (Data)</text>
-        <text x="138" y="124" fill="#d7dde2" font-size="11.5" font-family="system-ui">Variáveis globais e estáticas</text>
-
-        <rect x="120" y="142" width="420" height="56" rx="8" fill="#8d99a3"/>
-        <text x="138" y="164" fill="#fff" font-size="13.5" font-weight="700" font-family="system-ui">Pilha (Stack)</text>
-        <text x="138" y="184" fill="#0b0f13" font-size="11.5" font-family="system-ui">Locais, parâmetros, endereços de retorno · cresce ↓ de cima para baixo</text>
-
-        <rect x="120" y="212" width="420" height="56" rx="8" fill="#d7dde2"/>
-        <text x="138" y="234" fill="#0b0f13" font-size="13.5" font-weight="700" font-family="system-ui">Heap</text>
-        <text x="138" y="254" fill="#33404b" font-size="11.5" font-family="system-ui">Alocação dinâmica (<tspan font-weight="700">new</tspan> em Java, <tspan font-weight="700">malloc</tspan> em C) · cresce ↑ de baixo para cima</text>
-
-        <rect x="120" y="282" width="420" height="34" rx="8" fill="#e9edf0" stroke="#b3bcc4" stroke-dasharray="4 3"/>
-        <text x="330" y="304" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Espaço livre — de onde a pilha e o heap crescem e colidem (stackoverflow!)</text>
-
-        <path d="M560,170 L560,240" stroke="#0b0f13" stroke-width="2" marker-end="url(#ar1)"/>
-        <text x="572" y="196" fill="#0b0f13" font-size="11.5" font-weight="700" font-family="system-ui">PILHA ↓</text>
-        <path d="M660,240 L660,170" stroke="#68757f" stroke-width="2" marker-end="url(#ar1)"/>
-        <text x="672" y="212" fill="#68757f" font-size="11.5" font-weight="700" font-family="system-ui">HEAP ↑</text>
-        <text x="575" y="290" fill="#4a5865" font-size="11" font-family="system-ui">As duas se</text>
-        <text x="575" y="304" fill="#4a5865" font-size="11" font-family="system-ui">expandem para</text>
-        <text x="575" y="318" fill="#4a5865" font-size="11" font-family="system-ui">direções opostas</text>
-
-        <text x="100" y="60" text-anchor="end" fill="#68757f" font-size="11" font-family="system-ui">endereços</text>
-        <text x="100" y="76" text-anchor="end" fill="#68757f" font-size="11" font-family="system-ui">altos</text>
-        <text x="100" y="310" text-anchor="end" fill="#68757f" font-size="11" font-family="system-ui">endereços baixos</text>
-        <text x="100" y="20" text-anchor="end" fill="#4a5865" font-size="10.5" font-family="system-ui">↑</text>
-      </svg>
-    </div>
-    <figcaption>As quatro seções que o SO precisa organizar na RAM para cada processo. Repare que <strong>pilha e heap crescem em sentidos opostos</strong> — é por isso que um processo pode estourar a pilha (stackoverflow).</figcaption>
-  </figure>
+  
 
   <h3>O ciclo de vida: os 5 estados de um processo</h3>
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 340" role="img" aria-label="Diagrama de estados de um processo: novo, pronto, executando, em espera e terminado">
-        <defs>
-          <marker id="ar2" markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto">
-            <path d="M0,0 L0,7 L8,3.5 z" fill="#33404b"/>
-          </marker>
-        </defs>
-
-        <ellipse cx="110" cy="60" rx="82" ry="34" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
-        <text x="110" y="66" text-anchor="middle" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">Novo</text>
-        <text x="110" y="116" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">criação e alocação de recursos</text>
-
-        <ellipse cx="330" cy="60" rx="82" ry="34" fill="#b3bcc4" stroke="#68757f" stroke-width="1.6"/>
-        <text x="330" y="66" text-anchor="middle" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">Pronto (Ready)</text>
-        <text x="330" y="116" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">apto a rodar, esperando o escalonador</text>
-
-        <ellipse cx="570" cy="60" rx="88" ry="34" fill="#0b0f13"/>
-        <text x="570" y="66" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">Em Execução</text>
-        <text x="570" y="116" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">sendo processado pelos núcleos da CPU</text>
-
-        <ellipse cx="570" cy="262" rx="88" ry="34" fill="#8d99a3"/>
-        <text x="570" y="268" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">Em Espera</text>
-        <text x="570" y="316" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">aguardando evento externo (disco, teclado)</text>
-
-        <ellipse cx="810" cy="60" rx="82" ry="34" fill="#f7f8f9" stroke="#8d99a3" stroke-width="1.6" stroke-dasharray="5 3"/>
-        <text x="810" y="66" text-anchor="middle" fill="#68757f" font-size="14" font-weight="700" font-family="system-ui">Terminado</text>
-        <text x="810" y="116" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">encerrou; SO libera a RAM</text>
-
-        <path d="M196,60 L242,60" stroke="#33404b" stroke-width="1.8" marker-end="url(#ar2)"/>
-        <text x="219" y="48" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">admitted</text>
-
-        <path d="M416,60 L476,60" stroke="#33404b" stroke-width="1.8" marker-end="url(#ar2)"/>
-        <text x="446" y="48" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">dispatch</text>
-
-        <path d="M616,60 L722,60" stroke="#33404b" stroke-width="1.8" marker-end="url(#ar2)"/>
-        <text x="669" y="48" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">exit</text>
-
-        <path d="M532,42 C460,18 380,18 342,42" stroke="#33404b" stroke-width="1.8" fill="none" marker-end="url(#ar2)"/>
-        <text x="437" y="16" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">interrupt / preempção</text>
-
-        <path d="M566,96 C560,150 566,200 568,222" stroke="#33404b" stroke-width="1.8" fill="none" marker-end="url(#ar2)"/>
-        <text x="470" y="168" text-anchor="start" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">I/O ou espera por evento</text>
-
-        <path d="M486,262 C400,262 360,120 336,98" stroke="#33404b" stroke-width="1.8" fill="none" marker-end="url(#ar2)"/>
-        <text x="330" y="205" text-anchor="end" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">I/O ou evento concluído</text>
-      </svg>
-    </div>
-    <figcaption>Diagrama de transição de estados clássico de Silberschatz (5 estados). As setas com o nome do evento (admitted, dispatch, interrupt, exit, I/O) são o que a banca pede em questão de prova.</figcaption>
-  </figure>
+  
 
   <div class="grid g3">
     <div class="card"><h5>🆕 Novo (New)</h5><p>Em fase de <strong>criação e alocação de recursos</strong> pelo SO.</p></div>
@@ -1036,26 +897,26 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 <section id="m3" class="pane">
   <div class="sec-head">
     <span class="sec-num">MÓDULO 3 · AULA 04</span>
-    <h2>Escalonamento de CPU: Quem é o Próximo da Fila?
+    <h2>Escalonamento de CPU: Escolhendo o Próximo Processo
       <span class="sub">O ciclo de picos, as métricas de avaliação e os quatro algoritmos com Gantt e contas feitas</span>
     </h2>
   </div>
 
-  <h3>A situação-problema: a fila do caixa do supermercado</h3>
+  <h3>A situação-problema: qual processo usa a CPU agora?</h3>
   <div class="analogy">
-    <div class="ah">🛒 Terça à noite, fila única do caixa</div>
+    <div class="ah">Três processos na fila de prontos, um só CPU</div>
     <div class="grid g3">
-      <div class="card plain"><h5>Cliente A</h5><p><strong>Carrinho cheio</strong><br>Tempo estimado: <strong>25 minutos</strong></p></div>
-      <div class="card plain"><h5>Cliente B</h5><p><strong>1 caixinha de leite</strong><br>Tempo estimado: <strong>1 minuto</strong></p></div>
-      <div class="card plain"><h5>Cliente C</h5><p><strong>Cesta de 5 itens</strong><br>Tempo estimado: <strong>3 minutos</strong></p></div>
+      <div class="card plain"><h5>P₁ — CPU-bound</h5><p><strong>Surto longo</strong><br>Tempo de CPU: <strong>25 ms</strong></p></div>
+      <div class="card plain"><h5>P₂ — I/O-bound</h5><p><strong>Surto curto</strong><br>Tempo de CPU: <strong>1 ms</strong></p></div>
+      <div class="card plain"><h5>P₃ — I/O-bound</h5><p><strong>Surto médio</strong><br>Tempo de CPU: <strong>3 ms</strong></p></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
       <div>
-        <h5 style="margin-bottom:8px"><b>FCFS:</b> Cliente A chegou primeiro — B espera 25 minutos com uma única caixinha. <em>Justo?</em></h5>
-        <h5 style="margin-bottom:0"><b>SJF:</b> Menor compra à frente reduz a espera média, mas o Cliente A <strong>pode nunca ser atendido</strong> (Starvation!).</h5>
+        <h5 style="margin-bottom:8px"><b>FCFS:</b> P₁ chegou primeiro — P₂ espera 25 ms com um surto de 1 ms. <em>Justo?</em></h5>
+        <h5 style="margin-bottom:0"><b>SJF:</b> Menor surto à frente reduz a espera média, mas P₁ <strong>pode nunca ser atendido</strong> (Starvation!).</h5>
       </div>
       <div>
-        <p style="font-size:14px;color:var(--ink-500);margin:0"><strong>A pergunta de milhões:</strong>
+        <p style="font-size:14px;color:var(--ink-500);margin:0"><strong>A questão:</strong>
         como o SO decide, <em>em tempo real</em>, qual processo assume a CPU de forma
         <strong>eficiente</strong>, <strong>justa</strong> e <strong>sem travar o sistema</strong>?</p>
       </div>
@@ -1065,31 +926,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <h3>O ciclo de vida dos processos: CPU Burst e I/O Burst</h3>
   <p>A execução de <strong>qualquer</strong> processo consiste em um ciclo alternado de duas atividades:
     <strong>processamento ativo (CPU burst)</strong> e <strong>espera por dispositivos (I/O burst)</strong>.</p>
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 230" role="img" aria-label="Ciclo de picos de CPU e E/S alternados">
-        <rect x="60" y="20" width="300" height="46" fill="#0b0f13"/>
-        <rect x="360" y="20" width="180" height="46" fill="#e9edf0" stroke="#b3bcc4"/>
-        <rect x="540" y="20" width="300" height="46" fill="#0b0f13"/>
-        <rect x="840" y="20" width="40" height="46" fill="#e9edf0" stroke="#b3bcc4"/>
-
-        <text x="210" y="48" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">pico de CPU</text>
-        <text x="450" y="48" text-anchor="middle" fill="#68757f" font-size="12.5" font-weight="700" font-family="system-ui">pico de E/S</text>
-        <text x="690" y="48" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">pico de CPU</text>
-
-        <text x="210" y="96" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">carrega memória, adiciona memória, lê o arquivo</text>
-        <text x="450" y="96" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">espera pelo disco</text>
-        <text x="690" y="96" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">armazena, incrementa índice, grava</text>
-
-        <text x="60" y="14" fill="#4a5865" font-size="11" font-family="system-ui">início</text>
-        <path d="M60,120 L880,120" stroke="#d7dde2" stroke-width="1"/>
-        <text x="450" y="140" text-anchor="middle" fill="#4a5865" font-size="11" font-family="system-ui">tempo</text>
-        <text x="450" y="168" text-anchor="middle" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">O ciclo se repete indefinidamente enquanto o processo viver</text>
-        <text x="450" y="192" text-anchor="middle" fill="#68757f" font-size="12" font-family="system-ui">A maioria dos picos de CPU dura menos de 8 ms (histograma de Silberschatz, Fig. 6.2)</text>
-      </svg>
-    </div>
-    <figcaption>Este ciclo é a razão de existir do escalonamento: a CPU e os dispositivos de E/S nunca estão ocupados ao mesmo tempo — a não ser que o SO embaralhe os processos.</figcaption>
-  </figure>
+  
 
   <h4>Tipos de processos</h4>
   <div class="grid g2">
@@ -1099,7 +936,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
       Exemplos: editores de texto, navegadores, IDEs.</p></div>
   </div>
   <div class="note tip">
-    <span class="lbl">A regra do síndico</span>
+    <span class="lbl">A regra do escalonador</span>
     <p>O escalonador deve selecionar um <strong>bom mix de processos</strong> para manter a CPU e os
     controladores de E/S <strong>sempre ocupados de forma concorrente</strong>. Só com I/O-bound a CPU
     fica ociosa; só com CPU-bound os discos ficam parados.</p>
@@ -1135,41 +972,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     inaceitável e <strong>alta dependência da ordem de chegada</strong> dos processos.</p>
   </div>
 
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 150" role="img" aria-label="Comparação FCFS e SJF com processos A, B, C e D">
-        <text x="26" y="30" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">(a) FCFS</text>
-        <g>
-          <rect x="26" y="42" width="240" height="44" fill="#0b0f13"/><text x="146" y="69" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">A</text>
-          <text x="146" y="34" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">8</text>
-          <rect x="266" y="42" width="120" height="44" fill="#8d99a3"/><text x="326" y="69" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">B</text>
-          <text x="326" y="34" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
-          <rect x="386" y="42" width="120" height="44" fill="#8d99a3"/><text x="446" y="69" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">C</text>
-          <text x="446" y="34" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
-          <rect x="506" y="42" width="120" height="44" fill="#8d99a3"/><text x="566" y="69" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">D</text>
-          <text x="566" y="34" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
-        </g>
-        <text x="660" y="60" fill="#68757f" font-size="11.5" font-family="system-ui">A segura a CPU</text>
-        <text x="660" y="76" fill="#68757f" font-size="11.5" font-family="system-ui">8 unidades com 3</text>
-        <text x="660" y="92" fill="#68757f" font-size="11.5" font-family="system-ui">processos esperando</text>
-
-        <text x="26" y="130" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">(b) SJF</text>
-        <g>
-          <rect x="26" y="112" width="120" height="44" fill="#0b0f13"/><text x="86" y="139" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">B</text>
-          <text x="86" y="106" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
-          <rect x="146" y="112" width="120" height="44" fill="#33404b"/><text x="206" y="139" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">C</text>
-          <text x="206" y="106" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
-          <rect x="266" y="112" width="120" height="44" fill="#33404b"/><text x="326" y="139" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">D</text>
-          <text x="326" y="106" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">4</text>
-          <rect x="386" y="112" width="240" height="44" fill="#8d99a3"/><text x="506" y="139" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">A</text>
-          <text x="506" y="106" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">8</text>
-        </g>
-        <text x="660" y="130" fill="#68757f" font-size="11.5" font-family="system-ui">Os curtos saem primeiro:</text>
-        <text x="660" y="146" fill="#68757f" font-size="11.5" font-family="system-ui">A vai para o fim da fila</text>
-      </svg>
-    </div>
-    <figcaption>Mesmos 4 processos (A=8, B=4, C=4, D=4). A ordem de execução muda completamente — e com ela, o tempo médio de espera. Fig. 2.7, Tanenbaum (2003, p. 102).</figcaption>
-  </figure>
+  
 
   <h4>Exemplo resolvido 1 — FCFS com os 4 processos prontos em t = 0</h4>
   <div class="tbl-wrap"><table>
@@ -1234,7 +1037,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     pico real t = 4 &nbsp;&nbsp;→&nbsp; τ' = 0,5(4) + 0,5(6) = <span class="r">5</span><br>
     pico real t = 13 → τ' = 0,5(13) + 0,5(5) = <span class="r">9</span>
   </div>
-  <p style="font-size:13.5px;color:var(--ink-400)">Repare no gráfico da aula: quando o pico real salta de 4 para 13,
+  <p style="font-size:13.5px;color:var(--ink-400)">Repare no exemplo: quando o pico real salta de 4 para 13,
     a estimativa τ só sobe suavemente de 5 até 12 — o Kernel não “acredita” num pico isolado.</p>
 
   <div class="grid g2">
@@ -1248,32 +1051,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <h3>Algoritmo 3 — Escalonamento por Prioridades</h3>
   <p>Cada processo recebe um <strong>valor inteiro de prioridade</strong>. A CPU é alocada ao processo
     de maior prioridade — por convenção, <strong>números menores = maior privilégio</strong>.</p>
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 250" role="img" aria-label="Fila de prioridade com processos de diferentes níveis">
-        <text x="20" y="24" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Fila de prioridade</text>
-        <rect x="20" y="34" width="230" height="34" fill="#0b0f13"/><text x="135" y="56" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Prioridade 4</text>
-        <rect x="20" y="70" width="230" height="34" fill="#212b34"/><text x="135" y="92" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Prioridade 3</text>
-        <rect x="20" y="106" width="230" height="34" fill="#68757f"/><text x="135" y="128" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Prioridade 2</text>
-        <rect x="20" y="142" width="230" height="34" fill="#b3bcc4"/><text x="135" y="164" text-anchor="middle" fill="#0b0f13" font-size="12.5" font-weight="700" font-family="system-ui">Prioridade 1</text>
-
-        <text x="20" y="200" fill="#68757f" font-size="11.5" font-family="system-ui">Cada fila guarda vários processos executáveis</text>
-        <text x="20" y="222" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Números MENORES = MAIOR privilégio (convenção)</text>
-        <text x="20" y="242" fill="#68757f" font-size="11.5" font-family="system-ui">A prioridade 4 do desenho é a mais alta</text>
-
-        <g transform="translate(300,0)">
-          <text x="0" y="24" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Exemplo real de prioridades (de cima para baixo)</text>
-          <rect x="0" y="34" width="330" height="30" fill="#0b0f13"/><text x="16" y="54" fill="#fff" font-size="12" font-weight="600" font-family="system-ui">Processos no sistema</text>
-          <rect x="0" y="68" width="330" height="30" fill="#212b34"/><text x="16" y="88" fill="#fff" font-size="12" font-weight="600" font-family="system-ui">Processos interativos</text>
-          <rect x="0" y="102" width="330" height="30" fill="#4a5865"/><text x="16" y="122" fill="#fff" font-size="12" font-weight="600" font-family="system-ui">Processos de edição interativa</text>
-          <rect x="0" y="136" width="330" height="30" fill="#8d99a3"/><text x="16" y="156" fill="#0b0f13" font-size="12" font-weight="600" font-family="system-ui">Processos batch</text>
-          <rect x="0" y="170" width="330" height="30" fill="#d7dde2"/><text x="16" y="190" fill="#0b0f13" font-size="12" font-weight="600" font-family="system-ui">Processos de estudantes</text>
-          <text x="0" y="222" fill="#4a5865" font-size="11.5" font-family="system-ui">Prioridade mais alta ↑ · mais baixa ↓</text>
-        </g>
-      </svg>
-    </div>
-    <figcaption>Doiscretos de prioridade. Repare no segundo: um servidor universitário dá prioridade a quem está digitando na frente de quem só compila em lote.</figcaption>
-  </figure>
+  
 
   <div class="grid g3">
     <div class="card"><h5>🔄 Inversão de Prioridades</h5><p>Um processo de prioridade <strong>média</strong>
@@ -1296,33 +1074,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <p>~<strong>80% dos picos de CPU</strong> reais devem ser menores que o quantum escolhido.</p>
   </div>
 
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 170" role="img" aria-label="Escalonamento Round Robin com fila circular">
-        <text x="26" y="26" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">(a) Fila circular — o próximo processo é o que vem depois do atual</text>
-        <g>
-          <rect x="26" y="42" width="90" height="42" fill="#0b0f13"/><text x="71" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">B</text>
-          <rect x="122" y="42" width="90" height="42" fill="#33404b"/><text x="167" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">F</text>
-          <rect x="218" y="42" width="90" height="42" fill="#4a5865"/><text x="263" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">D</text>
-          <rect x="314" y="42" width="90" height="42" fill="#8d99a3"/><text x="359" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">G</text>
-          <rect x="410" y="42" width="90" height="42" fill="#b3bcc4"/><text x="455" y="68" text-anchor="middle" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">A</text>
-        </g>
-        <path d="M71,36 L71,26 L167,26 L167,36" stroke="#68757f" stroke-width="1.2" fill="none"/>
-        <text x="119" y="20" text-anchor="middle" fill="#0b0f13" font-size="11" font-weight="700" font-family="system-ui">atual → próximo</text>
-
-        <text x="26" y="130" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">(b) Depois do quantum, B foi para o fim da fila</text>
-        <g transform="translate(0,26)">
-          <rect x="26" y="42" width="90" height="42" fill="#33404b"/><text x="71" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">F</text>
-          <rect x="122" y="42" width="90" height="42" fill="#4a5865"/><text x="167" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">D</text>
-          <rect x="218" y="42" width="90" height="42" fill="#8d99a3"/><text x="263" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">G</text>
-          <rect x="314" y="42" width="90" height="42" fill="#b3bcc4"/><text x="359" y="68" text-anchor="middle" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">A</text>
-          <rect x="410" y="42" width="90" height="42" fill="#0b0f13"/><text x="455" y="68" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="system-ui">B</text>
-        </g>
-        <text x="530" y="96" fill="#68757f" font-size="11.5" font-family="system-ui">F é o novo atual</text>
-      </svg>
-    </div>
-    <figcaption>Round Robin: ninguém espera mais que um quantum. Fig. 2.8, Tanenbaum (2003, p. 104).</figcaption>
-  </figure>
+  
 
   <h4>A sensibilidade do quantum — o que acontece nos dois extremos</h4>
   <div class="vs">
@@ -1376,25 +1128,25 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 <section id="m4" class="pane">
   <div class="sec-head">
     <span class="sec-num">MÓDULO 4 · AULA 05</span>
-    <h2>Threads e Concorrência: A Arte de Dividir Tarefas
+    <h2>Threads e Concorrência: Execução Concorrente
       <span class="sub">O que é uma thread, o que elas compartilham, e a condição de corrida que faz contas bancárias falharem</span>
     </h2>
   </div>
 
   <h3>A situação-problema: o navegador congelado</h3>
   <div class="analogy">
-    <div class="ah">🎯 Terça à noite, três abas abertas ao mesmo tempo</div>
+    <div class="ah">Três tarefas pesadas rodando ao mesmo tempo</div>
     <div class="grid g3">
-      <div class="card plain"><h5>Aba 1</h5><p><strong>Videoaula de programação</strong><br>
+      <div class="card plain"><h5>Tarefa 1</h5><p><strong>Videoaula de programação</strong><br>
         Reprodução contínua de vídeo em streaming de alta definição.</p></div>
-      <div class="card plain"><h5>Aba 2</h5><p><strong>PDF de 50 MB</strong><br>
+      <div class="card plain"><h5>Tarefa 2</h5><p><strong>PDF de 50 MB</strong><br>
         Download e renderização de relatório acadêmico de grande volume.</p></div>
-      <div class="card plain"><h5>Aba 3</h5><p><strong>Script de animação</strong><br>
+      <div class="card plain"><h5>Tarefa 3</h5><p><strong>Script de animação</strong><br>
         Processamento gráfico pesado rodando em loop contínuo.</p></div>
     </div>
-    <p style="margin:18px 0 0;font-size:15px;color:var(--ink-600)"><strong>O desafio:</strong> se o navegador
+    <p style="margin:18px 0 0;font-size:15px;color:var(--ink-600)"><strong>O problema:</strong> se o navegador
       funcionasse com execução <em>single-thread</em>, um travamento na animação congelaria toda a interface —
-      inclusive o vídeo e o mouse. <strong>A pergunta de milhões:</strong> como o navegador moderno carrega
+      inclusive o vídeo e o mouse. <strong>A questão:</strong> como o navegador moderno carrega
       páginas, roda scripts, reproduz áudio/vídeo e responde a cliques de forma simultânea sem que um
       travamento pontual congele tudo?</p>
   </div>
@@ -1411,32 +1163,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     Um processo multithreaded contém vários fluxos de execução cooperativos dentro do
     <strong>mesmo espaço de memória</strong>.</p>
 
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 300" role="img" aria-label="Comparação entre processo single-thread e multithread">
-        <text x="30" y="24" fill="#0b0f13" font-size="13.5" font-weight="700" font-family="system-ui">Processo Single-Thread</text>
-        <rect x="30" y="36" width="380" height="30" fill="#e9edf0" stroke="#b3bcc4"/><text x="220" y="56" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Código</text>
-        <rect x="30" y="66" width="380" height="30" fill="#e9edf0" stroke="#b3bcc4"/><text x="220" y="86" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Dados + Arquivos</text>
-        <rect x="30" y="96" width="380" height="34" fill="#0b0f13"/>
-        <path d="M120,130 L120,152" stroke="#0b0f13" stroke-width="2" marker-end="url(#ar1)"/>
-        <text x="220" y="118" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="system-ui">1 fluxo de execução</text>
-        <text x="220" y="172" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Bloqueio = <tspan font-weight="700" fill="#0b0f13">processo inteiro para</tspan></text>
-        <text x="220" y="190" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Uma aba travada congela tudo</text>
-
-        <text x="490" y="24" fill="#0b0f13" font-size="13.5" font-weight="700" font-family="system-ui">Processo Multi-Thread</text>
-        <rect x="490" y="36" width="380" height="30" fill="#e9edf0" stroke="#b3bcc4"/><text x="680" y="56" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Código (compartilhado)</text>
-        <rect x="490" y="66" width="380" height="30" fill="#e9edf0" stroke="#b3bcc4"/><text x="680" y="86" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Dados + Arquivos (compartilhados)</text>
-        <rect x="490" y="96" width="380" height="76" fill="#212b34"/>
-        <text x="680" y="112" text-anchor="middle" fill="#8d99a3" font-size="10.5" font-family="system-ui">fluxos de execução independentes</text>
-        <path d="M570,118 L570,140" stroke="#b3bcc4" stroke-width="1.8" marker-end="url(#ar1)"/>
-        <path d="M680,118 L680,140" stroke="#b3bcc4" stroke-width="1.8" marker-end="url(#ar1)"/>
-        <path d="M790,118 L790,140" stroke="#b3bcc4" stroke-width="1.8" marker-end="url(#ar1)"/>
-        <text x="680" y="158" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="system-ui">Cada uma: pilha + registradores próprios</text>
-        <text x="680" y="190" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Uma aba travada <tspan font-weight="700" fill="#0b0f13">não derruba as outras</tspan></text>
-      </svg>
-    </div>
-    <figcaption>A diferença que explica o navegador moderno: com threads independentes, cada aba tem seu próprio fluxo e uma falha em uma não congela a interface inteira.</figcaption>
-  </figure>
+  
 
   <h3>O que as threads dividem e o que elas isolam</h3>
   <div class="vs">
@@ -1525,42 +1252,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <div class="card"><h5>Muitos-para-Muitos</h5><p>Multiplexa M threads de usuário em N threads de kernel
       (<b>M ≥ N</b>).</p></div>
   </div>
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 200" role="img" aria-label="Modelo um-para-um de mapeamento de threads">
-        <text x="30" y="24" fill="#0b0f13" font-size="12.5" font-weight="700" font-family="system-ui">threads de usuário</text>
-        <path d="M50,44 C40,60 40,70 50,84" stroke="#68757f" stroke-width="1.8" fill="none"/>
-        <path d="M50,84 C40,100 40,110 50,124" stroke="#68757f" stroke-width="1.8" fill="none"/>
-        <path d="M50,124 C40,140 40,150 50,162" stroke="#68757f" stroke-width="1.8" fill="none"/>
-        <path d="M50,40 C38,58 38,72 50,88" stroke="#68757f" stroke-width="1.8" fill="none"/>
-        <path d="M50,88 C38,106 38,120 50,136" stroke="#68757f" stroke-width="1.8" fill="none"/>
-        <path d="M50,136 C38,152 38,164 50,168" stroke="#68757f" stroke-width="1.8" fill="none"/>
-        <circle cx="76" cy="46" r="12" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
-        <circle cx="76" cy="92" r="12" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
-        <circle cx="76" cy="138" r="12" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
-        <circle cx="76" cy="176" r="12" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.6"/>
-        <path d="M88,46 L200,46" stroke="#b3bcc4" stroke-width="1.6"/>
-        <path d="M88,92 L200,92" stroke="#b3bcc4" stroke-width="1.6"/>
-        <path d="M88,138 L200,138" stroke="#b3bcc4" stroke-width="1.6"/>
-        <path d="M88,176 L200,176" stroke="#b3bcc4" stroke-width="1.6"/>
-        <circle cx="230" cy="46" r="16" fill="#0b0f13"/>
-        <circle cx="230" cy="92" r="16" fill="#0b0f13"/>
-        <circle cx="230" cy="138" r="16" fill="#0b0f13"/>
-        <circle cx="230" cy="176" r="16" fill="#0b0f13"/>
-        <text x="230" y="51" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">k</text>
-        <text x="230" y="97" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">k</text>
-        <text x="230" y="143" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">k</text>
-        <text x="230" y="181" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">k</text>
-        <text x="270" y="52" fill="#33404b" font-size="11.5" font-weight="700" font-family="system-ui">thread de kernel</text>
-        <text x="30" y="52" fill="#33404b" font-size="11.5" font-weight="700" font-family="system-ui">○</text>
-        <text x="270" y="112" fill="#4a5865" font-size="12" font-family="system-ui">Cada fluxo de usuário tem seu par no kernel.</text>
-        <text x="270" y="134" fill="#4a5865" font-size="12" font-family="system-ui">É o modelo usado por Windows e Linux.</text>
-        <text x="270" y="156" fill="#4a5865" font-size="12" font-family="system-ui">Se uma bloquear, o SO roda a outra.</text>
-        <text x="30" y="196" fill="#68757f" font-size="11" font-family="system-ui">Figura 4.6 — Modelo um-para-um (Silberschatz, 9ª ed.)</text>
-      </svg>
-    </div>
-    <figcaption>Modelo um-para-um: cada thread de usuário ganha uma thread de kernel dedicada.</figcaption>
-  </figure>
+  
 
   <h3>O perigo da concorrência: a Condição de Corrida</h3>
   <div class="def">
@@ -1631,49 +1323,26 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 <section id="m5" class="pane">
   <div class="sec-head">
     <span class="sec-num">MÓDULO 5 · AULA 06</span>
-    <h2>O Caos da Concorrência
+    <h2>Sincronização e Deadlock
       <span class="sub">Região crítica, semáforos, produtor-consumidor e o monstro do Deadlock</span>
     </h2>
   </div>
 
   <h3>A situação-problema: o jantar dos filósofos</h3>
   <div class="analogy">
-    <div class="ah">🍝 Dijkstra, 1965</div>
-    <p style="font-size:15px">Cinco филосófos alternam entre <strong>pensar</strong> e <strong>comer</strong>.
-      Para comer, cada um precisa de <strong>dois hashis</strong> — o da esquerda e o da direita. Pegam
-      um hashi de cada vez; não podem pegar o do vizinho.</p>
-    <p style="font-size:15px"><strong>A crise do milissegundo:</strong> todos os cinco ficam famintos ao
-      mesmo tempo. Cada um estica a mão esquerda e segura o hashi à sua esquerda. Agora, <strong>cada filósofo
-      tem 1 hashi e espera o da direita ficar livre</strong>.</p>
-    <figure>
-      <div class="box" style="box-shadow:none;border:none;padding:8px 0">
-        <svg viewBox="0 0 880 300" role="img" aria-label="O jantar dos filósofos em deadlock">
-          <circle cx="440" cy="140" r="38" fill="#e9edf0" stroke="#b3bcc4" stroke-dasharray="4 3"/>
-          <text x="440" y="136" text-anchor="middle" fill="#4a5865" font-size="11" font-family="system-ui">mesa</text>
-          <text x="440" y="150" text-anchor="middle" fill="#4a5865" font-size="11" font-family="system-ui">(ninguém come)</text>
-          <g font-family="system-ui" font-size="12.5" font-weight="700" text-anchor="middle">
-            <circle cx="440" cy="40" r="24" fill="#0b0f13"/><text x="440" y="45" fill="#fff">P1</text>
-            <circle cx="606" cy="112" r="24" fill="#0b0f13"/><text x="606" y="117" fill="#fff">P2</text>
-            <circle cx="528" cy="248" r="24" fill="#0b0f13"/><text x="528" y="253" fill="#fff">P3</text>
-            <circle cx="352" cy="248" r="24" fill="#0b0f13"/><text x="352" y="253" fill="#fff">P4</text>
-            <circle cx="274" cy="112" r="24" fill="#0b0f13"/><text x="274" y="117" fill="#fff">P5</text>
-          </g>
-          <g stroke="#33404b" stroke-width="3" stroke-linecap="round">
-            <path d="M440,64 L406,48"/><path d="M596,124 L556,96"/>
-            <path d="M524,234 L506,208"/><path d="M356,234 L374,208"/>
-            <path d="M284,124 L324,96"/>
-          </g>
-          <text x="440" y="18" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">cada um segura o hashi da ESQUERDA e espera o da DIREITA</text>
-          <text x="440" y="292" text-anchor="middle" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">nenhum passa — espera circular</text>
-        </svg>
-      </div>
-      <figcaption>Cinco filósofos, cinco pares de hashis, uma espera circular. É o deadlock em forma de jantar.</figcaption>
-    </figure>
+    <div class="ah">Dijkstra, 1965 — 5 threads, 5 recursos</div>
+    <p style="font-size:15px">Cinco <strong>threads</strong> alternam entre <strong>pensar</strong> e <strong>comer</strong>.
+      Para comer, cada uma precisa de <strong>dois recursos</strong> (os hashis) — o da esquerda e o da direita.
+      Pegam <strong>um recurso de cada vez</strong>; não podem pegar o da outra thread.</p>
+    <p style="font-size:15px"><strong>A crise:</strong> todas as cinco ficam famintas ao
+      mesmo tempo. Cada uma pega o recurso à sua esquerda. Agora, <strong>cada thread
+      tem 1 recurso e espera o da direita ficar livre</strong> — que já está com a vizinha.</p>
+    
   </div>
   <div class="note">
-    <span class="lbl">A pergunta de milhões 🤔</span>
-    <p>Eles ficarão parados, segurando um hashi e esperando pelo outro <strong>eternamente</strong>?
-    O que aconteceu com a CPU? Eles <strong>morrerão de fome</strong>?</p>
+    <span class="lbl">A questão 🤔</span>
+    <p>As threads ficam paradas, cada uma segurando 1 recurso e esperando pelo outro <strong>eternamente</strong>?
+    O que acontece com a CPU? Elas <strong>morrem de fome</strong>?</p>
   </div>
 
   <h3>A anatomia da Região Crítica</h3>
@@ -1682,35 +1351,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <p>A parte do programa de uma thread em que ela <strong>acessa um recurso de memória compartilhado</strong>
     (como ler/gravar dados).</p>
   </div>
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 880 130" role="img" aria-label="Estrutura da região crítica: entrada, região crítica, saída e seção remanescente">
-        <rect x="20" y="40" width="200" height="52" rx="8" fill="#e9edf0" stroke="#b3bcc4"/>
-        <text x="120" y="63" text-anchor="middle" fill="#33404b" font-size="12.5" font-weight="700" font-family="system-ui">Seção Remanescente</text>
-        <text x="120" y="80" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">antes da região crítica</text>
-
-        <rect x="228" y="40" width="130" height="52" rx="8" fill="#8d99a3"/>
-        <text x="293" y="63" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Entrada</text>
-        <text x="293" y="80" text-anchor="middle" fill="#0b0f13" font-size="11" font-family="system-ui">pede o lock</text>
-
-        <rect x="366" y="40" width="160" height="52" rx="8" fill="#0b0f13"/>
-        <text x="446" y="63" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="system-ui">REGIÃO CRÍTICA</text>
-        <text x="446" y="80" text-anchor="middle" fill="#8d99a3" font-size="11" font-family="system-ui">acessa o recurso</text>
-
-        <rect x="534" y="40" width="130" height="52" rx="8" fill="#8d99a3"/>
-        <text x="599" y="63" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="system-ui">Saída</text>
-        <text x="599" y="80" text-anchor="middle" fill="#0b0f13" font-size="11" font-family="system-ui">libera o lock</text>
-
-        <rect x="672" y="40" width="188" height="52" rx="8" fill="#e9edf0" stroke="#b3bcc4"/>
-        <text x="766" y="63" text-anchor="middle" fill="#33404b" font-size="12.5" font-weight="700" font-family="system-ui">Seção Remanescente</text>
-        <text x="766" y="80" text-anchor="middle" fill="#68757f" font-size="11" font-family="system-ui">depois da região crítica</text>
-
-        <path d="M120,110 L820,110" stroke="#d7dde2" stroke-width="1"/>
-        <text x="446" y="126" text-anchor="middle" fill="#4a5865" font-size="10.5" font-family="system-ui">tempo →</text>
-      </svg>
-    </div>
-    <figcaption>Toda vez que uma thread faz <code>down(mutex)</code> ela entra na região crítica; ao fazer <code>up(mutex)</code>, sai.</figcaption>
-  </figure>
+  
 
   <h4>As 4 condições para uma solução correta</h4>
   <div class="grid g2">
@@ -1825,65 +1466,7 @@ remove o item;
 
   <h4>As 4 Condições de Coffman (1971)</h4>
   <p>Para que o deadlock exista, as quatro condições abaixo devem ocorrer <strong>simultaneamente</strong>.</p>
-  <figure>
-    <div class="box">
-      <svg viewBox="0 0 900 340" role="img" aria-label="As quatro condições de Coffman para existência de deadlock">
-        <line x1="450" y1="12" x2="450" y2="328" stroke="#e9edf0" stroke-width="1"/>
-        <line x1="12" y1="170" x2="888" y2="170" stroke="#e9edf0" stroke-width="1"/>
-
-        <text x="20" y="34" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">1. Exclusão Mútua</text>
-        <text x="20" y="54" fill="#68757f" font-size="12" font-family="system-ui">pelo menos um recurso em</text>
-        <text x="20" y="72" fill="#68757f" font-size="12" font-family="system-ui">modo não compartilhável</text>
-        <g transform="translate(250,20)">
-          <path d="M40,4 L74,20 L74,52 L40,68 L6,52 L6,20 Z" fill="#f7f8f9" stroke="#68757f" stroke-width="1.6"/>
-          <rect x="26" y="26" width="28" height="22" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.4"/>
-          <path d="M6,46 L-14,72" stroke="#b3bcc4" stroke-width="1.2" stroke-dasharray="3 3"/>
-        </g>
-
-        <text x="470" y="34" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">2. Retenção e Espera</text>
-        <text x="470" y="54" fill="#68757f" font-size="12" font-family="system-ui">(Hold and Wait)</text>
-        <text x="470" y="72" fill="#68757f" font-size="12" font-family="system-ui">processo segura recurso</text>
-        <text x="470" y="90" fill="#68757f" font-size="12" font-family="system-ui">e espera por outros</text>
-        <g transform="translate(700,16)">
-          <rect x="20" y="14" width="34" height="26" fill="#f7f8f9" stroke="#68757f" stroke-width="1.6"/>
-          <path d="M37,40 L37,66" stroke="#68757f" stroke-width="1.6"/>
-          <path d="M20,66 L54,66" stroke="#68757f" stroke-width="1.6"/>
-          <rect x="58" y="0" width="34" height="26" fill="#f7f8f9" stroke="#b3bcc4" stroke-width="1.6" stroke-dasharray="3 3"/>
-        </g>
-
-        <text x="20" y="204" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">3. Inexistência de Preempção</text>
-        <text x="20" y="224" fill="#68757f" font-size="12" font-family="system-ui">recurso só é liberado</text>
-        <text x="20" y="242" fill="#68757f" font-size="12" font-family="system-ui">voluntariamente pelo processo</text>
-        <g transform="translate(250,192)">
-          <path d="M40,4 L74,20 L74,52 L40,68 L6,52 L6,20 Z" fill="#f7f8f9" stroke="#68757f" stroke-width="1.6"/>
-          <rect x="26" y="26" width="28" height="22" fill="#e9edf0" stroke="#8d99a3" stroke-width="1.4"/>
-          <path d="M40,68 L40,96" stroke="#68757f" stroke-width="1.6"/>
-          <path d="M40,96 L28,112" stroke="#68757f" stroke-width="1.6"/>
-          <path d="M40,96 L52,112" stroke="#68757f" stroke-width="1.6"/>
-        </g>
-
-        <text x="470" y="204" fill="#0b0f13" font-size="14" font-weight="700" font-family="system-ui">4. Espera Circular</text>
-        <text x="470" y="224" fill="#68757f" font-size="12" font-family="system-ui">cadeia fechada: P0 espera P1,</text>
-        <text x="470" y="242" fill="#68757f" font-size="12" font-family="system-ui">P1 espera P2, ... Pn espera P0</text>
-        <g transform="translate(700,196)">
-          <circle cx="34" cy="26" r="22" fill="#f7f8f9" stroke="#68757f" stroke-width="1.5"/>
-          <text x="34" y="31" text-anchor="middle" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">P0</text>
-          <circle cx="88" cy="26" r="22" fill="#f7f8f9" stroke="#68757f" stroke-width="1.5"/>
-          <text x="88" y="31" text-anchor="middle" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">P1</text>
-          <circle cx="61" cy="82" r="22" fill="#f7f8f9" stroke="#68757f" stroke-width="1.5"/>
-          <text x="61" y="87" text-anchor="middle" fill="#0b0f13" font-size="12" font-weight="700" font-family="system-ui">Pn</text>
-          <g fill="none" stroke="#33404b" stroke-width="1.5">
-            <path d="M54,34 L70,64" marker-end="url(#ar2)"/>
-            <path d="M82,48 L68,62" marker-end="url(#ar2)"/>
-            <path d="M40,46 L28,62" marker-end="url(#ar2)"/>
-          </g>
-        </g>
-
-        <text x="450" y="332" text-anchor="middle" fill="#68757f" font-size="11.5" font-family="system-ui">Coffman et al., 1971 — as quatro condições são necessárias e suficientes</text>
-      </svg>
-    </div>
-    <figcaption>Se <strong>uma única</strong> dessas condições for quebrada, o deadlock deixa de existir. É exatamente isso que o SO faz na estratégia de Prevenção.</figcaption>
-  </figure>
+  
 
   <h4>Grafo de Alocação de Recursos (RAG)</h4>
   <p>O RAG representa processos como <strong>círculos</strong> e recursos como <strong>quadrados</strong>.
@@ -2216,7 +1799,7 @@ remove o item;
 
   <div class="endcap">
     <h3>Você chegou ao fim — e sabe muito mais do que no dia 1.</h3>
-    <p>Do “síndico” que nega o disco ao seu jogo Java, ao jantar de cinco filósofos que trava a mesa
+    <p>Do Kernel que nega o disco ao seu jogo Java, ao jantar de cinco filósofos que trava a mesa
     inteira. Refaça os quizzes, rode os simuladores e vá para a prova com a linha do tempo, os 5 estados,
     as 4 condições de Coffman e as fórmulas todas na ponta da língua.</p>
   </div>
@@ -2437,7 +2020,7 @@ function schedule(list, alg, q){
   return {segs: mergeSegs(segs), P};
 }
 
-const TONE = ['#0b0f13','#33404b','#68757f','#8d99a3','#b3bcc4','#4a5865','#d7dde2'];
+const TONE = ['#e8edf2','#c3cdd6','#9aa7b2','#7d8b96','#5f6d78','#bcc6cf','#d7dde2'];
 
 function runSim(){
   if(!procs.length){ document.getElementById('ganttBox').innerHTML='<div style="text-align:center;color:var(--ink-300);font-size:13.5px;padding:22px 0">Adicione processos</div>'; return; }
@@ -2456,34 +2039,34 @@ function runSim(){
   const rowsOf = {};
   segs.forEach(s=>{ (rowsOf[s.id] = rowsOf[s.id]||[]).push(s); });
 
-  let g = `<text x="20" y="24" fill="#4a5865" font-size="11" font-family="system-ui">Gráfico de Gantt — linha fixa por processo · tempo em ms</text>`;
+  let g = `<text x="20" y="24" fill="#9aa7b2" font-size="11" font-family="system-ui">Gráfico de Gantt — linha fixa por processo · tempo em ms</text>`;
   ids.forEach((id,ri)=>{
     const y = topPad + ri*(rowH+gap);
-    g += `<line x1="200" y1="${y+rowH}" x2="200" y2="${y+rowH+7}" stroke="#d7dde2" stroke-width="1"/>`;
-    g += `<text x="190" y="${y+rowH/2+5}" text-anchor="end" fill="#0b0f13" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
+    g += `<line x1="200" y1="${y+rowH}" x2="200" y2="${y+rowH+7}" stroke="#46545f" stroke-width="1"/>`;
+    g += `<text x="190" y="${y+rowH/2+5}" text-anchor="end" fill="#e8edf2" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
     rowsOf[id].forEach(s=>{
       const x = 200 + s.s*scale;
       const w = Math.max(2,(s.e-s.s)*scale);
       const tone = TONE[procs.findIndex(p=>p.id===s.id) % TONE.length];
-      const light = tone==='#b3bcc4' || tone==='#d7dde2';
+      const light = tone==='#e8edf2' || tone==='#c3cdd6' || tone==='#bcc6cf' || tone==='#d7dde2';
       g += `<rect x="${x}" y="${y}" width="${w}" height="${rowH}" rx="5" fill="${tone}" stroke="${light?'#8d99a3':'none'}" stroke-width="1"/>`;
       if(w > 28) g += `<text x="${x+w/2}" y="${y+rowH/2+5}" text-anchor="middle" fill="${light?'#0b0f13':'#fff'}" font-size="13" font-weight="700" font-family="system-ui">${id}</text>`;
-      if(w > 30) g += `<text x="${x+w/2}" y="${y-5}" text-anchor="middle" fill="#68757f" font-size="10.5" font-family="ui-monospace,monospace">${s.e-s.s}ms</text>`;
-      g += `<text x="${x}" y="${y+rowH+18}" text-anchor="middle" fill="#4a5865" font-size="10" font-family="ui-monospace,monospace">${s.s}</text>`;
+      if(w > 30) g += `<text x="${x+w/2}" y="${y-5}" text-anchor="middle" fill="#9aa7b2" font-size="10.5" font-family="ui-monospace,monospace">${s.e-s.s}ms</text>`;
+      g += `<text x="${x}" y="${y+rowH+18}" text-anchor="middle" fill="#9aa7b2" font-size="10" font-family="ui-monospace,monospace">${s.s}</text>`;
     });
     const lastSeg = rowsOf[id][rowsOf[id].length-1];
-    g += `<text x="${200+lastSeg.e*scale}" y="${y+rowH+18}" text-anchor="middle" fill="#4a5865" font-size="10" font-family="ui-monospace,monospace">${lastSeg.e}</text>`;
+    g += `<text x="${200+lastSeg.e*scale}" y="${y+rowH+18}" text-anchor="middle" fill="#9aa7b2" font-size="10" font-family="ui-monospace,monospace">${lastSeg.e}</text>`;
   });
 
   const axisY = topPad + ids.length*(rowH+gap) + 12;
-  g += `<line x1="200" y1="${axisY}" x2="200" stroke="#33404b" stroke-width="1.4"/>`;
+  g += `<line x1="200" y1="${axisY}" x2="200" stroke="#7d8b96" stroke-width="1.4"/>`;
   for(let t2=0; t2<=total; t2++){
     const x = 200 + t2*scale;
-    g += `<line x1="${x}" y1="${axisY-5}" x2="${x}" y2="${axisY}" stroke="#33404b" stroke-width="1.4"/>`;
+    g += `<line x1="${x}" y1="${axisY-5}" x2="${x}" y2="${axisY}" stroke="#7d8b96" stroke-width="1.4"/>`;
     if(total <= 40 || t2 % 5 === 0 || t2 === total)
-      g += `<text x="${x}" y="${axisY+15}" text-anchor="middle" fill="#68757f" font-size="10.5" font-family="ui-monospace,monospace">${t2}</text>`;
+      g += `<text x="${x}" y="${axisY+15}" text-anchor="middle" fill="#9aa7b2" font-size="10.5" font-family="ui-monospace,monospace">${t2}</text>`;
   }
-  g += `<text x="190" y="${axisY+15}" text-anchor="end" fill="#4a5865" font-size="11" font-family="system-ui">t →</text>`;
+  g += `<text x="190" y="${axisY+15}" text-anchor="end" fill="#9aa7b2" font-size="11" font-family="system-ui">t →</text>`;
 
   document.getElementById('ganttBox').innerHTML =
     `<svg viewBox="0 0 ${W} ${H}" style="min-width:640px">${g}</svg>`;
@@ -2663,27 +2246,27 @@ function philoRender(msg){
   const bowl = [[440,18],[612,90],[524,210],[356,210],[268,90]];
   let g = `<svg viewBox="0 0 880 320" style="max-width:640px;margin:0 auto">`;
   g += `<circle cx="440" cy="150" r="34" fill="#e9edf0" stroke="#b3bcc4" stroke-dasharray="4 3"/>
-        <text x="440" y="147" text-anchor="middle" fill="#4a5865" font-size="11" font-family="system-ui">mesa</text>
-        <text x="440" y="160" text-anchor="middle" fill="#4a5865" font-size="10" font-family="system-ui">(ninguém come)</text>`;
+        <text x="440" y="147" text-anchor="middle" fill="#9aa7b2" font-size="11" font-family="system-ui">mesa</text>
+        <text x="440" y="160" text-anchor="middle" fill="#9aa7b2" font-size="10" font-family="system-ui">(ninguém come)</text>`;
   for(let i=0;i<5;i++){
     const [x,y] = pos[i];
     const has = pState[i];
-    g += `<circle cx="${x}" cy="${y}" r="24" fill="${has?'#0b0f13':'#ffffff'}" stroke="${has?'#0b0f13':'#b3bcc4'}" stroke-width="2"/>
-          <text x="${x}" y="${y+5}" text-anchor="middle" fill="${has?'#fff':'#33404b'}" font-size="13" font-weight="700" font-family="system-ui">P${i+1}</text>`;
+    g += `<circle cx="${x}" cy="${y}" r="24" fill="${has?'#e8edf2':'#333f4a'}" stroke="${has?'#e8edf2':'#7d8b96'}" stroke-width="2"/>
+          <text x="${x}" y="${y+5}" text-anchor="middle" fill="${has?'#0b0f14':'#e8edf2'}" font-size="13" font-weight="700" font-family="system-ui">P${i+1}</text>`;
     if(has){
       const [bx,by] = bowl[i];
       g += `<text x="${bx}" y="${by}" text-anchor="middle" font-size="15" font-family="system-ui">🍜</text>
-            <text x="${bx}" y="${by-13}" text-anchor="middle" fill="#4a5865" font-size="9.5" font-family="system-ui">prato</text>`;
+            <text x="${bx}" y="${by-13}" text-anchor="middle" fill="#9aa7b2" font-size="9.5" font-family="system-ui">prato</text>`;
     }
   }
   if(pState.every(s=>s===1)){
-    g += `<g stroke="#33404b" stroke-width="3" stroke-linecap="round">
+    g += `<g stroke="#7d8b96" stroke-width="3" stroke-linecap="round">
           <path d="M422,68 L398,54"/><path d="M590,140 L556,116"/>
           <path d="M518,226 L504,204"/><path d="M362,226 L376,204"/>
           <path d="M290,140 L324,116"/></g>
-          <text x="440" y="306" text-anchor="middle" fill="#0b0f13" font-size="12.5" font-weight="700" font-family="system-ui">Cada um pegou 1 hashi e espera o da direita — que já foi pego por outro</text>`;
+          <text x="440" y="306" text-anchor="middle" fill="#e8edf2" font-size="12.5" font-weight="700" font-family="system-ui">Cada um pegou 1 hashi e espera o da direita — que já foi pego por outro</text>`;
   }else{
-    g += `<text x="440" y="306" text-anchor="middle" fill="#4a5865" font-size="12" font-family="system-ui">estado inicial — ninguém ainda pegou o hashi</text>`;
+    g += `<text x="440" y="306" text-anchor="middle" fill="#9aa7b2" font-size="12" font-family="system-ui">estado inicial — ninguém ainda pegou o hashi</text>`;
   }
   g += `</svg>`;
   document.getElementById('philoBox').innerHTML = g +
@@ -2693,7 +2276,7 @@ philoReset();
 
 /* ══════════════════ QUIZZES POR MÓDULO ══════════════════ */
 const MODS = [
-  {id:'m0', icon:'🎓', title:'Quiz do Módulo 0', sub:'Fundamentos · Aula 01 — o SO como síndico', qs:[
+  {id:'m0', icon:'🎓', title:'Quiz do Módulo 0', sub:'Fundamentos · Aula 01 — o que é o SO', qs:[
     {q:'Um sistema sem Sistema Operacional é possível. O que acontece com o programador?',
      o:['Ele escreve código normalmente, sem diferenças','Ele teria que programar o comportamento elétrico de cada pino da placa-mãe','Ele usa apenas bibliotecas de terceiros','O compilador gera as instruções de baixo nível automaticamente'],
      a:1, e:'Sem SO, cada programador teria de ser engenheiro de hardware. É o caos completo — e o motivo de o SO existir.'},
@@ -2733,12 +2316,12 @@ const MODS = [
      o:['Monolítico com microkernel','A velocidade dos monolíticos com o isolamento dos microkernels','Exclusivamente software com o hardware','Modo usuário e modo kernel independentes'],
      a:1, e:'macOS = microkernel Mach + componentes BSD no mesmo espaço de kernel. Windows NT = microkernel com serviços em modo kernel.'}
   ]},
-  {id:'m2', icon:'🍰', title:'Quiz do Módulo 2', sub:'Processos · Aula 03 — a vida secreta dos programas', qs:[
+  {id:'m2', icon:'🍰', title:'Quiz do Módulo 2', sub:'Processos · Aula 03 — programa em execução', qs:[
     {q:'O PCB (Bloco de Controle de Processo) NÃO guarda:',
      o:['O PID do processo','O contador de programa (PC)','A duração total do processo em segundos de relógio','Os limites de memória (base e limite)'],
      a:2, e:'O PCB guarda estado, PID, PC, registradores, limites de memória e status de I/O — mas não “tempo total”.'},
-    {q:'Na analogia do bolo, quando o cozinheiro se machuca e atende o filho, ao voltar ele…',
-     o:['Recomeça a receita do zero','Retoma exatamente do ponto em que parou','Perde o estado e espera o SO decidir','Abre uma nova receita para o bolo'],
+    {q:'Na troca de contexto, quando um evento urgente interrompe o processo, ao voltar ele…',
+     o:['Recomeça a execução do zero','Retoma exatamente do ponto em que parou','Perde o estado e espera o SO decidir','Abre uma nova execução para o processo'],
      a:1, e:'É o conceito de troca de contexto: salvar o estado, atender a urgência, restaurar exatamente de onde parou.'},
     {q:'A diferença entre um processo em Espera e um Pronto é:',
      o:['Espera está esperando a CPU; Pronto está esperando um evento externo','Espera espera algo que depende do SO (a CPU); Pronto espera um evento externo','Não há diferença — são sinônimos','Pronto já terminou; Espera está executando'],
@@ -2753,7 +2336,7 @@ const MODS = [
      o:['admitted','scheduler dispatch','I/O ou espera por evento','exit'],
      a:2, e:'running →--[I/O ou espera por evento]--> waiting. Depois, quando o evento completa, volta a ready.'}
   ]},
-  {id:'m3', icon:'⏱️', title:'Quiz do Módulo 3', sub:'Escalonamento de CPU · Aula 04 — quem é o próximo da fila', qs:[
+  {id:'m3', icon:'⏱️', title:'Quiz do Módulo 3', sub:'Escalonamento de CPU · Aula 04 — ordem de execução', qs:[
     {q:'Em FCFS, quando um processo longo de CPU (CPU-bound) ocupa a CPU, os processos curtos (I/O-bound)…',
      o:['São executados na CPU ao mesmo tempo','Ficam bloqueados esperando — Efeito Comboio','São descartados pelo sistema','Trocam de prioridade automaticamente'],
      a:1, e:'É o Efeito Comboio: baixa utilização de E/S, latência alta e dependência da ordem de chegada.'},
@@ -2773,7 +2356,7 @@ const MODS = [
      o:['Picos longos e raros','Picos curtos e frequentes','Sempre esperar E/S','Não usar a CPU'],
      a:0, e:'CPU-bound = picos longos e raros (IA, renderização). I/O-bound = picos curtos e frequentes (editores, navegadores, IDEs).'}
   ]},
-  {id:'m4', icon:'🧵', title:'Quiz do Módulo 4', sub:'Threads e concorrência · Aula 05 — a arte de dividir tarefas', qs:[
+  {id:'m4', icon:'🧵', title:'Quiz do Módulo 4', sub:'Threads e concorrência · Aula 05 — execução concorrente', qs:[
     {q:'Concorrência e paralelismo. Qual afirmação é verdadeira?',
      o:['São sinônimos','Paralelismo exige múltiplos núcleos; concorrência é uma questão de estrutura','Concorrência exige sempre multicore','Paralelismo pode existir em CPU de núcleo único'],
      a:1, e:'Concorrência = estrutura (ilusão de simultaneidade). Paralelismo = execução física real, exige multicore.'},
@@ -2790,7 +2373,7 @@ const MODS = [
      o:['Várias threads de usuário vão para 1 de kernel','Cada thread de usuário ganha uma de kernel (Windows e Linux)','M threads de usuário vão para N de kernel','Não há threads de kernel'],
      a:1, e:'Um-para-um é usado por Windows e Linux; oferece suporte nativo a multicore e troca correta quando uma thread bloqueia.'}
   ]},
-  {id:'m5', icon:'🔒', title:'Quiz do Módulo 5', sub:'Sincronização e deadlock · Aula 06 — o caos da concorrência', qs:[
+  {id:'m5', icon:'🔒', title:'Quiz do Módulo 5', sub:'Sincronização e deadlock · Aula 06 — controle de acesso', qs:[
     {q:'Qual condição NÃO é necessária para a existência de um deadlock, segundo Coffman?',
      o:['Exclusão mútua','Retenção e espera','Preempção forçada do recurso','Espera circular'],
      a:2, e:'A 3ª condição é justamente a INEXISTÊNCIA de preempção. As 4 necessárias: exclusão mútua, hold-and-wait, não-preempção e espera circular.'},

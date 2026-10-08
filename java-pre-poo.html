@@ -3,18 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Java Pré-POO · Guia Lúdico de Estudos</title>
+<title>Java — Pré-POO e POO · Guia de Estudos</title>
 <style>
 /* ============================================================
-   PALETA MONOCROMÁTICA — matiz única (~210°), só varia luminosidade
+   PALETA ESCURA — matiz única (~210°), fundo escuro
+   Regra: --ink-900 = texto mais forte (claro), --paper = fundo
    ============================================================ */
 :root{
-  --ink-900:#0b0f13; --ink-800:#141b22; --ink-700:#212b34; --ink-600:#33404b;
-  --ink-500:#4a5865; --ink-400:#68757f; --ink-300:#8d99a3; --ink-200:#b3bcc4;
-  --ink-100:#d7dde2; --ink-50:#e9edf0;
-  --paper:#f7f8f9; --white:#ffffff;
-  --shadow:0 1px 2px rgba(11,15,19,.05),0 8px 24px -12px rgba(11,15,19,.18);
-  --shadow-lg:0 2px 4px rgba(11,15,19,.06),0 24px 48px -20px rgba(11,15,19,.28);
+  --ink-900:#eef2f5; --ink-800:#d7dde2; --ink-700:#bcc6cf;
+  --ink-600:#9aa7b2; --ink-500:#7d8b96; --ink-400:#5f6d78;
+  --ink-300:#46545f; --ink-200:#333f4a; --ink-100:#242f39;
+  --ink-50:#161e27;
+  --paper:#0b0f14; --white:#121922;
+  --shadow:0 1px 2px rgba(0,0,0,.28),0 8px 24px -12px rgba(0,0,0,.5);
+  --shadow-lg:0 2px 4px rgba(0,0,0,.34),0 24px 48px -20px rgba(0,0,0,.6);
   --r-sm:8px; --r-md:14px; --r-lg:22px;
   --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
   --serif:"Georgia","Iowan Old Style","Times New Roman",serif;
@@ -25,7 +27,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:132px}
 body{font-family:var(--sans);background:var(--paper);color:var(--ink-700);
   line-height:1.72;-webkit-font-smoothing:antialiased;font-size:16.5px}
-::selection{background:var(--ink-700);color:#fff}
+::selection{background:#3a4754;color:#eef2f5}
 a{color:var(--ink-800)}
 svg{max-width:100%;height:auto;display:block}
 img{max-width:100%;display:block}
@@ -33,22 +35,22 @@ img{max-width:100%;display:block}
   background:linear-gradient(90deg,var(--ink-700),var(--ink-900));transition:width .1s linear}
 
 /* ---------- Topo ---------- */
-.topbar{position:sticky;top:0;z-index:150;background:rgba(247,248,249,.86);
+.topbar{position:sticky;top:0;z-index:150;background:rgba(11,15,20,.88);
   backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--ink-100)}
 .topbar-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:56px;display:flex;
   align-items:center;gap:18px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.02em;
   color:var(--ink-900);font-size:15.5px}
-.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--ink-900);
-  color:#fff;display:grid;place-items:center;flex:none}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:#eef2f5;
+  color:#0b0f14;display:grid;place-items:center;flex:none}
 .brand-mark svg{width:18px;height:18px}
 .tb-spacer{margin-left:auto}
 .btn{font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;
   border:1px solid var(--ink-200);background:var(--white);color:var(--ink-700);
   padding:7px 14px;border-radius:8px;transition:.16s}
-.btn:hover{border-color:var(--ink-500);background:var(--ink-50)}
-.btn-solid{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
-.btn-solid:hover{background:var(--ink-700);border-color:var(--ink-700)}
+.btn:hover{border-color:var(--ink-400);background:var(--ink-50)}
+.btn-solid{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
+.btn-solid:hover{background:#c9d3db;border-color:#c9d3db}
 
 /* ---------- Cabeçalho compacto ---------- */
 .pagehead{max-width:var(--maxw);margin:0 auto;padding:38px 28px 34px;
@@ -63,7 +65,7 @@ img{max-width:100%;display:block}
 .pagehead .ph-sub b{color:var(--ink-900)}
 
 /* ---------- Abas ---------- */
-.tabbar{position:sticky;top:57px;z-index:130;background:rgba(247,248,249,.95);
+.tabbar{position:sticky;top:57px;z-index:130;background:rgba(11,15,20,.94);
   backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--ink-100)}
 .tabbar-in{max-width:var(--maxw);margin:0 auto;padding:0 18px;display:flex;gap:2px;
   overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
@@ -73,18 +75,18 @@ img{max-width:100%;display:block}
   border-bottom:2.5px solid transparent;cursor:pointer;font-family:inherit;
   white-space:nowrap;transition:color .16s,border-color .16s}
 .tab:hover{color:var(--ink-900)}
-.tab:focus-visible{outline:2px solid var(--ink-500);outline-offset:-3px;border-radius:6px 6px 0 0}
+.tab:focus-visible{outline:2px solid var(--ink-400);outline-offset:-3px;border-radius:6px 6px 0 0}
 .tab[aria-selected="true"]{color:var(--ink-900);border-bottom-color:var(--ink-900)}
 .tab .tn{display:inline-grid;place-items:center;width:21px;height:21px;border-radius:6px;
   background:var(--ink-100);font-size:10.5px;font-weight:800;color:var(--ink-600);
   font-family:var(--mono);flex:none;transition:.16s}
-.tab[aria-selected="true"] .tn{background:var(--ink-900);color:#fff}
+.tab[aria-selected="true"] .tn{background:#eef2f5;color:#0b0f14}
 .tab .ticon{width:15px;height:15px;flex:none;opacity:.55}
 .tab[aria-selected="true"] .ticon{opacity:1}
 .tab .bdg{width:16px;height:16px;padding:0 4px;border-radius:99px;background:var(--ink-50);
   border:1px solid var(--ink-100);font-size:9.5px;font-weight:800;display:grid;place-items:center;
   color:var(--ink-400);font-family:var(--mono);flex:none;transition:.16s}
-.tab .bdg.ok{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+.tab .bdg.ok{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
 
 /* ---------- Panes ---------- */
 .pane{display:none}
@@ -99,7 +101,7 @@ main{padding:0 0 110px;min-width:0}
 .hero{background:var(--white);border-bottom:1px solid var(--ink-100);
   padding:54px 28px 46px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 55% at 78% 8%,var(--ink-50),transparent 70%);pointer-events:none}
+  background:radial-gradient(ellipse 70% 55% at 78% 8%,rgba(140,160,180,.08),transparent 70%);pointer-events:none}
 .hero-in{max-width:var(--maxw);margin:0 auto;position:relative;
   display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:60px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;
@@ -130,7 +132,7 @@ main{padding:0 0 110px;min-width:0}
   color:var(--ink-900);font-weight:700;margin:0 0 26px;padding-bottom:22px;
   border-bottom:1px solid var(--ink-100);flex-wrap:wrap}
 .mod-num{display:inline-grid;place-items:center;min-width:52px;height:52px;flex:none;
-  padding:0 12px;border-radius:14px;background:var(--ink-900);color:#fff;
+  padding:0 12px;border-radius:14px;background:#eef2f5;color:#0b0f14;
   font-family:var(--mono);font-size:16px;font-weight:800;letter-spacing:-.02em}
 .mod-icon{width:30px;height:30px;flex:none;color:var(--ink-500)}
 .mod-intro{font-size:16.5px;color:var(--ink-600);margin:0 0 8px;
@@ -153,31 +155,31 @@ main{padding:0 0 110px;min-width:0}
 .topic ul,.topic ol{margin:0 0 16px;padding-left:0;list-style:none;max-width:76ch}
 .topic ul>li{margin-bottom:8px;padding-left:24px;position:relative}
 .topic ul>li::before{content:"";position:absolute;left:7px;top:.66em;width:6px;height:6px;
-  border-radius:50%;background:var(--ink-300)}
+  border-radius:50%;background:var(--ink-400)}
 .topic ol{counter-reset:li}
 .topic ol>li{counter-increment:li;margin-bottom:8px;padding-left:28px;position:relative}
 .topic ol>li::before{content:counter(li);position:absolute;left:0;top:.15em;width:19px;height:19px;
-  border-radius:50%;background:var(--ink-900);color:#fff;font-size:11px;font-weight:700;
+  border-radius:50%;background:#eef2f5;color:#0b0f14;font-size:11px;font-weight:700;
   display:grid;place-items:center;font-family:var(--mono)}
 .topic ul ul{margin-top:8px}
 b,strong{color:var(--ink-900);font-weight:650}
-.final b,.final strong{color:#fff}
+.final b,.final strong{color:#eef2f5}
 pre.code b,pre.code strong{color:inherit}
 
 /* ---------- Código ---------- */
-pre.code{position:relative;background:var(--ink-900);color:var(--ink-100);
+pre.code{position:relative;background:#0a0e13;color:#d7dde2;
   padding:22px 22px;border-radius:var(--r-md);overflow-x:auto;font-size:13.5px;
-  line-height:1.68;margin:0 0 18px;border:1px solid var(--ink-700);
+  line-height:1.68;margin:0 0 18px;border:1px solid #2a3542;
   font-family:var(--mono);tab-size:4;box-shadow:var(--shadow)}
 pre.code .lbl{position:absolute;top:9px;right:74px;font-family:var(--sans);
   font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-400)}
+  color:#5f6d78}
 pre.code .copybtn{position:absolute;top:6px;right:8px;font-family:var(--sans);
-  font-size:11px;font-weight:600;color:var(--ink-400);background:transparent;
-  border:1px solid var(--ink-600);border-radius:6px;padding:3px 9px;cursor:pointer;
+  font-size:11px;font-weight:600;color:#7d8b96;background:transparent;
+  border:1px solid #333f4a;border-radius:6px;padding:3px 9px;cursor:pointer;
   transition:.16s}
-pre.code .copybtn:hover{color:#fff;border-color:var(--ink-400);background:var(--ink-700)}
-pre.code .copybtn.ok{color:#fff;background:var(--ink-600);border-color:var(--ink-500)}
+pre.code .copybtn:hover{color:#0b0f14;border-color:#c9d3db;background:#c9d3db}
+pre.code .copybtn.ok{color:#0b0f14;background:#9aa7b2;border-color:#9aa7b2}
 pre.code .k{color:#d7dde2;font-weight:600}
 pre.code .s{color:#b3bcc4;font-style:italic}
 pre.code .c{color:#68757f;font-style:italic}
@@ -202,13 +204,6 @@ pre.code code{font-family:inherit}
 .callout b{color:var(--ink-900)}
 .callout>div{flex:1;min-width:0}
 
-/* ---------- Diagramas ---------- */
-.viz{background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-md);
-  padding:26px;margin:0 0 18px;box-shadow:var(--shadow);overflow-x:auto;color:var(--ink-600)}
-.viz svg{min-width:520px;margin:0 auto}
-.viz figcaption{font-size:13px;color:var(--ink-400);margin-top:14px;
-  font-style:italic;text-align:center}
-
 /* ---------- Tabelas ---------- */
 table.tbl{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:14.2px;
   background:var(--white);border:1px solid var(--ink-100);border-radius:var(--r-md);
@@ -216,7 +211,7 @@ table.tbl{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:14.2px;
 table.tbl th{background:var(--ink-50);color:var(--ink-900);font-weight:700;text-align:left;
   padding:12px 15px;border-bottom:1px solid var(--ink-100);font-size:11.5px;
   letter-spacing:.05em;text-transform:uppercase}
-table.tbl td{padding:11px 15px;border-bottom:1px solid var(--ink-50);color:var(--ink-600);
+table.tbl td{padding:11px 15px;border-bottom:1px solid var(--ink-100);color:var(--ink-600);
   vertical-align:top}
 table.tbl tr:last-child td{border-bottom:none}
 table.tbl tbody tr:hover{background:var(--ink-50)}
@@ -230,8 +225,8 @@ details.quiz>summary{list-style:none;cursor:pointer;padding:18px 22px;font-weigh
   letter-spacing:-.01em;transition:.16s;background:var(--ink-50)}
 details.quiz>summary::-webkit-details-marker{display:none}
 details.quiz>summary:hover{background:var(--ink-100)}
-details.quiz[open]>summary{background:var(--ink-900);color:#fff;border-bottom:1px solid var(--ink-700)}
-details.quiz[open]>summary:hover{background:var(--ink-800)}
+details.quiz[open]>summary{background:#eef2f5;color:#0b0f14;border-bottom:1px solid var(--ink-200)}
+details.quiz[open]>summary:hover{background:#d7dde2}
 .q{font-size:15px;color:var(--ink-800);font-weight:600;margin:0;padding:16px 22px 0;
   max-width:80ch;line-height:1.55}
 details.quiz>.q:not(:first-of-type){margin-top:18px}
@@ -257,17 +252,17 @@ details.quiz>.ans:last-child{padding-bottom:22px}
 .modnav button.next{text-align:right}
 
 /* ---------- Fim / rodapé ---------- */
-.final{max-width:var(--maxw);margin:70px auto 0;padding:40px 34px;background:var(--ink-900);
-  border-radius:var(--r-lg);color:var(--ink-200);text-align:center}
-.final svg{color:#fff;margin:0 auto 14px}
-.final h2{font-family:var(--serif);font-size:27px;color:#fff;margin:0 0 12px}
-.final p{max-width:64ch;margin:0 auto;color:var(--ink-300);font-size:15px;line-height:1.66}
+.final{max-width:var(--maxw);margin:70px auto 0;padding:40px 34px;background:#0d141c;
+  border:1px solid #2a3542;border-radius:var(--r-lg);color:#9aa7b2;text-align:center}
+.final svg{color:#eef2f5;margin:0 auto 14px}
+.final h2{font-family:var(--serif);font-size:27px;color:#eef2f5;margin:0 0 12px}
+.final p{max-width:64ch;margin:0 auto;color:#7d8b96;font-size:15px;line-height:1.66}
 .final .pn{display:inline-block;margin-top:22px;text-decoration:none;
-  border:1px solid var(--ink-600);border-radius:10px;padding:11px 22px;color:#fff;
+  border:1px solid #46545f;border-radius:10px;padding:11px 22px;color:#eef2f5;
   font-size:14px;font-weight:650;transition:.16s}
-.final .pn:hover{background:var(--ink-700);border-color:var(--ink-500)}
+.final .pn:hover{background:#161e27;border-color:#7d8b96}
 .final .pn small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink-300);margin-bottom:3px}
+  text-transform:uppercase;color:#7d8b96;margin-bottom:3px}
 .pagefoot{max-width:var(--maxw);margin:52px auto 0;padding:26px 28px;border-top:1px solid var(--ink-100);
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   font-size:12.5px;color:var(--ink-400)}
@@ -277,7 +272,7 @@ details.quiz>.ans:last-child{padding-bottom:22px}
   color:var(--ink-700);font-size:18px;cursor:pointer;box-shadow:var(--shadow-lg);
   opacity:0;pointer-events:none;transition:.2s}
 #toTop.show{opacity:1;pointer-events:auto}
-#toTop:hover{background:var(--ink-900);color:#fff;border-color:var(--ink-900)}
+#toTop:hover{background:#eef2f5;color:#0b0f14;border-color:#eef2f5}
 
 @media(max-width:1180px){
   .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -296,19 +291,30 @@ details.quiz>.ans:last-child{padding-bottom:22px}
   .mod-num{min-width:44px;height:44px;font-size:14px}
   .mod-icon{width:24px;height:24px}
   .topic>h3{font-size:18.5px;margin:34px 0 12px}
-  .viz{padding:18px}
-  .viz svg{min-width:440px}
   .modnav button{min-width:100%}
   .final{padding:32px 22px}
   .pagefoot{flex-direction:column;gap:6px}
 }
 @media print{
   .topbar,.tabbar,#progress,#toTop,.modnav,.btn{display:none!important}
-  body{background:#fff;font-size:11pt}
+  body{background:#fff;color:#212b34;font-size:11pt}
   .pane{display:block!important}
   details.quiz{break-inside:avoid}
   details.quiz>.ans{display:block!important}
+  .pagehead,.hero{background:#fff;border-color:#d7dde2}
+  h1,h2,h3,h4,b,strong,th,.brand,.mod-head,.topic>h3{color:#0b0f13!important}
+  .mod-intro,.callout,details.quiz,table.tbl,.note,.def,.card{background:#fff;color:#33404b;border-color:#d7dde2;box-shadow:none}
+  pre.code{background:#f4f6f8;color:#0b0f13;border-color:#d7dde2}
+  pre.code .k,pre.code .s{color:#0b0f13}
+  pre.code .c,pre.code .n{color:#4a5865}
+  .kbd,.chip,.tnum,.pagehead .ph-kick,.eyebrow,.legend span{background:#f4f6f8;color:#212b34;border-color:#d7dde2}
+  .final{background:#fff;border:1px solid #d7dde2;color:#33404b}
+  .final h2,.final .pn{color:#0b0f13!important}
+  .final p{color:#4a5865!important}
+  .tab .tn,.mod-num,.topic ol>li::before,details.quiz[open]>summary{background:#212b34;color:#fff!important}
+  a{color:#141b22}
 }
+
 </style>
 </head>
 <body>
@@ -333,6 +339,8 @@ details.quiz>.ans:last-child{padding-bottom:22px}
 <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4.5h12l-2 4 2 4H5"/></symbol>
 <symbol id="i-quiz" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.3c.2-1 1-1.6 2.1-1.6 1.2 0 2.1.7 2.1 1.6 0 1.3-1.4 1.5-2.1 2.4-.4.5-.6.9-.6 1.7M12 16.7v.4"/></symbol>
 <symbol id="i-mug" viewBox="0 0 24 24"><path d="M4 9h11v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M15 10h1.5a2.5 2.5 0 0 1 0 5H15"/><path d="M7.5 3.5c0 1-1 1.2-1 2.2M11.5 3.5c0 1-1 1.2-1 2.2"/></symbol>
+<symbol id="i-poo" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17"/></symbol>
+<symbol id="i-poo" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17"/></symbol>
 </defs></svg>
 <div class="topbar">
   <div class="topbar-in">
@@ -342,9 +350,9 @@ details.quiz>.ans:last-child{padding-bottom:22px}
 </div>
 
 <div class="pagehead">
-  <span class="ph-kick">prova de Java · antes da POO</span>
-  <h1>Tudo que você precisa <em>antes da POO</em></h1>
-  <p class="ph-sub">De <b>javac</b> a <b>ArrayList</b> — laços, arrays, Strings e exceções em linguagem simples, com exemplos de código comentados e desenhos. Escolha um módulo nas abas e pule direto para o que precisa.</p>
+  <span class="ph-kick">prova de Java · pré-POO + POO</span>
+  <h1>Do pré-POO à <em>POO completa</em></h1>
+  <p class="ph-sub">De <b>javac</b> a <b>record</b> — laços, arrays, Strings, exceções e o modelo completo de <b>POO</b>, em linguagem direta e com exemplos de código literais. Escolha um módulo nas abas e pule direto para o que precisa.</p>
 </div>
 
 <div class="tabbar" role="tablist" aria-label="Módulos do curso">
@@ -356,7 +364,7 @@ details.quiz>.ans:last-child{padding-bottom:22px}
 
 <section class="module pane" id="m01" data-num="01" data-title="Ambiente e estrutura do programa" data-icon="i-brace" data-blurb="Como um programa Java nasce: arquivo, compilador, bytecode e a JVM.">
 <h2 class="mod-head"><span class="mod-num">01</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-brace"/></svg><span style="flex:1">Ambiente e estrutura do programa</span></span></h2>
-<p class="mod-intro">Imagine que Java é uma peça de teatro: você escreve o roteiro (<b>.java</b>), o diretor <b>javac</b> traduz para a linguagem do palco (<b>bytecode</b>), e a JVM é o teatro que monta a peça em qualquer cidade do mundo. Neste módulo você conhece cada um desses personagens.</p>
+<p class="mod-intro">Um programa Java nasce em um arquivo <b>.java</b>, é compilado por <b>javac</b> para <b>bytecode</b> (<b>.class</b>) e roda em qualquer máquina que tenha uma <b>JVM</b>. Neste módulo: arquivo, compilador, bytecode e JVM — com o código de exemplo completo.</p>
 <div class="topics">
 <div class="topic" id="m01-01"><h3><span class="tnum">1.1</span>Estrutura de um programa Java</h3>
 <p>Todo programa Java mora dentro de uma <b>classe</b> — pense nela como a "casa" onde o código vive. E toda casa precisa de uma porta de entrada: o método <b>main</b>. Sem ele, a JVM não sabe por onde começar.</p>
@@ -369,35 +377,13 @@ details.quiz>.ans:last-child{padding-bottom:22px}
 </div>
 <div class="topic" id="m01-02"><h3><span class="tnum">1.2</span>Compilação e execução (javac, .class, JVM, bytecode)</h3>
 <p>Java não fala direto com o computador. Ele faz uma <b>parada intermediária</b>:</p>
-<div class="viz"><svg viewBox="0 0 760 130" font-family="system-ui" font-size="13">
-<defs><marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0L7 3 0 6z" fill="currentColor"/></marker></defs>
-<g fill="none" stroke="currentColor">
-<rect x="8" y="35" width="130" height="60" rx="12"/>
-<rect x="210" y="35" width="130" height="60" rx="12"/>
-<rect x="412" y="35" width="130" height="60" rx="12"/>
-<rect x="614" y="35" width="138" height="60" rx="12"/>
-<line x1="138" y1="65" x2="208" y2="65" marker-end="url(#arw)"/>
-<line x1="340" y1="65" x2="410" y2="65" marker-end="url(#arw)"/>
-<line x1="542" y1="65" x2="612" y2="65" marker-end="url(#arw)"/>
-</g>
-<text x="73" y="60" text-anchor="middle" fill="currentColor" font-weight="700">OlaMundo.java</text>
-<text x="73" y="78" text-anchor="middle" fill="currentColor" opacity=".65" font-size="11">seu código-fonte</text>
-<text x="275" y="55" text-anchor="middle" fill="currentColor" font-weight="700">javac</text>
-<text x="275" y="72" text-anchor="middle" fill="currentColor" opacity=".65" font-size="11">compilador</text>
-<text x="275" y="88" text-anchor="middle" fill="currentColor" opacity=".65" font-size="11">traduz tudo</text>
-<text x="477" y="60" text-anchor="middle" fill="currentColor" font-weight="700">OlaMundo.class</text>
-<text x="477" y="78" text-anchor="middle" fill="currentColor" opacity=".65" font-size="11">bytecode</text>
-<text x="683" y="55" text-anchor="middle" fill="currentColor" font-weight="700">JVM</text>
-<text x="683" y="72" text-anchor="middle" fill="currentColor" opacity=".65" font-size="11">executa</text>
-<text x="683" y="88" text-anchor="middle" fill="currentColor" opacity=".65" font-size="11">o bytecode</text>
-</svg>
-<figcaption>Duas etapas: compilar (javac) e executar (java). O .class é o "idioma universal" do Java.</figcaption></div>
+
 <p><b>javac OlaMundo.java</b> gera o arquivo <span class="kbd">OlaMundo.class</span> com <b>bytecode</b> — um código intermediário que <b>qualquer</b> JVM entende (Windows, Mac, Linux…). Daí o bordão <b>"Write Once, Run Anywhere"</b>. Depois, <b>java OlaMundo</b> (sem .class!) pede para a JVM rodar o programa.</p>
 <div class="callout tip"><span class="ci">💡</span><div><b>JVM = Java Virtual Machine.</b> É um "computador dentro do computador". O bytecode é a única língua que ela fala — por isso o Java roda em qualquer lugar que tenha uma JVM instalada.</div></div>
 </div>
 <div class="topic" id="m01-03"><h3><span class="tnum">1.3</span>Pacotes e import</h3>
-<p>Um <b>pacote</b> é como uma gaveta de pastas: organiza classes e evita que nomes se choquem (existem muitas classes <b>Date</b> por aí, em pacotes diferentes). O <b>import</b> é o atalho que traz classes de outras gavetas para o seu arquivo.</p>
-<pre class="code">package br.edu.minhaapp;   // gaveta deste arquivo (linha 1, opcional)
+<p>Um <b>pacote</b> organiza classes em um namespace e evita que nomes se choquem (existem muitas classes <b>Date</b> por aí, em pacotes diferentes). O <b>import</b> é o atalho que traz classes de outros pacotes para o seu arquivo.</p>
+<pre class="code">package br.edu.minhaapp;   // pacote deste arquivo (linha 1, opcional)
 
 import java.util.Scanner;        // traz só o Scanner
 import java.util.*;              // traz TUDO de java.util
@@ -486,13 +472,13 @@ public static double area(double base, double altura) {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m02" data-num="02" data-title="Variáveis" data-icon="i-var" data-blurb="A caixinha com etiqueta: onde o programa guarda o que sabe.">
+<section class="module pane" id="m02" data-num="02" data-title="Variáveis" data-icon="i-var" data-blurb="Nome, valor e tipo: como o programa guarda o que precisa.">
 <h2 class="mod-head"><span class="mod-num">02</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-var"/></svg><span style="flex:1">Variáveis</span></span></h2>
-<p class="mod-intro">Uma variável é uma <b>caixinha com etiqueta</b>: a etiqueta é o nome, a caixa guarda um valor, e o formato da caixa é o <b>tipo</b>. Uma caixa de <span class="kbd">int</span> só aceita números inteiros — tente colocar 3.14 ali e a caixa "recusa" na hora da compilação.</p>
+<p class="mod-intro">Uma variável é um <b>nome</b> ligado a um <b>valor</b> de um <b>tipo</b> fixo. O tipo decide o que pode ser guardado: uma variável <span class="kbd">int</span> só aceita números inteiros — colocar 3.14 nela faz o <b>javac</b> recusar na hora da compilação.</p>
 <div class="topics">
 <div class="topic" id="m02-01"><h3><span class="tnum">2.1</span>Declaração de variáveis</h3>
-<p>Declarar é pedir a caixinha: <b>tipo + nome</b>. O Java exige que você diga o tipo primeiro — ele é <b>fortemente tipado</b>.</p>
-<pre class="code">int idade;            // declara (a caixa existe, mas está vazia)
+<p>Declarar é criar a variável: <b>tipo + nome</b>. O Java exige que você diga o tipo primeiro — ele é <b>fortemente tipado</b>.</p>
+<pre class="code">int idade;            // declara (a variável existe, mas está sem valor)
 double preco;
 char letra;
 boolean passou;
@@ -500,7 +486,7 @@ String nome;          // String é tipo de referência (módulo 12)</pre>
 <p>Você pode declarar várias do mesmo tipo na mesma linha, mas é má prática: <span class="kbd">int a, b, c;</span></p>
 </div>
 <div class="topic" id="m02-02"><h3><span class="tnum">2.2</span>Atribuição e reatribuição</h3>
-<p>O sinal <span class="kbd">=</span> em Java <b>não é "igual"</b> — é <b>"coloque na caixa"</b>. A leitura é da direita para a esquerda: <span class="kbd">idade = 18</span> → "idade recebe 18". E a caixa pode ser reabastecida quantas vezes quiser (se não for <b>final</b>).</p>
+<p>O sinal <span class="kbd">=</span> em Java <b>não é "igual"</b> — é <b>"atribua à variável"</b>. A leitura é da direita para a esquerda: <span class="kbd">idade = 18</span> → "idade recebe 18". E a variável pode ser reatribuída quantas vezes quiser (se não for <b>final</b>).</p>
 <pre class="code">int idade;
 idade = 18;      // primeira vez
 idade = 19;      // reatribuição: o 18 foi embora
@@ -518,30 +504,14 @@ for (int i = 0; i &lt; 5; i++) { } // i nasce já inicializada</pre>
 <p>Exceção: <b>campos</b> de classe e <b>elementos de array</b> ganham valores padrão (0, 0.0, false, null) — veja o módulo 16.</p>
 </div>
 <div class="topic" id="m02-04"><h3><span class="tnum">2.4</span>Escopo de bloco</h3>
-<p>Uma variável declarada dentro de chaves <span class="kbd">{ }</span> só vive ali dentro — é como bilhete que vale só naquela sala. Ao fechar a chave, a caixinha é reciclada.</p>
-<div class="viz"><svg viewBox="0 0 720 190" font-family="system-ui" font-size="13">
-<rect x="10" y="10" width="700" height="170" rx="14" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<text x="30" y="36" fill="currentColor" font-weight="700">main( )</text>
-<rect x="40" y="55" width="290" height="105" rx="12" fill="none" stroke="currentColor" stroke-dasharray="5 4"/>
-<text x="58" y="80" fill="currentColor">if (idade &gt;= 18) {</text>
-<text x="58" y="102" fill="currentColor">int msg = "adulto";   ← nasce aqui</text>
-<text x="58" y="124" fill="currentColor">System.out.println(msg);</text>
-<text x="58" y="146" fill="currentColor">}</text>
-<text x="58" y="168" fill="currentColor" opacity=".7">msg NÃO existe aqui fora</text>
-<rect x="380" y="55" width="310" height="105" rx="12" fill="none" stroke="currentColor" stroke-dasharray="5 4"/>
-<text x="398" y="80" fill="currentColor">for (int i = 0; i &lt; 3; i++) {</text>
-<text x="398" y="102" fill="currentColor">System.out.println(i);</text>
-<text x="398" y="124" fill="currentColor">}</text>
-<text x="398" y="146" fill="currentColor" opacity=".7">i morreu com o for</text>
-<text x="398" y="168" fill="currentColor" opacity=".7">fora do for, i não existe</text>
-</svg>
-<figcaption>Cada par de chaves cria um "quarto". Variáveis de quartos diferentes podem até ter o mesmo nome sem brigar.</figcaption></div>
+<p>Uma variável declarada dentro de chaves <span class="kbd">{ }</span> só existe ali dentro — fora delas o compilador nem a enxerga. Ao fechar a chave, a variável deixa de existir e a memória é liberada.</p>
+
 <pre class="code">{ int segredo = 1; }
 { int segredo = 2; }   // OK! são escopos diferentes
 // { int a = 1; int a = 2; }  ← ERRO no mesmo bloco</pre>
 </div>
 <div class="topic" id="m02-05"><h3><span class="tnum">2.5</span>Modificador static</h3>
-<p><b>static</b> significa "da classe, não do objeto". Uma variável static é <b>única</b> e <b>compartilhada</b> por todas as instâncias — como um quadro de avisos na parede da sala, em vez de um caderno de cada aluno.</p>
+<p><b>static</b> significa "da classe, não do objeto". Uma variável static é <b>única</b> e <b>compartilhada</b> por todas as instâncias — uma só cópia para a classe inteira, em vez de uma por objeto.</p>
 <pre class="code">public class Contador {
     static int total = 0;   // UM só valor para todos
     int id;                  // cada objeto tem o seu
@@ -556,7 +526,7 @@ System.out.println(a.id);           // 0 — cada um tem o seu</pre>
 <div class="callout tip"><span class="ci">💡</span><div>Como o <b>main é static</b>, ele só pode chamar outros membros <b>static</b> diretamente (sem criar objeto). Por isso, em exercícios simples, quase tudo é static.</div></div>
 </div>
 <div class="topic" id="m02-06"><h3><span class="tnum">2.6</span>Modificador final</h3>
-<p><b>final</b> é o cadeado da caixinha: atribuí uma vez, acabou. Tentar mudar depois é erro de compilação. Constantes costumam ser <span class="kbd">static final</span> e escritas em UPPER_SNAKE_CASE.</p>
+<p><b>final</b> significa atribuição única: atribuiu uma vez, acabou. Tentar mudar depois é erro de compilação. Constantes costumam ser <span class="kbd">static final</span> e escritas em UPPER_SNAKE_CASE.</p>
 <pre class="code">final double PI = 3.14159;
 // PI = 3.0;  ← ERRO: não pode reatribuir
 
@@ -578,12 +548,12 @@ final String nome = "Java";   // a REFERÊNCIA é fixa...
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m03" data-num="03" data-title="Tipos primitivos" data-icon="i-type" data-blurb="As oito gavetas numeradas do Java: boolean, byte, short, char, int, long, float e double.">
+<section class="module pane" id="m03" data-num="03" data-title="Tipos primitivos" data-icon="i-type" data-blurb="Os oito tipos básicos do Java: boolean, byte, short, char, int, long, float e double.">
 <h2 class="mod-head"><span class="mod-num">03</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-type"/></svg><span style="flex:1">Tipos primitivos</span></span></h2>
-<p class="mod-intro">Java tem exatamente <b>8 tipos primitivos</b> — os blocos de LEGO mais fundamentais. Cada um é uma gaveta de tamanho fixo: alguns guardam números inteiros, outros com vírgula, um guarda caracteres e um guarda só <b>true</b> ou <b>false</b>. Escolher o certo economiza memória e evita bugs.</p>
+<p class="mod-intro">Java tem exatamente <b>8 tipos primitivos</b>: 4 inteiros (<span class="kbd">byte</span>, <span class="kbd">short</span>, <span class="kbd">int</span>, <span class="kbd">long</span>), 2 com vírgula (<span class="kbd">float</span>, <span class="kbd">double</span>), 1 caractere (<span class="kbd">char</span>) e 1 lógico (<span class="kbd">boolean</span>). Cada um ocupa um tamanho fixo de memória — escolher o certo economiza espaço e evita erros de faixa.</p>
 <div class="topics">
 <div class="topic" id="m03-01"><h3><span class="tnum">3.1</span>boolean</h3>
-<p>A gaveta mais simples do mundo: só existe <b>true</b> ou <b>false</b>. É o tipo das <b>condições</b> — toda decisão de <span class="kbd">if</span> e <span class="kbd">while</span> bebe dessa torneira.</p>
+<p>O tipo lógico: só existe <b>true</b> ou <b>false</b>. É o tipo das <b>condições</b> — toda decisão de <span class="kbd">if</span> e <span class="kbd">while</span> depende dele.</p>
 <pre class="code">boolean choveu = true;
 boolean maior = idade &gt;= 18;   // o resultado da comparação é um boolean
 // boolean sim = 1;            ← ERRO: em Java, 1 não é true (como em C!)
@@ -591,7 +561,7 @@ if (choveu) { System.out.println("Leve o guarda-chuva"); }</pre>
 <div class="callout tip"><span class="ci">💡</span><div>Na especificação, boolean ocupa "1 bit de informação", mas a JVM costuma usar 1 byte na prática. Não tente fazer aritmética com boolean: <span class="kbd">true + 1</span> não compila.</div></div>
 </div>
 <div class="topic" id="m03-02"><h3><span class="tnum">3.2</span>byte</h3>
-<p>O anão da família: <b>8 bits</b> com sinal, guardando de <b>-128</b> até <b>127</b>. Útil para economizar memória em arrays gigantes (ex.: pixels, dados de rede).</p>
+<p>O menor da família: <b>8 bits</b> com sinal, guardando de <b>-128</b> até <b>127</b>. Útil para economizar memória em arrays gigantes (ex.: pixels, dados de rede).</p>
 <pre class="code">byte b = 100;        // cabe tranquilo
 // byte x = 200;     ← ERRO: estourou o limite (máximo 127)
 byte sombra = -128;  // o menor valor possível
@@ -668,27 +638,8 @@ System.out.println(Float.MIN_VALUE);    // 1.4E-45</pre>
 <div class="callout tip"><span class="ci">💡</span><div><b>EPSILON</b> é a menor diferença detectável entre 1.0 e o próximo double. Use-o para comparar doubles com tolerância: <span class="kbd">Math.abs(a-b) &lt; 1e-9</span> em vez de <span class="kbd">a == b</span>.</div></div>
 </div>
 <div class="topic" id="m03-11"><h3><span class="tnum">3.11</span>Tipos primitivos × tipos de referência</h3>
-<p>Dois mundos em Java. O <b>primitivo</b> guarda o <b>valor em si</b> (a caixa contém o número). O <b>tipo de referência</b> (classes, arrays, String) guarda um <b>endereço</b> — um bilhete que diz "o objeto está na casa X do heap".</p>
-<div class="viz"><svg viewBox="0 0 720 190" font-family="system-ui" font-size="13">
-<text x="20" y="26" fill="currentColor" font-weight="700">Primitivo: a caixa tem o valor</text>
-<rect x="20" y="40" width="150" height="56" rx="10" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<text x="95" y="64" text-anchor="middle" fill="currentColor">int idade = 25</text>
-<rect x="45" y="70" width="100" height="20" rx="5" fill="currentColor"/>
-<text x="95" y="84" text-anchor="middle" fill="var(--bg)" font-weight="700">25</text>
-<text x="240" y="26" fill="currentColor" font-weight="700">Referência: a caixa tem um bilhete</text>
-<rect x="240" y="40" width="180" height="56" rx="10" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<text x="330" y="64" text-anchor="middle" fill="currentColor">String nome = "Java"</text>
-<rect x="260" y="70" width="140" height="20" rx="5" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
-<text x="330" y="84" text-anchor="middle" fill="currentColor">endereço 0x7F3A…</text>
-<path d="M400 90 L 480 130" stroke="currentColor" marker-end="url(#arw)"/>
-<rect x="490" y="120" width="190" height="50" rx="10" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<text x="585" y="142" text-anchor="middle" fill="currentColor">HEAP</text>
-<text x="585" y="160" text-anchor="middle" fill="currentColor">"Java"</text>
-<text x="20" y="120" fill="currentColor" font-weight="700">null = bilhete em branco</text>
-<rect x="20" y="134" width="180" height="40" rx="10" fill="none" stroke="currentColor"/>
-<text x="110" y="159" text-anchor="middle" fill="currentColor">String s = null;</text>
-</svg>
-<figcaption>Primitivo: valor direto. Referência: endereço para o heap. null = referência que aponta para nada.</figcaption></div>
+<p>Dois mundos em Java. O <b>primitivo</b> guarda o <b>valor em si</b>. O <b>tipo de referência</b> (classes, arrays, String) guarda um <b>endereço</b> — o endereço do objeto no heap.</p>
+
 <ul>
 <li>Primitivos: <b>8 tipos</b>, sempre com valor (nunca null), começam com letra minúscula.</li>
 <li>Referências: <b>qualquer classe</b>, array ou String; podem ser <b>null</b>; criadas com <b>new</b> (módulo 16).</li>
@@ -709,7 +660,7 @@ System.out.println(Float.MIN_VALUE);    // 1.4E-45</pre>
 
 <section class="module pane" id="m04" data-num="04" data-title="Literais" data-icon="i-num" data-blurb="Como escrever valores direto no código: números em bases diferentes, escapes e muito mais.">
 <h2 class="mod-head"><span class="mod-num">04</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-num"/></svg><span style="flex:1">Literais</span></span></h2>
-<p class="mod-intro"><b>Literal</b> é o valor escrito cru no código — o "42" em <span class="kbd">int x = 42;</span>. Java fala várias "línguas" numéricas: decimal, octal, hexa e binário. E tem segredos como o underscore e o escape Unicode.</p>
+<p class="mod-intro"><b>Literal</b> é o valor escrito direto no código — o <b>42</b> em <span class="kbd">int x = 42;</span>. Java aceita números em 4 bases (decimal, octal <span class="kbd">0</span>, hexa <span class="kbd">0x</span>, binário <span class="kbd">0b</span>) e tem recursos como o separador <span class="kbd">_</span> e o escape Unicode <span class="kbd">\u</span>.</p>
 <div class="topics">
 <div class="topic" id="m04-01"><h3><span class="tnum">4.1</span>Literais inteiros</h3>
 <p>O jeito comum: apenas dígitos. São <b>int</b> por padrão.</p>
@@ -736,18 +687,7 @@ System.out.println(0xFF); // 255
 <pre class="code">int bin = 0b101010;       // 42
 int mask = 0b0000_1111;   // máscara com nibble baixo ligado
 System.out.println(0b1111); // 15</pre>
-<div class="viz"><svg viewBox="0 0 720 120" font-family="system-ui" font-size="13">
-<g fill="none" stroke="currentColor" stroke-width="1.4">
-<rect x="15" y="30" width="140" height="60" rx="10"/><rect x="195" y="30" width="140" height="60" rx="10"/><rect x="375" y="30" width="140" height="60" rx="10"/><rect x="555" y="30" width="150" height="60" rx="10"/>
-</g>
-<text x="85" y="56" text-anchor="middle" fill="currentColor" font-weight="700">decimal</text><text x="85" y="74" text-anchor="middle" fill="currentColor">42</text>
-<text x="265" y="56" text-anchor="middle" fill="currentColor" font-weight="700">octal</text><text x="265" y="74" text-anchor="middle" fill="currentColor">052</text>
-<text x="445" y="56" text-anchor="middle" fill="currentColor" font-weight="700">hexadecimal</text><text x="445" y="74" text-anchor="middle" fill="currentColor">0x2A</text>
-<text x="630" y="56" text-anchor="middle" fill="currentColor" font-weight="700">binário</text><text x="630" y="74" text-anchor="middle" fill="currentColor">0b101010</text>
-<path d="M155 60 H193 M335 60 H373 M515 60 H553" stroke="currentColor" marker-end="url(#arw)"/>
-<text x="360" y="112" text-anchor="middle" fill="currentColor" opacity=".7">todos representam o mesmo número: 42</text>
-</svg>
-<figcaption>O número 42 em quatro línguas. O prefixo diz ao compilador em qual base você está falando.</figcaption></div>
+
 </div>
 <div class="topic" id="m04-05"><h3><span class="tnum">4.5</span>Literais de ponto flutuante</h3>
 <p>Números com vírgula são <b>double</b> por padrão. Aceitam notação científica com <span class="kbd">e</span>/<span class="kbd">E</span>: <span class="kbd">1.5e3</span> = 1500.0 e <span class="kbd">2E-3</span> = 0.002.</p>
@@ -838,26 +778,11 @@ System.out.println("\u00C9");   // É (acento via Unicode)</pre>
 </section>
 <section class="module pane" id="m05" data-num="05" data-title="Conversão de tipos" data-icon="i-swap" data-blurb="Promoção, casting, wrappers, autoboxing e parsing — a ponte entre os tipos.">
 <h2 class="mod-head"><span class="mod-num">05</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-swap"/></svg><span style="flex:1">Conversão de tipos</span></span></h2>
-<p class="mod-intro">Java é organizado: ele converte tipos <b>automaticamente</b> quando não há risco de perder dados, e exige um <b>cast explícito</b> quando há. Além disso, cada primitivo tem um "gêmeo de classe" (wrapper) que mora no mundo dos objetos.</p>
+<p class="mod-intro">Java converte tipos <b>automaticamente</b> quando a conversão não perde dados (<b>promoção</b>) e exige <b>cast explícito</b> quando pode perder. Cada primitivo tem também um <b>wrapper</b> (<span class="kbd">Integer</span>, <span class="kbd">Double</span>…) — a classe que o representa no mundo dos objetos.</p>
 <div class="topics">
 <div class="topic" id="m05-01"><h3><span class="tnum">5.1</span>Promoção automática de tipos</h3>
-<p><b>Widening</b> (alargamento): de caixa menor para caixa maior, Java converte sozinho — nada se perde. A "escada" vai: <b>byte → short → int → long → float → double</b>. E <b>char</b> sobe para <b>int</b> também.</p>
-<div class="viz"><svg viewBox="0 0 720 150" font-family="system-ui" font-size="13">
-<defs><marker id="arw2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0L7 3 0 6z" fill="currentColor"/></marker></defs>
-<g fill="none" stroke="currentColor" stroke-width="1.5">
-<rect x="10" y="50" width="80" height="34" rx="8"/><rect x="110" y="50" width="80" height="34" rx="8"/><rect x="210" y="50" width="80" height="34" rx="8"/><rect x="310" y="50" width="80" height="34" rx="8"/><rect x="410" y="50" width="80" height="34" rx="8"/><rect x="510" y="50" width="90" height="34" rx="8"/>
-<line x1="90" y1="67" x2="110" y2="67" marker-end="url(#arw2)"/><line x1="190" y1="67" x2="210" y2="67" marker-end="url(#arw2)"/><line x1="290" y1="67" x2="310" y2="67" marker-end="url(#arw2)"/><line x1="390" y1="67" x2="410" y2="67" marker-end="url(#arw2)"/><line x1="490" y1="67" x2="510" y2="67" marker-end="url(#arw2)"/>
-</g>
-<text x="50" y="71" text-anchor="middle" fill="currentColor" font-weight="700">byte</text>
-<text x="150" y="71" text-anchor="middle" fill="currentColor" font-weight="700">short</text>
-<text x="250" y="71" text-anchor="middle" fill="currentColor" font-weight="700">int</text>
-<text x="350" y="71" text-anchor="middle" fill="currentColor" font-weight="700">long</text>
-<text x="450" y="71" text-anchor="middle" fill="currentColor" font-weight="700">float</text>
-<text x="555" y="71" text-anchor="middle" fill="currentColor" font-weight="700">double</text>
-<text x="10" y="30" fill="currentColor" font-weight="700">→ sobe sozinho (promoção)</text>
-<text x="10" y="120" fill="currentColor" font-weight="700">← desce com cast explícito (pode perder dados)</text>
-</svg>
-<figcaption>Escada de tipos: subir é automático; descer exige (tipo) e trunca o valor.</figcaption></div>
+<p><b>Widening</b> (alargamento): de tipo menor para tipo maior, Java converte sozinho — nada se perde. A ordem vai: <b>byte → short → int → long → float → double</b>. E <b>char</b> sobe para <b>int</b> também.</p>
+
 <pre class="code">byte b = 10;
 int i = b;            // OK: byte → int automático
 long L = i;           // OK
@@ -868,7 +793,7 @@ int x = c;            // OK: char → int (65)
 <div class="callout tip"><span class="ci">💡</span><div>Na conta <span class="kbd">byte + byte</span>, o resultado é <b>int</b>! Então <span class="kbd">byte z = b1 + b2;</span> dá erro — precisa de <span class="kbd">(byte)(b1 + b2)</span>. Prova adora isso.</div></div>
 </div>
 <div class="topic" id="m05-02"><h3><span class="tnum">5.2</span>Conversão estreita e casting explícito</h3>
-<p><b>Narrowing</b> (estreitamento): de caixa maior para menor. Use <span class="kbd">(tipo)</span> na frente. Java obedece, mas <b>pode truncar</b> (cortar casas decimais) ou <b>enrolar</b> (overflow).</p>
+<p><b>Narrowing</b> (estreitamento): de tipo maior para menor. Use <span class="kbd">(tipo)</span> na frente. Java obedece, mas <b>pode truncar</b> (cortar casas decimais) ou <b>enrolar</b> (overflow).</p>
 <pre class="code">double d = 9.99;
 int i = (int) d;        // 9 — trunca a parte decimal
 int grande = 300;
@@ -1000,7 +925,7 @@ String s6 = 42 + "";                    // "42"</pre>
 
 <section class="module pane" id="m06" data-num="06" data-title="Operadores" data-icon="i-op" data-blurb="Aritméticos, lógicos, bitwise, ternário e a tabela de precedência.">
 <h2 class="mod-head"><span class="mod-num">06</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-op"/></svg><span style="flex:1">Operadores</span></span></h2>
-<p class="mod-intro">Operadores são os "verbos" do Java: somam, comparam, combinam decisões e mexem bit a bit. Dominar a <b>precedência</b> e o <b>curto-circuito</b> é o que separa o programador iniciante do que acerta a prova.</p>
+<p class="mod-intro">Operadores fazem contas, comparações e decisões lógicas — inclusive bit a bit. O que separa iniciante de aprovado: <b>precedência</b> (a ordem das operações) e <b>curto-circuito</b> (<span class="kbd">&amp;&amp;</span> e <span class="kbd">||</span> param de avaliar assim que o resultado está decidido).</p>
 <div class="topics">
 <div class="topic" id="m06-01"><h3><span class="tnum">6.1</span>Operadores aritméticos</h3>
 <p>Os cinco clássicos: <span class="kbd">+</span> <span class="kbd">-</span> <span class="kbd">*</span> <span class="kbd">/</span> <span class="kbd">%</span>. Atenção à <b>divisão inteira</b>: <span class="kbd">7 / 2</span> é <b>3</b>, não 3.5!</p>
@@ -1020,7 +945,7 @@ System.out.println(10 % 2);   // 0  → par!
 System.out.println(-10 % 3);  // -1 (sinal do DIVIDENDO, não do divisor)
 System.out.println(123 % 10); // 3  → último dígito
 System.out.println(123 / 10 % 10); // 2 → penúltimo dígito</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Receitas de prova: <b>par</b> = <span class="kbd">n % 2 == 0</span>; <b>múltiplo de 5</b> = <span class="kbd">n % 5 == 0</span>; <b>último dígito</b> = <span class="kbd">n % 10</span>; <b>relógio de 24h</b> = <span class="kbd">hora % 24</span>.</div></div>
+<div class="callout tip"><span class="ci">💡</span><div>Dicas de prova: <b>par</b> = <span class="kbd">n % 2 == 0</span>; <b>múltiplo de 5</b> = <span class="kbd">n % 5 == 0</span>; <b>último dígito</b> = <span class="kbd">n % 10</span>; <b>relógio de 24h</b> = <span class="kbd">hora % 24</span>.</div></div>
 </div>
 <div class="topic" id="m06-03"><h3><span class="tnum">6.3</span>Concatenação com +</h3>
 <p>Se um dos lados do <span class="kbd">+</span> for String, ele <b>vira cola</b>: junta textos. E a avaliação vai <b>da esquerda para a direita</b> — isso gera o clássico engano de prova.</p>
@@ -1067,29 +992,7 @@ if (denominador != 0 &amp;&amp; numerador / denominador &gt; 1) { }</pre>
 </div>
 <div class="topic" id="m06-07"><h3><span class="tnum">6.7</span>Operadores bitwise</h3>
 <p>Trabalham <b>bit a bit</b> em inteiros: <span class="kbd">&amp;</span> (AND), <span class="kbd">|</span> (OR), <span class="kbd">^</span> (XOR), <span class="kbd">~</span> (NOT). Pense em cada número em binário e faça a operação coluna por coluna.</p>
-<div class="viz"><svg viewBox="0 0 720 210" font-family="ui-monospace,monospace" font-size="13">
-<g fill="none" stroke="currentColor" stroke-width="1.4">
-<rect x="15" y="25" width="200" height="160" rx="10"/><rect x="255" y="25" width="200" height="160" rx="10"/><rect x="495" y="25" width="210" height="160" rx="10"/>
-</g>
-<text x="115" y="50" text-anchor="middle" fill="currentColor" font-weight="700">5 = 00000101</text>
-<text x="115" y="75" text-anchor="middle" fill="currentColor">3 = 00000011</text>
-<line x1="30" y1="90" x2="200" y2="90" stroke="currentColor"/>
-<text x="115" y="115" text-anchor="middle" fill="currentColor">5 &amp; 3 = 00000001 = 1</text>
-<text x="115" y="140" text-anchor="middle" fill="currentColor">5 | 3 = 00000111 = 7</text>
-<text x="115" y="165" text-anchor="middle" fill="currentColor">5 ^ 3 = 00000110 = 6</text>
-<text x="355" y="50" text-anchor="middle" fill="currentColor" font-weight="700">XOR: 1 só se</text>
-<text x="355" y="72" text-anchor="middle" fill="currentColor" font-weight="700">forem DIFERENTES</text>
-<text x="355" y="105" text-anchor="middle" fill="currentColor">0 ^ 0 = 0</text>
-<text x="355" y="130" text-anchor="middle" fill="currentColor">1 ^ 0 = 1</text>
-<text x="355" y="155" text-anchor="middle" fill="currentColor">0 ^ 1 = 1</text>
-<text x="355" y="180" text-anchor="middle" fill="currentColor">1 ^ 1 = 0</text>
-<text x="600" y="50" text-anchor="middle" fill="currentColor" font-weight="700">~ inverte tudo</text>
-<text x="600" y="85" text-anchor="middle" fill="currentColor">~5 → ...11111010</text>
-<text x="600" y="110" text-anchor="middle" fill="currentColor">= -6 (complemento</text>
-<text x="600" y="132" text-anchor="middle" fill="currentColor">a 2: ~n = -(n+1))</text>
-<text x="600" y="170" text-anchor="middle" fill="currentColor">Truque: n ^ n = 0</text>
-</svg>
-<figcaption>Bitwise: a operação acontece em cada bit. XOR é "diferente = 1". ~n sempre vale -(n+1).</figcaption></div>
+
 <pre class="code">int a = 5, b = 3;
 System.out.println(a &amp; b);   // 1
 System.out.println(a | b);   // 7
@@ -1176,25 +1079,11 @@ System.out.println((5 &gt; 3) ? 10 : 20); // 10</pre>
 </section>
 <section class="module pane" id="m07" data-num="07" data-title="Métodos" data-icon="i-fn" data-blurb="Blocos de código com nome: o programa delega tarefas.">
 <h2 class="mod-head"><span class="mod-num">07</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-fn"/></svg><span style="flex:1">Métodos</span></span></h2>
-<p class="mod-intro">Um <b>método</b> é uma "receita nomeada": você escreve uma vez, dá um nome, e pede para a JVM executar quantas vezes quiser. <span class="kbd">main</span> é apenas o primeiro método chamado — o resto da lógica vive em métodos auxiliares.</p>
+<p class="mod-intro">Um <b>método</b> é um bloco de código com nome e assinatura: você escreve uma vez e chama quantas vezes quiser. <span class="kbd">main</span> é apenas o primeiro método chamado — a lógica real vive em métodos auxiliares.</p>
 <div class="topics">
 <div class="topic" id="m07-01"><h3><span class="tnum">7.1</span>Declaração de métodos</h3>
 <p>Anatomia de um método — cada peça tem nome de prova:</p>
-<div class="viz"><svg viewBox="0 0 720 180" font-family="ui-monospace,monospace" font-size="13">
-<rect x="15" y="30" width="690" height="120" rx="12" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<text x="360" y="20" text-anchor="middle" fill="currentColor" font-weight="700" font-family="system-ui">método = "receita"</text>
-<text x="40" y="60" fill="currentColor" font-weight="700">public static int soma(int a, int b) {</text>
-<text x="40" y="90" fill="currentColor">    return a + b;</text>
-<text x="40" y="120" fill="currentColor" font-weight="700">}</text>
-<g font-family="system-ui" font-size="11.5" fill="currentColor">
-<rect x="470" y="42" width="220" height="20" rx="6" fill="none" stroke="currentColor" stroke-dasharray="3 3"/>
-<text x="580" y="56" text-anchor="middle" font-weight="700">cabeçalho</text>
-<rect x="470" y="76" width="220" height="20" rx="6" fill="none" stroke="currentColor" stroke-dasharray="3 3"/>
-<text x="580" y="90" text-anchor="middle" font-weight="700">corpo { }</text>
-</g>
-<path d="M380 52 H468 M380 86 H468" stroke="currentColor" stroke-dasharray="3 3"/>
-</svg>
-<figcaption><b>modificador</b> (public) + <b>static</b> + <b>tipo de retorno</b> (int) + <b>nome</b> (soma) + <b>parâmetros</b> (int a, int b) + <b>corpo</b> { }</figcaption></div>
+
 <pre class="code">public static int soma(int a, int b) {
     return a + b;
 }
@@ -1287,21 +1176,7 @@ System.out.println(somaTodos(v));         // 6
 </div>
 <div class="topic" id="m07-09"><h3><span class="tnum">7.9</span>Recursão</h3>
 <p>Um método que <b>chama a si mesmo</b>, dividindo o problema em pedaços menores. Toda recursão precisa de: <b>caso base</b> (quando parar) e <b>chamada recursiva</b> (caminho para o caso base). Sem base, a pilha estoura em <b>StackOverflowError</b>.</p>
-<div class="viz"><svg viewBox="0 0 720 170" font-family="ui-monospace,monospace" font-size="12.5">
-<g fill="none" stroke="currentColor" stroke-width="1.5">
-<rect x="280" y="15" width="160" height="34" rx="8"/>
-<rect x="230" y="60" width="160" height="34" rx="8"/>
-<rect x="280" y="105" width="160" height="34" rx="8"/>
-<path d="M320 49 v11 M360 49 v11 M320 94 v11 M360 94 v11" marker-end="url(#arw)"/>
-</g>
-<text x="360" y="36" text-anchor="middle" fill="currentColor">fatorial(5) = 5 × fatorial(4)</text>
-<text x="310" y="81" text-anchor="middle" fill="currentColor">fatorial(4) = 4 × fatorial(3)</text>
-<text x="360" y="126" text-anchor="middle" fill="currentColor">fatorial(3) = 3 × ... → caso base: fatorial(0) = 1</text>
-<text x="10" y="30" fill="currentColor" font-family="system-ui" font-size="12">desce</text>
-<text x="10" y="126" fill="currentColor" font-family="system-ui" font-size="12">sobe multiplicando:</text>
-<text x="10" y="146" fill="currentColor" font-family="system-ui" font-size="12">1 → 1 → 3 → 12 → 60 → 120</text>
-</svg>
-<figcaption>A recursão desce até o caso base e sobe resolvendo cada pendência. fatorial(5) = 120.</figcaption></div>
+
 <pre class="code">static int fatorial(int n) {
     if (n &lt;= 1) return 1;        // CASO BASE (essencial!)
     return n * fatorial(n - 1);  // chamada recursiva
@@ -1340,7 +1215,7 @@ public static void main(String[] args) {
 
 <section class="module pane" id="m08" data-num="08" data-title="Condicionais" data-icon="i-if" data-blurb="if, else, switch — o programa aprende a tomar decisões.">
 <h2 class="mod-head"><span class="mod-num">08</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-if"/></svg><span style="flex:1">Condicionais</span></span></h2>
-<p class="mod-intro">Condicionais são os <b>garfos</b> do programa: a execução vai por um caminho ou outro conforme a condição (um <b>boolean</b>) for verdadeira ou falsa. Domine <span class="kbd">if-else</span> e <span class="kbd">switch</span> e você controla o destino do código.</p>
+<p class="mod-intro">Condicionais escolhem o caminho da execução: <span class="kbd">if-else</span> para dois ou mais ramos, <span class="kbd">switch</span> para muitos casos de um mesmo valor. A condição é sempre um <span class="kbd">boolean</span>.</p>
 <div class="topics">
 <div class="topic" id="m08-01"><h3><span class="tnum">8.1</span>if</h3>
 <p>A decisão mais simples: <b>se</b> a condição for true, execute o bloco. Se for false, pule o bloco inteiro. O parêntese é obrigatório e o conteúdo deve ser um <b>boolean</b>.</p>
@@ -1360,20 +1235,7 @@ if (hora &lt; 12) {
 } else {
     System.out.println("Boa tarde/noite!");
 }</pre>
-<div class="viz"><svg viewBox="0 0 720 150" font-family="system-ui" font-size="13">
-<g fill="none" stroke="currentColor" stroke-width="1.5">
-<path d="M360 15 L 420 45 L 360 75 L 300 45 Z"/>
-<rect x="60" y="100" width="150" height="40" rx="9"/>
-<rect x="510" y="100" width="150" height="40" rx="9"/>
-<path d="M340 55 L 135 98 M380 55 L 585 98" marker-end="url(#arw)"/>
-</g>
-<text x="360" y="49" text-anchor="middle" fill="currentColor">condição</text>
-<text x="135" y="124" text-anchor="middle" fill="currentColor">bloco true</text>
-<text x="585" y="124" text-anchor="middle" fill="currentColor">bloco false</text>
-<text x="228" y="86" fill="currentColor" font-size="11.5">true</text>
-<text x="492" y="86" fill="currentColor" font-size="11.5">false</text>
-</svg>
-<figcaption>Fluxo do if-else: um teste, dois destinos, um só caminho executado.</figcaption></div>
+
 </div>
 <div class="topic" id="m08-03"><h3><span class="tnum">8.3</span>else if encadeado</h3>
 <p>Para <b>mais de dois</b> caminhos, encadeie <span class="kbd">else if</span>. As condições são testadas <b>em ordem</b>; a primeira verdadeira executa seu bloco e as demais são ignoradas. O <span class="kbd">else</span> final é o "nenhuma das anteriores".</p>
@@ -1507,29 +1369,13 @@ int max = (a &gt; b) ? a : b;</pre>
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m09" data-num="09" data-title="Laços de repetição" data-icon="i-loop" data-blurb="for, while e do-while — a máquina de repetir do Java.">
+<section class="module pane" id="m09" data-num="09" data-title="Laços de repetição" data-icon="i-loop" data-blurb="for, while e do-while — repetição controlada por condição.">
 <h2 class="mod-head"><span class="mod-num">09</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-loop"/></svg><span style="flex:1">Laços de repetição</span></span></h2>
-<p class="mod-intro">Laços são a <b>máquina de repetir</b> do Java: mesma instrução, várias vezes, controlada por uma condição. Aprenda a construir um laço em três peças — <b>início, condição e avanço</b> — e a fugir das armadilhas (laço infinito e o erro off-by-one).</p>
+<p class="mod-intro">Laços repetem instruções: <span class="kbd">for</span> (contador), <span class="kbd">while</span> (condição no topo) e <span class="kbd">do-while</span> (condição no fim — roda ao menos 1 vez). As armadilhas clássicas: laço infinito e o erro <b>off-by-one</b>.</p>
 <div class="topics">
 <div class="topic" id="m09-01"><h3><span class="tnum">9.1</span>for</h3>
 <p>O laço mais completo: concentra <b>início, condição e avanço</b> no cabeçalho. Perfeito quando você <b>sabe quantas vezes</b> vai repetir.</p>
-<div class="viz"><svg viewBox="0 0 720 170" font-family="ui-monospace,monospace" font-size="12.5">
-<rect x="15" y="20" width="690" height="130" rx="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="360" y="16" text-anchor="middle" fill="currentColor" font-family="system-ui" font-weight="700" font-size="13">anatomia do for</text>
-<text x="40" y="50" fill="currentColor">for (int i = 0; i &lt; 5; i++) {</text>
-<text x="40" y="80" fill="currentColor">    System.out.println(i);</text>
-<text x="40" y="110" fill="currentColor">}</text>
-<g font-family="system-ui" font-size="11.5" fill="currentColor">
-<rect x="430" y="32" width="260" height="24" rx="7" fill="none" stroke="currentColor" stroke-dasharray="3 3"/>
-<text x="560" y="48" text-anchor="middle" font-weight="700">1. inicialização (roda 1×)</text>
-<rect x="430" y="66" width="260" height="24" rx="7" fill="none" stroke="currentColor" stroke-dasharray="3 3"/>
-<text x="560" y="82" text-anchor="middle" font-weight="700">2. condição (testada SEMPRE)</text>
-<rect x="430" y="100" width="260" height="24" rx="7" fill="none" stroke="currentColor" stroke-dasharray="3 3"/>
-<text x="560" y="116" text-anchor="middle" font-weight="700">3. avanço (após cada volta)</text>
-</g>
-<path d="M380 44 H428 M380 78 H428 M380 112 H428" stroke="currentColor" stroke-dasharray="3 3"/>
-</svg>
-<figcaption>O for em três tempos: nasce, é testado, avança. Falso na condição? Laço termina.</figcaption></div>
+
 <pre class="code">for (int i = 0; i &lt; 5; i++) {
     System.out.println(i);   // 0, 1, 2, 3, 4
 }
@@ -1558,18 +1404,7 @@ do {
     opcao = teclado.nextInt();
 } while (opcao != 2);   // teste no FIM
 // o corpo roda 1× mesmo se opcao já for 2</pre>
-<div class="viz"><svg viewBox="0 0 720 130" font-family="system-ui" font-size="13">
-<g fill="none" stroke="currentColor" stroke-width="1.5">
-<rect x="20" y="30" width="200" height="60" rx="10"/><rect x="280" y="30" width="200" height="60" rx="10"/><rect x="540" y="30" width="160" height="60" rx="10"/>
-<path d="M220 60 H278 M480 60 H538" marker-end="url(#arw)"/>
-<path d="M620 90 V120 H120 V90" fill="none" marker-end="url(#arw)"/>
-</g>
-<text x="120" y="64" text-anchor="middle" fill="currentColor">corpo (1× garantido)</text>
-<text x="380" y="64" text-anchor="middle" fill="currentColor">executa ação</text>
-<text x="620" y="64" text-anchor="middle" fill="currentColor">condição?</text>
-<text x="380" y="116" text-anchor="middle" fill="currentColor" font-size="11.5">true → volta ao corpo</text>
-</svg>
-<figcaption>do-while: executa primeiro, pergunta depois — mínimo de uma execução garantida.</figcaption></div>
+
 </div>
 <div class="topic" id="m09-04"><h3><span class="tnum">9.4</span>Laços aninhados</h3>
 <p>Um laço dentro de outro: o de dentro completa <b>todas</b> as suas voltas a cada volta do de fora. Total de execuções = voltas de fora × voltas de dentro. Clássico em tabuadas e "desenhos" de asteriscos.</p>
@@ -1630,7 +1465,7 @@ for (int i = 2; i &lt;= 5; i++) fatorial *= i;   // 120
 
 String nomeCompleto = "";     // neutro da concatenação
 for (String parte : partes) nomeCompleto += parte + " ";</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Receita de prova em 3 passos: (1) declara fora do laço com o valor neutro; (2) atualiza dentro do laço; (3) usa depois do laço. Esquecer o passo 1 dá resultado errado (ex.: soma começando em 5).</div></div>
+<div class="callout tip"><span class="ci">💡</span><div>Dica de prova em 3 passos: (1) declara fora do laço com o valor neutro; (2) atualiza dentro do laço; (3) usa depois do laço. Esquecer o passo 1 dá resultado errado (ex.: soma começando em 5).</div></div>
 </div>
 <div class="topic" id="m09-08"><h3><span class="tnum">9.8</span>Variável contadora</h3>
 <p>A <b>contadora</b> conta <b>quantas vezes</b> algo aconteceu — geralmente condicionada a um if dentro do laço. Começa em <b>zero</b> e ganha <span class="kbd">++</span> a cada ocorrência.</p>
@@ -1666,21 +1501,21 @@ while (!(linha = teclado.nextLine()).equals("fim")) {
 }</pre>
 <div class="callout warn"><span class="ci">⚠️</span><div>Escolha uma sentinela que <b>não seja um dado válido</b> do problema. Se o usuário puder digitar -1 legitimamente (ex.: temperaturas negativas), use outra ("0" ou uma palavra).</div></div>
 </div>
-<div class="topic" id="m09-10"><h3><span class="tnum">9.10</span>Leitura de isca</h3>
-<p>Técnica de prova clássica: ler um valor <b>antes</b> do while (a "isca"), e no final do corpo ler o <b>próximo</b>. É o padrão sentinela estruturado — a leitura de isca garante que a condição tenha algo para testar.</p>
-<pre class="code">// padrão "isca": lê ANTES de entrar no laço
+<div class="topic" id="m09-10"><h3><span class="tnum">9.10</span>Leitura de partida (priming)</h3>
+<p>Técnica de prova clássica: ler um valor <b>antes</b> do while (a <b>leitura de partida</b>), e no final do corpo ler o <b>próximo</b>. É o padrão sentinela estruturado — a leitura de partida garante que a condição tenha algo para testar.</p>
+<pre class="code">// padrão "partida": lê ANTES de entrar no laço
 System.out.print("Nota (negativa p/ sair): ");
-double nota = teclado.nextDouble();      // ← isca
+double nota = teclado.nextDouble();      // ← leitura de partida
 int qtd = 0;
 double soma = 0;
 while (nota &gt;= 0) {
     soma += nota;
     qtd++;
     System.out.print("Próxima nota: ");
-    nota = teclado.nextDouble();          // ← reposição da isca
+    nota = teclado.nextDouble();          // ← reposição da leitura de partida
 }
 System.out.println(qtd == 0 ? "Nenhuma nota" : "Média: " + (soma / qtd));</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Compare: sem a isca, o while precisaria de uma flag inicial ou código duplicado. O padrão <b>isca → teste → processa → reposição</b> é elegante e completo. Note o cuidado com <span class="kbd">qtd == 0</span> para não dividir por zero!</div></div>
+<div class="callout tip"><span class="ci">💡</span><div>Compare: sem a leitura de partida, o while precisaria de uma flag inicial ou código duplicado. O padrão <b>partida → teste → processa → reposição</b> é elegante e completo. Note o cuidado com <span class="kbd">qtd == 0</span> para não dividir por zero!</div></div>
 </div>
 <div class="topic" id="m09-11"><h3><span class="tnum">9.11</span>break dentro de laço</h3>
 <p>O <span class="kbd">break</span> <b>mata o laço inteiro</b> na hora — não pula só a iteração. Use para "encontrei o que procurava, posso parar".</p>
@@ -1758,7 +1593,7 @@ for (int i = 1; i &lt;= 10; i++) soma += i;  // 55 ✔
 
 <section class="module pane" id="m10" data-num="10" data-title="Arrays unidimensionais" data-icon="i-array" data-blurb="Listas de tamanho fixo, indexadas de 0 a length-1.">
 <h2 class="mod-head"><span class="mod-num">10</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-array"/></svg><span style="flex:1">Arrays unidimensionais</span></span></h2>
-<p class="mod-intro">Um <b>array</b> é uma fileira de <b>cacifos numerados</b>, todos do mesmo tipo, lado a lado na memória. Em vez de 100 variáveis <span class="kbd">nota1</span>...<span class="kbd">nota100</span>, você tem <span class="kbd">nota[0]</span> até <span class="kbd">nota[99]</span>.</p>
+<p class="mod-intro">Um <b>array</b> é uma fileira de posições numeradas de <b>0 a n-1</b>, todas do mesmo tipo, lado a lado na memória. Em vez de 100 variáveis <span class="kbd">nota1</span>...<span class="kbd">nota100</span>, você tem <span class="kbd">nota[0]</span> até <span class="kbd">nota[99]</span> — e acessa qualquer posição direto.</p>
 <div class="topics">
 <div class="topic" id="m10-01"><h3><span class="tnum">10.1</span>Conceito de array</h3>
 <p>Array = coleção <b>ordenada</b> de valores <b>do mesmo tipo</b>, acessados por <b>índice</b>. Guarde notas, nomes, temperaturas — qualquer lista. O tamanho é <b>fixo</b> depois de criado (para crescer, veja 10.12).</p>
@@ -1773,30 +1608,8 @@ for (int n : notas) soma += n;</pre>
 </div>
 <div class="topic" id="m10-02"><h3><span class="tnum">10.2</span>Armazenamento indexado na memória</h3>
 <p>Os elementos ficam em posições <b>contíguas</b> da memória. Por isso o acesso é <b>instantâneo</b>: o endereço do elemento i é <span class="kbd">base + i × tamanhoDoTipo</span> — matemática direta, sem busca.</p>
-<div class="viz"><svg viewBox="0 0 720 200" font-family="ui-monospace,monospace" font-size="12.5">
-<rect x="15" y="40" width="690" height="80" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<g fill="none" stroke="currentColor">
-<line x1="15" y1="40" x2="15" y2="120"/><line x1="153" y1="40" x2="153" y2="120"/><line x1="291" y1="40" x2="291" y2="120"/><line x1="429" y1="40" x2="429" y2="120"/><line x1="567" y1="40" x2="567" y2="120"/><line x1="705" y1="40" x2="705" y2="120"/>
-</g>
-<g fill="currentColor">
-<rect x="25" y="60" width="118" height="40" rx="6"/>
-<rect x="163" y="60" width="118" height="40" rx="6"/>
-<rect x="301" y="60" width="118" height="40" rx="6"/>
-<rect x="439" y="60" width="118" height="40" rx="6"/>
-<rect x="577" y="60" width="118" height="40" rx="6"/>
-</g>
-<g fill="var(--bg)" font-weight="700" text-anchor="middle" style="fill:var(--bg)">
-<text x="84" y="85">7</text><text x="222" y="85">9</text><text x="360" y="85">5</text><text x="498" y="85">8</text><text x="636" y="85">6</text>
-</g>
-<g font-family="system-ui" font-size="12" fill="currentColor" text-anchor="middle">
-<text x="84" y="140">índice 0</text><text x="222" y="140">1</text><text x="360" y="140">2</text><text x="498" y="140">3</text><text x="636" y="140">4</text>
-<text x="84" y="172">endereço base</text>
-<path d="M170 166 H360" stroke="currentColor" marker-end="url(#arw)"/>
-<text x="530" y="172">base + 2×4 bytes = posição do 5</text>
-</g>
-</svg>
-<figcaption>Memória contígua: o computador calcula o endereço direto — acesso em tempo constante, O(1).</figcaption></div>
-<pre class="code">int[] v = new int[3];   // 3 cacifos contíguos
+
+<pre class="code">int[] v = new int[3];   // 3 posições contíguos
 // v[2] está em: endereçoDe(v) + 2 × 4 bytes (int)</pre>
 </div>
 <div class="topic" id="m10-03"><h3><span class="tnum">10.3</span>Declaração de array</h3>
@@ -1809,9 +1622,9 @@ double[] precos;
 <div class="callout tip"><span class="ci">💡</span><div>Por que <span class="kbd">int[] x</span> é melhor? Deixa claro que o tipo é "array de int". Em <span class="kbd">int a, b[];</span> (válido!), só b é array — confusão clássica.</div></div>
 </div>
 <div class="topic" id="m10-04"><h3><span class="tnum">10.4</span>Alocação de array</h3>
-<p><span class="kbd">new</span> cria a fileira de cacifos com o <b>tamanho definido</b>. Só agora a memória é reservada — e o array é um <b>objeto</b> no heap.</p>
-<pre class="code">int[] notas = new int[5];        // 5 cacifos, todos zerados
-String[] nomes = new String[3];  // 3 cacifos, todos null
+<p><span class="kbd">new</span> cria a fileira de posições com o <b>tamanho definido</b>. Só agora a memória é reservada — e o array é um <b>objeto</b> no heap.</p>
+<pre class="code">int[] notas = new int[5];        // 5 posições, todos zerados
+String[] nomes = new String[3];  // 3 posições, todos null
 // tamanho pode vir de variável:
 int n = teclado.nextInt();
 double[] precos = new double[n];
@@ -1858,7 +1671,7 @@ System.out.println(v[v.length - 1]); // jeito seguro de pegar o último</pre>
 <div class="callout warn"><span class="ci">⚠️</span><div>A exceção é de <b>execução</b> (unchecked) — o compilador não avisa. Por isso: sempre que usar índice calculado, garanta que está entre <span class="kbd">0</span> e <span class="kbd">length - 1</span>.</div></div>
 </div>
 <div class="topic" id="m10-08"><h3><span class="tnum">10.8</span>Propriedade length</h3>
-<p><span class="kbd">length</span> (sem parênteses — é um <b>campo</b>, não método!) devolve o <b>tamanho fixo</b> do array. Lembra: é o número de cacifos, não o número de "elementos válidos" que você preencheu.</p>
+<p><span class="kbd">length</span> (sem parênteses — é um <b>campo</b>, não método!) devolve o <b>tamanho fixo</b> do array. Lembra: é o número de posições, não o número de "elementos válidos" que você preencheu.</p>
 <pre class="code">int[] v = new int[7];
 System.out.println(v.length);   // 7
 String[] nomes = {"A", "B"};
@@ -2031,29 +1844,7 @@ System.out.println(buscar(v, 5));    // -1
 </div>
 <div class="topic" id="m10-21"><h3><span class="tnum">10.21</span>Busca binária com Arrays.binarySearch</h3>
 <p>Busca em array <b>ordenado</b> dividindo o espaço pela metade a cada passo — O(log n), muito mais rápida. <b>Pré-requisito: array ordenado</b> (se não estiver, o resultado é indefinido!).</p>
-<div class="viz"><svg viewBox="0 0 720 190" font-family="ui-monospace,monospace" font-size="12.5">
-<g fill="none" stroke="currentColor" stroke-width="1.4">
-<rect x="20" y="30" width="680" height="44" rx="8"/>
-<rect x="20" y="92" width="330" height="44" rx="8"/>
-<rect x="20" y="146" width="155" height="40" rx="8"/>
-</g>
-<g fill="none" stroke="currentColor">
-<line x1="180" y1="30" x2="180" y2="74"/><line x1="340" y1="30" x2="340" y2="74"/><line x1="500" y1="30" x2="500" y2="74"/><line x1="660" y1="30" x2="660" y2="74"/>
-<line x1="185" y1="92" x2="185" y2="136"/><line x1="350" y1="92" x2="350" y2="136"/>
-<line x1="100" y1="146" x2="100" y2="186"/>
-</g>
-<g fill="currentColor" text-anchor="middle">
-<text x="100" y="57">2</text><text x="260" y="57">4</text><text x="420" y="57">7</text><text x="580" y="57">9</text><text x="670" y="57">11</text>
-<text x="102" y="119">2</text><text x="267" y="119">4</text>
-<text x="62" y="171">2</text>
-</g>
-<g font-family="system-ui" font-size="11.5" fill="currentColor">
-<text x="430" y="58">meio = 7 → 7 &gt; alvo? olhe a metade ESQUERDA</text>
-<text x="390" y="120">meio = 4 → alvo &lt; 4? olhe antes do 4</text>
-<text x="215" y="171">achou o 2 no índice 0</text>
-</g>
-</svg>
-<figcaption>Busca binária: descarte metade a cada comparação. 20 elementos → no máximo ~5 passos!</figcaption></div>
+
 <pre class="code">int[] v = {2, 4, 7, 9, 11};
 Arrays.sort(v);   // SEMPRE ordene antes!
 System.out.println(Arrays.binarySearch(v, 7));  // 2 (índice)
@@ -2079,7 +1870,7 @@ if (pos &lt; 0) {
 </section>
 <section class="module pane" id="m11" data-num="11" data-title="Arrays multidimensionais" data-icon="i-grid" data-blurb="Matrizes: arrays dentro de arrays, linha por linha.">
 <h2 class="mod-head"><span class="mod-num">11</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-grid"/></svg><span style="flex:1">Arrays multidimensionais</span></span></h2>
-<p class="mod-intro">Precisa de uma <b>tabela</b>, um tabuleiro ou uma grade? Um array 2D é um array cujos elementos são <b>outros arrays</b>: pense em <b>linhas</b> de um arquivo, ou no tabuleiro de xadrez.</p>
+<p class="mod-intro">Um <b>array 2D</b> é um array cujos elementos são <b>outros arrays</b>: linhas e colunas. Serve para tabelas, grades e matrizes — e em Java cada linha pode ter um tamanho diferente (array irregular).</p>
 <div class="topics">
 <div class="topic" id="m11-01"><h3><span class="tnum">11.1</span>Declaração e alocação de matriz</h3>
 <p>Declaração com <b>dois colchetes</b>; a alocação define <b>linhas × colunas</b>. Por baixo, é um array de arrays — a "matriz" é uma lista de linhas.</p>
@@ -2098,26 +1889,7 @@ int[][] matriz = {
 </div>
 <div class="topic" id="m11-02"><h3><span class="tnum">11.2</span>Acesso m[i][j]</h3>
 <p>Dois índices: <b>primeiro a linha, depois a coluna</b> (<span class="kbd">m[i][j]</span>). Ambos começam em 0.</p>
-<div class="viz"><svg viewBox="0 0 720 260" font-family="ui-monospace,monospace" font-size="13">
-<rect x="170" y="30" width="380" height="200" rx="10" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<g stroke="currentColor" fill="none">
-<line x1="170" y1="96" x2="550" y2="96"/><line x1="170" y1="163" x2="550" y2="163"/>
-<line x1="265" y1="30" x2="265" y2="230"/><line x1="360" y1="30" x2="360" y2="230"/><line x1="455" y1="30" x2="455" y2="230"/>
-</g>
-<g fill="currentColor" text-anchor="middle" font-weight="700">
-<text x="222" y="76">11</text><text x="317" y="76">12</text><text x="412" y="76">13</text><text x="507" y="76">14</text>
-<text x="222" y="143">21</text><text x="317" y="143">22</text><text x="412" y="143">23</text><text x="507" y="143">24</text>
-<text x="222" y="210">31</text><text x="317" y="210">32</text><text x="412" y="210">33</text><text x="507" y="210">34</text>
-</g>
-<g font-family="system-ui" font-size="12" fill="currentColor" text-anchor="middle">
-<text x="115" y="76">linha 0</text><text x="115" y="143">linha 1</text><text x="115" y="210">linha 2</text>
-<text x="222" y="252">col 0</text><text x="317" y="252">col 1</text><text x="412" y="252">col 2</text><text x="507" y="252">col 3</text>
-</g>
-<rect x="317" y="96" width="95" height="67" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 4"/>
-<text x="480" y="15" fill="currentColor" font-family="system-ui" font-size="12">m[1][1] = 22</text>
-<path d="M480 22 L 420 100" stroke="currentColor" marker-end="url(#arw)"/>
-</svg>
-<figcaption>m[i][j]: i escolhe a linha, j escolhe a coluna. m[1][1] = 22 — os dois índices começam em 0.</figcaption></div>
+
 <pre class="code">int[][] m = {{1, 2}, {3, 4}};
 System.out.println(m[0][0]); // 1
 System.out.println(m[1][0]); // 3
@@ -2226,7 +1998,7 @@ System.out.println(Arrays.deepEquals(a, b));  // true ✔</pre>
 
 <section class="module pane" id="m12" data-num="12" data-title="String" data-icon="i-string" data-blurb="A classe mais famosa do Java: imutável, poderosa e cheia de armadilhas.">
 <h2 class="mod-head"><span class="mod-num">12</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-string"/></svg><span style="flex:1">String</span></span></h2>
-<p class="mod-intro"><b>String</b> é uma sequência de caracteres <b>imutável</b>: uma vez criada, nunca muda. Todo método que "modifica" uma String na verdade <b>cria uma nova</b>. Entenda a imutabilidade e o <span class="kbd">String pool</span> e metade das pegadinhas de prova desaparece.</p>
+<p class="mod-intro"><b>String</b> é uma sequência de caracteres <b>imutável</b>: uma vez criada, nunca muda. Toda operação que parece modificar na verdade <b>cria uma nova String</b>. Entender isso — e o <span class="kbd">String pool</span> — elimina as pegadinhas mais cobradas.</p>
 <div class="topics">
 <div class="topic" id="m12-01"><h3><span class="tnum">12.1</span>Imutabilidade</h3>
 <p>Strings são como <b>carimbos</b>: você não edita o carimbo, faz um novo. Métodos como <span class="kbd">toUpperCase()</span> devolvem uma <b>String nova</b>; a original permanece intacta.</p>
@@ -2237,49 +2009,12 @@ String maiuscula = s.toUpperCase();  // guardando a nova
 System.out.println(maiuscula);       // "JAVA"
 s = s + "!";              // "s" agora APONTA para outra String
 System.out.println(s);    // "java!"</pre>
-<div class="viz"><svg viewBox="0 0 720 150" font-family="ui-monospace,monospace" font-size="12.5">
-<g fill="none" stroke="currentColor" stroke-width="1.5">
-<rect x="20" y="40" width="130" height="46" rx="9"/><rect x="200" y="40" width="130" height="46" rx="9"/><rect x="420" y="40" width="130" height="46" rx="9"/>
-</g>
-<g fill="currentColor" text-anchor="middle" font-weight="700">
-<text x="85" y="68">"java"</text><text x="265" y="68">"JAVA"</text><text x="485" y="68">"java!"</text>
-</g>
-<g font-family="system-ui" font-size="11.5" fill="currentColor" text-anchor="middle">
-<text x="85" y="26">original (imutável)</text>
-<text x="265" y="26">toUpperCase()</text>
-<text x="485" y="26">concatenação</text>
-</g>
-<path d="M150 63 H198 M330 63 H418" stroke="currentColor" marker-end="url(#arw)"/>
-<text x="360" y="120" text-anchor="middle" fill="currentColor" font-family="system-ui" font-size="12">a String original nunca é alterada — cada operação gera um novo objeto</text>
-</svg>
-<figcaption>Imutabilidade: "java" continua existindo; cada operação cria um novo objeto String.</figcaption></div>
+
 <div class="callout tip"><span class="ci">💡</span><div>Consequência prática: concatenar Strings em laço cria <b>dezenas de objetos</b> mortos. Para muita concatenação, use <span class="kbd">StringBuilder</span> (12.23).</div></div>
 </div>
 <div class="topic" id="m12-02"><h3><span class="tnum">12.2</span>Criação por literal × por new</h3>
 <p>Duas formas de nascer, <b>dois lugares</b> diferentes. O literal <span class="kbd">"java"</span> vai para o <b>String pool</b> (repositório compartilhado). O <span class="kbd">new String("java")</span> <b>força</b> um objeto novo no heap — mesmo que o conteúdo seja igual.</p>
-<div class="viz"><svg viewBox="0 0 720 228" font-family="ui-monospace,monospace" font-size="12.5">
-<rect x="20" y="25" width="300" height="80" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="170" y="48" text-anchor="middle" fill="currentColor" font-family="system-ui" font-weight="700">STRING POOL</text>
-<rect x="60" y="60" width="130" height="34" rx="8" fill="none" stroke="currentColor"/>
-<text x="125" y="82" text-anchor="middle" fill="currentColor">"java"</text>
-<rect x="380" y="25" width="320" height="80" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="540" y="48" text-anchor="middle" fill="currentColor" font-family="system-ui" font-weight="700">HEAP</text>
-<rect x="400" y="60" width="130" height="34" rx="8" fill="none" stroke="currentColor"/>
-<text x="465" y="82" text-anchor="middle" fill="currentColor">"java"</text>
-<rect x="560" y="60" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
-<text x="620" y="82" text-anchor="middle" fill="currentColor">objeto novo</text>
-<g font-family="system-ui" font-size="11.5" fill="currentColor" text-anchor="middle">
-<text x="125" y="140">String a = "java";   (usa o pool)</text>
-<text x="465" y="140">String b = "java";   (mesmo objeto do pool!)</text>
-<text x="465" y="165">String c = new String("java");  (objeto NOVO)</text>
-</g>
-<g font-family="ui-monospace,monospace" font-size="11.5" fill="currentColor">
-<text x="170" y="196" text-anchor="middle">a == b → true</text>
-<text x="540" y="192" text-anchor="middle">a == c → false</text>
-<text x="540" y="208" text-anchor="middle">a.equals(c) → true</text>
-</g>
-</svg>
-<figcaption>Literais iguais compartilham o mesmo objeto do pool; new sempre cria outro.</figcaption></div>
+
 <pre class="code">String a = "java";
 String b = "java";
 String c = new String("java");
@@ -2322,7 +2057,7 @@ System.out.println(s.indexOf('a', 2));  // 3 (a partir do índice 2)
 System.out.println(s.indexOf('z'));     // -1 (não existe)
 // padrão de prova: "contém?" → indexOf != -1
 if (s.indexOf('n') != -1) System.out.println("tem n");</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Receita para <b>última ocorrência</b>: use <span class="kbd">lastIndexOf</span> (12.6). Para <b>contar ocorrências</b>, laço com <span class="kbd">indexOf(ch, pos + 1)</span> até voltar -1.</div></div>
+<div class="callout tip"><span class="ci">💡</span><div>Dica para <b>última ocorrência</b>: use <span class="kbd">lastIndexOf</span> (12.6). Para <b>contar ocorrências</b>, laço com <span class="kbd">indexOf(ch, pos + 1)</span> até voltar -1.</div></div>
 </div>
 <div class="topic" id="m12-06"><h3><span class="tnum">12.6</span>lastIndexOf</h3>
 <p>Como <span class="kbd">indexOf</span>, mas varrendo <b>de trás para frente</b>: devolve a última ocorrência. Clássico para achar extensões de arquivo, separadores, etc.</p>
@@ -2589,7 +2324,7 @@ System.out.println(a == f);         // true</pre>
 </section>
 <section class="module pane" id="m13" data-num="13" data-title="Entrada e saída" data-icon="i-io" data-blurb="Scanner, printf, JOptionPane e arquivos — o programa conversa com o mundo.">
 <h2 class="mod-head"><span class="mod-num">13</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-io"/></svg><span style="flex:1">Entrada e saída</span></span></h2>
-<p class="mod-intro"><b>E/S</b> (I/O) é como o programa conversa: <b>entrada</b> vêm do teclado, arquivos ou janelas; <b>saída</b> vai para o console, arquivos ou caixas de diálogo. Java faz isso com <b>streams</b> (fluxos) e classes utilitárias.</p>
+<p class="mod-intro"><b>E/S</b> (I/O) é como o programa conversa com o mundo: <b>entrada</b> via <span class="kbd">Scanner</span> (teclado), arquivos ou janelas; <b>saída</b> via <span class="kbd">System.out</span> (console), <span class="kbd">printf</span> (formatada) ou caixas de diálogo. Java faz isso com <b>streams</b> e classes utilitárias.</p>
 <div class="topics">
 <div class="topic" id="m13-01"><h3><span class="tnum">13.1</span>System.in</h3>
 <p><span class="kbd">System.in</span> é o <b>fluxo de entrada padrão</b> (o teclado) — um <span class="kbd">InputStream</span> que lê <b>bytes</b> brutos. Pouco usado direto: sem buffer e sem conversão para texto.</p>
@@ -2646,26 +2381,7 @@ BufferedReader br = new BufferedReader(
     new InputStreamReader(System.in, "UTF-8"));
 // sem o Reader, você leria números de 0 a 255 (bytes),
 // não caracteres — acentos viram lixo.</pre>
-<div class="viz"><svg viewBox="0 0 720 140" font-family="system-ui" font-size="12.5">
-<g fill="none" stroke="currentColor" stroke-width="1.5">
-<rect x="15" y="40" width="150" height="50" rx="9"/>
-<rect x="215" y="40" width="170" height="50" rx="9"/>
-<rect x="435" y="40" width="150" height="50" rx="9"/>
-<rect x="635" y="40" width="80" height="50" rx="9"/>
-<path d="M165 65 H213 M385 65 H433 M585 65 H633" marker-end="url(#arw)"/>
-</g>
-<g fill="currentColor" text-anchor="middle">
-<text x="90" y="62" font-weight="700">System.in</text>
-<text x="90" y="80" font-size="10.5">bytes crus</text>
-<text x="300" y="62" font-weight="700">InputStreamReader</text>
-<text x="300" y="80" font-size="10.5">byte → char (decodifica)</text>
-<text x="510" y="62" font-weight="700">BufferedReader</text>
-<text x="510" y="80" font-size="10.5">buffer + readLine()</text>
-<text x="675" y="62" font-weight="700">String</text>
-<text x="675" y="80" font-size="10.5">linha pronta</text>
-</g>
-</svg>
-<figcaption>Corrente de leitura: bytes → chars → linhas bufferizadas. Cada camada tem um papel.</figcaption></div>
+
 </div>
 <div class="topic" id="m13-05"><h3><span class="tnum">13.5</span>DataInputStream</h3>
 <p>Leitor de <b>tipos primitivos</b> em <b>formato binário</b> (o que um <span class="kbd">DataOutputStream</span> escreveu): <span class="kbd">readInt()</span>, <span class="kbd">readDouble()</span>, <span class="kbd">readUTF()</span>. Não é para teclado — é para dados gerados por programas.</p>
@@ -2935,9 +2651,9 @@ try (Scanner sc = new Scanner(System.in);
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m14" data-num="14" data-title="Matemática, formatação e região" data-icon="i-math" data-blurb="Math, DecimalFormat, Locale, BigInteger e os fantasmas do ponto flutuante.">
+<section class="module pane" id="m14" data-num="14" data-title="Matemática, formatação e região" data-icon="i-math" data-blurb="Math, DecimalFormat, Locale, BigInteger e os casos-limite do ponto flutuante.">
 <h2 class="mod-head"><span class="mod-num">14</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-math"/></svg><span style="flex:1">Matemática, formatação e região</span></span></h2>
-<p class="mod-intro">A classe <b>Math</b>, a formatação de números, moedas e porcentagens, e os tipos para <b>precisão exata</b> (BigInteger/BigDecimal). Aqui também moram os fantasmas mais cobrados: <b>NaN</b>, <b>Infinity</b> e o <span class="kbd">0.1 + 0.2 ≠ 0.3</span>.</p>
+<p class="mod-intro"><b>Math</b> reúne as operações matemáticas de uso constante; a formatação de números e moedas fica com <span class="kbd">DecimalFormat</span> e <span class="kbd">Locale</span>; e para contas exatas existem <span class="kbd">BigInteger</span>/<span class="kbd">BigDecimal</span> — além dos casos-limite mais cobrados: <b>NaN</b>, <b>Infinity</b> e <span class="kbd">0.1 + 0.2 != 0.3</span>.</p>
 <div class="topics">
 <div class="topic" id="m14-01"><h3><span class="tnum">14.1</span>Math.ceil</h3>
 <p><b>Teto</b>: arredonda para <b>cima</b> (para o inteiro mais distante de zero no eixo positivo). Devolve <b>double</b>.</p>
@@ -3072,14 +2788,7 @@ System.out.println(0.1);              // 0.1 (println arredonda p/ exibir)
 // comparando doubles com tolerância (EPSILON):
 double a = 0.1 + 0.2, b = 0.3;
 System.out.println(Math.abs(a - b) &lt; 1e-9); // true ✔</pre>
-<div class="viz"><svg viewBox="0 0 720 150" font-family="system-ui" font-size="12.5">
-<rect x="15" y="30" width="690" height="90" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="360" y="55" text-anchor="middle" fill="currentColor" font-weight="700">0.1 em binário = 0.000110011001100110011... (periódico!)</text>
-<text x="360" y="75" text-anchor="middle" fill="currentColor">o double guarda só ~15 dígitos → aproximação</text>
-<text x="360" y="95" text-anchor="middle" fill="currentColor">0.1 + 0.2 = 0.30000000000000004 ≠ 0.3</text>
-<text x="360" y="113" text-anchor="middle" fill="currentColor" opacity=".75">solução: comparar com tolerância ou usar BigDecimal</text>
-</svg>
-<figcaption>Ponto flutuante é uma APROXIMAÇÃO. Nunca use == com double; prefira tolerância ou BigDecimal.</figcaption></div>
+
 <div class="callout warn"><span class="ci">⚠️</span><div>Regra de ouro para prova e para dinheiro: <b>nunca use double/float para valores monetários</b>. Use <span class="kbd">BigDecimal</span> (14.23) ou inteiros em centavos (R$ 1,50 = 150).</div></div>
 </div>
 <div class="topic" id="m14-12"><h3><span class="tnum">14.12</span>Precisão e arredondamento</h3>
@@ -3189,7 +2898,7 @@ System.out.println(String.format("%.2f", 3.14)); // 3,14 agora</pre>
 <div class="callout tip"><span class="ci">💡</span><div>Construtores comuns: <span class="kbd">new Locale("pt")</span> (só idioma), <span class="kbd">new Locale("pt", "BR")</span> (idioma + país), <span class="kbd">new Locale("pt", "BR", "SP")</span> (com variante). Códigos ISO: pt, en, es, de... e BR, US, DE...</div></div>
 </div>
 <div class="topic" id="m14-18"><h3><span class="tnum">14.18</span>NumberFormat</h3>
-<p>A fábrica de formatadores <b>conscientes de região</b>: número, moeda e porcentagem prontos para qualquer Locale, sem decorar padrões.</p>
+<p>O gerador de formatadores <b>conscientes de região</b>: número, moeda e porcentagem prontos para qualquer Locale, sem decorar padrões.</p>
 <pre class="code">import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -3347,7 +3056,7 @@ r.ints(5, 1, 7).forEach(System.out::println); // 5 ints de 1 a 6</pre>
 </section>
 <section class="module pane" id="m15" data-num="15" data-title="Exceções" data-icon="i-exc" data-blurb="try, catch, finally, throw — o programa aprende a lidar com erros.">
 <h2 class="mod-head"><span class="mod-num">15</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-exc"/></svg><span style="flex:1">Exceções</span></span></h2>
-<p class="mod-intro"><b>Exceção</b> é um "acidente" durante a execução: divisão por zero, arquivo inexistente, texto no lugar de número. Em vez de travar feio, o Java <b>joga</b> (throw) um objeto de erro que você pode <b>capturar</b> (catch) e tratar.</p>
+<p class="mod-intro">Uma <b>exceção</b> é um erro durante a execução: divisão por zero, arquivo inexistente, texto no lugar de número. Em vez de travar, o Java <b>lança</b> (<span class="kbd">throw</span>) um objeto de erro que você <b>captura</b> (<span class="kbd">catch</span>) e trata — ou declara com <span class="kbd">throws</span>.</p>
 <div class="topics">
 <div class="topic" id="m15-01"><h3><span class="tnum">15.1</span>Conceito de exceção</h3>
 <p>Quando algo dá errado, o método <b>interrompe</b> e "joga" um objeto que descreve o problema. Se ninguém capturar, a JVM imprime o erro e encerra. Com <span class="kbd">try-catch</span>, o programa <b>sobrevive</b> e decide o que fazer.</p>
@@ -3366,33 +3075,7 @@ System.out.println("Programa vivo!");</pre>
 </div>
 <div class="topic" id="m15-02"><h3><span class="tnum">15.2</span>Hierarquia Throwable</h3>
 <p>Tudo que pode ser lançado herda de <b>Throwable</b>, que se divide em dois ramos: <b>Exception</b> (problemas que você deve tratar) e <b>Error</b> (catástrofes da JVM, não trate).</p>
-<div class="viz"><svg viewBox="0 0 720 300" font-family="system-ui" font-size="12.5">
-<g fill="none" stroke="currentColor" stroke-width="1.5">
-<rect x="290" y="15" width="140" height="36" rx="9"/>
-<rect x="120" y="95" width="160" height="36" rx="9"/>
-<rect x="440" y="95" width="160" height="36" rx="9"/>
-<rect x="60" y="175" width="170" height="36" rx="9"/>
-<rect x="270" y="175" width="170" height="36" rx="9"/>
-<rect x="480" y="175" width="170" height="36" rx="9"/>
-<rect x="60" y="250" width="170" height="34" rx="9"/>
-<rect x="270" y="250" width="170" height="34" rx="9"/>
-<rect x="480" y="250" width="170" height="34" rx="9"/>
-<path d="M360 51 V76 M200 131 L145 173 M200 131 L355 173 M520 131 L565 173 M145 211 L145 248 M355 211 L355 248 M565 211 L565 248" marker-end="url(#arw)"/>
-</g>
-<g fill="currentColor" text-anchor="middle" font-weight="700">
-<text x="360" y="38">Throwable</text>
-<text x="200" y="118">Exception</text>
-<text x="520" y="118">Error</text>
-<text x="145" y="198">RuntimeException</text>
-<text x="355" y="198">Outras Exceptions</text>
-<text x="565" y="198">Error (ex.: OOM)</text>
-<text x="145" y="271">NullPointerException</text>
-<text x="355" y="271">IOException</text>
-<text x="565" y="271">StackOverflowError</text>
-</g>
-<text x="60" y="240" fill="currentColor" font-size="11">ArrayIndexOutOfBounds</text>
-</svg>
-<figcaption>A árvore de exceções. RuntimeException e seus filhos são "unchecked"; IOException e outros são "checked".</figcaption></div>
+
 <pre class="code">Throwable
 ├── Exception
 │   ├── RuntimeException        ← unchecked (não obriga try)
@@ -3816,10 +3499,10 @@ static int fat2(int n) {
 
 <section class="module pane" id="m16" data-num="16" data-title="Memória e referências" data-icon="i-mem" data-blurb="new, pilha, heap, null, aliasing e a primeira coleção: ArrayList.">
 <h2 class="mod-head"><span class="mod-num">16</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-mem"/></svg><span style="flex:1">Memória e referências</span></span></h2>
-<p class="mod-intro">O mapa do território: onde os dados <b>vivem</b>. Variáveis locais ficam na <b>pilha</b>; objetos e arrays, no <b>heap</b>. Variáveis de referência são <b>bilhetes com endereços</b> — e dois bilhetes podem apontar para o mesmo objeto (<b>aliasing</b>).</p>
+<p class="mod-intro">Onde os dados vivem: variáveis locais e referências ficam na <b>pilha</b>; objetos e arrays, no <b>heap</b>. Uma variável de referência guarda o <b>endereço</b> do objeto — e duas referências podem apontar para o mesmo objeto (<b>aliasing</b>).</p>
 <div class="topics">
 <div class="topic" id="m16-01"><h3><span class="tnum">16.1</span>Operador new</h3>
-<p>O <span class="kbd">new</span> é a <b>fábrica de objetos</b>: reserva memória no heap e devolve a <b>referência</b> (o endereço). Toda criação de objeto ou array passa por ele.</p>
+<p>O <span class="kbd">new</span> <b>cria o objeto</b>: reserva memória no heap e devolve a <b>referência</b> (o endereço). Toda criação de objeto ou array passa por ele.</p>
 <pre class="code">int[] v = new int[5];              // array de 5 int
 String s = new String("java");     // objeto String
 Scanner sc = new Scanner(System.in); // objeto Scanner
@@ -3829,33 +3512,11 @@ ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;(); // objeto lista
 // 2. inicializa os campos com valores padrão
 // 3. executa o construtor
 // 4. devolve a referência para a variável</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Sem <span class="kbd">new</span>, uma variável de objeto é só um "bilhete em branco" (null). O new é o que efetivamente cria o objeto — exceto em Strings literais, que nascem no pool (módulo 12.2).</div></div>
+<div class="callout tip"><span class="ci">💡</span><div>Sem <span class="kbd">new</span>, uma variável de objeto é só uma <b>referência sem objeto</b> (null). O new é o que efetivamente cria o objeto — exceto em Strings literais, que nascem no pool (módulo 12.2).</div></div>
 </div>
 <div class="topic" id="m16-02"><h3><span class="tnum">16.2</span>Objeto na pilha × no heap</h3>
 <p>Duas memórias, dois papéis: a <b>pilha</b> (stack) guarda <b>variáveis locais e referências</b> — rápida, criada e destruída a cada chamada. O <b>heap</b> guarda <b>objetos e arrays</b> — maior, compartilhado, gerenciado pelo garbage collector.</p>
-<div class="viz"><svg viewBox="0 0 720 220" font-family="system-ui" font-size="12.5">
-<rect x="15" y="20" width="280" height="180" rx="12" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<text x="155" y="42" text-anchor="middle" fill="currentColor" font-weight="700">PILHA (stack)</text>
-<text x="155" y="60" text-anchor="middle" fill="currentColor" opacity=".7" font-size="10.5">variáveis locais · criada/destruída a cada chamada</text>
-<rect x="35" y="75" width="110" height="30" rx="6" fill="none" stroke="currentColor"/>
-<text x="90" y="94" text-anchor="middle" fill="currentColor">int x = 5</text>
-<rect x="35" y="115" width="110" height="30" rx="6" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
-<text x="90" y="134" text-anchor="middle" fill="currentColor">ref lista → 0x7F3A</text>
-<rect x="35" y="155" width="110" height="30" rx="6" fill="none" stroke="currentColor"/>
-<text x="90" y="174" text-anchor="middle" fill="currentColor">int y = 10</text>
-<rect x="425" y="20" width="280" height="180" rx="12" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<text x="565" y="42" text-anchor="middle" fill="currentColor" font-weight="700">HEAP</text>
-<text x="565" y="60" text-anchor="middle" fill="currentColor" opacity=".7" font-size="10.5">objetos e arrays · compartilhado · coletado pelo GC</text>
-<rect x="445" y="75" width="120" height="40" rx="6" fill="none" stroke="currentColor"/>
-<text x="505" y="94" text-anchor="middle" fill="currentColor">ArrayList</text>
-<text x="505" y="108" text-anchor="middle" fill="currentColor" font-size="10">tamanho 3</text>
-<rect x="585" y="75" width="100" height="40" rx="6" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
-<text x="635" y="94" text-anchor="middle" fill="currentColor">int[] {7,8,9}</text>
-<text x="565" y="145" text-anchor="middle" fill="currentColor" opacity=".7">endereço 0x7F3A</text>
-<path d="M145 130 H240 V140 H443" stroke="currentColor" marker-end="url(#arw)"/>
-<text x="290" y="135" fill="currentColor" font-size="10.5">referência aponta</text>
-</svg>
-<figcaption>Pilha: caixinhas de chamada (rápidas, efêmeras). Heap: os objetos (duram enquanto alguém os referencia).</figcaption></div>
+
 <pre class="code">void metodo() {
     int x = 5;                    // x vive na PILHA
     int[] v = new int[3];         // v (referência) na pilha,
@@ -3873,13 +3534,13 @@ System.out.println(a == b);  // true  (mesmo endereço)
 System.out.println(a == c);  // false (endereços diferentes)
 System.out.println(a.equals(c)); // false! (arrays usam equals de Object)
 System.out.println(Arrays.equals(a, c)); // true (conteúdo)
-// analogia: referência é o bilhete de estacionamento;
-// o objeto é o carro. Dois bilhetes podem ser do mesmo carro.</pre>
+// referência guarda o endereço do objeto;
+// duas referências podem apontar para o mesmo objeto.</pre>
 <div class="callout warn"><span class="ci">⚠️</span><div>Em Java você <b>nunca manipula endereços diretamente</b> (diferente de C/C++): a referência é opaca. Você só compara (<span class="kbd">==</span>) ou segue (<span class="kbd">obj.metodo()</span>).</div></div>
 </div>
 <div class="topic" id="m16-04"><h3><span class="tnum">16.4</span>null</h3>
 <p><b>null</b> é o <b>"nenhum endereço"</b> — a referência não aponta para nada. É o <b>valor padrão</b> de campos e elementos de array de objetos. Usar uma referência null derruba <b>NullPointerException</b>.</p>
-<pre class="code">String s = null;              // bilhete em branco
+<pre class="code">String s = null;              // referência sem objeto
 System.out.println(s);        // imprime "null" (sem erro!)
 // s.length();               ← NullPointerException
 // null só existe para TIPOS DE REFERÊNCIA:
@@ -3896,24 +3557,7 @@ if (s != null &amp;&amp; s.length() &gt; 0) { }
 </div>
 <div class="topic" id="m16-05"><h3><span class="tnum">16.5</span>Aliasing: duas referências, um objeto</h3>
 <p><b>Aliasing</b> é quando duas (ou mais) variáveis apontam para o <b>mesmo objeto</b>. Alterar o objeto por uma referência afeta <b>todas</b> as outras — fonte de bugs sutis e de questões de prova.</p>
-<div class="viz"><svg viewBox="0 0 720 190" font-family="system-ui" font-size="12.5">
-<rect x="15" y="20" width="200" height="70" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="115" y="45" text-anchor="middle" fill="currentColor" font-weight="700">int[] lista1</text>
-<rect x="45" y="55" width="140" height="24" rx="6" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
-<text x="115" y="71" text-anchor="middle" fill="currentColor">endereço 0x8A10</text>
-<rect x="330" y="20" width="200" height="70" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="430" y="45" text-anchor="middle" fill="currentColor" font-weight="700">int[] lista2</text>
-<rect x="360" y="55" width="140" height="24" rx="6" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
-<text x="430" y="71" text-anchor="middle" fill="currentColor">endereço 0x8A10</text>
-<rect x="560" y="120" width="150" height="55" rx="10" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<text x="635" y="142" text-anchor="middle" fill="currentColor" font-weight="700">HEAP</text>
-<text x="635" y="162" text-anchor="middle" fill="currentColor">[7, 8, 9]</text>
-<path d="M115 90 V120 H558" stroke="currentColor" marker-end="url(#arw)"/>
-<path d="M430 90 V105 H558" stroke="currentColor" marker-end="url(#arw)"/>
-<text x="300" y="110" fill="currentColor" font-size="11">AMBAS apontam para o mesmo array</text>
-<text x="300" y="135" fill="currentColor" font-size="11">lista1[0] = 99 → lista2[0] também muda!</text>
-</svg>
-<figcaption>Aliasing: mudar o objeto por uma referência reflete em todas as outras referências ao mesmo objeto.</figcaption></div>
+
 <pre class="code">int[] a = {1, 2, 3};
 int[] b = a;              // ALIASING
 b[0] = 99;
@@ -3974,20 +3618,7 @@ nums.add(42);                     // autoboxing
 int n = nums.get(0);              // unboxing
 // lista a partir de array:
 ArrayList&lt;String&gt; l2 = new ArrayList&lt;&gt;(Arrays.asList("x", "y"));</pre>
-<div class="viz"><svg viewBox="0 0 720 150" font-family="system-ui" font-size="12">
-<rect x="15" y="30" width="300" height="100" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="165" y="52" text-anchor="middle" fill="currentColor" font-weight="700">Array comum: tamanho FIXO</text>
-<rect x="40" y="65" width="55" height="40" rx="6" fill="none" stroke="currentColor"/><rect x="105" y="65" width="55" height="40" rx="6" fill="none" stroke="currentColor"/><rect x="170" y="65" width="55" height="40" rx="6" fill="none" stroke="currentColor"/><rect x="235" y="65" width="55" height="40" rx="6" fill="none" stroke="currentColor"/>
-<text x="67" y="89" text-anchor="middle" fill="currentColor">A</text><text x="132" y="89" text-anchor="middle" fill="currentColor">B</text><text x="197" y="89" text-anchor="middle" fill="currentColor">C</text><text x="262" y="89" text-anchor="middle" fill="currentColor">D</text>
-<rect x="380" y="30" width="330" height="100" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<text x="545" y="52" text-anchor="middle" fill="currentColor" font-weight="700">ArrayList: cresce sozinho</text>
-<rect x="405" y="65" width="55" height="40" rx="6" fill="none" stroke="currentColor"/><rect x="470" y="65" width="55" height="40" rx="6" fill="none" stroke="currentColor"/><rect x="535" y="65" width="55" height="40" rx="6" fill="none" stroke="currentColor"/>
-<text x="432" y="89" text-anchor="middle" fill="currentColor">A</text><text x="497" y="89" text-anchor="middle" fill="currentColor">B</text><text x="562" y="89" text-anchor="middle" fill="currentColor">C</text>
-<rect x="610" y="65" width="70" height="40" rx="6" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
-<text x="645" y="89" text-anchor="middle" fill="currentColor" opacity=".7">livre</text>
-<text x="545" y="122" text-anchor="middle" fill="currentColor" font-size="10.5">cheio? duplica a capacidade por dentro (~1.5×)</text>
-</svg>
-<figcaption>ArrayList mantém um array interno com folga; quando enche, realoca e copia — você só vê uma lista que "cresce".</figcaption></div>
+
 <div class="callout warn"><span class="ci">⚠️</span><div>Diferenças de prova: <span class="kbd">size()</span> (não length), <span class="kbd">get(i)</span>/<span class="kbd">set(i, x)</span> (não colchetes), <span class="kbd">add()</span> (não atribuição). E <span class="kbd">ArrayList&lt;int&gt;</span> NÃO compila — primitivos não são objetos; use <span class="kbd">Integer</span>.</div></div>
 </div>
 <details class="quiz"><summary>🧩 Mini-quiz do módulo 16</summary>
@@ -4001,11 +3632,371 @@ ArrayList&lt;String&gt; l2 = new ArrayList&lt;&gt;(Arrays.asList("x", "y"));</pr
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m17" data-num="✦" data-title="Resumo de prova" data-icon="i-flag" data-blurb="Tabelas de consulta rápida e os erros mais clássicos — para a véspera da prova.">
+<section class="module pane" id="m17" data-num="17" data-title="POO — Programação Orientada a Objetos" data-icon="i-poo" data-blurb="Classe, objeto, new, this, encapsulamento, herança, polimorfismo, interface, enum e record — o modelo completo, com código literal.">
+<h2 class="mod-head"><span class="mod-num">17</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-poo"/></svg><span style="flex:1">POO — Programação Orientada a Objetos</span></span></h2>
+<p class="mod-intro">POO modela o programa em <b>objetos</b>: cada objeto tem <b>estado</b> (atributos) e <b>comportamento</b> (métodos), e esconde seus detalhes atrás de uma interface pública. Este módulo cobre tudo: classe, <span class="kbd">new</span>, <span class="kbd">this</span>, encapsulamento, <span class="kbd">static</span>, composição, herança, <span class="kbd">super</span>, sobrescrita, polimorfismo, classes abstratas, interfaces, <span class="kbd">final</span>, <span class="kbd">toString</span>/<span class="kbd">equals</span>/<span class="kbd">hashCode</span>, <span class="kbd">enum</span> e <span class="kbd">record</span> — sempre com código literal.</p>
+<div class="topics">
+<div class="topic" id="m17-01"><h3><span class="tnum">17.1</span>Classe e objeto — o molde e a peça</h3>
+<p>Uma <b>classe</b> é o molde: define atributos (estado) e métodos (comportamento). Um <b>objeto</b> é uma instância concreta daquele molde, criada em memória. Cada objeto tem sua própria cópia dos atributos de instância.</p>
+<pre class="code">// Classe = o molde
+public class Caneta {
+    String cor;                 // atributo (estado)
+
+    void escrever() {           // método (comportamento)
+        System.out.println("Escrevendo com caneta " + cor);
+    }
+}
+
+public static void main(String[] args) {
+    Caneta c1 = new Caneta();   // objeto 1
+    c1.cor = "azul";
+    Caneta c2 = new Caneta();   // objeto 2 — estado próprio
+    c2.cor = "vermelha";
+
+    c1.escrever();              // Escrevendo com caneta azul
+    c2.escrever();              // Escrevendo com caneta vermelha
+}</pre>
+<div class="callout"><span class="ci">✓</span><div><b>Decore para a prova:</b> classe é o <b>tipo</b>, objeto é a <b>instância</b>. Duas instâncias da mesma classe não compartilham atributos de instância — <span class="kbd">c1.cor</span> e <span class="kbd">c2.cor</span> são variáveis diferentes.</div></div>
+</div>
+<div class="topic" id="m17-02"><h3><span class="tnum">17.2</span>O construtor e o <span class="kbd">new</span></h3>
+<p>O <b>construtor</b> inicializa o objeto: tem o <b>mesmo nome da classe</b> e <b>nenhum tipo de retorno</b> (nem <span class="kbd">void</span>). O <span class="kbd">new</span> aloca memória para o objeto e chama o construtor. Sem construtor declarado, Java gera um construtor vazio padrão.</p>
+<pre class="code">public class Aluno {
+    String nome;
+
+    // Construtor: mesmo nome da classe, SEM tipo de retorno
+    Aluno(String nome) {
+        this.nome = nome;
+    }
+}
+
+Aluno a = new Aluno("Ana");   // new aloca memória e chama o construtor
+System.out.println(a.nome);   // Ana</pre>
+</div>
+<div class="topic" id="m17-03"><h3><span class="tnum">17.3</span>Atributos e métodos de instância</h3>
+<p><b>Atributos</b> (campos) guardam o estado do objeto; <b>métodos de instância</b> operam sobre esse estado. Um método de instância só existe em um objeto — para chamá-lo, você precisa do objeto: <span class="kbd">objeto.metodo()</span>.</p>
+<pre class="code">public class Retangulo {
+    double base;      // atributos de instância: cada objeto tem os seus
+    double altura;
+
+    double area() {   // método de instância: usa os atributos do objeto
+        return base * altura;
+    }
+}
+
+Retangulo r = new Retangulo();
+r.base = 5;
+r.altura = 3;
+System.out.println(r.area());   // 15.0</pre>
+</div>
+<div class="topic" id="m17-04"><h3><span class="tnum">17.4</span>O <span class="kbd">this</span></h3>
+<p><span class="kbd">this</span> é a referência ao <b>próprio objeto</b> em execução. Serve para distinguir atributo de parâmetro quando os nomes coincidem, e para passar o próprio objeto como argumento.</p>
+<pre class="code">public class Pessoa {
+    private String nome;
+
+    Pessoa(String nome) {
+        this.nome = nome;   // this.nome = atributo · nome = parâmetro
+    }
+}</pre>
+</div>
+<div class="topic" id="m17-05"><h3><span class="tnum">17.5</span>Encapsulamento: <span class="kbd">private</span> + getters/setters</h3>
+<p><b>Encapsulamento</b> é esconder o estado e expor operações controladas. O modificador <span class="kbd">private</span> bloqueia o acesso direto de fora da classe; o acesso passa por <b>getters</b> (leitura) e <b>setters</b> (escrita), onde cabe validação.</p>
+<pre class="code">public class Conta {
+    private double saldo;   // ninguém altera de fora
+
+    public double getSaldo() {              // getter: leitura
+        return saldo;
+    }
+
+    public void depositar(double valor) {   // "setter" com regra
+        if (valor &gt; 0) saldo += valor;
+    }
+}
+
+Conta c = new Conta();
+c.depositar(100);
+// c.saldo = -50;   // ERRO DE COMPILAÇÃO: saldo é private</pre>
+<div class="callout warn"><span class="ci">⚠️</span><div>Regra de prova: atributo <span class="kbd">private</span> + métodos públicos de acesso. Se o enunciado pede "acesso controlado com validação", a resposta é <b>encapsulamento</b>, não <span class="kbd">public</span> no atributo.</div></div>
+</div>
+<div class="topic" id="m17-06"><h3><span class="tnum">17.6</span><span class="kbd">static</span>: membros de classe</h3>
+<p><span class="kbd">static</span> faz o membro pertencer à <b>classe</b>, não às instâncias: existe <b>uma só cópia</b>, compartilhada por todos os objetos. Acessa-se pelo nome da classe. Um método <span class="kbd">static</span> <b>não pode</b> acessar atributos de instância (não existe "este objeto" dentro de um método de classe).</p>
+<pre class="code">public class Config {
+    static int maxItens = 10;   // 1 cópia para TODAS as instâncias
+    int id;                     // cada instância tem o seu
+}
+
+Config a = new Config();
+Config b = new Config();
+Config.maxItens = 20;              // acesso pelo nome da classe
+System.out.println(Config.maxItens);  // 20 — a e b veem o mesmo valor</pre>
+</div>
+<div class="topic" id="m17-07"><h3><span class="tnum">17.7</span>Composição — o relacionamento "tem um"</h3>
+<p>Na <b>composição</b>, um objeto <b>contém</b> outro como parte de seu estado. Um <span class="kbd">Pedido</span> <b>tem um</b> <span class="kbd">Cliente</span>: o objeto cliente vive como atributo do pedido.</p>
+<pre class="code">public class Cliente {
+    String nome;
+}
+
+public class Pedido {
+    Cliente cliente;   // composição: Pedido TEM UM Cliente
+    double total;
+}
+
+Pedido p = new Pedido();
+p.cliente = new Cliente();
+p.cliente.nome = "Ana";</pre>
+</div>
+<div class="topic" id="m17-08"><h3><span class="tnum">17.8</span>Herança — <span class="kbd">extends</span> e o "é um"</h3>
+<p><b>Herança</b> cria uma nova classe a partir de uma existente: a <b>subclasse</b> herda os atributos e métodos (não privados) da <b>superclasse</b> e pode acrescentar os seus. A relação é de <b>"é um"</b>: <span class="kbd">Cachorro</span> <b>é um</b> <span class="kbd">Animal</span>. Em Java, herança é <b>simples</b> — uma classe estende apenas uma.</p>
+<pre class="code">public class Animal {
+    void respirar() {
+        System.out.println("Respirando...");
+    }
+}
+
+public class Cachorro extends Animal {   // Cachorro É UM Animal
+    void latir() {
+        System.out.println("Au!");
+    }
+}
+
+Cachorro c = new Cachorro();
+c.respirar();   // herdado de Animal
+c.latir();      // próprio de Cachorro</pre>
+</div>
+<div class="topic" id="m17-09"><h3><span class="tnum">17.9</span><span class="kbd">super</span> — a superclasse</h3>
+<p><span class="kbd">super</span> acessa a superclasse: <span class="kbd">super(...)</span> chama o construtor dela (deve ser a 1ª linha do construtor da subclasse) e <span class="kbd">super.metodo()</span> chama a versão herdada.</p>
+<pre class="code">public class Funcionario {
+    String nome;
+
+    Funcionario(String nome) {
+        this.nome = nome;
+    }
+}
+
+public class Gerente extends Funcionario {
+    double bonus;
+
+    Gerente(String nome, double bonus) {
+        super(nome);        // chama o construtor de Funcionario
+        this.bonus = bonus;
+    }
+}</pre>
+</div>
+<div class="topic" id="m17-10"><h3><span class="tnum">17.10</span>Sobrescrita (<span class="kbd">override</span>) e <span class="kbd">@Override</span></h3>
+<p><b>Sobrescrita</b> é reescrever na subclasse um método herdado, com a <b>mesma assinatura</b>. A anotação <span class="kbd">@Override</span> faz o compilador verificar se você está realmente sobrescrevendo (e não criando um método novo por engano). O nível de acesso não pode <b>diminuir</b> (público &gt; protegido &gt; pacote).</p>
+<pre class="code">public class Forma {
+    double area() {
+        return 0;
+    }
+}
+
+public class Circulo extends Forma {
+    double raio;
+
+    @Override                    // avisa o compilador: sobrescrevendo
+    double area() {
+        return Math.PI * raio * raio;
+    }
+}</pre>
+</div>
+<div class="topic" id="m17-11"><h3><span class="tnum">17.11</span>Polimorfismo — uma chamada, várias respostas</h3>
+<p><b>Polimorfismo</b>: uma referência do tipo da <b>superclasse</b> pode apontar para um objeto da <b>subclasse</b>, e a chamada de método executa a versão da <b>classe real do objeto</b> — decidida em <b>tempo de execução</b>, não em compilação.</p>
+<pre class="code">Forma f = new Circulo();   // referência do tipo pai, objeto do tipo filho
+f.area();                  // executa area() de Circulo
+
+// Na prática: coleções heterogêneas
+Forma[] formas = { new Circulo(), new Retangulo() };
+for (Forma x : formas) {
+    System.out.println(x.area());   // cada objeto roda o seu area()
+}</pre>
+<div class="callout"><span class="ci">✓</span><div><b>Decore:</b> o tipo da <b>referência</b> decide o que <b>compila</b>; o tipo do <b>objeto</b> decide o que <b>executa</b> (para métodos sobrescritos).</div></div>
+</div>
+<div class="topic" id="m17-12"><h3><span class="tnum">17.12</span>Classes abstratas — <span class="kbd">abstract</span></h3>
+<p>Uma <b>classe abstrata</b> é um molde incompleto: <b>não pode ser instanciada</b> (<span class="kbd">new Forma()</span> não compila). Ela pode declarar <b>métodos abstratos</b> — sem corpo — que as subclasses concretas são <b>obrigadas</b> a implementar. Também pode ter atributos, construtores e métodos normais.</p>
+<pre class="code">public abstract class Forma {
+    abstract double area();      // sem corpo: a subclasse É OBRIGADA a implementar
+
+    void mostrar() {             // método concreto normal
+        System.out.println("Área: " + area());
+    }
+}
+
+public class Quadrado extends Forma {
+    double lado;
+
+    double area() {              // implementação obrigatória
+        return lado * lado;
+    }
+}
+
+// Forma f = new Forma();       // ERRO: classe abstrata não instancia</pre>
+<div class="callout warn"><span class="ci">⚠️</span><div>Se uma subclasse não implementar todos os métodos abstratos, ela também deve ser declarada <span class="kbd">abstract</span>.</div></div>
+</div>
+<div class="topic" id="m17-13"><h3><span class="tnum">17.13</span>Interfaces — o contrato puro</h3>
+<p>Uma <b>interface</b> define um <b>contrato</b>: o que a classe deve fazer, sem dizer como. Até Java 7, só assinaturas de métodos (todos públicos e abstratos por default). Java 8+ permite <span class="kbd">default</span> (método com corpo); Java 9+ permite métodos privados. Uma classe <b>implements</b> várias interfaces — é como herança múltipla de tipos.</p>
+<pre class="code">public interface Voavel {           // contrato puro
+    void voar();                    // público e abstrato por padrão
+}
+
+public interface Motorizado {
+    default void acelerar() {       // Java 8+: método com corpo
+        System.out.println("Acelerando");
+    }
+}
+
+public class Aviao implements Voavel, Motorizado {   // várias interfaces
+    public void voar() {
+        System.out.println("Voando");
+    }
+}</pre>
+<div class="callout"><span class="ci">✓</span><div><b>interface × classe abstrata:</b> interface = contrato de tipos (sem atributos de instância, herança múltipla permitida); classe abstrata = molde com <b>estado</b> e construtores (herança simples). Use interface para o "papel", classe abstrata para o "corpo".</div></div>
+</div>
+<div class="topic" id="m17-14"><h3><span class="tnum">17.14</span><span class="kbd">final</span> em POO</h3>
+<p><span class="kbd">final</span> em <b>classe</b> impede herança; em <b>método</b>, impede sobrescrita; em <b>variável</b>, torna o valor constante (atributo <span class="kbd">static final</span> = constante de classe).</p>
+<pre class="code">public final class MathUtils { }        // não pode ser estendida
+
+public class Base {
+    public final void config() { }      // não pode ser sobrescrita
+}
+
+public class Constantes {
+    static final double PI = 3.14159;   // constante de classe
+}</pre>
+</div>
+<div class="topic" id="m17-15"><h3><span class="tnum">17.15</span><span class="kbd">toString</span>, <span class="kbd">equals</span> e <span class="kbd">hashCode</span></h3>
+<p>Herdados de <span class="kbd">Object</span>, convém sobrescrever: <span class="kbd">toString()</span> para imprimir o objeto de forma útil; <span class="kbd">equals()</span> para <b>comparar conteúdo</b> (o <span class="kbd">==</span> padrão compara apenas <b>referências</b> — mesmo objeto ou não). <span class="kbd">hashCode()</span> deve acompanhar <span class="kbd">equals()</span> sempre que você sobrescrever um.</p>
+<pre class="code">public class Ponto {
+    int x, y;
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ponto)) return false;
+        Ponto p = (Ponto) o;
+        return x == p.x &amp;&amp; y == p.y;
+    }
+}
+
+Ponto a = new Ponto(1, 2);
+Ponto b = new Ponto(1, 2);
+System.out.println(a == b);       // false: são objetos diferentes
+System.out.println(a.equals(b));  // true: mesmo conteúdo</pre>
+</div>
+<div class="topic" id="m17-16"><h3><span class="tnum">17.16</span><span class="kbd">enum</span> — tipo enumerado</h3>
+<p><span class="kbd">enum</span> define um tipo com <b>constantes nomeadas</b>. Pode ter construtor, campos e métodos — cada constante é uma instância do próprio enum.</p>
+<pre class="code">public enum Cor {              // tipo enumerado
+    VERMELHO, VERDE, AZUL
+}
+
+Cor c = Cor.VERDE;
+System.out.println(c);            // VERDE
+System.out.println(c.ordinal());  // 1 (posição, começa em 0)
+
+// enum com campo e construtor:
+public enum Moeda {
+    DOLAR("US$"), EURO("€");      // as constantes vêm primeiro
+
+    private final String simbolo;
+
+    Moeda(String simbolo) {       // construtor sempre private
+        this.simbolo = simbolo;
+    }
+
+    public String getSimbolo() {
+        return simbolo;
+    }
+}</pre>
+</div>
+<div class="topic" id="m17-17"><h3><span class="tnum">17.17</span><span class="kbd">record</span> (Java 16+) — classe de dados imutável</h3>
+<p><span class="kbd">record</span> gera uma classe <b>imutável</b> de dados sem escrever boilerplate: construtor, getters (com o nome do campo), <span class="kbd">toString()</span>, <span class="kbd">equals()</span> e <span class="kbd">hashCode()</span> vêm prontos.</p>
+<pre class="code">public record Ponto(int x, int y) { }   // cabeça: nome + campos
+
+Ponto p = new Ponto(3, 4);
+System.out.println(p.x());       // 3  — acessor com o nome do campo
+System.out.println(p);           // Ponto[x=3, y=4]  — toString pronto</pre>
+<div class="callout warn"><span class="ci">⚠️</span><div>Confirmação de prova: record é <b>imutável</b> (campos são <span class="kbd">final</span>) e <b>não</b> é herdável (é final implicitamente). Use para transportar dados, não para lógica com estado mutável.</div></div>
+</div>
+<div class="topic" id="m17-18"><h3><span class="tnum">17.18</span>Exemplo completo — <span class="kbd">Banco</span> com tudo junto</h3>
+<p>Um programa compilável juntando os 17 tópicos anteriores: classe abstrata, encapsulamento, <span class="kbd">this</span>, <span class="kbd">static</span>, construtor, herança, <span class="kbd">super</span>, sobrescrita, polimorfismo, composição e <span class="kbd">toString</span>.</p>
+<pre class="code">// ===== Arquivo: Banco.java =====
+public class Banco {
+    public static void main(String[] args) {
+        Cliente c1 = new Cliente("Ana");
+        ContaCorrente cc = new ContaCorrente(c1, 1000);
+        cc.depositar(500);
+        cc.sacar(200);
+        System.out.println(cc);            // toString() sobrescrito
+        System.out.println("Total no banco: R$ " + Conta.totalDoBanco);
+    }
+}
+
+abstract class Conta {                        // 1) classe abstrata
+    protected Cliente titular;                // 2) encapsulamento: protected
+    protected double saldo;
+    static double totalDoBanco = 0;           // 3) static: compartilhado
+
+    Conta(Cliente titular, double saldo) {
+        this.titular = titular;               // 4) this
+        this.saldo = saldo;
+        totalDoBanco += saldo;
+    }
+
+    public void depositar(double valor) {     // 5) regra no método público
+        if (valor &gt; 0) saldo += valor;
+    }
+
+    public abstract void sacar(double valor); // 6) abstract: regra própria
+
+    @Override
+    public String toString() {                // 7) toString sobrescrito
+        return titular.nome + " — saldo R$ " + String.format("%.2f", saldo);
+    }
+}
+
+class ContaCorrente extends Conta {           // 8) herança (extends)
+    ContaCorrente(Cliente t, double s) {
+        super(t, s);                          // 9) super: construtor da mãe
+    }
+
+    @Override
+    public void sacar(double valor) {         // 10) sobrescrita / polimorfismo
+        if (valor &gt; 0 &amp;&amp; saldo &gt;= valor) saldo -= valor;
+    }
+}
+
+class Cliente {                               // 11) composição: Conta TEM UM Cliente
+    String nome;
+    Cliente(String nome) { this.nome = nome; }
+}</pre>
+<div class="callout"><span class="ci">✓</span><div>Saída: <span class="kbd">Ana — saldo R$ 1300,00</span> e <span class="kbd">Total no banco: R$ 1000.0</span>. Note que <span class="kbd">totalDoBanco</span> soma o saldo <b>inicial</b> (1000), não o saldo após as operações — o <span class="kbd">static</span> foi atualizado só no construtor.</div></div>
+</div>
+<details class="quiz"><summary>🧩 Mini-quiz do módulo 17</summary>
+<div class="q">1) O que <span class="kbd">new</span> faz?</div>
+<div class="ans"><b>Aloca memória</b> para o objeto e <b>chama o construtor</b> da classe. Sem <span class="kbd">new</span> não existe objeto — só a classe (o molde).</div>
+<div class="q">2) Um atributo <span class="kbd">private double saldo;</span> pode ser lido de outra classe?</div>
+<div class="ans"><b>Não.</b> <span class="kbd">private</span> restringe o acesso à <b>própria classe</b>. De fora, só pelos métodos públicos (getter ou método de negócio como <span class="kbd">depositar()</span>).</div>
+<div class="q">3) Qual a diferença entre <span class="kbd">==</span> e <span class="kbd">equals()</span> em objetos?</div>
+<div class="ans"><span class="kbd">==</span> compara <b>referências</b> (são o mesmo objeto?); <span class="kbd">equals()</span> compara <b>conteúdo</b> — quando sobrescrito. Por padrão, <span class="kbd">equals()</span> herdada de Object também compara referências.</div>
+<div class="q">4) Posso fazer <span class="kbd">new Forma()</span> se <span class="kbd">Forma</span> é <span class="kbd">abstract</span>?</div>
+<div class="ans"><b>Não compila.</b> Classe abstrata é molde incompleto — só subclasses <b>concretas</b> (que implementam todos os métodos abstratos) podem ser instanciadas.</div>
+<div class="q">5) interface × classe abstrata: qual a diferença que cai em prova?</div>
+<div class="ans">Interface é <b>contrato</b>: sem atributos de instância (só <span class="kbd">static final</span>) e uma classe <b>implements várias</b>. Classe abstrata é <b>molde com estado</b>: tem atributos e construtores, e a classe <b>extends apenas uma</b>.</div>
+<div class="q">6) Uma subclasse não implementa um método abstrato da mãe. O que acontece?</div>
+<div class="ans">A subclasse <b>também deve ser declarada <span class="kbd">abstract</span></b> — senão não compila. A implementação fica para a próxima geração da hierarquia.</div>
+</details>
+</div>
+<div class="modnav"></div>
+</section>
+
+<section class="module pane" id="m18" data-num="✦" data-title="Resumo de prova" data-icon="i-flag" data-blurb="Tabelas de consulta rápida e os erros mais clássicos — para a véspera da prova.">
 <h2 class="mod-head"><span class="mod-num" style="font-size:clamp(48px,7vw,76px)">✦</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-flag"/></svg><span style="flex:1">Resumo de prova</span></span></h2>
 <p class="mod-intro">O "cola" permitido: as tabelas que você deve conseguir escrever de memória e os erros que mais aparecem. Revise na véspera e durma tranquilo.</p>
 <div class="topics">
-<div class="topic" id="m17-01"><h3><span class="tnum">✓</span>Os 8 tipos primitivos — decore</h3>
+<div class="topic" id="m18-01"><h3><span class="tnum">✓</span>Os 8 tipos primitivos — decore</h3>
 <table class="tbl"><tr><th>Tipo</th><th>Bits</th><th>Faixa</th><th>Literal</th></tr>
 <tr><td><b>byte</b></td><td>8</td><td>-128 … 127</td><td><span class="kbd">100</span></td></tr>
 <tr><td><b>short</b></td><td>16</td><td>-32.768 … 32.767</td><td><span class="kbd">1000</span></td></tr>
@@ -4016,11 +4007,11 @@ ArrayList&lt;String&gt; l2 = new ArrayList&lt;&gt;(Arrays.asList("x", "y"));</pr
 <tr><td><b>char</b></td><td>16</td><td>0 … 65.535</td><td><span class="kbd">'A'</span></td></tr>
 <tr><td><b>boolean</b></td><td>~1</td><td>true / false</td><td><span class="kbd">true</span></td></tr></table>
 </div>
-<div class="topic" id="m17-02"><h3><span class="tnum">✓</span>Escapes e literais numéricos</h3>
+<div class="topic" id="m18-02"><h3><span class="tnum">✓</span>Escapes e literais numéricos</h3>
 <div class="chips"><span class="chip">\n nova linha</span><span class="chip">\t tab</span><span class="chip">\\ barra</span><span class="chip">\" aspa</span><span class="chip">\' aspa simples</span><span class="chip">\uXXXX unicode</span></div>
 <div class="chips"><span class="chip">42 decimal</span><span class="chip">052 octal</span><span class="chip">0x2A hexa</span><span class="chip">0b101010 binário</span><span class="chip">1_000_000 underscore</span><span class="chip">1.5e3 científica</span></div>
 </div>
-<div class="topic" id="m17-03"><h3><span class="tnum">✓</span>Precedência essencial (do mais forte)</h3>
+<div class="topic" id="m18-03"><h3><span class="tnum">✓</span>Precedência essencial (do mais forte)</h3>
 <table class="tbl"><tr><th>Ordem</th><th>Operadores</th></tr>
 <tr><td>1</td><td><span class="kbd">()</span> <span class="kbd">[]</span> <span class="kbd">.</span> <span class="kbd">++</span> <span class="kbd">--</span> (pós)</td></tr>
 <tr><td>2</td><td><span class="kbd">!</span> <span class="kbd">~</span> <span class="kbd">-</span>unário <span class="kbd">++</span>pré <span class="kbd">(tipo)</span></td></tr>
@@ -4032,7 +4023,7 @@ ArrayList&lt;String&gt; l2 = new ArrayList&lt;&gt;(Arrays.asList("x", "y"));</pr
 <tr><td>13</td><td><span class="kbd">?:</span></td></tr>
 <tr><td>14</td><td><span class="kbd">=</span> <span class="kbd">+=</span> <span class="kbd">-=</span> <span class="kbd">*=</span> <span class="kbd">/=</span> <span class="kbd">%=</span></td></tr></table>
 </div>
-<div class="topic" id="m17-04"><h3><span class="tnum">✓</span>Os 10 erros mais clássicos de prova</h3>
+<div class="topic" id="m18-04"><h3><span class="tnum">✓</span>Os 10 erros mais clássicos de prova</h3>
 <table class="tbl"><tr><th>#</th><th>Erro</th><th>Forma certa</th></tr>
 <tr><td>1</td><td><span class="kbd">==</span> para comparar String</td><td><span class="kbd">.equals()</span></td></tr>
 <tr><td>2</td><td><span class="kbd">int / 0</span> achando que dá Infinity</td><td>dá <b>ArithmeticException</b> (só double/0.0 dá Infinity)</td></tr>
@@ -4045,11 +4036,11 @@ ArrayList&lt;String&gt; l2 = new ArrayList&lt;&gt;(Arrays.asList("x", "y"));</pr
 <tr><td>9</td><td><span class="kbd">Arrays.equals</span> em matriz 2D</td><td><span class="kbd">Arrays.deepEquals</span></td></tr>
 <tr><td>10</td><td><span class="kbd">Double.MIN_VALUE</span> pensando que é negativo</td><td>é o menor <b>positivo</b> (~4.9E-324)</td></tr></table>
 </div>
-<div class="topic" id="m17-05"><h3><span class="tnum">✓</span>Checklist da véspera</h3>
+<div class="topic" id="m18-05"><h3><span class="tnum">✓</span>Checklist da véspera</h3>
 <ul>
 <li>☐ Diferenciar <b>declaração</b>, <b>inicialização</b> e <b>atribuição</b></li>
 <li>☐ Escrever a assinatura do <b>main</b> de memória</li>
-<li>☐ Saber a escada de promoção: byte → short → int → long → float → double</li>
+<li>☐ Saber a ordem de promoção: byte → short → int → long → float → double</li>
 <li>☐ <b>==</b> (referência) × <b>equals</b> (conteúdo) — em String e objetos</li>
 <li>☐ Curto-circuito: <span class="kbd">&amp;&amp;</span> e <span class="kbd">||</span> avaliam o 2º lado só se necessário</li>
 <li>☐ <b>for</b> × <b>while</b> × <b>do-while</b> (o do-while roda ao menos 1×)</li>
@@ -4063,7 +4054,7 @@ ArrayList&lt;String&gt; l2 = new ArrayList&lt;&gt;(Arrays.asList("x", "y"));</pr
 <li>☐ Aliasing: duas referências, um objeto — alterações se refletem</li>
 </ul>
 </div>
-<div class="topic" id="m17-06"><h3><span class="tnum">✓</span>Métodos de prova: onde encontrar cada coisa</h3>
+<div class="topic" id="m18-06"><h3><span class="tnum">✓</span>Métodos de prova: onde encontrar cada coisa</h3>
 <table class="tbl"><tr><th>Assunto</th><th>Módulo</th></tr>
 <tr><td>javac, bytecode, JVM, main, args</td><td><a href="#m01">1 · Ambiente</a></td></tr>
 <tr><td>escopo, static, final</td><td><a href="#m02">2 · Variáveis</a></td></tr>
@@ -4080,7 +4071,8 @@ ArrayList&lt;String&gt; l2 = new ArrayList&lt;&gt;(Arrays.asList("x", "y"));</pr
 <tr><td>Scanner, printf, JOptionPane, arquivos</td><td><a href="#m13">13 · E/S</a></td></tr>
 <tr><td>Math, DecimalFormat, Locale, BigDecimal, Random</td><td><a href="#m14">14 · Matemática e região</a></td></tr>
 <tr><td>try/catch/finally, throw/throws, exceções comuns</td><td><a href="#m15">15 · Exceções</a></td></tr>
-<tr><td>new, pilha × heap, null, aliasing, ArrayList</td><td><a href="#m16">16 · Memória</a></td></tr></table>
+<tr><td>new, pilha × heap, null, aliasing, ArrayList</td><td><a href="#m16">16 · Memória</a></td></tr>
+<tr><td>classe, objeto, new, this, encapsulamento, herança, polimorfismo, interface, enum, record</td><td><a href="#m17">17 · POO</a></td></tr></table>
 </div>
 <details class="quiz"><summary>🧩 Quiz final — 5 perguntas rápidas</summary>
 <div class="q">1) Qual a saída de <span class="kbd">System.out.println(2 + 3 + "x" + 4 + 5);</span>?</div>
@@ -4101,16 +4093,16 @@ ArrayList&lt;String&gt; l2 = new ArrayList&lt;&gt;(Arrays.asList("x", "y"));</pr
 <section class="pane pane-final" id="fim">
 <div class="final">
   <svg viewBox="0 0 24 24" style="width:54px;height:54px;color:#fff;margin:0 auto 14px"><use href="#i-flag"/></svg>
-  <h2>Fim da jornada pré-POO! 🎉</h2>
-  <p>Você percorreu os 16 módulos de conteúdo — da compilação ao ArrayList. Agora o próximo passo é a <b>POO</b>: classes, objetos, herança e polimorfismo, onde tudo isso ganha estrutura. Bom estudo e boa prova!</p>
+  <h2>Fim da jornada! 🎉</h2>
+  <p>Você percorreu os 17 módulos de conteúdo — da compilação ao ArrayList e daí à <b>POO</b> completa: classes, objetos, herança e polimorfismo. Bom estudo e boa prova!</p>
   <a class="pn" href="#m01" data-go="m01"><small>revisitar</small><b>↺ Voltar ao módulo 1</b></a>
 </div>
 </section>
 </main>
 </div>
 <footer class="pagefoot">
-  <span>☕ Java Pré-POO · guia lúdico de estudos</span>
-  <span>17 módulos · 231 tópicos · feito para a sua prova</span>
+  <span>☕ Java — pré-POO + POO · guia direto de estudos</span>
+  <span>18 módulos · 249 tópicos · feito para a sua prova</span>
 </footer>
 <button id="toTop" type="button" aria-label="Voltar ao topo">↑</button>
 <script>
@@ -4165,7 +4157,7 @@ var SHORT = {
   m05:"Conversão", m06:"Operadores", m07:"Métodos", m08:"Condicionais",
   m09:"Laços", m10:"Arrays 1D", m11:"Arrays 2D", m12:"String",
   m13:"Entrada e Saída", m14:"Math", m15:"Exceções", m16:"Memória",
-  m17:"Resumo", fim:"Fim"
+  m17:"POO", m18:"Resumo", fim:"Fim"
 };
 
 var tabIn = document.getElementById("tabIn");
