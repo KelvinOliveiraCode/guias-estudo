@@ -6,7 +6,7 @@
 <title>Java — Pré-POO e POO · Guia de Estudos</title>
 <style>
 /* ============================================================
-   PALETA ESCURA — matiz única (~210°), fundo escuro
+   PALETA ESCURA — preto, branco e cinza, fundo preto
    Regra: --ink-900 = texto mais forte (claro), --paper = fundo
    ============================================================ */
 :root{
@@ -81,8 +81,6 @@ img{max-width:100%;display:block}
   background:var(--ink-100);font-size:10.5px;font-weight:800;color:var(--ink-600);
   font-family:var(--mono);flex:none;transition:.16s}
 .tab[aria-selected="true"] .tn{background:#ffffff;color:#000000}
-.tab .ticon{width:15px;height:15px;flex:none;opacity:.55}
-.tab[aria-selected="true"] .ticon{opacity:1}
 .tab .bdg{width:16px;height:16px;padding:0 4px;border-radius:99px;background:var(--ink-50);
   border:1px solid var(--ink-100);font-size:9.5px;font-weight:800;display:grid;place-items:center;
   color:var(--ink-400);font-family:var(--mono);flex:none;transition:.16s}
@@ -199,7 +197,10 @@ pre.code code{font-family:inherit}
   padding:16px 20px;border-radius:var(--r-md);background:var(--white);
   border:1px solid var(--ink-100);border-left:3px solid var(--ink-900);
   box-shadow:var(--shadow);font-size:14.8px;color:var(--ink-600);line-height:1.66}
-.callout .ci{font-size:16px;flex:none;line-height:1.5}
+.callout::before{content:"NOTA";flex:none;font-family:var(--mono);font-size:9.5px;
+  font-weight:800;letter-spacing:.12em;color:var(--ink-500);padding-top:4px;min-width:46px}
+  .callout.tip::before{content:"DICA"}
+  .callout.warn::before{content:"ATENÇÃO"}
 .callout.warn{background:var(--ink-50);border-left-color:var(--ink-400);box-shadow:none}
 .callout b{color:var(--ink-900)}
 .callout>div{flex:1;min-width:0}
@@ -286,8 +287,7 @@ details.quiz>.ans:last-child{padding-bottom:22px}
   .topbar-in{padding:0 20px}
   .tabbar-in{padding:0 20px}
   .tab{padding:13px 11px;font-size:12.5px}
-  .tab .ticon{display:none}
-  .mod-head{font-size:25px;gap:12px}
+    .mod-head{font-size:25px;gap:12px}
   .mod-num{min-width:44px;height:44px;font-size:14px}
   .mod-icon{width:24px;height:24px}
   .topic>h3{font-size:18.5px;margin:34px 0 12px}
@@ -319,29 +319,7 @@ details.quiz>.ans:last-child{padding-bottom:22px}
 </head>
 <body>
 <div id="progress"></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-<symbol id="i-brace" viewBox="0 0 24 24"><path d="M8 4c-1.7 0-2 .9-2 2v3c0 1.2-.8 1.8-2 1.8 1.2 0 2 .6 2 1.8v3c0 1.1.3 2 2 2M16 4c1.7 0 2 .9 2 2v3c0 1.2.8 1.8 2 1.8-1.2 0-2 .6-2 1.8v3c0 1.1-.3 2-2 2"/></symbol>
-<symbol id="i-var" viewBox="0 0 24 24"><path d="M4 7h16M4 12h11M4 17h7"/></symbol>
-<symbol id="i-type" viewBox="0 0 24 24"><path d="M4 5h16M12 5v14M8 19h8"/></symbol>
-<symbol id="i-num" viewBox="0 0 24 24"><path d="M9 4L7 20M17 4l-2 16M4 9h17M3 15h17"/></symbol>
-<symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></symbol>
-<symbol id="i-op" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7"/></symbol>
-<symbol id="i-fn" viewBox="0 0 24 24"><path d="M5 4h3M5 20h3M5 4v16M16 4h3M16 20h3M16 4v16"/><path d="M9.5 8l2.5 4-2.5 4M14.5 8l2.5 4-2.5 4"/></symbol>
-<symbol id="i-if" viewBox="0 0 24 24"><path d="M12 3l7.5 9L12 21 4.5 12z"/><path d="M12 8.2c-.4 0-.6.3-.6.7 0 .6.5.8.8 1 .4.3.6.5.6 1 0 .9-.7 1.5-1.7 1.5M12 14.8v.7"/></symbol>
-<symbol id="i-loop" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.6-5.7M20 12a8 8 0 0 1-13.6 5.7"/><path d="M18 3v4h-4M6 21v-4h4"/></symbol>
-<symbol id="i-array" viewBox="0 0 24 24"><rect x="3.5" y="7" width="4.6" height="10" rx="1"/><rect x="9.7" y="7" width="4.6" height="10" rx="1"/><rect x="15.9" y="7" width="4.6" height="10" rx="1"/></symbol>
-<symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 12h16M12 4v16"/></symbol>
-<symbol id="i-string" viewBox="0 0 24 24"><path d="M3 9c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/><path d="M3 15c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/></symbol>
-<symbol id="i-io" viewBox="0 0 24 24"><path d="M4 5v14M4 12h10M11 8l4 4-4 4"/></symbol>
-<symbol id="i-math" viewBox="0 0 24 24"><path d="M19 5H6l7 7-7 7h13"/></symbol>
-<symbol id="i-exc" viewBox="0 0 24 24"><path d="M12 3.5L21 19H3z"/><path d="M12 10v4.2M12 16.9v.4"/></symbol>
-<symbol id="i-mem" viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></symbol>
-<symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4.5h12l-2 4 2 4H5"/></symbol>
-<symbol id="i-quiz" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.3c.2-1 1-1.6 2.1-1.6 1.2 0 2.1.7 2.1 1.6 0 1.3-1.4 1.5-2.1 2.4-.4.5-.6.9-.6 1.7M12 16.7v.4"/></symbol>
-<symbol id="i-mug" viewBox="0 0 24 24"><path d="M4 9h11v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M15 10h1.5a2.5 2.5 0 0 1 0 5H15"/><path d="M7.5 3.5c0 1-1 1.2-1 2.2M11.5 3.5c0 1-1 1.2-1 2.2"/></symbol>
-<symbol id="i-poo" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17"/></symbol>
-<symbol id="i-poo" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17"/></symbol>
-</defs></svg>
+
 <div class="topbar">
   <div class="topbar-in">
     <div class="tb-spacer"></div>
@@ -362,12 +340,12 @@ details.quiz>.ans:last-child{padding-bottom:22px}
 <div class="shell">
 <main>
 
-<section class="module pane" id="m01" data-num="01" data-title="Ambiente e estrutura do programa" data-icon="i-brace" data-blurb="Como um programa Java nasce: arquivo, compilador, bytecode e a JVM.">
-<h2 class="mod-head"><span class="mod-num">01</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-brace"/></svg><span style="flex:1">Ambiente e estrutura do programa</span></span></h2>
+<section class="module pane" id="m01" data-num="01" data-title="Ambiente e estrutura do programa" data-blurb="Como um programa Java nasce: arquivo, compilador, bytecode e a JVM.">
+<h2 class="mod-head"><span class="mod-num">01</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Ambiente e estrutura do programa</span></span></h2>
 <p class="mod-intro">Um programa Java nasce em um arquivo <b>.java</b>, é compilado por <b>javac</b> para <b>bytecode</b> (<b>.class</b>) e roda em qualquer máquina que tenha uma <b>JVM</b>. Neste módulo: arquivo, compilador, bytecode e JVM — com o código de exemplo completo.</p>
 <div class="topics">
 <div class="topic" id="m01-01"><h3><span class="tnum">1.1</span>Estrutura de um programa Java</h3>
-<p>Todo programa Java mora dentro de uma <b>classe</b> — pense nela como a "casa" onde o código vive. E toda casa precisa de uma porta de entrada: o método <b>main</b>. Sem ele, a JVM não sabe por onde começar.</p>
+<p>Todo programa Java é declarado dentro de uma <b>classe</b> — o código vive entre as chaves dela. A execução começa pelo método <b>main</b>: sem ele, a JVM não sabe por onde começar.</p>
 <pre class="code">public class OlaMundo {
     public static void main(String[] args) {
         System.out.println("Olá, mundo!");
@@ -379,7 +357,7 @@ details.quiz>.ans:last-child{padding-bottom:22px}
 <p>Java não fala direto com o computador. Ele faz uma <b>parada intermediária</b>:</p>
 
 <p><b>javac OlaMundo.java</b> gera o arquivo <span class="kbd">OlaMundo.class</span> com <b>bytecode</b> — um código intermediário que <b>qualquer</b> JVM entende (Windows, Mac, Linux…). Daí o bordão <b>"Write Once, Run Anywhere"</b>. Depois, <b>java OlaMundo</b> (sem .class!) pede para a JVM rodar o programa.</p>
-<div class="callout tip"><span class="ci">💡</span><div><b>JVM = Java Virtual Machine.</b> É um "computador dentro do computador". O bytecode é a única língua que ela fala — por isso o Java roda em qualquer lugar que tenha uma JVM instalada.</div></div>
+<div class="callout tip"><div><b>JVM = Java Virtual Machine.</b> É um "computador dentro do computador". O bytecode é a única língua que ela fala — por isso o Java roda em qualquer lugar que tenha uma JVM instalada.</div></div>
 <pre class="code">$ javac OlaMundo.java        // compila: gera OlaMundo.class (bytecode)
 $ java OlaMundo              // a JVM roda o .class (SEM .class aqui!)
 Olá, mundo!</pre></div>
@@ -422,7 +400,7 @@ public class Teste {
 <p>Rode com: <span class="kbd">java Eco "olá"</span> → imprime <b>Você disse: olá</b>. O <span class="kbd">args.length</span> é seu melhor amigo: sempre verifique antes de acessar <span class="kbd">args[0]</span>, ou receberá um <b>ArrayIndexOutOfBoundsException</b> (módulo 10 e 15).</p>
 </div>
 <div class="topic" id="m01-06"><h3><span class="tnum">1.6</span>Comentários de linha</h3>
-<p>Duas barras <span class="kbd">//</span> transformam o resto da linha em anotação: o compilador finge que não viu. Use para explicar o "porquê" de uma linha.</p>
+<p>Duas barras <span class="kbd">//</span> transformam o resto da linha em anotação: o compilador ignora o resto da linha. Use para explicar o "porquê" de uma linha.</p>
 <pre class="code">public class Idade {
     public static void main(String[] args) {
         int idade = 18;   // maior de idade, pode entrar
@@ -444,7 +422,7 @@ public class Teste {
         // /* int b = 2; /* oops, fecha aqui */ int c = 3; */  ← erro de compilação!
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>O compilador fecha o bloco no <b>primeiro</b> <span class="kbd">*/</span> que encontra. O segundo fecha "sobra" e vira código — resultado: erro.</div></div>
+<div class="callout warn"><div>O compilador fecha o bloco no <b>primeiro</b> <span class="kbd">*/</span> que encontra. O segundo fecha "sobra" e vira código — resultado: erro.</div></div>
 </div>
 <div class="topic" id="m01-08"><h3><span class="tnum">1.8</span>Javadoc</h3>
 <p><b>Javadoc</b> é o comentário que <b>vira documentação</b>: começa com <span class="kbd">/**</span> (duas estrelas) e usa tags especiais. É como escrever a bula do remédio junto com o remédio.</p>
@@ -474,7 +452,7 @@ public class Teste {
 <tr><td>Constante (final)</td><td><b>UPPER_SNAKE_CASE</b></td><td><b>MAX_TENTATIVAS</b></td></tr>
 <tr><td>Pacote</td><td><b>tudo minúsculo</b></td><td><b>br.edu.curso</b></td></tr>
 <tr><td>Arquivo .java</td><td>igual à classe pública</td><td><b>ContaBancaria.java</b></td></tr></table>
-<div class="callout tip"><span class="ci">💡</span><div>Nomes devem ser <b>falantes</b>: <span class="kbd">int d;</span> é ruim, <span class="kbd">int diasSemChover;</span> é bom. O compilador não liga, mas a prova (e o professor) sim.</div></div>
+<div class="callout tip"><div>Nomes devem ser <b>falantes</b>: <span class="kbd">int d;</span> é ruim, <span class="kbd">int diasSemChover;</span> é bom. O compilador não liga, mas a prova (e o professor) sim.</div></div>
 <pre class="code">public class ConvencoesNomenclatura {
     static final int MAX_TENTATIVAS = 3;   // constante: UPPER_SNAKE_CASE
 
@@ -492,7 +470,7 @@ public class Teste {
 <div class="topic" id="m01-10"><h3><span class="tnum">1.10</span>Palavras reservadas</h3>
 <p>São 51 palavras que o Java <b>guardou para si</b> — você não pode usá-las como nome de variável ou classe. <span class="kbd">const</span> e <span class="kbd">goto</span> estão na lista, mas nunca são usadas (herança do C).</p>
 <div class="chips"><span class="chip">abstract</span><span class="chip">assert</span><span class="chip">boolean</span><span class="chip">break</span><span class="chip">byte</span><span class="chip">case</span><span class="chip">catch</span><span class="chip">char</span><span class="chip">class</span><span class="chip">const*</span><span class="chip">continue</span><span class="chip">default</span><span class="chip">do</span><span class="chip">double</span><span class="chip">else</span><span class="chip">enum</span><span class="chip">extends</span><span class="chip">final</span><span class="chip">finally</span><span class="chip">float</span><span class="chip">for</span><span class="chip">goto*</span><span class="chip">if</span><span class="chip">implements</span><span class="chip">import</span><span class="chip">instanceof</span><span class="chip">int</span><span class="chip">interface</span><span class="chip">long</span><span class="chip">native</span><span class="chip">new</span><span class="chip">package</span><span class="chip">private</span><span class="chip">protected</span><span class="chip">public</span><span class="chip">return</span><span class="chip">short</span><span class="chip">static</span><span class="chip">strictfp</span><span class="chip">super</span><span class="chip">switch</span><span class="chip">synchronized</span><span class="chip">this</span><span class="chip">throw</span><span class="chip">throws</span><span class="chip">transient</span><span class="chip">try</span><span class="chip">void</span><span class="chip">volatile</span><span class="chip">while</span></div>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>true</b>, <b>false</b> e <b>null</b> NÃO são palavras reservadas — são <b>literais</b>. E <span class="kbd">var</span>, <span class="kbd">record</span> e <span class="kbd">yield</span> são <b>palavras contextuais</b> (só reservadas em certos contextos).</div></div>
+<div class="callout warn"><div><b>true</b>, <b>false</b> e <b>null</b> NÃO são palavras reservadas — são <b>literais</b>. E <span class="kbd">var</span>, <span class="kbd">record</span> e <span class="kbd">yield</span> são <b>palavras contextuais</b> (só reservadas em certos contextos).</div></div>
 <pre class="code">public class PalavrasReservadas {
     public static void main(String[] args) {
         // int class = 10;        ← ERRO: "class" é palavra reservada
@@ -506,7 +484,7 @@ public class Teste {
         System.out.println(classe + " " + inteiro + " " + publico);
     }
 }</pre></div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 1</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 1</summary>
 <div class="q">1) Qual arquivo é gerado pelo comando <span class="kbd">javac App.java</span>?</div>
 <div class="ans"><b>App.class</b> — o bytecode. O comando <span class="kbd">java App</span> (sem extensão) é que executa.</div>
 <div class="q">2) Por que o main é <b>static</b>?</div>
@@ -518,8 +496,8 @@ public class Teste {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m02" data-num="02" data-title="Variáveis" data-icon="i-var" data-blurb="Nome, valor e tipo: como o programa guarda o que precisa.">
-<h2 class="mod-head"><span class="mod-num">02</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-var"/></svg><span style="flex:1">Variáveis</span></span></h2>
+<section class="module pane" id="m02" data-num="02" data-title="Variáveis" data-blurb="Nome, valor e tipo: como o programa guarda o que precisa.">
+<h2 class="mod-head"><span class="mod-num">02</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Variáveis</span></span></h2>
 <p class="mod-intro">Uma variável é um <b>nome</b> ligado a um <b>valor</b> de um <b>tipo</b> fixo. O tipo decide o que pode ser guardado: uma variável <span class="kbd">int</span> só aceita números inteiros — colocar 3.14 nela faz o <b>javac</b> recusar na hora da compilação.</p>
 <div class="topics">
 <div class="topic" id="m02-01"><h3><span class="tnum">2.1</span>Declaração de variáveis</h3>
@@ -547,7 +525,7 @@ public class Teste {
         y = x;           // y recebe uma CÓPIA do valor de x
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Declarar a mesma variável <b>duas vezes no mesmo escopo</b> dá erro: <span class="kbd">int idade; ... int idade;</span> → "variable is already defined".</div></div>
+<div class="callout warn"><div>Declarar a mesma variável <b>duas vezes no mesmo escopo</b> dá erro: <span class="kbd">int idade; ... int idade;</span> → "variable is already defined".</div></div>
 </div>
 <div class="topic" id="m02-03"><h3><span class="tnum">2.3</span>Inicialização</h3>
 <p>Variáveis <b>locais</b> (declaradas dentro de métodos) <b>não</b> ganham valor padrão: usar antes de atribuir é <b>erro de compilação</b> — o Java é ciumento da sua segurança.</p>
@@ -588,7 +566,7 @@ public class Teste {
         System.out.println(a.id);           // 0 — cada um tem o seu
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Como o <b>main é static</b>, ele só pode chamar outros membros <b>static</b> diretamente (sem criar objeto). Por isso, em exercícios simples, quase tudo é static.</div></div>
+<div class="callout tip"><div>Como o <b>main é static</b>, ele só pode chamar outros membros <b>static</b> diretamente (sem criar objeto). Por isso, em exercícios simples, quase tudo é static.</div></div>
 </div>
 <div class="topic" id="m02-06"><h3><span class="tnum">2.6</span>Modificador final</h3>
 <p><b>final</b> significa atribuição única: atribuiu uma vez, acabou. Tentar mudar depois é erro de compilação. Constantes costumam ser <span class="kbd">static final</span> e escritas em UPPER_SNAKE_CASE.</p>
@@ -604,9 +582,9 @@ public class Teste {
         // mas se fosse um objeto, o CONTEÚDO poderia mudar (módulo 16)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>final</b> trava a <b>referência</b>, não o objeto. Uma <span class="kbd">final List</span> não pode apontar para outra lista, mas você pode adicionar elementos nela. (Detalhe importante quando a POO chegar!)</div></div>
+<div class="callout warn"><div><b>final</b> trava a <b>referência</b>, não o objeto. Uma <span class="kbd">final List</span> não pode apontar para outra lista, mas você pode adicionar elementos nela. (Detalhe importante quando a POO chegar!)</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 2</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 2</summary>
 <div class="q">1) Qual a diferença entre <span class="kbd">int x;</span> e <span class="kbd">final int x = 5;</span>?</div>
 <div class="ans">A primeira declara sem valor (e precisa receber um antes do uso); a segunda já nasce com valor e <b>nunca mais pode mudar</b>.</div>
 <div class="q">2) Uma variável declarada dentro de um <span class="kbd">if</span> pode ser usada fora dele?</div>
@@ -617,8 +595,8 @@ public class Teste {
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m03" data-num="03" data-title="Tipos primitivos" data-icon="i-type" data-blurb="Os oito tipos básicos do Java: boolean, byte, short, char, int, long, float e double.">
-<h2 class="mod-head"><span class="mod-num">03</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-type"/></svg><span style="flex:1">Tipos primitivos</span></span></h2>
+<section class="module pane" id="m03" data-num="03" data-title="Tipos primitivos" data-blurb="Os oito tipos básicos do Java: boolean, byte, short, char, int, long, float e double.">
+<h2 class="mod-head"><span class="mod-num">03</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Tipos primitivos</span></span></h2>
 <p class="mod-intro">Java tem exatamente <b>8 tipos primitivos</b>: 4 inteiros (<span class="kbd">byte</span>, <span class="kbd">short</span>, <span class="kbd">int</span>, <span class="kbd">long</span>), 2 com vírgula (<span class="kbd">float</span>, <span class="kbd">double</span>), 1 caractere (<span class="kbd">char</span>) e 1 lógico (<span class="kbd">boolean</span>). Cada um ocupa um tamanho fixo de memória — escolher o certo economiza espaço e evita erros de faixa.</p>
 <div class="topics">
 <div class="topic" id="m03-01"><h3><span class="tnum">3.1</span>boolean</h3>
@@ -632,7 +610,7 @@ public class Teste {
         if (choveu) { System.out.println("Leve o guarda-chuva"); }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Na especificação, boolean ocupa "1 bit de informação", mas a JVM costuma usar 1 byte na prática. Não tente fazer aritmética com boolean: <span class="kbd">true + 1</span> não compila.</div></div>
+<div class="callout tip"><div>Na especificação, boolean ocupa "1 bit de informação", mas a JVM costuma usar 1 byte na prática. Não tente fazer aritmética com boolean: <span class="kbd">true + 1</span> não compila.</div></div>
 </div>
 <div class="topic" id="m03-02"><h3><span class="tnum">3.2</span>byte</h3>
 <p>O menor da família: <b>8 bits</b> com sinal, guardando de <b>-128</b> até <b>127</b>. Útil para economizar memória em arrays gigantes (ex.: pixels, dados de rede).</p>
@@ -644,7 +622,7 @@ public class Teste {
         System.out.println(Byte.MAX_VALUE); // 127
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Estourou o limite? O valor <b>enrola</b> (overflow): <span class="kbd">(byte) 128</span> vira <b>-128</b>. É como um odômetro de bicicleta que volta ao zero.</div></div>
+<div class="callout warn"><div>Estourou o limite? O valor <b>enrola</b> (overflow): <span class="kbd">(byte) 128</span> vira <b>-128</b>. É como um odômetro de bicicleta que volta ao zero.</div></div>
 </div>
 <div class="topic" id="m03-03"><h3><span class="tnum">3.3</span>short</h3>
 <p>O irmão médio: <b>16 bits</b>, de <b>-32.768</b> até <b>32.767</b>. Raro no dia a dia, mas clássico em provas e útil em arquivos binários e redes (ex.: tamanho de pacotes).</p>
@@ -668,7 +646,7 @@ public class Teste {
         System.out.println(letra + 1); // 66 (char vira int na soma!)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">'A'</span> ≠ <span class="kbd">"A"</span>: aspas simples = <b>char</b>; aspas duplas = <b>String</b>. E <span class="kbd">''</span> (vazio) não existe — erro de compilação.</div></div>
+<div class="callout warn"><div><span class="kbd">'A'</span> ≠ <span class="kbd">"A"</span>: aspas simples = <b>char</b>; aspas duplas = <b>String</b>. E <span class="kbd">''</span> (vazio) não existe — erro de compilação.</div></div>
 </div>
 <div class="topic" id="m03-05"><h3><span class="tnum">3.5</span>int</h3>
 <p>O trabalhador padrão: <b>32 bits</b>, de <b>-2.147.483.648</b> até <b>2.147.483.647</b> (±2³¹). Se você declara <span class="kbd">int x = 10;</span> sem pensar, é o <b>int</b> que o Java usa por padrão para números inteiros.</p>
@@ -679,7 +657,7 @@ public class Teste {
         // int grande = 5_000_000_000;        ← ERRO: &gt; que 2.1 bi → use long
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>O literal <span class="kbd">10</span> é <b>int</b> por padrão. Se cabe em int, int é a escolha padrão — mesmo para valores pequenos (o JVM costuma otimizar byte/short para int de qualquer forma).</div></div>
+<div class="callout tip"><div>O literal <span class="kbd">10</span> é <b>int</b> por padrão. Se cabe em int, int é a escolha padrão — mesmo para valores pequenos (o JVM costuma otimizar byte/short para int de qualquer forma).</div></div>
 </div>
 <div class="topic" id="m03-06"><h3><span class="tnum">3.6</span>long</h3>
 <p>Para números gigantes: <b>64 bits</b>, de <b>-9.223.372.036.854.775.808</b> até <b>+9.223.372.036.854.775.807</b> (±2⁶³). Toda constante long deve terminar com <span class="kbd">L</span> (ou <span class="kbd">l</span>, mas <b>L</b> maiúsculo é mais legível — o <span class="kbd">l</span> minúsculo parece 1!).</p>
@@ -712,7 +690,7 @@ public class Teste {
         System.out.println(0.1 + 0.2); // 0.30000000000000004 (!!)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>0.1 + 0.2 ≠ 0.3</b> em double! Vírgulas flutuantes são aproximações binárias. Para dinheiro, use <b>BigDecimal</b> (módulo 14), nunca double.</div></div>
+<div class="callout warn"><div><b>0.1 + 0.2 ≠ 0.3</b> em double! Vírgulas flutuantes são aproximações binárias. Para dinheiro, use <b>BigDecimal</b> (módulo 14), nunca double.</div></div>
 </div>
 <div class="topic" id="m03-09"><h3><span class="tnum">3.9</span>Tamanho e faixa de cada tipo</h3>
 <p>A tabela que o professor adora pedir. Decore as linhas-chave: <b>int = 32 bits</b>, <b>long = 64 bits</b>, <b>char = 16 bits sem sinal</b>.</p>
@@ -751,8 +729,8 @@ public class Teste {
         System.out.println(Float.MIN_VALUE);    // 1.4E-45
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>ARMADILHA CLÁSSICA:</b> <span class="kbd">Double.MIN_VALUE</span> <b>não</b> é o menor (mais negativo) valor — é o menor valor <b>positivo</b> que um double pode representar (quase zero). O "mais negativo" seria <span class="kbd">-Double.MAX_VALUE</span>.</div></div>
-<div class="callout tip"><span class="ci">💡</span><div><b>EPSILON</b> é a menor diferença detectável entre 1.0 e o próximo double. Use-o para comparar doubles com tolerância: <span class="kbd">Math.abs(a-b) &lt; 1e-9</span> em vez de <span class="kbd">a == b</span>.</div></div>
+<div class="callout warn"><div><b>ARMADILHA CLÁSSICA:</b> <span class="kbd">Double.MIN_VALUE</span> <b>não</b> é o menor (mais negativo) valor — é o menor valor <b>positivo</b> que um double pode representar (quase zero). O "mais negativo" seria <span class="kbd">-Double.MAX_VALUE</span>.</div></div>
+<div class="callout tip"><div><b>EPSILON</b> é a menor diferença detectável entre 1.0 e o próximo double. Use-o para comparar doubles com tolerância: <span class="kbd">Math.abs(a-b) &lt; 1e-9</span> em vez de <span class="kbd">a == b</span>.</div></div>
 </div>
 <div class="topic" id="m03-11"><h3><span class="tnum">3.11</span>Tipos primitivos × tipos de referência</h3>
 <p>Dois mundos em Java. O <b>primitivo</b> guarda o <b>valor em si</b>. O <b>tipo de referência</b> (classes, arrays, String) guarda um <b>endereço</b> — o endereço do objeto no heap.</p>
@@ -777,7 +755,7 @@ public class Teste {
         System.out.println(s);             // null
     }
 }</pre></div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 3</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 3</summary>
 <div class="q">1) Qual tipo usar para a população do Brasil (~214 milhões)? E para a distância em km até Andrômeda (~2,4 × 10¹⁹)?</div>
 <div class="ans"><b>int</b> para 214 milhões (cabe em 2,1 bi) e <b>long</b> para a distância (estoura o int, precisa de 64 bits + sufixo L).</div>
 <div class="q">2) Por que <span class="kbd">float x = 3.14;</span> dá erro?</div>
@@ -789,8 +767,8 @@ public class Teste {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m04" data-num="04" data-title="Literais" data-icon="i-num" data-blurb="Como escrever valores direto no código: números em bases diferentes, escapes e muito mais.">
-<h2 class="mod-head"><span class="mod-num">04</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-num"/></svg><span style="flex:1">Literais</span></span></h2>
+<section class="module pane" id="m04" data-num="04" data-title="Literais" data-blurb="Como escrever valores direto no código: números em bases diferentes, escapes e muito mais.">
+<h2 class="mod-head"><span class="mod-num">04</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Literais</span></span></h2>
 <p class="mod-intro"><b>Literal</b> é o valor escrito direto no código — o <b>42</b> em <span class="kbd">int x = 42;</span>. Java aceita números em 4 bases (decimal, octal <span class="kbd">0</span>, hexa <span class="kbd">0x</span>, binário <span class="kbd">0b</span>) e tem recursos como o separador <span class="kbd">_</span> e o escape Unicode <span class="kbd">\u</span>.</p>
 <div class="topics">
 <div class="topic" id="m04-01"><h3><span class="tnum">4.1</span>Literais inteiros</h3>
@@ -848,7 +826,7 @@ public class Teste {
         // float f = 0.5;       ← ERRO: é double; use 0.5f
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Em Português escrevemos "3,14", mas em código o separador é sempre <b>ponto</b>: <span class="kbd">3.14</span>. Escrever <span class="kbd">3,14</span> é erro de compilação (o Java lê como dois comandos separados por vírgula!).</div></div>
+<div class="callout tip"><div>Em Português escrevemos "3,14", mas em código o separador é sempre <b>ponto</b>: <span class="kbd">3.14</span>. Escrever <span class="kbd">3,14</span> é erro de compilação (o Java lê como dois comandos separados por vírgula!).</div></div>
 </div>
 <div class="topic" id="m04-06"><h3><span class="tnum">4.6</span>Sufixos f e L</h3>
 <p>Do sufixos que o Java reconhece em literais numéricos:</p>
@@ -863,7 +841,7 @@ public class Teste {
         // double d = 10.5F;  ← OK também! float converte para double sozinho
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Evite <span class="kbd">l</span> minúsculo: <span class="kbd">10l</span> parece <span class="kbd">101</span>. Use sempre <b>L</b> maiúsculo.</div></div>
+<div class="callout warn"><div>Evite <span class="kbd">l</span> minúsculo: <span class="kbd">10l</span> parece <span class="kbd">101</span>. Use sempre <b>L</b> maiúsculo.</div></div>
 </div>
 <div class="topic" id="m04-07"><h3><span class="tnum">4.7</span>Underscore em literais numéricos</h3>
 <p>Desde Java 7 você pode usar <span class="kbd">_</span> para <b>agrupar dígitos</b> e deixar o número legível — como os pontos de milhar. O compilador ignora os underscores.</p>
@@ -926,7 +904,7 @@ public class Teste {
         System.out.println("C:\\Users\\Kelvin\\");   // barras duplicadas!
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">\</span> isolado no fim de uma String dá erro: <span class="kbd">"C:\Pasta\"</span> ← o escape come a aspa de fechamento! Sempre <span class="kbd">\\</span>.</div></div>
+<div class="callout warn"><div><span class="kbd">\</span> isolado no fim de uma String dá erro: <span class="kbd">"C:\Pasta\"</span> ← o escape come a aspa de fechamento! Sempre <span class="kbd">\\</span>.</div></div>
 </div>
 <div class="topic" id="m04-11"><h3><span class="tnum">4.11</span>Sequência de escape Unicode</h3>
 <p>Qualquer caractere do Unicode pode ser escrito como <span class="kbd">\uXXXX</span> (4 dígitos hexa). <span class="kbd">'A'</span> = <span class="kbd">'\u0041'</span>, <span class="kbd">π</span> = <span class="kbd">'\u03C0'</span>, emoji 😄 = <span class="kbd">"\uD83D\uDE04"</span> (par substituto UTF-16).</p>
@@ -938,9 +916,9 @@ public class Teste {
         System.out.println("\u00C9");   // É (acento via Unicode)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Curiosidade traiçoeira: o compilador troca <span class="kbd">\uXXXX</span> <b>antes</b> de qualquer outra leitura. Por isso <span class="kbd">//\u000A System.out.println("x")</span> <b>não comenta</b> o println — o <span class="kbd">\u000A</span> vira uma quebra de linha real, e o println escapa do comentário!</div></div>
+<div class="callout warn"><div>Curiosidade traiçoeira: o compilador troca <span class="kbd">\uXXXX</span> <b>antes</b> de qualquer outra leitura. Por isso <span class="kbd">//\u000A System.out.println("x")</span> <b>não comenta</b> o println — o <span class="kbd">\u000A</span> vira uma quebra de linha real, e o println escapa do comentário!</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 4</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 4</summary>
 <div class="q">1) Quanto vale <span class="kbd">0x1F</span>? E <span class="kbd">0b1111</span>?</div>
 <div class="ans">31 (1×16+15) e 15. Ambos são inteiros em outras bases — o resultado na memória é idêntico ao decimal.</div>
 <div class="q">2) Qual a forma correta de declarar um float com valor 2,5?</div>
@@ -951,8 +929,8 @@ public class Teste {
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m05" data-num="05" data-title="Conversão de tipos" data-icon="i-swap" data-blurb="Promoção, casting, wrappers, autoboxing e parsing — a ponte entre os tipos.">
-<h2 class="mod-head"><span class="mod-num">05</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-swap"/></svg><span style="flex:1">Conversão de tipos</span></span></h2>
+<section class="module pane" id="m05" data-num="05" data-title="Conversão de tipos" data-blurb="Promoção, casting, wrappers, autoboxing e parsing — a conversão entre os tipos.">
+<h2 class="mod-head"><span class="mod-num">05</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Conversão de tipos</span></span></h2>
 <p class="mod-intro">Java converte tipos <b>automaticamente</b> quando a conversão não perde dados (<b>promoção</b>) e exige <b>cast explícito</b> quando pode perder. Cada primitivo tem também um <b>wrapper</b> (<span class="kbd">Integer</span>, <span class="kbd">Double</span>…) — a classe que o representa no mundo dos objetos.</p>
 <div class="topics">
 <div class="topic" id="m05-01"><h3><span class="tnum">5.1</span>Promoção automática de tipos</h3>
@@ -969,7 +947,7 @@ public class Teste {
         // byte y = i;        ← ERRO: int → byte exige cast
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Na conta <span class="kbd">byte + byte</span>, o resultado é <b>int</b>! Então <span class="kbd">byte z = b1 + b2;</span> dá erro — precisa de <span class="kbd">(byte)(b1 + b2)</span>. Prova adora isso.</div></div>
+<div class="callout tip"><div>Na conta <span class="kbd">byte + byte</span>, o resultado é <b>int</b>! Então <span class="kbd">byte z = b1 + b2;</span> dá erro — precisa de <span class="kbd">(byte)(b1 + b2)</span>. Prova adora isso.</div></div>
 </div>
 <div class="topic" id="m05-02"><h3><span class="tnum">5.2</span>Conversão estreita e casting explícito</h3>
 <p><b>Narrowing</b> (estreitamento): de tipo maior para menor. Use <span class="kbd">(tipo)</span> na frente. Java obedece, mas <b>pode truncar</b> (cortar casas decimais) ou <b>enrolar</b> (overflow).</p>
@@ -983,7 +961,7 @@ public class Teste {
         int i2 = (int) L;       // 705.032.704 — truncou os bits altos
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Cast <b>não arredonda</b>: <span class="kbd">(int) 3.99</span> → <b>3</b>. Para arredondar, use <span class="kbd">Math.round</span> (módulo 14). E cuidado com overflow: o resultado pode ser totalmente diferente do esperado.</div></div>
+<div class="callout warn"><div>Cast <b>não arredonda</b>: <span class="kbd">(int) 3.99</span> → <b>3</b>. Para arredondar, use <span class="kbd">Math.round</span> (módulo 14). E cuidado com overflow: o resultado pode ser totalmente diferente do esperado.</div></div>
 </div>
 <div class="topic" id="m05-03"><h3><span class="tnum">5.3</span>Casting de objetos e ClassCastException</h3>
 <p>Com objetos, o cast é sobre <b>referenciar</b>: uma variável do tipo "pai" pode guardar um objeto "filho" (<b>upcast</b>, automático). Para usar como filho, faça <b>downcast</b> — e se o objeto não for daquele tipo, a JVM joga <b>ClassCastException</b> na hora da execução.</p>
@@ -998,7 +976,7 @@ public class Teste {
         }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">instanceof</span> é o "segurança do cast": pergunte "é desse tipo?" antes de converter. Erros de cast não aparecem na compilação — só na execução.</div></div>
+<div class="callout tip"><div><span class="kbd">instanceof</span> é o "segurança do cast": pergunte "é desse tipo?" antes de converter. Erros de cast não aparecem na compilação — só na execução.</div></div>
 </div>
 <div class="topic" id="m05-04"><h3><span class="tnum">5.4</span>Classe wrapper: Integer</h3>
 <p>Cada primitivo tem uma classe "gêmea" (wrapper), com a inicial maiúscula. <b>Integer</b> embrulha o <b>int</b>: dá acesso a constantes e métodos úteis. Objetos, portanto — podem ser <b>null</b>!</p>
@@ -1047,7 +1025,7 @@ public class Teste {
         System.out.println(Boolean.toString(false)); // "false"
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">Boolean.parseBoolean</span> só conhece <b>"true"</b>: qualquer outra coisa (inclusive <span class="kbd">null</span>) devolve <b>false</b> sem reclamar.</div></div>
+<div class="callout tip"><div><span class="kbd">Boolean.parseBoolean</span> só conhece <b>"true"</b>: qualquer outra coisa (inclusive <span class="kbd">null</span>) devolve <b>false</b> sem reclamar.</div></div>
 </div>
 <div class="topic" id="m05-08"><h3><span class="tnum">5.8</span>Autoboxing e unboxing</h3>
 <p>Desde Java 5, Java converte <b>sozinho</b> entre primitivo e wrapper: colocar num wrapper é <b>autoboxing</b>; tirar é <b>unboxing</b>. Prático, mas esconde duas armadilhas.</p>
@@ -1063,7 +1041,7 @@ public class AutoBoxingUnboxing {
         nums.add(5);              // autoboxing na inserção
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>Armadilha 1:</b> <span class="kbd">Integer i = null; int x = i;</span> → <b>NullPointerException</b> no unboxing. <b>Armadilha 2:</b> com <span class="kbd">==</span> entre wrappers, compare <b>referências</b> — só funciona para -128..127 (cache do Integer)! Use <span class="kbd">.equals()</span> ou <span class="kbd">intValue()</span>.</div></div>
+<div class="callout warn"><div><b>Armadilha 1:</b> <span class="kbd">Integer i = null; int x = i;</span> → <b>NullPointerException</b> no unboxing. <b>Armadilha 2:</b> com <span class="kbd">==</span> entre wrappers, compare <b>referências</b> — só funciona para -128..127 (cache do Integer)! Use <span class="kbd">.equals()</span> ou <span class="kbd">intValue()</span>.</div></div>
 </div>
 <div class="topic" id="m05-09"><h3><span class="tnum">5.9</span>Métodos estáticos das classes wrapper</h3>
 <p>Os wrappers são verdadeiros "canivetes suíços" — tudo estático, tudo útil para prova:</p>
@@ -1118,7 +1096,7 @@ public class AutoBoxingUnboxing {
         int hex = Integer.parseInt("2A", 16);  // 42 — com base!
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Qualquer texto "sujo" (espaços, letras, vazio, null) derruba <b>NumberFormatException</b>. Em prova, o padrão é: <b>parseInt → try/catch</b> (módulo 15) ou <span class="kbd">Scanner</span> com <span class="kbd">hasNextInt()</span>.</div></div>
+<div class="callout warn"><div>Qualquer texto "sujo" (espaços, letras, vazio, null) derruba <b>NumberFormatException</b>. Em prova, o padrão é: <b>parseInt → try/catch</b> (módulo 15) ou <span class="kbd">Scanner</span> com <span class="kbd">hasNextInt()</span>.</div></div>
 </div>
 <div class="topic" id="m05-11"><h3><span class="tnum">5.11</span>Parsing com Float.parseFloat</h3>
 <p>String → <b>float</b>. Aceita vírgula? <b>Não</b> — sempre ponto. E o resultado é primitivo float (cuidado com a precisão de ~7 dígitos).</p>
@@ -1166,9 +1144,9 @@ public class AutoBoxingUnboxing {
         String s6 = 42 + "";                    // "42"
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Dentro de uma concatenação, Java converte automaticamente: <span class="kbd">"Valor: " + 42</span> já vira texto. O <span class="kbd">String.valueOf</span> brilha quando você precisa <b>armazenar</b> a String depois.</div></div>
+<div class="callout tip"><div>Dentro de uma concatenação, Java converte automaticamente: <span class="kbd">"Valor: " + 42</span> já vira texto. O <span class="kbd">String.valueOf</span> brilha quando você precisa <b>armazenar</b> a String depois.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 5</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 5</summary>
 <div class="q">1) O que o código <span class="kbd">int x = (int) 7.99;</span> produz?</div>
 <div class="ans"><b>7</b> — o cast trunca (corta as casas decimais), não arredonda.</div>
 <div class="q">2) Qual a diferença entre <span class="kbd">parseInt</span> e <span class="kbd">valueOf</span>?</div>
@@ -1180,8 +1158,8 @@ public class AutoBoxingUnboxing {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m06" data-num="06" data-title="Operadores" data-icon="i-op" data-blurb="Aritméticos, lógicos, bitwise, ternário e a tabela de precedência.">
-<h2 class="mod-head"><span class="mod-num">06</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-op"/></svg><span style="flex:1">Operadores</span></span></h2>
+<section class="module pane" id="m06" data-num="06" data-title="Operadores" data-blurb="Aritméticos, lógicos, bitwise, ternário e a tabela de precedência.">
+<h2 class="mod-head"><span class="mod-num">06</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Operadores</span></span></h2>
 <p class="mod-intro">Operadores fazem contas, comparações e decisões lógicas — inclusive bit a bit. O que separa iniciante de aprovado: <b>precedência</b> (a ordem das operações) e <b>curto-circuito</b> (<span class="kbd">&amp;&amp;</span> e <span class="kbd">||</span> param de avaliar assim que o resultado está decidido).</p>
 <div class="topics">
 <div class="topic" id="m06-01"><h3><span class="tnum">6.1</span>Operadores aritméticos</h3>
@@ -1197,7 +1175,7 @@ public class AutoBoxingUnboxing {
         System.out.println(-7 / 2);  // -3 (trunca em direção a zero)
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Para forçar divisão decimal, faça <b>um</b> dos lados ser double: <span class="kbd">(double) a / b</span> ou <span class="kbd">a / 2.0</span>.</div></div>
+<div class="callout tip"><div>Para forçar divisão decimal, faça <b>um</b> dos lados ser double: <span class="kbd">(double) a / b</span> ou <span class="kbd">a / 2.0</span>.</div></div>
 </div>
 <div class="topic" id="m06-02"><h3><span class="tnum">6.2</span>Operador de resto (%)</h3>
 <p>O <b>módulo</b> devolve o "sobra" da divisão. É o operador mais útil do Java para padrões: par/ímpar, ciclos, dígitos, validações.</p>
@@ -1210,7 +1188,7 @@ public class AutoBoxingUnboxing {
         System.out.println(123 / 10 % 10); // 2 → penúltimo dígito
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Dicas de prova: <b>par</b> = <span class="kbd">n % 2 == 0</span>; <b>múltiplo de 5</b> = <span class="kbd">n % 5 == 0</span>; <b>último dígito</b> = <span class="kbd">n % 10</span>; <b>relógio de 24h</b> = <span class="kbd">hora % 24</span>.</div></div>
+<div class="callout tip"><div>Dicas de prova: <b>par</b> = <span class="kbd">n % 2 == 0</span>; <b>múltiplo de 5</b> = <span class="kbd">n % 5 == 0</span>; <b>último dígito</b> = <span class="kbd">n % 10</span>; <b>relógio de 24h</b> = <span class="kbd">hora % 24</span>.</div></div>
 </div>
 <div class="topic" id="m06-03"><h3><span class="tnum">6.3</span>Concatenação com +</h3>
 <p>Se um dos lados do <span class="kbd">+</span> for String, ele <b>vira cola</b>: junta textos. E a avaliação vai <b>da esquerda para a direita</b> — isso gera o clássico engano de prova.</p>
@@ -1224,7 +1202,7 @@ public class AutoBoxingUnboxing {
         System.out.println("Soma: " + (a + b)); // "Soma: 8" — parênteses mandam!
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">"1" + 2</span> é <b>"12"</b>, mas <span class="kbd">'1' + 2</span> é <b>51</b> (char '1' vale 49, vira int)! Aspas simples × duplas mudam TUDO.</div></div>
+<div class="callout warn"><div><span class="kbd">"1" + 2</span> é <b>"12"</b>, mas <span class="kbd">'1' + 2</span> é <b>51</b> (char '1' vale 49, vira int)! Aspas simples × duplas mudam TUDO.</div></div>
 </div>
 <div class="topic" id="m06-04"><h3><span class="tnum">6.4</span>Operadores relacionais</h3>
 <p>Comparam dois valores e devolvem <b>boolean</b>: <span class="kbd">&lt;</span> <span class="kbd">&gt;</span> <span class="kbd">&lt;=</span> <span class="kbd">&gt;=</span> <span class="kbd">==</span> <span class="kbd">!=</span>. O resultado é a matéria-prima de todo <span class="kbd">if</span>.</p>
@@ -1239,7 +1217,7 @@ public class AutoBoxingUnboxing {
         System.out.println('A' &lt; 'B'); // true (65 &lt; 66)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">==</span> compara <b>valores</b> em primitivos, mas <b>referências</b> em objetos (String!). Para Strings, use <span class="kbd">.equals()</span> — módulo 12.</div></div>
+<div class="callout warn"><div><span class="kbd">==</span> compara <b>valores</b> em primitivos, mas <b>referências</b> em objetos (String!). Para Strings, use <span class="kbd">.equals()</span> — módulo 12.</div></div>
 </div>
 <div class="topic" id="m06-05"><h3><span class="tnum">6.5</span>Operadores lógicos</h3>
 <p>Combinam booleans: <span class="kbd">&amp;&amp;</span> (E), <span class="kbd">||</span> (OU), <span class="kbd">!</span> (NÃO). A tabela-verdade é o mapa da mina:</p>
@@ -1272,7 +1250,7 @@ public class AutoBoxingUnboxing {
         if (denominador != 0 &amp;&amp; numerador / denominador &gt; 1) { }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Os operadores <b>não curto</b> existem: <span class="kbd">&amp;</span> e <span class="kbd">|</span> avaliam <b>sempre os dois lados</b> (e ainda fazem operações bit a bit em inteiros — veja 6.7). Em prova, o padrão é: <b>&amp;&amp; e || curto-circuitam; &amp; e | não.</b></div></div>
+<div class="callout tip"><div>Os operadores <b>não curto</b> existem: <span class="kbd">&amp;</span> e <span class="kbd">|</span> avaliam <b>sempre os dois lados</b> (e ainda fazem operações bit a bit em inteiros — veja 6.7). Em prova, o padrão é: <b>&amp;&amp; e || curto-circuitam; &amp; e | não.</b></div></div>
 </div>
 <div class="topic" id="m06-07"><h3><span class="tnum">6.7</span>Operadores bitwise</h3>
 <p>Trabalham <b>bit a bit</b> em inteiros: <span class="kbd">&amp;</span> (AND), <span class="kbd">|</span> (OR), <span class="kbd">^</span> (XOR), <span class="kbd">~</span> (NOT). Pense em cada número em binário e faça a operação coluna por coluna.</p>
@@ -1303,7 +1281,7 @@ public class AutoBoxingUnboxing {
         int bit = (n &gt;&gt; 2) &amp; 1;
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">x &lt;&lt; k</span> = x × 2ᵏ; <span class="kbd">x &gt;&gt; k</span> ≈ x ÷ 2ᵏ (com sinal). <span class="kbd">&gt;&gt;&gt;</span> existe só em Java — preenche com zero à esquerda, virando positivo.</div></div>
+<div class="callout tip"><div><span class="kbd">x &lt;&lt; k</span> = x × 2ᵏ; <span class="kbd">x &gt;&gt; k</span> ≈ x ÷ 2ᵏ (com sinal). <span class="kbd">&gt;&gt;&gt;</span> existe só em Java — preenche com zero à esquerda, virando positivo.</div></div>
 </div>
 <div class="topic" id="m06-09"><h3><span class="tnum">6.9</span>Atribuição composta</h3>
 <p>Atalhos que combinam operação + atribuição: <span class="kbd">+=</span> <span class="kbd">-=</span> <span class="kbd">*=</span> <span class="kbd">/=</span> <span class="kbd">%=</span> e até <span class="kbd">&lt;&lt;=</span>, <span class="kbd">^=</span>. Além de práticos, trazem um <b>cast implícito</b> escondido!</p>
@@ -1320,7 +1298,7 @@ public class AutoBoxingUnboxing {
         // b = b + 5;  ← ERRO! b+5 é int, precisa de (byte)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>Prova gosta disso:</b> <span class="kbd">b += 5</span> compila, <span class="kbd">b = b + 5</span> não. O operador composto faz o cast automaticamente. E cuidado com <span class="kbd">a += a++</span> — misturas com incremento dão resultados surpreendentes.</div></div>
+<div class="callout warn"><div><b>Prova gosta disso:</b> <span class="kbd">b += 5</span> compila, <span class="kbd">b = b + 5</span> não. O operador composto faz o cast automaticamente. E cuidado com <span class="kbd">a += a++</span> — misturas com incremento dão resultados surpreendentes.</div></div>
 </div>
 <div class="topic" id="m06-10"><h3><span class="tnum">6.10</span>Incremento e decremento (prefixado × pós-fixado)</h3>
 <p><span class="kbd">++</span> e <span class="kbd">--</span> somam/subtraem 1. A posição muda <b>quando</b> a soma acontece: <b>pré</b> = "some e depois use"; <b>pós</b> = "use e depois some".</p>
@@ -1335,7 +1313,7 @@ public class AutoBoxingUnboxing {
         int c = ++a;   // a = 7, c = 7
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Clássico de prova: <span class="kbd">int i = 0; int j = i++ + ++i;</span> → i=2, j = 0 + 2 = <b>2</b>. Resolva passo a passo: <b>i++</b> usa 0 (i→1), <b>++i</b> soma primeiro (i→2, usa 2).</div></div>
+<div class="callout warn"><div>Clássico de prova: <span class="kbd">int i = 0; int j = i++ + ++i;</span> → i=2, j = 0 + 2 = <b>2</b>. Resolva passo a passo: <b>i++</b> usa 0 (i→1), <b>++i</b> soma primeiro (i→2, usa 2).</div></div>
 </div>
 <div class="topic" id="m06-11"><h3><span class="tnum">6.11</span>Operador ternário</h3>
 <p>O único operador com <b>três</b> partes: <span class="kbd">condição ? valorSeVerdadeiro : valorSeFalso</span>. É um <span class="kbd">if-else</span> que <b>produz um valor</b> — perfeito para atribuições rápidas.</p>
@@ -1350,7 +1328,7 @@ public class AutoBoxingUnboxing {
         System.out.println((5 &gt; 3) ? 10 : 20); // 10
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>O ternário é uma <b>expressão</b>: cabe dentro de <span class="kbd">println</span>, concatenações e parâmetros. Mas não abuse do aninhamento — legibilidade conta (e o professor nota).</div></div>
+<div class="callout tip"><div>O ternário é uma <b>expressão</b>: cabe dentro de <span class="kbd">println</span>, concatenações e parâmetros. Mas não abuse do aninhamento — legibilidade conta (e o professor nota).</div></div>
 </div>
 <div class="topic" id="m06-12"><h3><span class="tnum">6.12</span>Precedência e associatividade</h3>
 <p>Quando vários operadores brigam, a <b>precedência</b> decide quem executa primeiro. A tabela resumida — do mais forte ao mais fraco:</p>
@@ -1369,7 +1347,7 @@ public class AutoBoxingUnboxing {
 <tr><td>12</td><td><span class="kbd">||</span></td><td>esquerda → direita</td></tr>
 <tr><td>13</td><td><span class="kbd">?:</span></td><td>direita → esquerda</td></tr>
 <tr><td>14</td><td><span class="kbd">=</span> <span class="kbd">+=</span> <span class="kbd">-=</span> ...</td><td>direita → esquerda</td></tr></table>
-<div class="callout tip"><span class="ci">💡</span><div>Nunca decore a tabela inteira: <b>use parênteses</b> quando tiver dúvida. E lembre: <span class="kbd">=</span> é o <b>mais fraco</b> de todos (só acima do ternário) — por isso <span class="kbd">a = b + 5</span> soma primeiro, atribui depois.</div></div>
+<div class="callout tip"><div>Nunca decore a tabela inteira: <b>use parênteses</b> quando tiver dúvida. E lembre: <span class="kbd">=</span> é o <b>mais fraco</b> de todos (só acima do ternário) — por isso <span class="kbd">a = b + 5</span> soma primeiro, atribui depois.</div></div>
 <pre class="code">public class Precedencia {
     public static void main(String[] args) {
         System.out.println(3 + 4 * 2);           // 11  — * antes de +
@@ -1387,7 +1365,7 @@ public class AutoBoxingUnboxing {
         System.out.println(x);                   // 7
     }
 }</pre></div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 6</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 6</summary>
 <div class="q">1) Quanto imprime <span class="kbd">System.out.println(3 + 4 * 2);</span>? E <span class="kbd">"3" + 4 * 2</span>?</div>
 <div class="ans"><b>11</b> (multiplicação antes) e <b>"38"</b> (4×2=8, depois concatena com "3").</div>
 <div class="q">2) Qual a saída de <span class="kbd">int x = 5; System.out.println(x++ + ++x);</span>?</div>
@@ -1398,8 +1376,8 @@ public class AutoBoxingUnboxing {
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m07" data-num="07" data-title="Métodos" data-icon="i-fn" data-blurb="Blocos de código com nome: o programa delega tarefas.">
-<h2 class="mod-head"><span class="mod-num">07</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-fn"/></svg><span style="flex:1">Métodos</span></span></h2>
+<section class="module pane" id="m07" data-num="07" data-title="Métodos" data-blurb="Blocos de código com nome: o programa delega tarefas.">
+<h2 class="mod-head"><span class="mod-num">07</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Métodos</span></span></h2>
 <p class="mod-intro">Um <b>método</b> é um bloco de código com nome e assinatura: você escreve uma vez e chama quantas vezes quiser. <span class="kbd">main</span> é apenas o primeiro método chamado — a lógica real vive em métodos auxiliares.</p>
 <div class="topics">
 <div class="topic" id="m07-01"><h3><span class="tnum">7.1</span>Declaração de métodos</h3>
@@ -1448,7 +1426,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Prova clássica: "um método pode alterar o argumento original?" Para <b>primitivos: NÃO</b>. O método manipula cópias. Para trocar valores reais, devolva o resultado: <span class="kbd">x = somaUm(x);</span>.</div></div>
+<div class="callout warn"><div>Prova clássica: "um método pode alterar o argumento original?" Para <b>primitivos: NÃO</b>. O método manipula cópias. Para trocar valores reais, devolva o resultado: <span class="kbd">x = somaUm(x);</span>.</div></div>
 </div>
 <div class="topic" id="m07-04"><h3><span class="tnum">7.4</span>Tipos de retorno</h3>
 <p>O tipo antes do nome diz <b>o que o método devolve</b> para quem chamou. Pode ser qualquer primitivo, String, array ou classe. O <span class="kbd">return</span> entrega o valor e <b>encerra</b> o método na hora.</p>
@@ -1467,7 +1445,7 @@ public class AutoBoxingUnboxing {
     // new MinhaClasse().triplo(5);   ← instância: pelo objeto
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Se o tipo é <span class="kbd">int</span>, o <span class="kbd">return</span> precisa de um int (ou algo que caiba: byte, short, char — mas não long/double sem cast).</div></div>
+<div class="callout tip"><div>Se o tipo é <span class="kbd">int</span>, o <span class="kbd">return</span> precisa de um int (ou algo que caiba: byte, short, char — mas não long/double sem cast).</div></div>
 </div>
 <div class="topic" id="m07-05"><h3><span class="tnum">7.5</span>Métodos void</h3>
 <p><b>void</b> = "não devolve nada". O método faz algo (imprime, grava, altera estado), mas não há valor de volta. Nesse caso, <span class="kbd">return;</span> é opcional — só serve para sair mais cedo.</p>
@@ -1499,7 +1477,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Métodos com if/else em todos os caminhos não precisam de return extra — mas o compilador exige que <b>todo caminho possível</b> termine em return (ou lance exceção).</div></div>
+<div class="callout tip"><div>Métodos com if/else em todos os caminhos não precisam de return extra — mas o compilador exige que <b>todo caminho possível</b> termine em return (ou lance exceção).</div></div>
 </div>
 <div class="topic" id="m07-07"><h3><span class="tnum">7.7</span>Sobrecarga de métodos</h3>
 <p><b>Overload</b>: dois métodos com o <b>mesmo nome</b>, mas <b>assinaturas diferentes</b> (quantidade ou tipos de parâmetros). O Java escolhe o certo na hora da chamada. É como ter "soma" para inteiros e para doubles.</p>
@@ -1515,7 +1493,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Sobrecarga NÃO vale para: mesmo nome e mesmos parâmetros mas <b>tipo de retorno diferente</b> (erro!), ou só nome diferente de parâmetro. E <span class="kbd">soma(int, double)</span> × <span class="kbd">soma(double, int)</span> são métodos diferentes — mas uma chamada como <span class="kbd">soma(1, 2)</span> usa o mais específico ou dá ambiguidade.</div></div>
+<div class="callout warn"><div>Sobrecarga NÃO vale para: mesmo nome e mesmos parâmetros mas <b>tipo de retorno diferente</b> (erro!), ou só nome diferente de parâmetro. E <span class="kbd">soma(int, double)</span> × <span class="kbd">soma(double, int)</span> são métodos diferentes — mas uma chamada como <span class="kbd">soma(1, 2)</span> usa o mais específico ou dá ambiguidade.</div></div>
 </div>
 <div class="topic" id="m07-08"><h3><span class="tnum">7.8</span>Parâmetros variádicos</h3>
 <p><b>Varargs</b> (<span class="kbd">tipo... nome</span>) aceita <b>qualquer quantidade</b> de argumentos — zero, um ou mil. Dentro do método, vira um array. Regras: só <b>um</b> varargs, sempre <b>por último</b>.</p>
@@ -1546,7 +1524,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Esqueceu o caso base? <b>StackOverflowError</b> em milissegundos. Recursão também gasta memória de pilha: para n muito grande, prefira o laço <span class="kbd">for</span>.</div></div>
+<div class="callout warn"><div>Esqueceu o caso base? <b>StackOverflowError</b> em milissegundos. Recursão também gasta memória de pilha: para n muito grande, prefira o laço <span class="kbd">for</span>.</div></div>
 </div>
 <div class="topic" id="m07-10"><h3><span class="tnum">7.10</span>Chamada de método static × de instância</h3>
 <p><b>static</b>: pertence à classe — chame com <span class="kbd">Classe.metodo()</span> ou direto (dentro da mesma classe). <b>De instância</b>: pertence ao objeto — precisa de <span class="kbd">objeto.metodo()</span> e de um <span class="kbd">new</span> antes.</p>
@@ -1567,9 +1545,9 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Regra de ouro: <b>de dentro de main (static), só chame outros static diretamente</b>. Métodos de instância, por sua vez, podem chamar tanto static quanto de instância.</div></div>
+<div class="callout tip"><div>Regra de ouro: <b>de dentro de main (static), só chame outros static diretamente</b>. Métodos de instância, por sua vez, podem chamar tanto static quanto de instância.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 7</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 7</summary>
 <div class="q">1) O que é "passagem por valor" em Java?</div>
 <div class="ans">O método recebe uma <b>cópia</b> do argumento. Mudar o parâmetro não afeta a variável original (para primitivos).</div>
 <div class="q">2) Posso ter <span class="kbd">void soma(int a, int b)</span> e <span class="kbd">int soma(int a, int b)</span> na mesma classe?</div>
@@ -1581,8 +1559,8 @@ public class AutoBoxingUnboxing {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m08" data-num="08" data-title="Condicionais" data-icon="i-if" data-blurb="if, else, switch — o programa aprende a tomar decisões.">
-<h2 class="mod-head"><span class="mod-num">08</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-if"/></svg><span style="flex:1">Condicionais</span></span></h2>
+<section class="module pane" id="m08" data-num="08" data-title="Condicionais" data-blurb="if, else, switch — o programa aprende a tomar decisões.">
+<h2 class="mod-head"><span class="mod-num">08</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Condicionais</span></span></h2>
 <p class="mod-intro">Condicionais escolhem o caminho da execução: <span class="kbd">if-else</span> para dois ou mais ramos, <span class="kbd">switch</span> para muitos casos de um mesmo valor. A condição é sempre um <span class="kbd">boolean</span>.</p>
 <div class="topics">
 <div class="topic" id="m08-01"><h3><span class="tnum">8.1</span>if</h3>
@@ -1605,7 +1583,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Não use <span class="kbd">= (atribuição)</span> no lugar de <span class="kbd">==</span> em condições: <span class="kbd">if (x = 5)</span> nem compila em Java (boolean esperado) — diferente de C, isso é um erro feliz!</div></div>
+<div class="callout warn"><div>Não use <span class="kbd">= (atribuição)</span> no lugar de <span class="kbd">==</span> em condições: <span class="kbd">if (x = 5)</span> nem compila em Java (boolean esperado) — diferente de C, isso é um erro feliz!</div></div>
 </div>
 <div class="topic" id="m08-02"><h3><span class="tnum">8.2</span>if-else</h3>
 <p><b>Se</b> a condição for true, vai pelo primeiro bloco; <b>senão</b>, pelo segundo. Os dois caminhos se excluem: só um executa.</p>
@@ -1641,7 +1619,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Atenção à <b>ordem</b>: se o "C" (&gt;=70) viesse antes do "A" (&gt;=90), todo mundo seria C. Condições mais restritivas primeiro (ou faixas bem separadas).</div></div>
+<div class="callout tip"><div>Atenção à <b>ordem</b>: se o "C" (&gt;=70) viesse antes do "A" (&gt;=90), todo mundo seria C. Condições mais restritivas primeiro (ou faixas bem separadas).</div></div>
 </div>
 <div class="topic" id="m08-04"><h3><span class="tnum">8.4</span>Estruturas aninhadas</h3>
 <p>Um if dentro de outro: decisões em "camadas". Útil para regras compostas, mas cuidado com o <b>dangling else</b> — o else sempre se liga ao <b>if mais próximo</b> sem else.</p>
@@ -1656,7 +1634,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Use chaves SEMPRE em ifs aninhados — assim nenhum else se liga ao lugar errado, e seu código sobrevive a revisões.</div></div>
+<div class="callout warn"><div>Use chaves SEMPRE em ifs aninhados — assim nenhum else se liga ao lugar errado, e seu código sobrevive a revisões.</div></div>
 </div>
 <div class="topic" id="m08-05"><h3><span class="tnum">8.5</span>switch-case</h3>
 <p>O switch é um "seletor de faixas": compara um valor contra várias <b>constantes</b>. Aceita <span class="kbd">byte</span>, <span class="kbd">short</span>, <span class="kbd">char</span>, <span class="kbd">int</span>, <span class="kbd">String</span> (Java 7+) e <span class="kbd">enum</span>. Java moderno também tem a <b>forma de seta</b> (arrow), que não sofre fall-through.</p>
@@ -1676,7 +1654,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>O estilo de seta é mais seguro e moderno — se a prova permitir, prefira-o. Mas saiba o estilo clássico com <span class="kbd">break</span>, porque é o mais cobrado.</div></div>
+<div class="callout tip"><div>O estilo de seta é mais seguro e moderno — se a prova permitir, prefira-o. Mas saiba o estilo clássico com <span class="kbd">break</span>, porque é o mais cobrado.</div></div>
 </div>
 <div class="topic" id="m08-06"><h3><span class="tnum">8.6</span>break</h3>
 <p>Dentro do switch clássico, <span class="kbd">break</span> é o <b>freio</b>: encerra o switch e impede que a execução "escorregue" para o próximo case. Esquecer o break é o erro nº 1 de switch.</p>
@@ -1719,7 +1697,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>O default pode ficar em <b>qualquer posição</b> (comportamento estranho no estilo clássico se não houver break antes!). No estilo de seta, a posição não importa.</div></div>
+<div class="callout tip"><div>O default pode ficar em <b>qualquer posição</b> (comportamento estranho no estilo clássico se não houver break antes!). No estilo de seta, a posição não importa.</div></div>
 </div>
 <div class="topic" id="m08-08"><h3><span class="tnum">8.8</span>Fall-through</h3>
 <p>No estilo clássico, <b>sem break</b> a execução "cai" para o case seguinte e executa tudo até encontrar um break ou o fim do switch. Às vezes é bug, às vezes é <b>técnica deliberada</b> para agrupar casos.</p>
@@ -1741,7 +1719,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Fall-through é a causa mais comum de bug em switch. Se você não <b>quis</b> agrupar casos, sempre coloque break — e comente <span class="kbd">// fall through</span> quando for intencional.</div></div>
+<div class="callout warn"><div>Fall-through é a causa mais comum de bug em switch. Se você não <b>quis</b> agrupar casos, sempre coloque break — e comente <span class="kbd">// fall through</span> quando for intencional.</div></div>
 </div>
 <div class="topic" id="m08-09"><h3><span class="tnum">8.9</span>Operador ternário como decisão</h3>
 <p>O ternário (módulo 6.11) também <b>decide</b>: é um if-else em uma linha que <b>produz um valor</b>. Ideal para escolhas simples dentro de expressões.</p>
@@ -1771,9 +1749,9 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Regra prática: se o if-else cabe em uma linha e só atribui um valor, use ternário. Se tem blocos com várias instruções, use if — o ternário não executa comandos, só <b>escolhe valores</b>.</div></div>
+<div class="callout tip"><div>Regra prática: se o if-else cabe em uma linha e só atribui um valor, use ternário. Se tem blocos com várias instruções, use if — o ternário não executa comandos, só <b>escolhe valores</b>.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 8</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 8</summary>
 <div class="q">1) O que imprime um switch com <span class="kbd">case 1:</span> sem break, quando x vale 1 e existe <span class="kbd">case 2:</span> logo abaixo?</div>
 <div class="ans">O bloco do case 1 <b>e</b> o do case 2 (fall-through), até o próximo break ou o fim do switch.</div>
 <div class="q">2) Quais tipos posso usar dentro do <span class="kbd">switch ( ... )</span>?</div>
@@ -1784,8 +1762,8 @@ public class AutoBoxingUnboxing {
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m09" data-num="09" data-title="Laços de repetição" data-icon="i-loop" data-blurb="for, while e do-while — repetição controlada por condição.">
-<h2 class="mod-head"><span class="mod-num">09</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-loop"/></svg><span style="flex:1">Laços de repetição</span></span></h2>
+<section class="module pane" id="m09" data-num="09" data-title="Laços de repetição" data-blurb="for, while e do-while — repetição controlada por condição.">
+<h2 class="mod-head"><span class="mod-num">09</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Laços de repetição</span></span></h2>
 <p class="mod-intro">Laços repetem instruções: <span class="kbd">for</span> (contador), <span class="kbd">while</span> (condição no topo) e <span class="kbd">do-while</span> (condição no fim — roda ao menos 1 vez). As armadilhas clássicas: laço infinito e o erro <b>off-by-one</b>.</p>
 <div class="topics">
 <div class="topic" id="m09-01"><h3><span class="tnum">9.1</span>for</h3>
@@ -1827,7 +1805,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Se nada dentro do laço mudar a condição, você criou um <b>laço infinito</b>. Sempre pergunte: "o que faz essa condição virar false?"</div></div>
+<div class="callout warn"><div>Se nada dentro do laço mudar a condição, você criou um <b>laço infinito</b>. Sempre pergunte: "o que faz essa condição virar false?"</div></div>
 </div>
 <div class="topic" id="m09-03"><h3><span class="tnum">9.3</span>do-while</h3>
 <p>Primo do while com uma diferença crucial: a condição é testada <b>depois</b> — então o corpo <b>sempre executa ao menos uma vez</b>. Clássico em menus: mostre o menu, depois pergunte se quer continuar.</p>
@@ -1874,7 +1852,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>O laço interno usa a variável do externo (como <span class="kbd">i</span>) para desenhar formas. É a base de padrões clássicos de prova: triângulos, X, losango.</div></div>
+<div class="callout tip"><div>O laço interno usa a variável do externo (como <span class="kbd">i</span>) para desenhar formas. É a base de padrões clássicos de prova: triângulos, X, losango.</div></div>
 </div>
 <div class="topic" id="m09-05"><h3><span class="tnum">9.5</span>Laço infinito</h3>
 <p>Condição sempre verdadeira (ou nenhuma): o laço nunca termina sozinho. <b>for(;;)</b> é a forma canônica; <span class="kbd">while(true)</span> é a mais lida. Útil para servidores e jogos — mas sempre com <b>saída</b> (break/return) dentro.</p>
@@ -1895,7 +1873,7 @@ public class AutoBoxingUnboxing {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Laço infinito sem saída trava o programa (CPU a 100%). Se acontecer na execução, pare o processo. Em prova, identifique-o perguntando: "a condição pode virar false alguma vez?"</div></div>
+<div class="callout warn"><div>Laço infinito sem saída trava o programa (CPU a 100%). Se acontecer na execução, pare o processo. Em prova, identifique-o perguntando: "a condição pode virar false alguma vez?"</div></div>
 </div>
 <div class="topic" id="m09-06"><h3><span class="tnum">9.6</span>Variável de controle</h3>
 <p>É a variável que <b>comanda o laço</b>: nasce na inicialização, aparece na condição e evolui no avanço (ou dentro do corpo, no while). Dominá-la é dominar o laço.</p>
@@ -1913,7 +1891,7 @@ public class DoWhileMenu {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Erro clássico de prova: no <span class="kbd">while</span>, esquecer de atualizar a variável de controle dentro do corpo. O for esconde esse risco; o while expõe. Sempre verifique os três tempos.</div></div>
+<div class="callout tip"><div>Erro clássico de prova: no <span class="kbd">while</span>, esquecer de atualizar a variável de controle dentro do corpo. O for esconde esse risco; o while expõe. Sempre verifique os três tempos.</div></div>
 </div>
 <div class="topic" id="m09-07"><h3><span class="tnum">9.7</span>Variável acumuladora</h3>
 <p>A <b>acumuladora</b> junta resultados ao longo das voltas: soma, produto, concatenação. Nasce com o <b>elemento neutro</b> (0 para soma, 1 para multiplicação, "" para texto) e é atualizada <b>dentro</b> do laço.</p>
@@ -1933,7 +1911,7 @@ public class DoWhileMenu {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Dica de prova em 3 passos: (1) declara fora do laço com o valor neutro; (2) atualiza dentro do laço; (3) usa depois do laço. Esquecer o passo 1 dá resultado errado (ex.: soma começando em 5).</div></div>
+<div class="callout tip"><div>Dica de prova em 3 passos: (1) declara fora do laço com o valor neutro; (2) atualiza dentro do laço; (3) usa depois do laço. Esquecer o passo 1 dá resultado errado (ex.: soma começando em 5).</div></div>
 </div>
 <div class="topic" id="m09-08"><h3><span class="tnum">9.8</span>Variável contadora</h3>
 <p>A <b>contadora</b> conta <b>quantas vezes</b> algo aconteceu — geralmente condicionada a um if dentro do laço. Começa em <b>zero</b> e ganha <span class="kbd">++</span> a cada ocorrência.</p>
@@ -1971,7 +1949,7 @@ public class DoWhileMenu {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Escolha uma sentinela que <b>não seja um dado válido</b> do problema. Se o usuário puder digitar -1 legitimamente (ex.: temperaturas negativas), use outra ("0" ou uma palavra).</div></div>
+<div class="callout warn"><div>Escolha uma sentinela que <b>não seja um dado válido</b> do problema. Se o usuário puder digitar -1 legitimamente (ex.: temperaturas negativas), use outra ("0" ou uma palavra).</div></div>
 </div>
 <div class="topic" id="m09-10"><h3><span class="tnum">9.10</span>Leitura de partida (priming)</h3>
 <p>Técnica de prova clássica: ler um valor <b>antes</b> do while (a <b>leitura de partida</b>), e no final do corpo ler o <b>próximo</b>. É o padrão sentinela estruturado — a leitura de partida garante que a condição tenha algo para testar.</p>
@@ -1994,7 +1972,7 @@ public class LacosInfinitos {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Compare: sem a leitura de partida, o while precisaria de uma flag inicial ou código duplicado. O padrão <b>partida → teste → processa → reposição</b> é elegante e completo. Note o cuidado com <span class="kbd">qtd == 0</span> para não dividir por zero!</div></div>
+<div class="callout tip"><div>Compare: sem a leitura de partida, o while precisaria de uma flag inicial ou código duplicado. O padrão <b>partida → teste → processa → reposição</b> é elegante e completo. Note o cuidado com <span class="kbd">qtd == 0</span> para não dividir por zero!</div></div>
 </div>
 <div class="topic" id="m09-11"><h3><span class="tnum">9.11</span>break dentro de laço</h3>
 <p>O <span class="kbd">break</span> <b>mata o laço inteiro</b> na hora — não pula só a iteração. Use para "encontrei o que procurava, posso parar".</p>
@@ -2041,7 +2019,7 @@ public class SentinelaNumero {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Se o <span class="kbd">continue</span> vier <b>antes</b> do avanço num while, a variável de controle nunca evolui → <b>laço infinito</b>. No for isso não acontece (o avanço roda mesmo com continue).</div></div>
+<div class="callout warn"><div>Se o <span class="kbd">continue</span> vier <b>antes</b> do avanço num while, a variável de controle nunca evolui → <b>laço infinito</b>. No for isso não acontece (o avanço roda mesmo com continue).</div></div>
 </div>
 <div class="topic" id="m09-13"><h3><span class="tnum">9.13</span>Laços com rótulos</h3>
 <p>Um <b>rótulo</b> (label) dá nome a um laço: <span class="kbd">nome:</span> antes dele. Aí <span class="kbd">break nome;</span> ou <span class="kbd">continue nome;</span> atuam <b>no laço rotulado</b> — a única forma de sair de dois laços de uma vez.</p>
@@ -2058,7 +2036,7 @@ public class SentinelaNumero {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Rótulos são raros no dia a dia (a favor de refatorar o código), mas a prova pode perguntar: "como sair de dois laços aninhados?" Resposta: <b>break com rótulo</b>.</div></div>
+<div class="callout tip"><div>Rótulos são raros no dia a dia (a favor de refatorar o código), mas a prova pode perguntar: "como sair de dois laços aninhados?" Resposta: <b>break com rótulo</b>.</div></div>
 </div>
 <div class="topic" id="m09-14"><h3><span class="tnum">9.14</span>Erro off-by-one</h3>
 <p>O <b>off-by-one</b> ("um a mais, um a menos") é o bug mais silencioso do Java: o laço roda uma vez a mais ou a menos. Geralmente é culpa de <span class="kbd">&lt;</span> vs <span class="kbd">&lt;=</span> ou de índices que começam em <b>0</b>.</p>
@@ -2075,9 +2053,9 @@ public class SentinelaNumero {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Regras de ouro: (1) arrays vão de <span class="kbd">0</span> até <span class="kbd">length - 1</span>; (2) para "incluir o limite" use <span class="kbd">&lt;=</span>, para "até antes" use <span class="kbd">&lt;</span>; (3) teste com 0, 1 e 2 elementos — os casos de borda são onde o off-by-one se esconde.</div></div>
+<div class="callout warn"><div>Regras de ouro: (1) arrays vão de <span class="kbd">0</span> até <span class="kbd">length - 1</span>; (2) para "incluir o limite" use <span class="kbd">&lt;=</span>, para "até antes" use <span class="kbd">&lt;</span>; (3) teste com 0, 1 e 2 elementos — os casos de borda são onde o off-by-one se esconde.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 9</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 9</summary>
 <div class="q">1) Quantas vezes imprime <span class="kbd">for (int i = 1; i &lt;= 10; i += 3)</span>?</div>
 <div class="ans">4 vezes: i = 1, 4, 7, 10 (o próximo seria 13, que falha o teste).</div>
 <div class="q">2) Qual a diferença entre <span class="kbd">break</span> e <span class="kbd">continue</span>?</div>
@@ -2089,8 +2067,8 @@ public class SentinelaNumero {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m10" data-num="10" data-title="Arrays unidimensionais" data-icon="i-array" data-blurb="Listas de tamanho fixo, indexadas de 0 a length-1.">
-<h2 class="mod-head"><span class="mod-num">10</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-array"/></svg><span style="flex:1">Arrays unidimensionais</span></span></h2>
+<section class="module pane" id="m10" data-num="10" data-title="Arrays unidimensionais" data-blurb="Listas de tamanho fixo, indexadas de 0 a length-1.">
+<h2 class="mod-head"><span class="mod-num">10</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Arrays unidimensionais</span></span></h2>
 <p class="mod-intro">Um <b>array</b> é uma fileira de posições numeradas de <b>0 a n-1</b>, todas do mesmo tipo, lado a lado na memória. Em vez de 100 variáveis <span class="kbd">nota1</span>...<span class="kbd">nota100</span>, você tem <span class="kbd">nota[0]</span> até <span class="kbd">nota[99]</span> — e acessa qualquer posição direto.</p>
 <div class="topics">
 <div class="topic" id="m10-01"><h3><span class="tnum">10.1</span>Conceito de array</h3>
@@ -2106,7 +2084,7 @@ public class SentinelaNumero {
         for (int n : notas) soma += n;
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Arrays brilham com laços: um <span class="kbd">for</span> processa 5 ou 5 milhões de elementos com o mesmo código. É a base de quase todo exercício de prova.</div></div>
+<div class="callout tip"><div>Arrays brilham com laços: um <span class="kbd">for</span> processa 5 ou 5 milhões de elementos com o mesmo código. É a base de quase todo exercício de prova.</div></div>
 </div>
 <div class="topic" id="m10-02"><h3><span class="tnum">10.2</span>Armazenamento indexado na memória</h3>
 <p>Os elementos ficam em posições <b>contíguas</b> da memória. Por isso o acesso é <b>instantâneo</b>: o endereço do elemento i é <span class="kbd">base + i × tamanhoDoTipo</span> — matemática direta, sem busca.</p>
@@ -2129,7 +2107,7 @@ public class SentinelaNumero {
         // int[5] notas;   ← ERRO: tamanho não vai na declaração
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Por que <span class="kbd">int[] x</span> é melhor? Deixa claro que o tipo é "array de int". Em <span class="kbd">int a, b[];</span> (válido!), só b é array — confusão clássica.</div></div>
+<div class="callout tip"><div>Por que <span class="kbd">int[] x</span> é melhor? Deixa claro que o tipo é "array de int". Em <span class="kbd">int a, b[];</span> (válido!), só b é array — confusão clássica.</div></div>
 </div>
 <div class="topic" id="m10-04"><h3><span class="tnum">10.4</span>Alocação de array</h3>
 <p><span class="kbd">new</span> cria a fileira de posições com o <b>tamanho definido</b>. Só agora a memória é reservada — e o array é um <b>objeto</b> no heap.</p>
@@ -2146,7 +2124,7 @@ public class ArrayTamanhoVariavel {
         // int[] v = new int[-1];  ← NegativeArraySizeException
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>O tamanho é <b>fixo para sempre</b>: <span class="kbd">new int[5]</span> nunca vai comportar 6 elementos. Precisa de tamanho dinâmico? Use <span class="kbd">ArrayList</span> (módulo 16.7).</div></div>
+<div class="callout warn"><div>O tamanho é <b>fixo para sempre</b>: <span class="kbd">new int[5]</span> nunca vai comportar 6 elementos. Precisa de tamanho dinâmico? Use <span class="kbd">ArrayList</span> (módulo 16.7).</div></div>
 </div>
 <div class="topic" id="m10-05"><h3><span class="tnum">10.5</span>Inicialização de array</h3>
 <p>Três caminhos para encher o array: (1) chaves com valores na declaração; (2) <span class="kbd">new tipo[]{...}</span> (array anônimo); (3) atribuição elemento por elemento.</p>
@@ -2170,7 +2148,7 @@ public class FormasDeInicializar {
         // int[] d = new int[3]{1, 2, 3};   ← não compila!
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>O atalho <span class="kbd">{1, 2, 3}</span> só funciona na <b>declaração</b>. Depois, use <span class="kbd">new int[]{...}</span> para recriar: <span class="kbd">a = new int[]{7, 8};</span> (troca o array inteiro, não altera o tamanho do antigo).</div></div>
+<div class="callout tip"><div>O atalho <span class="kbd">{1, 2, 3}</span> só funciona na <b>declaração</b>. Depois, use <span class="kbd">new int[]{...}</span> para recriar: <span class="kbd">a = new int[]{7, 8};</span> (troca o array inteiro, não altera o tamanho do antigo).</div></div>
 </div>
 <div class="topic" id="m10-06"><h3><span class="tnum">10.6</span>Valores padrão dos elementos</h3>
 <p>Um array <b>recém-criado</b> já vem preenchido com o <b>padrão do tipo</b> — nunca contém "lixo" (diferente de C!).</p>
@@ -2203,7 +2181,7 @@ public class FormasDeInicializar {
         System.out.println(v[v.length - 1]); // jeito seguro de pegar o último
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>A exceção é de <b>execução</b> (unchecked) — o compilador não avisa. Por isso: sempre que usar índice calculado, garanta que está entre <span class="kbd">0</span> e <span class="kbd">length - 1</span>.</div></div>
+<div class="callout warn"><div>A exceção é de <b>execução</b> (unchecked) — o compilador não avisa. Por isso: sempre que usar índice calculado, garanta que está entre <span class="kbd">0</span> e <span class="kbd">length - 1</span>.</div></div>
 </div>
 <div class="topic" id="m10-08"><h3><span class="tnum">10.8</span>Propriedade length</h3>
 <p><span class="kbd">length</span> (sem parênteses — é um <b>campo</b>, não método!) devolve o <b>tamanho fixo</b> do array. Lembra: é o número de posições, não o número de "elementos válidos" que você preencheu.</p>
@@ -2222,7 +2200,7 @@ public class FormasDeInicializar {
         // v.length;         // campo
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Prova: <span class="kbd">array.length</span> (campo) × <span class="kbd">string.length()</span> (método) × <span class="kbd">list.size()</span> (ArrayList, método). Saiba os três!</div></div>
+<div class="callout tip"><div>Prova: <span class="kbd">array.length</span> (campo) × <span class="kbd">string.length()</span> (método) × <span class="kbd">list.size()</span> (ArrayList, método). Saiba os três!</div></div>
 </div>
 <div class="topic" id="m10-09"><h3><span class="tnum">10.9</span>Percorrimento com for</h3>
 <p>O <span class="kbd">for</span> clássico com índice é o padrão para arrays: serve para <b>ler e escrever</b> qualquer elemento, e dá acesso ao índice (essencial em buscas e trocas).</p>
@@ -2263,7 +2241,7 @@ public class FormasDeInicializar {
         System.out.println(notas[0]); // 7 — intacto
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>O foreach entrega uma <b>cópia</b> do elemento (primitivos). Para modificar o array, use o for com índice. (Para arrays de objetos, a cópia é do <b>endereço</b> — aí dá para alterar o objeto, mas não trocar a posição.)</div></div>
+<div class="callout warn"><div>O foreach entrega uma <b>cópia</b> do elemento (primitivos). Para modificar o array, use o for com índice. (Para arrays de objetos, a cópia é do <b>endereço</b> — aí dá para alterar o objeto, mas não trocar a posição.)</div></div>
 </div>
 <div class="topic" id="m10-11"><h3><span class="tnum">10.11</span>Cópia de arrays</h3>
 <p>Cuidado: <span class="kbd">b = a</span> <b>não copia</b> — cria uma segunda referência ao <b>mesmo</b> array (aliasing, módulo 16.5). Para cópia real, use <span class="kbd">Arrays.copyOf</span>, <span class="kbd">clone()</span> ou <span class="kbd">System.arraycopy</span>.</p>
@@ -2283,7 +2261,7 @@ public class AliasingECopia {
         System.arraycopy(a, 0, f, 0, 3);      // (origem, posOrig, dest, posDest, qtd)
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>A cópia é <b>rasa</b> (shallow): copia os valores/referências. Se o array guarda objetos, o clone compartilha os mesmos objetos — alterá-los por um array afeta o outro.</div></div>
+<div class="callout tip"><div>A cópia é <b>rasa</b> (shallow): copia os valores/referências. Se o array guarda objetos, o clone compartilha os mesmos objetos — alterá-los por um array afeta o outro.</div></div>
 </div>
 <div class="topic" id="m10-12"><h3><span class="tnum">10.12</span>Crescimento de array por realocação</h3>
 <p>Arrays <b>não crescem</b>. Para "adicionar" um elemento além do tamanho, o procedimento é: (1) crie um array <b>maior</b> (normalmente o dobro), (2) <b>copie</b> tudo, (3) <b>troque</b> a referência. É exatamente o que o <span class="kbd">ArrayList</span> faz por você.</p>
@@ -2301,10 +2279,10 @@ public class RealocarArray {
         System.out.println(Arrays.toString(v)); // [1, 2, 3, 4]
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Fazer isso a cada inserção é <b>lento</b> (O(n) por inserção). Estratégia real: <b>duplicar</b> a capacidade e copiar só quando necessário — amortizado O(1). É o "amortized growth" do ArrayList: capacidade ≈ 1,5× a antiga.</div></div>
+<div class="callout warn"><div>Fazer isso a cada inserção é <b>lento</b> (O(n) por inserção). Estratégia real: <b>duplicar</b> a capacidade e copiar só quando necessário — amortizado O(1). É o "amortized growth" do ArrayList: capacidade ≈ 1,5× a antiga.</div></div>
 </div>
 <div class="topic" id="m10-13"><h3><span class="tnum">10.13</span>Arrays paralelos</h3>
-<p>Técnica de prova: dois (ou mais) arrays onde a <b>mesma posição</b> guarda dados do mesmo registro — "índice como cola". Simples e didático, mas frágil (se um array desalinhar, os dados mentem).</p>
+<p>Técnica de prova: dois (ou mais) arrays onde a <b>mesma posição</b> guarda dados do mesmo registro — o mesmo índice identifica o mesmo registro em todos os arrays. Simples e direta, mas frágil: se um array desalinhar do outro, os dados deixam de corresponder.</p>
 <pre class="code">public class ArraysParalelos {
     public static void main(String[] args) {
         String[] nomes  = {"Ana", "Bruno", "Carla"};
@@ -2318,7 +2296,7 @@ public class RealocarArray {
         // ordenar por nota exige trocar EM TODOS os arrays ao mesmo tempo
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Na prática, o ideal é criar uma <b>classe</b> (Aluno com nome e nota) e ter um array de objetos — mas arrays paralelos são o exercício clássico de "índice compartilhado".</div></div>
+<div class="callout tip"><div>Na prática, o ideal é criar uma <b>classe</b> (Aluno com nome e nota) e ter um array de objetos — mas arrays paralelos são o exercício clássico de "índice compartilhado".</div></div>
 </div>
 <div class="topic" id="m10-14"><h3><span class="tnum">10.14</span>Array como retorno de método</h3>
 <p>Um método pode <b>devolver um array</b> — útil para "calcule a lista de resultados". O tipo de retorno é <span class="kbd">tipo[]</span>.</p>
@@ -2339,7 +2317,7 @@ public class MetodosDevolvemArray {
         System.out.println(Arrays.toString(pares));
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>O retorno é a <b>referência</b>: quem recebe pode alterar o array original. Se quiser proteger, devolva uma cópia: <span class="kbd">return Arrays.copyOf(res, res.length);</span>.</div></div>
+<div class="callout tip"><div>O retorno é a <b>referência</b>: quem recebe pode alterar o array original. Se quiser proteger, devolva uma cópia: <span class="kbd">return Arrays.copyOf(res, res.length);</span>.</div></div>
 </div>
 <div class="topic" id="m10-15"><h3><span class="tnum">10.15</span>Arrays.toString</h3>
 <p><span class="kbd">System.out.println(array)</span> imprime um código feio tipo <span class="kbd">[I@6d06d69c</span> (tipo + hashcode)! Para ver o conteúdo, use <span class="kbd">Arrays.toString</span>.</p>
@@ -2354,7 +2332,7 @@ public class ImprimirArray {
         System.out.println(Arrays.toString(s));// [a, b]
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Esse código misterioso é o <b>hashCode</b> padrão (classe + @ + hexadecimal). Em prova, a pergunta "por que não imprime o conteúdo?" tem resposta: Object.toString() não conhece arrays — use Arrays.toString.</div></div>
+<div class="callout warn"><div>Esse código misterioso é o <b>hashCode</b> padrão (classe + @ + hexadecimal). Em prova, a pergunta "por que não imprime o conteúdo?" tem resposta: Object.toString() não conhece arrays — use Arrays.toString.</div></div>
 </div>
 <div class="topic" id="m10-16"><h3><span class="tnum">10.16</span>Arrays.equals</h3>
 <p>Compara <b>conteúdo</b> elemento a elemento (o <span class="kbd">==</span> entre arrays compara só endereços!). Para arrays multidimensionais, use <span class="kbd">Arrays.deepEquals</span> (módulo 11.7).</p>
@@ -2371,7 +2349,7 @@ public class CompararArrays {
         System.out.println(Arrays.equals(a, new int[]{1, 2})); // false (tamanhos diferentes)
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Igualdade de conteúdo é a regra em prova: dois arrays são "iguais" se têm o <b>mesmo tamanho</b> e os <b>mesmos elementos na mesma ordem</b>.</div></div>
+<div class="callout tip"><div>Igualdade de conteúdo é a regra em prova: dois arrays são "iguais" se têm o <b>mesmo tamanho</b> e os <b>mesmos elementos na mesma ordem</b>.</div></div>
 </div>
 <div class="topic" id="m10-17"><h3><span class="tnum">10.17</span>Arrays.fill</h3>
 <p>Preenche <b>todos</b> os elementos (ou um intervalo) com o mesmo valor — mais rápido que um laço manual.</p>
@@ -2387,7 +2365,7 @@ public class PreencherArrays {
         // preencher só parte: fill(array, de, ate, valor) — "ate" é exclusivo!
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>O intervalo é <span class="kbd">[de, até)</span> — inclusive no início, exclusivo no fim. <span class="kbd">fill(v, 1, 4, x)</span> preenche índices 1, 2 e 3.</div></div>
+<div class="callout warn"><div>O intervalo é <span class="kbd">[de, até)</span> — inclusive no início, exclusivo no fim. <span class="kbd">fill(v, 1, 4, x)</span> preenche índices 1, 2 e 3.</div></div>
 </div>
 <div class="topic" id="m10-18"><h3><span class="tnum">10.18</span>Arrays.copyOf</h3>
 <p>Copia com <b>tamanho escolhido</b>: se o novo tamanho for maior, o excedente vem com valores padrão; se menor, o array é <b>truncado</b>. É a ferramenta do "crescer array" (10.12) e de recortes.</p>
@@ -2402,7 +2380,7 @@ public class CopiarArrays {
         int[] pedaco = Arrays.copyOfRange(v, 1, 4); // {2, 3, 4} — [1, 4)
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">copyOfRange(origem, de, até)</span> também usa o intervalo <b>[de, até)</b>. Decore esse padrão — aparece em fill, copyOf, substring e split.</div></div>
+<div class="callout tip"><div><span class="kbd">copyOfRange(origem, de, até)</span> também usa o intervalo <b>[de, até)</b>. Decore esse padrão — aparece em fill, copyOf, substring e split.</div></div>
 </div>
 <div class="topic" id="m10-19"><h3><span class="tnum">10.19</span>Ordenação com Arrays.sort</h3>
 <p><span class="kbd">Arrays.sort</span> ordena <b>no lugar</b> (modifica o array) em tempo O(n log n), usando o Dual-Pivot Quicksort (para primitivos) / TimSort (para objetos). Ordem <b>crescente</b> por padrão.</p>
@@ -2426,7 +2404,7 @@ public class OrdenarArrays {
         }
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Para <span class="kbd">int[]</span> não existe <span class="kbd">Arrays.sort(v, comparator)</span> — só para arrays de <b>objetos</b> (<span class="kbd">Integer[]</span>, <span class="kbd">String[]</span>...). Detalhe clássico de prova!</div></div>
+<div class="callout warn"><div>Para <span class="kbd">int[]</span> não existe <span class="kbd">Arrays.sort(v, comparator)</span> — só para arrays de <b>objetos</b> (<span class="kbd">Integer[]</span>, <span class="kbd">String[]</span>...). Detalhe clássico de prova!</div></div>
 </div>
 <div class="topic" id="m10-20"><h3><span class="tnum">10.20</span>Busca sequencial</h3>
 <p>A busca mais simples: percorrer <b>um por um</b> até achar (ou acabar). Funciona em array <b>não ordenado</b>, é O(n) e é a base de muitos exercícios.</p>
@@ -2446,7 +2424,7 @@ public class OrdenarArrays {
         // encontrar o maior (acumulador de máximo), etc.
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Padrão prova: "retorne -1 se não encontrar" é a convenção (índices válidos são ≥ 0). Para múltiplas ocorrências, use um array de resultados ou uma variável contadora.</div></div>
+<div class="callout tip"><div>Padrão prova: "retorne -1 se não encontrar" é a convenção (índices válidos são ≥ 0). Para múltiplas ocorrências, use um array de resultados ou uma variável contadora.</div></div>
 </div>
 <div class="topic" id="m10-21"><h3><span class="tnum">10.21</span>Busca binária com Arrays.binarySearch</h3>
 <p>Busca em array <b>ordenado</b> dividindo o espaço pela metade a cada passo — O(log n), muito mais rápida. <b>Pré-requisito: array ordenado</b> (se não estiver, o resultado é indefinido!).</p>
@@ -2467,9 +2445,9 @@ public class BuscaBinaria {
         }
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Retorno negativo = <b>-(ponto de inserção) − 1</b> — onde o elemento <b>deveria</b> estar. Para achar o índice: <span class="kbd">-pos - 1</span>. E nunca busque em array desordenado: o resultado pode ser errado mesmo quando o elemento existe!</div></div>
+<div class="callout warn"><div>Retorno negativo = <b>-(ponto de inserção) − 1</b> — onde o elemento <b>deveria</b> estar. Para achar o índice: <span class="kbd">-pos - 1</span>. E nunca busque em array desordenado: o resultado pode ser errado mesmo quando o elemento existe!</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 10</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 10</summary>
 <div class="q">1) Por que <span class="kbd">System.out.println(array)</span> imprime algo como <span class="kbd">[I@1a2b3c</span>?</div>
 <div class="ans">Porque arrays herdam <span class="kbd">Object.toString()</span>, que imprime tipo + @ + hashCode. Use <span class="kbd">Arrays.toString(array)</span>.</div>
 <div class="q">2) <span class="kbd">int[] a = {1,2}; int[] b = a; b[0] = 9;</span> — quanto vale <span class="kbd">a[0]</span>?</div>
@@ -2480,8 +2458,8 @@ public class BuscaBinaria {
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m11" data-num="11" data-title="Arrays multidimensionais" data-icon="i-grid" data-blurb="Matrizes: arrays dentro de arrays, linha por linha.">
-<h2 class="mod-head"><span class="mod-num">11</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-grid"/></svg><span style="flex:1">Arrays multidimensionais</span></span></h2>
+<section class="module pane" id="m11" data-num="11" data-title="Arrays multidimensionais" data-blurb="Matrizes: arrays dentro de arrays, linha por linha.">
+<h2 class="mod-head"><span class="mod-num">11</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Arrays multidimensionais</span></span></h2>
 <p class="mod-intro">Um <b>array 2D</b> é um array cujos elementos são <b>outros arrays</b>: linhas e colunas. Serve para tabelas, grades e matrizes — e em Java cada linha pode ter um tamanho diferente (array irregular).</p>
 <div class="topics">
 <div class="topic" id="m11-01"><h3><span class="tnum">11.1</span>Declaração e alocação de matriz</h3>
@@ -2501,7 +2479,7 @@ public class BuscaBinaria {
         };
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>O estilo <span class="kbd">int[][]</span> (com o tipo) é o preferido. E lembre: <span class="kbd">new int[3][4]</span> = 3 arrays de 4 int cada — a memória é "linhas separadas", não um bloco único.</div></div>
+<div class="callout tip"><div>O estilo <span class="kbd">int[][]</span> (com o tipo) é o preferido. E lembre: <span class="kbd">new int[3][4]</span> = 3 arrays de 4 int cada — a memória é "linhas separadas", não um bloco único.</div></div>
 </div>
 <div class="topic" id="m11-02"><h3><span class="tnum">11.2</span>Acesso m[i][j]</h3>
 <p>Dois índices: <b>primeiro a linha, depois a coluna</b> (<span class="kbd">m[i][j]</span>). Ambos começam em 0.</p>
@@ -2532,7 +2510,7 @@ public class BuscaBinaria {
         }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Não existe <span class="kbd">m[0].length</span> "global de colunas" se as linhas tiverem tamanhos diferentes — sempre pergunte à <b>linha</b> quantas colunas ela tem.</div></div>
+<div class="callout tip"><div>Não existe <span class="kbd">m[0].length</span> "global de colunas" se as linhas tiverem tamanhos diferentes — sempre pergunte à <b>linha</b> quantas colunas ela tem.</div></div>
 </div>
 <div class="topic" id="m11-04"><h3><span class="tnum">11.4</span>Linhas de tamanhos diferentes</h3>
 <p>Em Java, arrays 2D podem ser <b>"irregulares"</b> (jagged): cada linha é um array independente, com seu próprio tamanho. Útil para triângulos de dados e listas de listas.</p>
@@ -2556,7 +2534,7 @@ public class BuscaBinaria {
         // (a linha 0 ainda não existe!)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">new int[3][]</span> cria o array de <b>referências</b> (todas null), mas não as linhas. Inicialize cada linha antes de acessar <span class="kbd">m[i][j]</span>.</div></div>
+<div class="callout warn"><div><span class="kbd">new int[3][]</span> cria o array de <b>referências</b> (todas null), mas não as linhas. Inicialize cada linha antes de acessar <span class="kbd">m[i][j]</span>.</div></div>
 </div>
 <div class="topic" id="m11-05"><h3><span class="tnum">11.5</span>Percorrimento com laços aninhados</h3>
 <p>O padrão clássico: <b>for externo percorre linhas, interno percorre colunas</b>. Funciona para leitura e escrita, e permite "pular" posições ou processar diagonais.</p>
@@ -2604,7 +2582,7 @@ public class BuscaBinaria {
                 soma += valor;
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>O tipo da variável do foreach externo é o <b>tipo da linha</b>: <span class="kbd">int[] linha</span>. Para um array 3D, seria <span class="kbd">int[][] plano</span> no mais externo.</div></div>
+<div class="callout tip"><div>O tipo da variável do foreach externo é o <b>tipo da linha</b>: <span class="kbd">int[] linha</span>. Para um array 3D, seria <span class="kbd">int[][] plano</span> no mais externo.</div></div>
 </div>
 <div class="topic" id="m11-07"><h3><span class="tnum">11.7</span>Arrays.deepToString e deepEquals</h3>
 <p>Para arrays 2D, <span class="kbd">toString</span> e <span class="kbd">equals</span> <b>não</b> olham dentro das linhas — comparam endereços. As versões <b>deep</b> descem nível a nível.</p>
@@ -2624,9 +2602,9 @@ public class ToStringMatriz {
         System.out.println(Arrays.deepEquals(a, b));  // true ✔
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>Prova adora:</b> <span class="kbd">Arrays.equals</span> em 2D compara as <b>referências das linhas</b> — duas matrizes com conteúdo idêntico dão <b>false</b>. Sempre <span class="kbd">deepEquals</span> para matrizes e <span class="kbd">deepToString</span> para imprimir.</div></div>
+<div class="callout warn"><div><b>Prova adora:</b> <span class="kbd">Arrays.equals</span> em 2D compara as <b>referências das linhas</b> — duas matrizes com conteúdo idêntico dão <b>false</b>. Sempre <span class="kbd">deepEquals</span> para matrizes e <span class="kbd">deepToString</span> para imprimir.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 11</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 11</summary>
 <div class="q">1) Em <span class="kbd">int[][] m = new int[4][5]</span>, quanto vale <span class="kbd">m.length</span>? E <span class="kbd">m[2].length</span>?</div>
 <div class="ans"><span class="kbd">m.length</span> = 4 (linhas); <span class="kbd">m[2].length</span> = 5 (colunas da linha 2).</div>
 <div class="q">2) Posso ter <span class="kbd">int[][] x = {{1}, {2, 3, 4}}</span>?</div>
@@ -2638,8 +2616,8 @@ public class ToStringMatriz {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m12" data-num="12" data-title="String" data-icon="i-string" data-blurb="A classe mais famosa do Java: imutável, poderosa e cheia de armadilhas.">
-<h2 class="mod-head"><span class="mod-num">12</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-string"/></svg><span style="flex:1">String</span></span></h2>
+<section class="module pane" id="m12" data-num="12" data-title="String" data-blurb="A classe mais famosa do Java: imutável, poderosa e cheia de armadilhas.">
+<h2 class="mod-head"><span class="mod-num">12</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">String</span></span></h2>
 <p class="mod-intro"><b>String</b> é uma sequência de caracteres <b>imutável</b>: uma vez criada, nunca muda. Toda operação que parece modificar na verdade <b>cria uma nova String</b>. Entender isso — e o <span class="kbd">String pool</span> — elimina as pegadinhas mais cobradas.</p>
 <div class="topics">
 <div class="topic" id="m12-01"><h3><span class="tnum">12.1</span>Imutabilidade</h3>
@@ -2656,7 +2634,7 @@ public class ToStringMatriz {
     }
 }</pre>
 
-<div class="callout tip"><span class="ci">💡</span><div>Consequência prática: concatenar Strings em laço cria <b>dezenas de objetos</b> mortos. Para muita concatenação, use <span class="kbd">StringBuilder</span> (12.23).</div></div>
+<div class="callout tip"><div>Consequência prática: concatenar Strings em laço cria <b>dezenas de objetos</b> mortos. Para muita concatenação, use <span class="kbd">StringBuilder</span> (12.23).</div></div>
 </div>
 <div class="topic" id="m12-02"><h3><span class="tnum">12.2</span>Criação por literal × por new</h3>
 <p>Duas formas de nascer, <b>dois lugares</b> diferentes. O literal <span class="kbd">"java"</span> vai para o <b>String pool</b> (repositório compartilhado). O <span class="kbd">new String("java")</span> <b>força</b> um objeto novo no heap — mesmo que o conteúdo seja igual.</p>
@@ -2672,7 +2650,7 @@ public class ToStringMatriz {
         System.out.println(c.intern() == a); // true  (intern() vai ao pool)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">==</span> em String compara <b>referências</b>. <b>Sempre</b> compare conteúdo com <span class="kbd">equals</span> (12.18). Esse é o erro nº 1 de Java em entrevistas e provas.</div></div>
+<div class="callout warn"><div><span class="kbd">==</span> em String compara <b>referências</b>. <b>Sempre</b> compare conteúdo com <span class="kbd">equals</span> (12.18). Esse é o erro nº 1 de Java em entrevistas e provas.</div></div>
 </div>
 <div class="topic" id="m12-03"><h3><span class="tnum">12.3</span>length()</h3>
 <p>Devolve o <b>número de caracteres</b> (unidades de código UTF-16). É <b>método</b> — com parênteses, ao contrário do <span class="kbd">array.length</span>.</p>
@@ -2687,7 +2665,7 @@ public class ToStringMatriz {
         char ult = s.charAt(s.length() - 1); // 'a'
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Decore a diferença: <span class="kbd">array.length</span> (campo) × <span class="kbd">string.length()</span> (método) × <span class="kbd">list.size()</span> (ArrayList).</div></div>
+<div class="callout tip"><div>Decore a diferença: <span class="kbd">array.length</span> (campo) × <span class="kbd">string.length()</span> (método) × <span class="kbd">list.size()</span> (ArrayList).</div></div>
 </div>
 <div class="topic" id="m12-04"><h3><span class="tnum">12.4</span>charAt</h3>
 <p>Devolve o <b>char</b> na posição indicada (0-based). Índice inválido derruba <span class="kbd">StringIndexOutOfBoundsException</span>.</p>
@@ -2719,7 +2697,7 @@ public class ToStringMatriz {
         if (s.indexOf('n') != -1) System.out.println("tem n");
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Dica para <b>última ocorrência</b>: use <span class="kbd">lastIndexOf</span> (12.6). Para <b>contar ocorrências</b>, laço com <span class="kbd">indexOf(ch, pos + 1)</span> até voltar -1.</div></div>
+<div class="callout tip"><div>Dica para <b>última ocorrência</b>: use <span class="kbd">lastIndexOf</span> (12.6). Para <b>contar ocorrências</b>, laço com <span class="kbd">indexOf(ch, pos + 1)</span> até voltar -1.</div></div>
 </div>
 <div class="topic" id="m12-06"><h3><span class="tnum">12.6</span>lastIndexOf</h3>
 <p>Como <span class="kbd">indexOf</span>, mas varrendo <b>de trás para frente</b>: devolve a última ocorrência. Clássico para achar extensões de arquivo, separadores, etc.</p>
@@ -2752,7 +2730,7 @@ public class ToStringMatriz {
         if (s.contains("Olá")) System.out.println("cumprimento!");
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">contains</span> é <b>sensível a maiúsculas</b> e <b>não aceita char</b> — só String. Para buscar char, use <span class="kbd">indexOf('a')</span>.</div></div>
+<div class="callout warn"><div><span class="kbd">contains</span> é <b>sensível a maiúsculas</b> e <b>não aceita char</b> — só String. Para buscar char, use <span class="kbd">indexOf('a')</span>.</div></div>
 </div>
 <div class="topic" id="m12-08"><h3><span class="tnum">12.8</span>startsWith</h3>
 <p>Verifica se a String <b>começa com</b> um prefixo (ou a partir de um índice). Devolve boolean.</p>
@@ -2801,7 +2779,7 @@ public class ToStringMatriz {
         // s.substring(2, 20); ← erro (fim &gt; length)
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>A regra <b>[início, fim)</b> é a mesma de <span class="kbd">Arrays.copyOfRange</span> e <span class="kbd">Arrays.fill</span>. Truque: <span class="kbd">sub = s.substring(a, b)</span> tem tamanho <span class="kbd">b - a</span>.</div></div>
+<div class="callout tip"><div>A regra <b>[início, fim)</b> é a mesma de <span class="kbd">Arrays.copyOfRange</span> e <span class="kbd">Arrays.fill</span>. Truque: <span class="kbd">sub = s.substring(a, b)</span> tem tamanho <span class="kbd">b - a</span>.</div></div>
 </div>
 <div class="topic" id="m12-11"><h3><span class="tnum">12.11</span>toUpperCase</h3>
 <p>Devolve uma <b>nova</b> String com tudo em maiúsculas (usa as regras do Locale padrão — veja 14.17). A original não muda (imutabilidade!).</p>
@@ -2815,7 +2793,7 @@ public class ToStringMatriz {
         System.out.println("Java".equalsIgnoreCase("JAVA")); // true
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Para ignorar o locale (ex.: em turcos o 'i' vira 'İ'), use <span class="kbd">toUpperCase(Locale.ROOT)</span>. Em prova, o padrão é o locale do sistema.</div></div>
+<div class="callout tip"><div>Para ignorar o locale (ex.: em turcos o 'i' vira 'İ'), use <span class="kbd">toUpperCase(Locale.ROOT)</span>. Em prova, o padrão é o locale do sistema.</div></div>
 </div>
 <div class="topic" id="m12-12"><h3><span class="tnum">12.12</span>toLowerCase</h3>
 <p>O inverso: devolve nova String em minúsculas. Ússimo para normalizar entradas antes de comparar.</p>
@@ -2841,7 +2819,7 @@ public class ToStringMatriz {
         System.out.println("  \t\n".trim().isEmpty()); // true
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Padrão de ouro ao ler entrada: <span class="kbd">String linha = teclado.nextLine().trim();</span>. Economiza bugs de "espaço invisível" em comparações.</div></div>
+<div class="callout tip"><div>Padrão de ouro ao ler entrada: <span class="kbd">String linha = teclado.nextLine().trim();</span>. Economiza bugs de "espaço invisível" em comparações.</div></div>
 </div>
 <div class="topic" id="m12-14"><h3><span class="tnum">12.14</span>replace</h3>
 <p>Substitui <b>todas</b> as ocorrências de um char ou sequência <b>literal</b> (sem regex!) por outra.</p>
@@ -2856,7 +2834,7 @@ public class ToStringMatriz {
         System.out.println("a.b".replaceAll(".", "-")); // "---" (regex: qualquer char!)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">replace</span> = literal; <span class="kbd">replaceAll</span> = <b>regex</b>. Trocar "." com replaceAll apaga TUDO (o ponto na regex significa "qualquer caractere"). Para pontos em regex, escape: <span class="kbd">replaceAll("\\.", "-")</span>.</div></div>
+<div class="callout warn"><div><span class="kbd">replace</span> = literal; <span class="kbd">replaceAll</span> = <b>regex</b>. Trocar "." com replaceAll apaga TUDO (o ponto na regex significa "qualquer caractere"). Para pontos em regex, escape: <span class="kbd">replaceAll("\\.", "-")</span>.</div></div>
 </div>
 <div class="topic" id="m12-15"><h3><span class="tnum">12.15</span>replaceAll e replaceFirst</h3>
 <p>Substituem usando <b>expressões regulares</b>: <span class="kbd">replaceAll</span> troca todas as ocorrências; <span class="kbd">replaceFirst</span> só a primeira.</p>
@@ -2873,7 +2851,7 @@ public class ToStringMatriz {
         System.out.println("e-mail".replaceAll("-", "_"));  // "e_mail"
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Regex frequentes em prova: <span class="kbd">\\d</span> dígito, <span class="kbd">\\D</span> não-dígito, <span class="kbd">\\s</span> espaço, <span class="kbd">\\w</span> palavra, <span class="kbd">+</span> uma ou mais, <span class="kbd">*</span> zero ou mais. E lembre: no Java, a barra do regex é <span class="kbd">\\</span> (dupla na String).</div></div>
+<div class="callout tip"><div>Regex frequentes em prova: <span class="kbd">\\d</span> dígito, <span class="kbd">\\D</span> não-dígito, <span class="kbd">\\s</span> espaço, <span class="kbd">\\w</span> palavra, <span class="kbd">+</span> uma ou mais, <span class="kbd">*</span> zero ou mais. E lembre: no Java, a barra do regex é <span class="kbd">\\</span> (dupla na String).</div></div>
 </div>
 <div class="topic" id="m12-16"><h3><span class="tnum">12.16</span>split</h3>
 <p>Parte a String em um <b>array</b> usando um separador (regex). Clássico para CSV, logs e dados separados por vírgula.</p>
@@ -2895,7 +2873,7 @@ public class SplitDemo {
         System.out.println("a,".split(",").length); // 1 (vazio do fim é descartado!)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>O separador é <b>regex</b>: <span class="kbd">"."</span> separa TUDO (use <span class="kbd">"\\."</span>), e <span class="kbd">"|"</span> é OU (use <span class="kbd">"\\|"</span>). Além disso, Strings vazias no <b>fim</b> são descartadas por padrão.</div></div>
+<div class="callout warn"><div>O separador é <b>regex</b>: <span class="kbd">"."</span> separa TUDO (use <span class="kbd">"\\."</span>), e <span class="kbd">"|"</span> é OU (use <span class="kbd">"\\|"</span>). Além disso, Strings vazias no <b>fim</b> são descartadas por padrão.</div></div>
 </div>
 <div class="topic" id="m12-17"><h3><span class="tnum">12.17</span>concat e join</h3>
 <p><span class="kbd">concat</span> junta duas Strings (equivalente a <span class="kbd">+</span>). <span class="kbd">String.join</span> (Java 8+) cola várias Strings com um <b>separador</b> — o oposto de split!</p>
@@ -2915,7 +2893,7 @@ public class JoinDemo {
         System.out.println(String.join("_", partes)); // "o_rato_roeu"
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">join</span> é o par perfeito de <span class="kbd">split</span>: um quebra, outro cola. Útil para formatar saídas sem montar String na mão.</div></div>
+<div class="callout tip"><div><span class="kbd">join</span> é o par perfeito de <span class="kbd">split</span>: um quebra, outro cola. Útil para formatar saídas sem montar String na mão.</div></div>
 </div>
 <div class="topic" id="m12-18"><h3><span class="tnum">12.18</span>equals</h3>
 <p><b>A</b> forma correta de comparar Strings: compara <b>conteúdo</b> caractere por caractere. <span class="kbd">==</span> compara endereços — não use para Strings!</p>
@@ -2933,7 +2911,7 @@ public class JoinDemo {
         if ("s".equals(entrada)) { }     // seguro: constante não é null
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Truque de prova: <span class="kbd">"literal".equals(variavel)</span> nunca lança NullPointerException, mesmo que a variável seja null. Chamadas em variável podem explodir.</div></div>
+<div class="callout warn"><div>Truque de prova: <span class="kbd">"literal".equals(variavel)</span> nunca lança NullPointerException, mesmo que a variável seja null. Chamadas em variável podem explodir.</div></div>
 </div>
 <div class="topic" id="m12-19"><h3><span class="tnum">12.19</span>equalsIgnoreCase</h3>
 <p>Compara conteúdo <b>ignorando maiúsculas/minúsculas</b> — perfeito para respostas de usuário ("SIM", "sim", "Sim").</p>
@@ -2967,7 +2945,7 @@ public class CompareToDemo {
         System.out.println(Arrays.toString(nomes)); // [ana, bruno, carla]
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>O valor exato é a <b>diferença dos primeiros chars diferentes</b> (ou <span class="kbd">length1 - length2</span> se um é prefixo do outro). Em prova, importa o <b>sinal</b>, não o número. Para ignorar case: <span class="kbd">compareToIgnoreCase</span>.</div></div>
+<div class="callout tip"><div>O valor exato é a <b>diferença dos primeiros chars diferentes</b> (ou <span class="kbd">length1 - length2</span> se um é prefixo do outro). Em prova, importa o <b>sinal</b>, não o número. Para ignorar case: <span class="kbd">compareToIgnoreCase</span>.</div></div>
 </div>
 <div class="topic" id="m12-21"><h3><span class="tnum">12.21</span>isEmpty e isBlank</h3>
 <p><span class="kbd">isEmpty()</span>: tamanho zero (<span class="kbd">""</span>). <span class="kbd">isBlank()</span> (Java 11+): vazia <b>ou só com espaços em branco</b> — a forma moderna de validar entrada.</p>
@@ -2988,7 +2966,7 @@ public class ValidaNome {
         }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Sem Java 11, o equivalente a isBlank é <span class="kbd">trim().isEmpty()</span>. Em prova: <b>isEmpty olha o tamanho; isBlank olha o conteúdo</b>.</div></div>
+<div class="callout tip"><div>Sem Java 11, o equivalente a isBlank é <span class="kbd">trim().isEmpty()</span>. Em prova: <b>isEmpty olha o tamanho; isBlank olha o conteúdo</b>.</div></div>
 </div>
 <div class="topic" id="m12-22"><h3><span class="tnum">12.22</span>toCharArray</h3>
 <p>Converte a String em um <b>array de char</b> — útil para percorrer, ordenar ou modificar caractere por caractere (já que String é imutável).</p>
@@ -3038,7 +3016,7 @@ public class CharArrayDemo {
         String resultado = sb2.toString();
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Regra prática: <b>fora de laços</b>, <span class="kbd">+</span> é fine (o compilador otimiza); <b>dentro de laços</b>, use <span class="kbd">StringBuilder</span>. <span class="kbd">StringBuffer</span> é o irmão <b>sincronizado</b> (thread-safe, mais lento) — raro hoje.</div></div>
+<div class="callout tip"><div>Regra prática: <b>fora de laços</b>, <span class="kbd">+</span> é fine (o compilador otimiza); <b>dentro de laços</b>, use <span class="kbd">StringBuilder</span>. <span class="kbd">StringBuffer</span> é o irmão <b>sincronizado</b> (thread-safe, mais lento) — raro hoje.</div></div>
 </div>
 <div class="topic" id="m12-24"><h3><span class="tnum">12.24</span>Comparação com ==</h3>
 <p>O <b>grande vilão</b>: <span class="kbd">==</span> em objetos compara <b>referências</b> (mesmo endereço?), não conteúdo. Com Strings, só funciona por <b>acidente</b> — quando ambas vieram do pool.</p>
@@ -3059,9 +3037,9 @@ public class CharArrayDemo {
         System.out.println(a == f);         // true
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Nunca use <span class="kbd">==</span> para comparar Strings de entrada do usuário, de arquivo, de split ou de concatenação — esses objetos <b>não</b> estão no pool. A única comparação segura é <span class="kbd">equals</span>. (Para colocar uma String no pool: <span class="kbd">intern()</span>.)</div></div>
+<div class="callout warn"><div>Nunca use <span class="kbd">==</span> para comparar Strings de entrada do usuário, de arquivo, de split ou de concatenação — esses objetos <b>não</b> estão no pool. A única comparação segura é <span class="kbd">equals</span>. (Para colocar uma String no pool: <span class="kbd">intern()</span>.)</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 12</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 12</summary>
 <div class="q">1) Qual a saída de <span class="kbd">String a = "x"; a.concat("y"); System.out.println(a);</span>?</div>
 <div class="ans"><b>"x"</b> — Strings são imutáveis; <span class="kbd">concat</span> devolve uma nova String que foi descartada.</div>
 <div class="q">2) Por que <span class="kbd">new String("a") == new String("a")</span> é false?</div>
@@ -3072,8 +3050,8 @@ public class CharArrayDemo {
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m13" data-num="13" data-title="Entrada e saída" data-icon="i-io" data-blurb="Scanner, printf, JOptionPane e arquivos — o programa conversa com o mundo.">
-<h2 class="mod-head"><span class="mod-num">13</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-io"/></svg><span style="flex:1">Entrada e saída</span></span></h2>
+<section class="module pane" id="m13" data-num="13" data-title="Entrada e saída" data-blurb="Scanner, printf, JOptionPane e arquivos — o programa conversa com o mundo.">
+<h2 class="mod-head"><span class="mod-num">13</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Entrada e saída</span></span></h2>
 <p class="mod-intro"><b>E/S</b> (I/O) é como o programa conversa com o mundo: <b>entrada</b> via <span class="kbd">Scanner</span> (teclado), arquivos ou janelas; <b>saída</b> via <span class="kbd">System.out</span> (console), <span class="kbd">printf</span> (formatada) ou caixas de diálogo. Java faz isso com <b>streams</b> e classes utilitárias.</p>
 <div class="topics">
 <div class="topic" id="m13-01"><h3><span class="tnum">13.1</span>System.in</h3>
@@ -3098,7 +3076,7 @@ public class EntradaSaidaCrua {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Os três fluxos padrão de Java: <span class="kbd">System.in</span> (teclado), <span class="kbd">System.out</span> (saída normal), <span class="kbd">System.err</span> (erros). Todos são "redirecionáveis" pelo sistema operacional.</div></div>
+<div class="callout tip"><div>Os três fluxos padrão de Java: <span class="kbd">System.in</span> (teclado), <span class="kbd">System.out</span> (saída normal), <span class="kbd">System.err</span> (erros). Todos são "redirecionáveis" pelo sistema operacional.</div></div>
 </div>
 <div class="topic" id="m13-02"><h3><span class="tnum">13.2</span>Scanner</h3>
 <p>A forma mais fácil de ler teclado: <span class="kbd">Scanner</span> quebra a entrada em <b>tokens</b> e converte para o tipo que você pede. Fechá-lo ao fim é boa prática (libera o fluxo).</p>
@@ -3121,7 +3099,7 @@ public class LeituraTecladoScanner {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>A armadilha clássica:</b> depois de <span class="kbd">nextInt()</span>, o <span class="kbd">\n</span> fica "preso" na entrada. O <span class="kbd">nextLine()</span> seguinte volta <b>vazio</b>! Solução: adicione um <span class="kbd">sc.nextLine()</span> extra (o "nextLine limpador") ou leia tudo com nextLine() e faça o parsing.</div></div>
+<div class="callout warn"><div><b>A armadilha clássica:</b> depois de <span class="kbd">nextInt()</span>, o <span class="kbd">\n</span> fica "preso" na entrada. O <span class="kbd">nextLine()</span> seguinte volta <b>vazio</b>! Solução: adicione um <span class="kbd">sc.nextLine()</span> extra (o "nextLine limpador") ou leia tudo com nextLine() e faça o parsing.</div></div>
 </div>
 <div class="topic" id="m13-03"><h3><span class="tnum">13.3</span>BufferedReader</h3>
 <p>Leitor de texto <b>com buffer</b> — bem mais rápido que Scanner para volumes grandes (competições de programação adoram). Lê <b>linhas</b> com <span class="kbd">readLine()</span>, que devolve <b>null</b> no fim do fluxo.</p>
@@ -3147,7 +3125,7 @@ public class LeituraBufferedReader {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Buffering = ler um "punhado" grande de bytes de uma vez, em vez de byte a byte. Por isso é mais rápido. Sempre lide com IOException (módulo 15) ao usar BufferedReader.</div></div>
+<div class="callout tip"><div>Buffering = ler um "punhado" grande de bytes de uma vez, em vez de byte a byte. Por isso é mais rápido. Sempre lide com IOException (módulo 15) ao usar BufferedReader.</div></div>
 </div>
 <div class="topic" id="m13-04"><h3><span class="tnum">13.4</span>InputStreamReader</h3>
 <p>A <b>ponte</b> entre bytes e caracteres: <span class="kbd">System.in</span> dá <b>bytes</b>; texto precisa de <b>chars</b>. O InputStreamReader decodifica bytes usando uma <b>codificação</b> (padrão ou UTF-8 explícito).</p>
@@ -3195,7 +3173,7 @@ public class DadosBinarios {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Ordem importa: leia na <b>mesma sequência e tipos</b> da escrita, senão os dados viram lixo (ou EOFException). Nunca use para texto comum — use Readers.</div></div>
+<div class="callout warn"><div>Ordem importa: leia na <b>mesma sequência e tipos</b> da escrita, senão os dados viram lixo (ou EOFException). Nunca use para texto comum — use Readers.</div></div>
 </div>
 <div class="topic" id="m13-06"><h3><span class="tnum">13.6</span>Console</h3>
 <p><span class="kbd">System.console()</span> dá acesso ao terminal real: <span class="kbd">readLine()</span> com prompt e, o grande diferencial, <span class="kbd">readPassword()</span> (sem eco — senha não aparece na tela).</p>
@@ -3217,7 +3195,7 @@ public class ConsoleDemo {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">System.console()</span> devolve <b>null</b> quando a entrada é redirecionada ou dentro de muitas IDEs — sempre teste antes! E senhas são <span class="kbd">char[]</span> (não String), para poder apagá-las da memória.</div></div>
+<div class="callout warn"><div><span class="kbd">System.console()</span> devolve <b>null</b> quando a entrada é redirecionada ou dentro de muitas IDEs — sempre teste antes! E senhas são <span class="kbd">char[]</span> (não String), para poder apagá-las da memória.</div></div>
 </div>
 <div class="topic" id="m13-07"><h3><span class="tnum">13.7</span>System.out.print</h3>
 <p>Escreve no console <b>sem pular linha</b> — o cursor fica no fim do texto. Base para menus, prompts e saídas em série.</p>
@@ -3249,7 +3227,7 @@ public class ConsoleDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">println(objeto)</span> chama <span class="kbd">objeto.toString()</span> implicitamente. Por isso, ao criar classes (POO!), sobrescrever toString deixa a saída bonita.</div></div>
+<div class="callout tip"><div><span class="kbd">println(objeto)</span> chama <span class="kbd">objeto.toString()</span> implicitamente. Por isso, ao criar classes (POO!), sobrescrever toString deixa a saída bonita.</div></div>
 </div>
 <div class="topic" id="m13-09"><h3><span class="tnum">13.9</span>System.err.println</h3>
 <p><b>Saída de erro</b>: vai para o <b>fluxo de erro padrão</b>, separado da saída normal. Permite redirecionar: <span class="kbd">java App &gt; saida.txt 2&gt; erros.txt</span> separa os dois.</p>
@@ -3263,7 +3241,7 @@ public class ConsoleDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Use <span class="kbd">err</span> para diagnósticos e <span class="kbd">out</span> para resultados. Em prova: "por que separar out e err?" → permite redirecionamento independente e não mistura logs com dados.</div></div>
+<div class="callout tip"><div>Use <span class="kbd">err</span> para diagnósticos e <span class="kbd">out</span> para resultados. Em prova: "por que separar out e err?" → permite redirecionamento independente e não mistura logs com dados.</div></div>
 </div>
 <div class="topic" id="m13-10"><h3><span class="tnum">13.10</span>System.out.printf</h3>
 <p>Saída <b>formatada</b>: você define um <b>modelo</b> com <b>especificadores</b> (<span class="kbd">%d</span>, <span class="kbd">%s</span>...) e os argumentos entram nas posições. Herdado da família C.</p>
@@ -3281,7 +3259,7 @@ public class ConsoleDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">%n</span> é a quebra de linha <b>portável</b> (funciona em qualquer sistema) — prefira a <span class="kbd">\n</span> em printf. <span class="kbd">printf</span> NÃO pula linha sozinho: inclua <span class="kbd">%n</span> no modelo.</div></div>
+<div class="callout tip"><div><span class="kbd">%n</span> é a quebra de linha <b>portável</b> (funciona em qualquer sistema) — prefira a <span class="kbd">\n</span> em printf. <span class="kbd">printf</span> NÃO pula linha sozinho: inclua <span class="kbd">%n</span> no modelo.</div></div>
 </div>
 <div class="topic" id="m13-11"><h3><span class="tnum">13.11</span>String.format</h3>
 <p>Mesmo motor do printf, mas devolve a <b>String formatada</b> em vez de imprimir — perfeito para montar textos antes de guardar ou mostrar.</p>
@@ -3344,7 +3322,7 @@ public class JOptionPaneEntrada {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>O parâmetro <span class="kbd">parentComponent</span> (sempre <span class="kbd">null</span> em exercícios) define em relação a qual janela o popup aparece. null = centralizado na tela.</div></div>
+<div class="callout tip"><div>O parâmetro <span class="kbd">parentComponent</span> (sempre <span class="kbd">null</span> em exercícios) define em relação a qual janela o popup aparece. null = centralizado na tela.</div></div>
 </div>
 <div class="topic" id="m13-14"><h3><span class="tnum">13.14</span>showInputDialog</h3>
 <p>Abre um popup com <b>campo de texto</b> e devolve a String digitada — ou <b>null</b> se o usuário cancelar/fechar. <b>Sempre devolve String</b>: para números, faça parsing!</p>
@@ -3367,7 +3345,7 @@ public class JOptionPaneNumero {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Dois erros clássicos: (1) esquecer que o retorno é <b>String</b> — <span class="kbd">int idade = showInputDialog(...)</span> não compila; (2) não tratar <b>cancelar</b> (null) nem texto inválido (NumberFormatException).</div></div>
+<div class="callout warn"><div>Dois erros clássicos: (1) esquecer que o retorno é <b>String</b> — <span class="kbd">int idade = showInputDialog(...)</span> não compila; (2) não tratar <b>cancelar</b> (null) nem texto inválido (NumberFormatException).</div></div>
 </div>
 <div class="topic" id="m13-15"><h3><span class="tnum">13.15</span>showMessageDialog</h3>
 <p>Popup de <b>mensagem pura</b> com um botão OK. Não devolve nada (void) — serve para informar resultados ao usuário.</p>
@@ -3411,7 +3389,7 @@ public class JOptionPaneConfirmar {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Constantes de retorno: <span class="kbd">YES_OPTION</span>, <span class="kbd">NO_OPTION</span>, <span class="kbd">CANCEL_OPTION</span>, <span class="kbd">OK_OPTION</span>, <span class="kbd">CLOSED_OPTION</span> (quando fecha a janela sem clicar).</div></div>
+<div class="callout tip"><div>Constantes de retorno: <span class="kbd">YES_OPTION</span>, <span class="kbd">NO_OPTION</span>, <span class="kbd">CANCEL_OPTION</span>, <span class="kbd">OK_OPTION</span>, <span class="kbd">CLOSED_OPTION</span> (quando fecha a janela sem clicar).</div></div>
 </div>
 <div class="topic" id="m13-17"><h3><span class="tnum">13.17</span>showOptionDialog</h3>
 <p>A versão <b>genérica</b>: você define <b>seus próprios botões</b> e devolve o <b>índice</b> do botão clicado (ou <span class="kbd">CLOSED_OPTION</span>). Máxima flexibilidade.</p>
@@ -3437,7 +3415,7 @@ public class JOptionPaneOpcoes {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Diferença-chave: <span class="kbd">showConfirmDialog</span> devolve <b>constantes</b> (YES_OPTION...); <span class="kbd">showOptionDialog</span> devolve o <b>índice</b> (0, 1, 2...). Confunda os dois e o programa decide errado!</div></div>
+<div class="callout tip"><div>Diferença-chave: <span class="kbd">showConfirmDialog</span> devolve <b>constantes</b> (YES_OPTION...); <span class="kbd">showOptionDialog</span> devolve o <b>índice</b> (0, 1, 2...). Confunda os dois e o programa decide errado!</div></div>
 </div>
 <div class="topic" id="m13-18"><h3><span class="tnum">13.18</span>Tipos de ícone do JOptionPane</h3>
 <p>O 4º argumento (tipo de mensagem) define o <b>ícone</b> exibido. São constantes estáticas da própria classe:</p>
@@ -3458,7 +3436,7 @@ public class JOptionPaneErro {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Você também pode passar um <span class="kbd">Icon</span> próprio no lugar do tipo — útil com imagens customizadas. Mas em prova, o padrão é decorar os cinco nomes.</div></div>
+<div class="callout tip"><div>Você também pode passar um <span class="kbd">Icon</span> próprio no lugar do tipo — útil com imagens customizadas. Mas em prova, o padrão é decorar os cinco nomes.</div></div>
 </div>
 <div class="topic" id="m13-19"><h3><span class="tnum">13.19</span>Leitura e escrita de arquivo texto</h3>
 <p>Para arquivos: <b>FileReader/BufferedReader</b> para ler, <b>FileWriter/PrintWriter</b> para escrever. Java 7+ simplifica tudo com <span class="kbd">java.nio.file.Files</span>.</p>
@@ -3490,7 +3468,7 @@ public class ArquivosLeituraEscrita {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Ler um arquivo que não existe derruba <span class="kbd">FileNotFoundException</span> (checked!). Todo código de arquivo precisa de <span class="kbd">try/catch</span> ou <span class="kbd">throws IOException</span> — veja o módulo 15.</div></div>
+<div class="callout warn"><div>Ler um arquivo que não existe derruba <span class="kbd">FileNotFoundException</span> (checked!). Todo código de arquivo precisa de <span class="kbd">try/catch</span> ou <span class="kbd">throws IOException</span> — veja o módulo 15.</div></div>
 </div>
 <div class="topic" id="m13-20"><h3><span class="tnum">13.20</span>try-with-resources</h3>
 <p>Java 7+ fecha <b>automaticamente</b> recursos que implementam <b>AutoCloseable</b> (todos os streams e readers): declare-os entre parênteses do try e esqueça o <span class="kbd">close()</span>.</p>
@@ -3528,9 +3506,9 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Regras: os recursos são fechados na <b>ordem inversa</b> da declaração; são <b>implicitamente final</b>; e o close acontece <b>antes</b> do catch/finally. Sempre que a classe tiver <span class="kbd">close()</span> e implementar <span class="kbd">AutoCloseable</span>, use essa forma.</div></div>
+<div class="callout tip"><div>Regras: os recursos são fechados na <b>ordem inversa</b> da declaração; são <b>implicitamente final</b>; e o close acontece <b>antes</b> do catch/finally. Sempre que a classe tiver <span class="kbd">close()</span> e implementar <span class="kbd">AutoCloseable</span>, use essa forma.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 13</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 13</summary>
 <div class="q">1) Por que <span class="kbd">nextInt()</span> seguido de <span class="kbd">nextLine()</span> volta String vazia?</div>
 <div class="ans">Porque <span class="kbd">nextInt()</span> não consome o <span class="kbd">\n</span> do Enter — o próximo <span class="kbd">nextLine()</span> lê só essa quebra de linha (String vazia). Solução: um nextLine() "limpador" entre eles.</div>
 <div class="q">2) Qual a diferença entre <span class="kbd">System.out</span> e <span class="kbd">System.err</span>?</div>
@@ -3542,8 +3520,8 @@ public class TryWithResourcesDemo {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m14" data-num="14" data-title="Matemática, formatação e região" data-icon="i-math" data-blurb="Math, DecimalFormat, Locale, BigInteger e os casos-limite do ponto flutuante.">
-<h2 class="mod-head"><span class="mod-num">14</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-math"/></svg><span style="flex:1">Matemática, formatação e região</span></span></h2>
+<section class="module pane" id="m14" data-num="14" data-title="Matemática, formatação e região" data-blurb="Math, DecimalFormat, Locale, BigInteger e os casos-limite do ponto flutuante.">
+<h2 class="mod-head"><span class="mod-num">14</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Matemática, formatação e região</span></span></h2>
 <p class="mod-intro"><b>Math</b> reúne as operações matemáticas de uso constante; a formatação de números e moedas fica com <span class="kbd">DecimalFormat</span> e <span class="kbd">Locale</span>; e para contas exatas existem <span class="kbd">BigInteger</span>/<span class="kbd">BigDecimal</span> — além dos casos-limite mais cobrados: <b>NaN</b>, <b>Infinity</b> e <span class="kbd">0.1 + 0.2 != 0.3</span>.</p>
 <div class="topics">
 <div class="topic" id="m14-01"><h3><span class="tnum">14.1</span>Math.ceil</h3>
@@ -3559,7 +3537,7 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Clássico de prova: "quantos ônibus para 53 pessoas, 40 por ônibus?" → <span class="kbd">(int) Math.ceil(53 / 40.0)</span> = 2. O <span class="kbd">/ 40.0</span> força divisão decimal!</div></div>
+<div class="callout tip"><div>Clássico de prova: "quantos ônibus para 53 pessoas, 40 por ônibus?" → <span class="kbd">(int) Math.ceil(53 / 40.0)</span> = 2. O <span class="kbd">/ 40.0</span> força divisão decimal!</div></div>
 </div>
 <div class="topic" id="m14-02"><h3><span class="tnum">14.2</span>Math.floor</h3>
 <p><b>Chão</b>: arredonda para <b>baixo</b>, para o inteiro mais próximo na direção negativa. Devolve <b>double</b>.</p>
@@ -3577,7 +3555,7 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Para inteiros positivos, <span class="kbd">a / b</span> já é um "floor". O floor brilha com <b>negativos</b>: <span class="kbd">-7 / 2</span> trunca para -3, mas <span class="kbd">Math.floor(-3.5)</span> = -4.</div></div>
+<div class="callout tip"><div>Para inteiros positivos, <span class="kbd">a / b</span> já é um "floor". O floor brilha com <b>negativos</b>: <span class="kbd">-7 / 2</span> trunca para -3, mas <span class="kbd">Math.floor(-3.5)</span> = -4.</div></div>
 </div>
 <div class="topic" id="m14-03"><h3><span class="tnum">14.3</span>Math.round</h3>
 <p><b>Arredondamento comum</b> (metade para cima): <span class="kbd">round(double)</span> devolve <b>long</b>, <span class="kbd">round(float)</span> devolve <b>int</b>. Implementação: <span class="kbd">floor(x + 0.5)</span>.</p>
@@ -3594,7 +3572,7 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">Math.round(-4.5)</span> = <b>-4</b>, não -5! (Porque soma 0.5 primeiro: floor(-4.0) = -4.) E <span class="kbd">round(2.5)</span> = 3, mas <span class="kbd">DecimalFormat</span> com HALF_EVEN arredondaria para 2 — modos diferentes, resultados diferentes (14.16).</div></div>
+<div class="callout warn"><div><span class="kbd">Math.round(-4.5)</span> = <b>-4</b>, não -5! (Porque soma 0.5 primeiro: floor(-4.0) = -4.) E <span class="kbd">round(2.5)</span> = 3, mas <span class="kbd">DecimalFormat</span> com HALF_EVEN arredondaria para 2 — modos diferentes, resultados diferentes (14.16).</div></div>
 </div>
 <div class="topic" id="m14-04"><h3><span class="tnum">14.4</span>Math.max</h3>
 <p>Devolve o <b>maior</b> de dois valores. Sobrecargas para int, long, float, double (e desde Java 21, mais tipos). Clássico para acumuladores de máximo.</p>
@@ -3632,7 +3610,7 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Truque "clamp" (limitar a um intervalo): <span class="kbd">max(minimo, min(maximo, x))</span> — aparece bastante em provas de algoritmos.</div></div>
+<div class="callout tip"><div>Truque "clamp" (limitar a um intervalo): <span class="kbd">max(minimo, min(maximo, x))</span> — aparece bastante em provas de algoritmos.</div></div>
 </div>
 <div class="topic" id="m14-06"><h3><span class="tnum">14.6</span>Math.sqrt</h3>
 <p><b>Raiz quadrada</b>. Devolve double; para números negativos, devolve <b>NaN</b>.</p>
@@ -3667,7 +3645,7 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><span class="kbd">Math.pow</span> usa double: <span class="kbd">(int) Math.pow(10, 2)</span> pode dar 99 em algumas JVMs antigas (arredondamento). Para potências inteiras exatas, prefira um laço ou BigInteger (14.22).</div></div>
+<div class="callout warn"><div><span class="kbd">Math.pow</span> usa double: <span class="kbd">(int) Math.pow(10, 2)</span> pode dar 99 em algumas JVMs antigas (arredondamento). Para potências inteiras exatas, prefira um laço ou BigInteger (14.22).</div></div>
 </div>
 <div class="topic" id="m14-08"><h3><span class="tnum">14.8</span>Math.abs</h3>
 <p><b>Valor absoluto</b>: distância até zero, sem sinal. Sobrecargas para int, long, float, double.</p>
@@ -3685,7 +3663,7 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Curiosidade de prova: <span class="kbd">Math.abs(Integer.MIN_VALUE)</span> continua <b>negativo</b> (-2³¹ não tem correspondente positivo no int — overflow!). Em double, <span class="kbd">abs(-0.0)</span> = 0.0.</div></div>
+<div class="callout tip"><div>Curiosidade de prova: <span class="kbd">Math.abs(Integer.MIN_VALUE)</span> continua <b>negativo</b> (-2³¹ não tem correspondente positivo no int — overflow!). Em double, <span class="kbd">abs(-0.0)</span> = 0.0.</div></div>
 </div>
 <div class="topic" id="m14-09"><h3><span class="tnum">14.9</span>Math.random</h3>
 <p>Devolve um <b>double</b> aleatório em <b>[0.0, 1.0)</b> — inclui 0, <b>exclui 1</b>. Base de todos os sorteios (para mais controle, veja Random em 14.24).</p>
@@ -3708,7 +3686,7 @@ public class TryWithResourcesDemo {
         System.out.println("sorteada: " + sorteada + " | cara: " + cara);
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Fórmula universal: <span class="kbd">(int)(Math.random() * (max - min + 1)) + min</span> para incluir os dois extremos. Sem o <span class="kbd">+1</span>, o max nunca sai!</div></div>
+<div class="callout tip"><div>Fórmula universal: <span class="kbd">(int)(Math.random() * (max - min + 1)) + min</span> para incluir os dois extremos. Sem o <span class="kbd">+1</span>, o max nunca sai!</div></div>
 </div>
 <div class="topic" id="m14-10"><h3><span class="tnum">14.10</span>Constantes PI e E</h3>
 <p>Math expõe as duas constantes matemáticas fundamentais como <b>double</b> públicos e estáticos.</p>
@@ -3741,7 +3719,7 @@ public class TryWithResourcesDemo {
 }
 </pre>
 
-<div class="callout warn"><span class="ci">⚠️</span><div>Regra de ouro para prova e para dinheiro: <b>nunca use double/float para valores monetários</b>. Use <span class="kbd">BigDecimal</span> (14.23) ou inteiros em centavos (R$ 1,50 = 150).</div></div>
+<div class="callout warn"><div>Regra de ouro para prova e para dinheiro: <b>nunca use double/float para valores monetários</b>. Use <span class="kbd">BigDecimal</span> (14.23) ou inteiros em centavos (R$ 1,50 = 150).</div></div>
 </div>
 <div class="topic" id="m14-12"><h3><span class="tnum">14.12</span>Precisão e arredondamento</h3>
 <p>double tem ~15 dígitos significativos; float, ~7. Ao somar números muito diferentes, o menor "desaparece". Para exatidão, existe <b>BigDecimal</b>.</p>
@@ -3760,7 +3738,7 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Três formas de arredondar: (1) <span class="kbd">Math.round</span> para inteiros; (2) <span class="kbd">printf("%.2f")</span> para exibição; (3) <span class="kbd">BigDecimal.setScale</span> para cálculos exatos — especialmente dinheiro.</div></div>
+<div class="callout tip"><div>Três formas de arredondar: (1) <span class="kbd">Math.round</span> para inteiros; (2) <span class="kbd">printf("%.2f")</span> para exibição; (3) <span class="kbd">BigDecimal.setScale</span> para cálculos exatos — especialmente dinheiro.</div></div>
 </div>
 <div class="topic" id="m14-13"><h3><span class="tnum">14.13</span>NaN e Infinity</h3>
 <p>Dois valores especiais do ponto flutuante: <b>NaN</b> ("não é um número", resultado de operações inválidas) e <b>Infinity</b> (estouro ou divisão de ponto flutuante por zero).</p>
@@ -3784,7 +3762,7 @@ public class TryWithResourcesDemo {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Diferença crucial: <span class="kbd">int / 0</span> derruba <b>ArithmeticException</b>; <span class="kbd">double / 0.0</span> devolve <b>Infinity</b>. E NaN compara-se falso com TUDO, inclusive consigo — use <span class="kbd">isNaN()</span>.</div></div>
+<div class="callout warn"><div>Diferença crucial: <span class="kbd">int / 0</span> derruba <b>ArithmeticException</b>; <span class="kbd">double / 0.0</span> devolve <b>Infinity</b>. E NaN compara-se falso com TUDO, inclusive consigo — use <span class="kbd">isNaN()</span>.</div></div>
 </div>
 <div class="topic" id="m14-14"><h3><span class="tnum">14.14</span>DecimalFormat</h3>
 <p>Formata números com <b>padrões</b>: casas decimais, separadores de milhar, símbolos. Mais flexível que printf para formatos complexos.</p>
@@ -3810,7 +3788,7 @@ public class DecimalFormatPadroes {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">0</span> = dígito obrigatório (preenche com zero); <span class="kbd">#</span> = dígito opcional (some se vazio). <span class="kbd">.</span> separador decimal, <span class="kbd">,</span> agrupador de milhar.</div></div>
+<div class="callout tip"><div><span class="kbd">0</span> = dígito obrigatório (preenche com zero); <span class="kbd">#</span> = dígito opcional (some se vazio). <span class="kbd">.</span> separador decimal, <span class="kbd">,</span> agrupador de milhar.</div></div>
 </div>
 <div class="topic" id="m14-15"><h3><span class="tnum">14.15</span>Padrões de formatação numérica</h3>
 <p>Os símbolos do <span class="kbd">DecimalFormat</span> e seus significados — a "gramática" dos padrões:</p>
@@ -3861,7 +3839,7 @@ public class BigDecimalRoundingMode {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div><b>HALF_EVEN é o padrão</b> do DecimalFormat e de <span class="kbd">String.format("%.1f")</span> — por isso <span class="kbd">"%.1f".format(2.55)</span> pode surpreender. Para o arredondamento "da escola", use HALF_UP explicitamente.</div></div>
+<div class="callout warn"><div><b>HALF_EVEN é o padrão</b> do DecimalFormat e de <span class="kbd">String.format("%.1f")</span> — por isso <span class="kbd">"%.1f".format(2.55)</span> pode surpreender. Para o arredondamento "da escola", use HALF_UP explicitamente.</div></div>
 </div>
 <div class="topic" id="m14-17"><h3><span class="tnum">14.17</span>Locale</h3>
 <p><b>Locale</b> é a "região" do usuário: idioma + país. Muda <b>separadores</b> (vírgula × ponto), nomes de meses, moedas e regras de formatação.</p>
@@ -3883,7 +3861,7 @@ public class LocaleDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Construtores comuns: <span class="kbd">new Locale("pt")</span> (só idioma), <span class="kbd">new Locale("pt", "BR")</span> (idioma + país), <span class="kbd">new Locale("pt", "BR", "SP")</span> (com variante). Códigos ISO: pt, en, es, de... e BR, US, DE...</div></div>
+<div class="callout tip"><div>Construtores comuns: <span class="kbd">new Locale("pt")</span> (só idioma), <span class="kbd">new Locale("pt", "BR")</span> (idioma + país), <span class="kbd">new Locale("pt", "BR", "SP")</span> (com variante). Códigos ISO: pt, en, es, de... e BR, US, DE...</div></div>
 </div>
 <div class="topic" id="m14-18"><h3><span class="tnum">14.18</span>NumberFormat</h3>
 <p>O gerador de formatadores <b>conscientes de região</b>: número, moeda e porcentagem prontos para qualquer Locale, sem decorar padrões.</p>
@@ -3911,7 +3889,7 @@ public class NumberFormatDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">NumberFormat</span> é a forma mais simples de formatar moeda/porcentagem respeitando o Locale — superior a montar "R$ " na mão. Para padrões customizados, vá de <span class="kbd">DecimalFormat</span> (que é sua subclasse).</div></div>
+<div class="callout tip"><div><span class="kbd">NumberFormat</span> é a forma mais simples de formatar moeda/porcentagem respeitando o Locale — superior a montar "R$ " na mão. Para padrões customizados, vá de <span class="kbd">DecimalFormat</span> (que é sua subclasse).</div></div>
 </div>
 <div class="topic" id="m14-19"><h3><span class="tnum">14.19</span>Formatação de moeda</h3>
 <p>Moeda = <b>NumberFormat.getCurrencyInstance(locale)</b> ou <span class="kbd">DecimalFormat</span> com <span class="kbd">¤</span>. O símbolo (R$, $, €) vem do Locale — e pode ser trocado com <span class="kbd">setCurrency</span>.</p>
@@ -3938,7 +3916,7 @@ public class MoedaPorLocale {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Em prova, cuidado ao concatenar "R$ " na mão: você perde os separadores regionais. Use NumberFormat — e lembre que em pt-BR o separador decimal é <b>vírgula</b> (157,50), não ponto.</div></div>
+<div class="callout warn"><div>Em prova, cuidado ao concatenar "R$ " na mão: você perde os separadores regionais. Use NumberFormat — e lembre que em pt-BR o separador decimal é <b>vírgula</b> (157,50), não ponto.</div></div>
 </div>
 <div class="topic" id="m14-20"><h3><span class="tnum">14.20</span>Formatação de porcentagem</h3>
 <p>Porcentagem = <b>multiplica por 100</b> e acrescenta %. Passe a fração (0.45), não o inteiro (45) — senão vira 4500%!</p>
@@ -3963,7 +3941,7 @@ public class PercentualFormat {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>A armadilha: <span class="kbd">pct.format(45)</span> → <b>4500%</b>! O formatador já multiplica por 100 — passe sempre a <b>fração</b> (acertos/total), e faça a divisão em double para não cair em divisão inteira.</div></div>
+<div class="callout warn"><div>A armadilha: <span class="kbd">pct.format(45)</span> → <b>4500%</b>! O formatador já multiplica por 100 — passe sempre a <b>fração</b> (acertos/total), e faça a divisão em double para não cair em divisão inteira.</div></div>
 </div>
 <div class="topic" id="m14-21"><h3><span class="tnum">14.21</span>Caracteres regionais</h3>
 <p>A região também decide <b>como caracteres aparecem</b>: acentos (ç, ã), separadores (1.234,5 × 1.234,5), símbolos e ordem de classificação. Java trabalha internamente em <b>Unicode (UTF-16)</b>.</p>
@@ -3993,7 +3971,7 @@ public class SeparadoresPorLocale {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div>Dica de prova: ao ler arquivos com acentos, especifique a codificação: <span class="kbd">new InputStreamReader(new FileInputStream("arq.txt"), "UTF-8")</span> ou <span class="kbd">Files.readAllLines(Path.of("arq.txt"), StandardCharsets.UTF_8)</span>. Se vier lixo (SÃ£o), é problema de charset.</div></div>
+<div class="callout tip"><div>Dica de prova: ao ler arquivos com acentos, especifique a codificação: <span class="kbd">new InputStreamReader(new FileInputStream("arq.txt"), "UTF-8")</span> ou <span class="kbd">Files.readAllLines(Path.of("arq.txt"), StandardCharsets.UTF_8)</span>. Se vier lixo (SÃ£o), é problema de charset.</div></div>
 </div>
 <div class="topic" id="m14-22"><h3><span class="tnum">14.22</span>BigInteger</h3>
 <p>Inteiros de <b>precisão arbitrária</b> — tamanho limitado só pela memória. Para quando <span class="kbd">long</span> (64 bits) não basta: fatorial de 50, criptografia, Fibonacci grande.</p>
@@ -4021,7 +3999,7 @@ public class BigIntegerDemo {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>BigInteger é <b>imutável</b>: <span class="kbd">a.add(b)</span> devolve um NOVO BigInteger — <span class="kbd">a</span> não muda. E não existem operadores (+, *): só métodos. <span class="kbd">longValue()</span> pode truncar silenciosamente!</div></div>
+<div class="callout warn"><div>BigInteger é <b>imutável</b>: <span class="kbd">a.add(b)</span> devolve um NOVO BigInteger — <span class="kbd">a</span> não muda. E não existem operadores (+, *): só métodos. <span class="kbd">longValue()</span> pode truncar silenciosamente!</div></div>
 </div>
 <div class="topic" id="m14-23"><h3><span class="tnum">14.23</span>BigDecimal</h3>
 <p>Decimal de <b>precisão arbitrária e exata</b> — o tipo certo para <b>dinheiro</b> e cálculos financeiros. Sempre construa a partir de <b>String</b> (o construtor double carrega o erro de ponto flutuante!).</p>
@@ -4050,7 +4028,7 @@ public class BigDecimalDinheiro {
     }
 }
 </pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Três pegadinhas: (1) <span class="kbd">new BigDecimal(0.1)</span> ≠ <span class="kbd">new BigDecimal("0.1")</span> — use SEMPRE String; (2) <span class="kbd">equals</span> compara <b>escala</b> (2.0 ≠ 2.00) — use <span class="kbd">compareTo == 0</span>; (3) divisão inexata sem escala/rounding derruba <span class="kbd">ArithmeticException</span>.</div></div>
+<div class="callout warn"><div>Três pegadinhas: (1) <span class="kbd">new BigDecimal(0.1)</span> ≠ <span class="kbd">new BigDecimal("0.1")</span> — use SEMPRE String; (2) <span class="kbd">equals</span> compara <b>escala</b> (2.0 ≠ 2.00) — use <span class="kbd">compareTo == 0</span>; (3) divisão inexata sem escala/rounding derruba <span class="kbd">ArithmeticException</span>.</div></div>
 </div>
 <div class="topic" id="m14-24"><h3><span class="tnum">14.24</span>Random</h3>
 <p>Gerador de números <b>pseudoaleatórios</b> (sequência determinística a partir de uma <b>semente</b>), com API bem mais rica que Math.random — inclusive intervalos com limites e tipos variados.</p>
@@ -4080,9 +4058,9 @@ public class RandomDemo {
     }
 }
 </pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">nextInt(n)</span> vai de <b>0 até n-1</b> — o limite é EXCLUSIVO (como substrings e slices). Para 1..6: <span class="kbd">nextInt(6) + 1</span>. E <span class="kbd">Random(seedFixa)</span> reproduce a mesma sequência — útil para testes reprodutíveis.</div></div>
+<div class="callout tip"><div><span class="kbd">nextInt(n)</span> vai de <b>0 até n-1</b> — o limite é EXCLUSIVO (como substrings e slices). Para 1..6: <span class="kbd">nextInt(6) + 1</span>. E <span class="kbd">Random(seedFixa)</span> reproduce a mesma sequência — útil para testes reprodutíveis.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 14</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 14</summary>
 <div class="q">1) Qual a saída de <span class="kbd">Math.ceil(53 / 10)</span>? E de <span class="kbd">Math.ceil(53 / 10.0)</span>?</div>
 <div class="ans"><span class="kbd">53 / 10</span> é divisão inteira = 5 → ceil(5.0) = <b>5.0</b>. Com <span class="kbd">10.0</span>, vale 5.3 → ceil = <b>6.0</b> (a resposta certa para "quantos ônibus").</div>
 <div class="q">2) Por que <span class="kbd">0.1 + 0.2 == 0.3</span> é false?</div>
@@ -4093,8 +4071,8 @@ public class RandomDemo {
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m15" data-num="15" data-title="Exceções" data-icon="i-exc" data-blurb="try, catch, finally, throw — o programa aprende a lidar com erros.">
-<h2 class="mod-head"><span class="mod-num">15</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-exc"/></svg><span style="flex:1">Exceções</span></span></h2>
+<section class="module pane" id="m15" data-num="15" data-title="Exceções" data-blurb="try, catch, finally, throw — o programa aprende a lidar com erros.">
+<h2 class="mod-head"><span class="mod-num">15</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Exceções</span></span></h2>
 <p class="mod-intro">Uma <b>exceção</b> é um erro durante a execução: divisão por zero, arquivo inexistente, texto no lugar de número. Em vez de travar, o Java <b>lança</b> (<span class="kbd">throw</span>) um objeto de erro que você <b>captura</b> (<span class="kbd">catch</span>) e trata — ou declara com <span class="kbd">throws</span>.</p>
 <div class="topics">
 <div class="topic" id="m15-01"><h3><span class="tnum">15.1</span>Conceito de exceção</h3>
@@ -4115,7 +4093,7 @@ public class RandomDemo {
         System.out.println("Programa vivo!");
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Exceção ≠ erro de sintaxe. Erros de compilação impedem o programa de rodar; exceções acontecem <b>durante</b> a execução, com o programa já compilado.</div></div>
+<div class="callout tip"><div>Exceção ≠ erro de sintaxe. Erros de compilação impedem o programa de rodar; exceções acontecem <b>durante</b> a execução, com o programa já compilado.</div></div>
 </div>
 <div class="topic" id="m15-02"><h3><span class="tnum">15.2</span>Hierarquia Throwable</h3>
 <p>Tudo que pode ser lançado herda de <b>Throwable</b>, que se divide em dois ramos: <b>Exception</b> (problemas que você deve tratar) e <b>Error</b> (catástrofes da JVM, não trate).</p>
@@ -4160,7 +4138,7 @@ public class LeituraArquivo {
         }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Regra prática: se a exceção herda de <b>RuntimeException</b> (ou Error), é unchecked; caso contrário, é checked. Prova adora: "por que FileNotFoundException exige try mas NullPointerException não?"</div></div>
+<div class="callout tip"><div>Regra prática: se a exceção herda de <b>RuntimeException</b> (ou Error), é unchecked; caso contrário, é checked. Prova adora: "por que FileNotFoundException exige try mas NullPointerException não?"</div></div>
 </div>
 <div class="topic" id="m15-04"><h3><span class="tnum">15.4</span>Unchecked exceptions</h3>
 <p>Herdam de <b>RuntimeException</b>: o compilador <b>não obriga</b> tratamento. Geralmente são <b>bugs de lógica</b> — acesso a null, índice inválido, cast errado. Você <b>pode</b> tratar, mas o certo é <b>corrigir o código</b>.</p>
@@ -4179,7 +4157,7 @@ public class LeituraArquivo {
         }
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Nunca use try-catch como "remendo" para erros de lógica. Capturar NullPointerException sem corrigir a causa esconde o bug. Trate exceções <b>esperadas</b>; corrija as que indicam falha de programação.</div></div>
+<div class="callout warn"><div>Nunca use try-catch como "remendo" para erros de lógica. Capturar NullPointerException sem corrigir a causa esconde o bug. Trate exceções <b>esperadas</b>; corrija as que indicam falha de programação.</div></div>
 </div>
 <div class="topic" id="m15-05"><h3><span class="tnum">15.5</span>Error</h3>
 <p>Problemas <b>graves e irrecuperáveis</b> da JVM: falta de memória, estouro de pilha, classes quebradas. A convenção é: <b>não tente capturar</b> — o programa não tem como continuar direito.</p>
@@ -4218,7 +4196,7 @@ public class LeituraArquivo {
         }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Coloque no try <b>só o código que pode lançar</b> — não proteja o bloco inteiro do método. try pequeno = diagnóstico preciso.</div></div>
+<div class="callout tip"><div>Coloque no try <b>só o código que pode lançar</b> — não proteja o bloco inteiro do método. try pequeno = diagnóstico preciso.</div></div>
 </div>
 <div class="topic" id="m15-07"><h3><span class="tnum">15.7</span>Bloco catch</h3>
 <p>O <span class="kbd">catch</span> captura a exceção de um tipo específico e recebe o objeto em uma variável (convenção: <span class="kbd">e</span>). Pode haver <b>vários catch</b> em sequência.</p>
@@ -4240,7 +4218,7 @@ public class LeituraArquivo {
         // e.getCause()      → exceção que causou esta
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Java 7+ permite <b>multi-catch</b> (veja 15.10) para tratar vários tipos de uma vez. E desde Java 14/17, há o <span class="kbd">catch (Exception e) { ... }</span> com pattern matching — mas o clássico é o da prova.</div></div>
+<div class="callout tip"><div>Java 7+ permite <b>multi-catch</b> (veja 15.10) para tratar vários tipos de uma vez. E desde Java 14/17, há o <span class="kbd">catch (Exception e) { ... }</span> com pattern matching — mas o clássico é o da prova.</div></div>
 </div>
 <div class="topic" id="m15-08"><h3><span class="tnum">15.8</span>Bloco finally</h3>
 <p>O <span class="kbd">finally</span> executa <b>sempre</b> — com ou sem exceção, com ou sem return. É o lugar dos <b>recursos</b> que precisam ser liberados (fechar arquivo, conexão).</p>
@@ -4271,7 +4249,7 @@ public class LeituraArquivo {
         //   2) JVM crasha (Error grave)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Nunca coloque <span class="kbd">return</span> dentro de finally: ele <b>sobrescreve</b> o return do try/catch (e engole exceções). Use finally só para limpeza — ou melhor, try-with-resources (13.20).</div></div>
+<div class="callout warn"><div>Nunca coloque <span class="kbd">return</span> dentro de finally: ele <b>sobrescreve</b> o return do try/catch (e engole exceções). Use finally só para limpeza — ou melhor, try-with-resources (13.20).</div></div>
 </div>
 <div class="topic" id="m15-09"><h3><span class="tnum">15.9</span>Ordem dos blocos catch</h3>
 <p>Os catch são testados <b>de cima para baixo</b>. Coloque os <b>específicos primeiro</b> e os genéricos por último — senão o genérico "engole" os de baixo (erro de compilação!).</p>
@@ -4295,7 +4273,7 @@ public class OrdemDosCatch {
         // catch (IOException e) { }   ← IOException já foi pego acima
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>O compilador detecta catchs inalcançáveis: se um tipo for <b>subclasse</b> de um catch anterior, o bloco posterior é "código morto" e dá erro. A ordem vai do <b>filho</b> ao <b>pai</b>.</div></div>
+<div class="callout tip"><div>O compilador detecta catchs inalcançáveis: se um tipo for <b>subclasse</b> de um catch anterior, o bloco posterior é "código morto" e dá erro. A ordem vai do <b>filho</b> ao <b>pai</b>.</div></div>
 </div>
 <div class="topic" id="m15-10"><h3><span class="tnum">15.10</span>Multi-catch</h3>
 <p>Java 7+ permite <b>um catch para vários tipos</b>, separados por <span class="kbd">|</span>. A variável é <b>implicitamente final</b>. Perfeito quando o tratamento é igual para todos.</p>
@@ -4341,7 +4319,7 @@ public class MultiCatch {
     public static void main(String[] args) {
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Exceções prontas para lançar: <span class="kbd">IllegalArgumentException</span> (argumento inválido), <span class="kbd">IllegalStateException</span> (objeto em estado errado), <span class="kbd">UnsupportedOperationException</span> (operação não suportada).</div></div>
+<div class="callout tip"><div>Exceções prontas para lançar: <span class="kbd">IllegalArgumentException</span> (argumento inválido), <span class="kbd">IllegalStateException</span> (objeto em estado errado), <span class="kbd">UnsupportedOperationException</span> (operação não suportada).</div></div>
 </div>
 <div class="topic" id="m15-12"><h3><span class="tnum">15.12</span>throws</h3>
 <p>O <span class="kbd">throws</span> na assinatura <b>declara</b> que o método pode lançar uma <b>checked exception</b> — empurrando a responsabilidade para quem chamar. Obrigatório para checked; opcional para unchecked.</p>
@@ -4365,7 +4343,7 @@ public class ThrowsRepassado {
     // main com throws: a JVM imprime o erro se acontecer
     // unchecked NÃO precisa de throws (mas pode ser declarado)
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Diferença de prova: <span class="kbd">throw</span> (verbo, <b>dentro</b> do método, lança o objeto) × <span class="kbd">throws</span> (declaração, <b>na assinatura</b>, lista tipos).</div></div>
+<div class="callout tip"><div>Diferença de prova: <span class="kbd">throw</span> (verbo, <b>dentro</b> do método, lança o objeto) × <span class="kbd">throws</span> (declaração, <b>na assinatura</b>, lista tipos).</div></div>
 </div>
 <div class="topic" id="m15-13"><h3><span class="tnum">15.13</span>getMessage</h3>
 <p>Devolve a <b>mensagem de detalhe</b> da exceção (o texto que você passou no construtor, ou um texto padrão da JVM). O método mais usado para logs amigáveis.</p>
@@ -4405,7 +4383,7 @@ public class ThrowsRepassado {
         // }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Hierarquia de verbosidade: <span class="kbd">getMessage()</span> (só o detalhe) &lt; <span class="kbd">toString()</span> (classe + detalhe) &lt; <span class="kbd">printStackTrace()</span> (tudo + pilha de chamadas).</div></div>
+<div class="callout tip"><div>Hierarquia de verbosidade: <span class="kbd">getMessage()</span> (só o detalhe) &lt; <span class="kbd">toString()</span> (classe + detalhe) &lt; <span class="kbd">printStackTrace()</span> (tudo + pilha de chamadas).</div></div>
 </div>
 <div class="topic" id="m15-15"><h3><span class="tnum">15.15</span>printStackTrace</h3>
 <p>Imprime o <b>rastreamento completo</b>: tipo, mensagem e a <b>pilha de chamadas</b> (onde o erro aconteceu, método por método). Ferramenta nº 1 de depuração — use no desenvolvimento, não na versão final.</p>
@@ -4423,7 +4401,7 @@ public class ThrowsRepassado {
         // Logger.getLogger("app").log(Level.WARNING, "erro", e);
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Leia o stack trace de <b>baixo para cima</b>: a primeira linha do seu código (a mais profunda na pilha) é onde o erro <b>aconteceu</b>. As linhas acima mostram quem chamou quem.</div></div>
+<div class="callout tip"><div>Leia o stack trace de <b>baixo para cima</b>: a primeira linha do seu código (a mais profunda na pilha) é onde o erro <b>aconteceu</b>. As linhas acima mostram quem chamou quem.</div></div>
 </div>
 <div class="topic" id="m15-16"><h3><span class="tnum">15.16</span>getCause</h3>
 <p>Devolve a <b>exceção que causou</b> esta — o "erro dentro do erro". Útil em exceções <b>encadeadas</b> (wrap): você captura uma e lança outra, preservando a original.</p>
@@ -4455,7 +4433,7 @@ public class ThrowsRepassado {
         // System.out.println(e.getCause() != null ? "tem causa" : "sem causa");   ← ERRO: e só existe dentro do catch
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Encadeamento é a forma correta de "traduzir" exceções: ao converter uma IOException em uma RuntimeException de negócio, passe a original como <b>cause</b> — assim o diagnóstico não se perde.</div></div>
+<div class="callout tip"><div>Encadeamento é a forma correta de "traduzir" exceções: ao converter uma IOException em uma RuntimeException de negócio, passe a original como <b>cause</b> — assim o diagnóstico não se perde.</div></div>
 </div>
 <div class="topic" id="m15-17"><h3><span class="tnum">15.17</span>NumberFormatException</h3>
 <p><b>Unchecked</b>. Lançada quando você tenta converter uma String que <b>não é número</b> com <span class="kbd">parseInt</span>, <span class="kbd">parseDouble</span> etc. Arainha nº 1 de exercícios com entrada de dados.</p>
@@ -4477,10 +4455,10 @@ public class ThrowsRepassado {
         }
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Ao ler dados de <span class="kbd">JOptionPane</span> ou arquivo, <b>sempre</b> envolva o parseInt em try-catch: o usuário pode digitar qualquer coisa. Ou use <span class="kbd">Scanner.hasNextInt()</span> antes.</div></div>
+<div class="callout warn"><div>Ao ler dados de <span class="kbd">JOptionPane</span> ou arquivo, <b>sempre</b> envolva o parseInt em try-catch: o usuário pode digitar qualquer coisa. Ou use <span class="kbd">Scanner.hasNextInt()</span> antes.</div></div>
 </div>
 <div class="topic" id="m15-18"><h3><span class="tnum">15.18</span>NullPointerException</h3>
-<p><b>Unchecked</b>. Lançada quando você usa uma referência <b>null</b> como se fosse objeto: chamar método, acessar campo, indexar array null. O clássico NPE.</p>
+<p><b>Unchecked</b>. Lançada quando você usa uma referência <b>null</b> no lugar de um objeto: chamar método, acessar campo, indexar array null. O clássico NPE.</p>
 <pre class="code">public class EvitandoNPE {
     public static void main(String[] args) {
         String s = null;
@@ -4497,7 +4475,7 @@ public class ThrowsRepassado {
         // Java 21+ tem pattern matching: if (s instanceof String str)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>A mensagem do NPE moderno (Java 14+) ajuda: "Cannot invoke \"String.length()\" because \"s\" is null". Em prova, a prevenção é: <b>sempre verifique null</b> antes de usar objetos que podem ser null (retorno de métodos, arrays de objetos, campos).</div></div>
+<div class="callout warn"><div>A mensagem do NPE moderno (Java 14+) ajuda: "Cannot invoke \"String.length()\" because \"s\" is null". Em prova, a prevenção é: <b>sempre verifique null</b> antes de usar objetos que podem ser null (retorno de métodos, arrays de objetos, campos).</div></div>
 </div>
 <div class="topic" id="m15-19"><h3><span class="tnum">15.19</span>ArrayIndexOutOfBoundsException</h3>
 <p><b>Unchecked</b>. Índice <b>negativo</b> ou <b>&gt;= length</b>. Acontece em arrays, Strings (charAt) e lists. Erro de off-by-one, quase sempre.</p>
@@ -4516,7 +4494,7 @@ public class ThrowsRepassado {
         // s.charAt(3);  ← StringIndexOutOfBoundsException (subclasse!)
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Prevenção de prova: use <span class="kbd">i &lt; array.length</span> (nunca um número fixo), lembre que o último índice é <span class="kbd">length - 1</span>, e cuidado com <span class="kbd">&lt;=</span> em condições de laço.</div></div>
+<div class="callout tip"><div>Prevenção de prova: use <span class="kbd">i &lt; array.length</span> (nunca um número fixo), lembre que o último índice é <span class="kbd">length - 1</span>, e cuidado com <span class="kbd">&lt;=</span> em condições de laço.</div></div>
 </div>
 <div class="topic" id="m15-20"><h3><span class="tnum">15.20</span>ArithmeticException</h3>
 <p><b>Unchecked</b>. Erros aritméticos — o mais comum: <b>divisão inteira por zero</b>. (double/0.0 devolve Infinity, mas int/0 explode.)</p>
@@ -4563,7 +4541,7 @@ public class LeituraSegura {
         int idade = sc.nextInt();
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">hasNextInt()</span> / <span class="kbd">hasNextDouble()</span> / <span class="kbd">hasNextLine()</span> são a forma preventiva: teste o tipo <b>antes</b> de ler e evite a exceção por completo.</div></div>
+<div class="callout tip"><div><span class="kbd">hasNextInt()</span> / <span class="kbd">hasNextDouble()</span> / <span class="kbd">hasNextLine()</span> são a forma preventiva: teste o tipo <b>antes</b> de ler e evite a exceção por completo.</div></div>
 </div>
 <div class="topic" id="m15-22"><h3><span class="tnum">15.22</span>FileNotFoundException</h3>
 <p><b>Checked</b>. Lançada ao abrir um arquivo que <b>não existe</b> (ou não pode ser lido). Subclasse de IOException — por isso obriga tratamento.</p>
@@ -4589,7 +4567,7 @@ public class ArquivoInexistente {
         // permite mensagens diferentes para cada caso
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Lembre: <span class="kbd">FileReader</span> abre para <b>leitura</b> — se o arquivo não existe, FileNotFoundException. Já <span class="kbd">FileWriter</span> cria o arquivo se não existir (mas lança IOException se o caminho for inválido, ex.: pasta inexistente).</div></div>
+<div class="callout warn"><div>Lembre: <span class="kbd">FileReader</span> abre para <b>leitura</b> — se o arquivo não existe, FileNotFoundException. Já <span class="kbd">FileWriter</span> cria o arquivo se não existir (mas lança IOException se o caminho for inválido, ex.: pasta inexistente).</div></div>
 </div>
 <div class="topic" id="m15-23"><h3><span class="tnum">15.23</span>IOException</h3>
 <p><b>Checked</b> — a "mãe" dos erros de entrada/saída: arquivo, rede, stream fechada, fim inesperado. Toda operação de E/S a declara ou exige try.</p>
@@ -4616,7 +4594,7 @@ public class LeituraDeLinhas {
         // por isso o catch continua necessário
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Como IOException é checked, todo método que lê/escreve arquivo precisa de <span class="kbd">try-catch</span> ou <span class="kbd">throws IOException</span> na assinatura — inclusive o <span class="kbd">main</span>.</div></div>
+<div class="callout tip"><div>Como IOException é checked, todo método que lê/escreve arquivo precisa de <span class="kbd">try-catch</span> ou <span class="kbd">throws IOException</span> na assinatura — inclusive o <span class="kbd">main</span>.</div></div>
 </div>
 <div class="topic" id="m15-24"><h3><span class="tnum">15.24</span>ParseException</h3>
 <p><b>Checked</b> (do pacote <span class="kbd">java.text</span>). Lançada quando um texto <b>não casa</b> com o formato esperado — clássica com <span class="kbd">SimpleDateFormat</span> e <span class="kbd">NumberFormat.parse</span>.</p>
@@ -4643,7 +4621,7 @@ public class ParseDeDatas {
         }
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Por ser <b>checked</b>, ParseException <b>obriga</b> try-catch — diferente de NumberFormatException (unchecked). Em prova: "parse de data com SimpleDateFormat exige qual tratamento?" → try-catch de ParseException.</div></div>
+<div class="callout tip"><div>Por ser <b>checked</b>, ParseException <b>obriga</b> try-catch — diferente de NumberFormatException (unchecked). Em prova: "parse de data com SimpleDateFormat exige qual tratamento?" → try-catch de ParseException.</div></div>
 </div>
 <div class="topic" id="m15-25"><h3><span class="tnum">15.25</span>StackOverflowError</h3>
 <p><b>Error</b> (não Exception!). A pilha de chamadas estourou — quase sempre por <b>recursão sem caso base</b> ou com caminho que nunca chega ao base.</p>
@@ -4668,9 +4646,9 @@ public class ParseDeDatas {
         // fatorial() nunca é chamado: se fosse, estoura a pilha (StackOverflowError)
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>É um <b>Error</b>: não tente capturá-lo em produção. A solução é corrigir a recursão (caso base válido) ou converter para laço iterativo. Em prova, o StackOverflowError é a consequência clássica de "esqueceu o caso base".</div></div>
+<div class="callout warn"><div>É um <b>Error</b>: não tente capturá-lo em produção. A solução é corrigir a recursão (caso base válido) ou converter para laço iterativo. Em prova, o StackOverflowError é a consequência clássica de "esqueceu o caso base".</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 15</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 15</summary>
 <div class="q">1) Qual a diferença entre checked e unchecked?</div>
 <div class="ans"><b>Checked</b> (ex.: IOException) é verificada na compilação e <b>obriga</b> try-catch ou throws. <b>Unchecked</b> (RuntimeExceptions e Errors) não obriga — geralmente indicam bugs de lógica.</div>
 <div class="q">2) Por que <span class="kbd">catch (Exception e)</span> deve vir <b>depois</b> de <span class="kbd">catch (IOException e)</span>?</div>
@@ -4682,8 +4660,8 @@ public class ParseDeDatas {
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m16" data-num="16" data-title="Memória e referências" data-icon="i-mem" data-blurb="new, pilha, heap, null, aliasing e a primeira coleção: ArrayList.">
-<h2 class="mod-head"><span class="mod-num">16</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-mem"/></svg><span style="flex:1">Memória e referências</span></span></h2>
+<section class="module pane" id="m16" data-num="16" data-title="Memória e referências" data-blurb="new, pilha, heap, null, aliasing e a primeira coleção: ArrayList.">
+<h2 class="mod-head"><span class="mod-num">16</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Memória e referências</span></span></h2>
 <p class="mod-intro">Onde os dados vivem: variáveis locais e referências ficam na <b>pilha</b>; objetos e arrays, no <b>heap</b>. Uma variável de referência guarda o <b>endereço</b> do objeto — e duas referências podem apontar para o mesmo objeto (<b>aliasing</b>).</p>
 <div class="topics">
 <div class="topic" id="m16-01"><h3><span class="tnum">16.1</span>Operador new</h3>
@@ -4704,7 +4682,7 @@ public class NewAlocaMemoria {
         // 4. devolve a referência para a variável
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Sem <span class="kbd">new</span>, uma variável de objeto é só uma <b>referência sem objeto</b> (null). O new é o que efetivamente cria o objeto — exceto em Strings literais, que nascem no pool (módulo 12.2).</div></div>
+<div class="callout tip"><div>Sem <span class="kbd">new</span>, uma variável de objeto é só uma <b>referência sem objeto</b> (null). O new é o que efetivamente cria o objeto — exceto em Strings literais, que nascem no pool (módulo 12.2).</div></div>
 </div>
 <div class="topic" id="m16-02"><h3><span class="tnum">16.2</span>Objeto na pilha × no heap</h3>
 <p>Duas memórias, dois papéis: a <b>pilha</b> (stack) guarda <b>variáveis locais e referências</b> — rápida, criada e destruída a cada chamada. O <b>heap</b> guarda <b>objetos e arrays</b> — maior, compartilhado, gerenciado pelo garbage collector.</p>
@@ -4722,7 +4700,7 @@ public class NewAlocaMemoria {
         obj.metodo();
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Regra: <b>primitivos e referências</b> → pilha (quando locais); <b>objetos e arrays</b> → heap. <b>Campos</b> de objetos vivem no heap junto com o objeto.</div></div>
+<div class="callout tip"><div>Regra: <b>primitivos e referências</b> → pilha (quando locais); <b>objetos e arrays</b> → heap. <b>Campos</b> de objetos vivem no heap junto com o objeto.</div></div>
 </div>
 <div class="topic" id="m16-03"><h3><span class="tnum">16.3</span>Referências e endereçamento</h3>
 <p>Uma variável de objeto <b>não é o objeto</b> — é um <b>endereço</b> (como o GPS de um prédio). Duas variáveis podem ter o "mesmo GPS" (mesmo objeto) ou GPS diferentes (objetos distintos, mesmo conteúdo).</p>
@@ -4741,7 +4719,7 @@ public class ReferenciasArrays {
         // duas referências podem apontar para o mesmo objeto.
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Em Java você <b>nunca manipula endereços diretamente</b> (diferente de C/C++): a referência é opaca. Você só compara (<span class="kbd">==</span>) ou segue (<span class="kbd">obj.metodo()</span>).</div></div>
+<div class="callout warn"><div>Em Java você <b>nunca manipula endereços diretamente</b> (diferente de C/C++): a referência é opaca. Você só compara (<span class="kbd">==</span>) ou segue (<span class="kbd">obj.metodo()</span>).</div></div>
 </div>
 <div class="topic" id="m16-04"><h3><span class="tnum">16.4</span>null</h3>
 <p><b>null</b> é o <b>"nenhum endereço"</b> — a referência não aponta para nada. É o <b>valor padrão</b> de campos e elementos de array de objetos. Usar uma referência null derruba <b>NullPointerException</b>.</p>
@@ -4762,7 +4740,7 @@ public class ReferenciasArrays {
         // - Map.get() quando a chave não existe
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div><span class="kbd">null</span> é uma <b>palavra literal</b>, não palavra reservada. E <span class="kbd">System.out.println(null)</span> imprime "null" — só explode quando você tenta <b>usar</b> o objeto.</div></div>
+<div class="callout tip"><div><span class="kbd">null</span> é uma <b>palavra literal</b>, não palavra reservada. E <span class="kbd">System.out.println(null)</span> imprime "null" — só explode quando você tenta <b>usar</b> o objeto.</div></div>
 </div>
 <div class="topic" id="m16-05"><h3><span class="tnum">16.5</span>Aliasing: duas referências, um objeto</h3>
 <p><b>Aliasing</b> é quando duas (ou mais) variáveis apontam para o <b>mesmo objeto</b>. Alterar o objeto por uma referência afeta <b>todas</b> as outras — fonte de bugs sutis e de questões de prova.</p>
@@ -4785,7 +4763,7 @@ public class AliasingCopia {
         // p2.x = 5;               // p1.x também vira 5
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Em prova, a pergunta clássica: "qual a saída após <span class="kbd">b = a</span> e uma alteração?" Resposta: <b>as duas variáveis veem a mesma coisa</b>. Para escapar, copie (<span class="kbd">Arrays.copyOf</span>, <span class="kbd">clone</span>).</div></div>
+<div class="callout warn"><div>Em prova, a pergunta clássica: "qual a saída após <span class="kbd">b = a</span> e uma alteração?" Resposta: <b>as duas variáveis veem a mesma coisa</b>. Para escapar, copie (<span class="kbd">Arrays.copyOf</span>, <span class="kbd">clone</span>).</div></div>
 </div>
 <div class="topic" id="m16-06"><h3><span class="tnum">16.6</span>Valores padrão de campos e de elementos de array</h3>
 <p>O Java garante <b>zero inicial</b> para tudo que nasce sem atribuição explícita — mas só para <b>campos</b> e <b>elementos de array</b>. Variáveis <b>locais</b> não (erro de compilação se usadas sem valor).</p>
@@ -4804,7 +4782,7 @@ public class AliasingCopia {
         // System.out.println(local);  ← ERRO: might not have been initialized
     }
 }</pre>
-<div class="callout tip"><span class="ci">💡</span><div>Provinha rápida: "por que campos podem ser usados sem inicializar e locais não?" Porque a JVM <b>zera</b> o heap (onde campos moram), mas a pilha é reutilizada entre chamadas — o Java exige inicialização explícita para locais, evitando lixo.</div></div>
+<div class="callout tip"><div>Provinha rápida: "por que campos podem ser usados sem inicializar e locais não?" Porque a JVM <b>zera</b> o heap (onde campos moram), mas a pilha é reutilizada entre chamadas — o Java exige inicialização explícita para locais, evitando lixo.</div></div>
 </div>
 <div class="topic" id="m16-07"><h3><span class="tnum">16.7</span>Coleções introdutórias: ArrayList</h3>
 <p>O <b>ArrayList</b> é a <b>array que cresce sozinha</b> — a primeira coleção do Java. Guarda <b>objetos</b> (por isso usa wrappers: <span class="kbd">ArrayList&lt;Integer&gt;</span>, não int). Import: <span class="kbd">java.util.ArrayList</span>.</p>
@@ -4839,9 +4817,9 @@ public class ArrayListDemo {
     }
 }</pre>
 
-<div class="callout warn"><span class="ci">⚠️</span><div>Diferenças de prova: <span class="kbd">size()</span> (não length), <span class="kbd">get(i)</span>/<span class="kbd">set(i, x)</span> (não colchetes), <span class="kbd">add()</span> (não atribuição). E <span class="kbd">ArrayList&lt;int&gt;</span> NÃO compila — primitivos não são objetos; use <span class="kbd">Integer</span>.</div></div>
+<div class="callout warn"><div>Diferenças de prova: <span class="kbd">size()</span> (não length), <span class="kbd">get(i)</span>/<span class="kbd">set(i, x)</span> (não colchetes), <span class="kbd">add()</span> (não atribuição). E <span class="kbd">ArrayList&lt;int&gt;</span> NÃO compila — primitivos não são objetos; use <span class="kbd">Integer</span>.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 16</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 16</summary>
 <div class="q">1) O que acontece com um objeto do heap quando nenhuma referência aponta para ele?</div>
 <div class="ans">Vira <b>lixo</b>: o Garbage Collector o libera em algum momento. É por isso que a pilha pode ser limpa a cada chamada sem vazar memória.</div>
 <div class="q">2) <span class="kbd">int[] a = {1}; int[] b = a; b = new int[]{2};</span> — quanto vale <span class="kbd">a[0]</span>?</div>
@@ -4852,13 +4830,13 @@ public class ArrayListDemo {
 </div>
 <div class="modnav"></div>
 </section>
-<section class="module pane" id="m17" data-num="17" data-title="POO — Programação Orientada a Objetos" data-icon="i-poo" data-blurb="Classe, objeto, new, this, encapsulamento, herança, polimorfismo, interface, enum e record — o modelo completo, com código literal.">
-<h2 class="mod-head"><span class="mod-num">17</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-poo"/></svg><span style="flex:1">POO — Programação Orientada a Objetos</span></span></h2>
+<section class="module pane" id="m17" data-num="17" data-title="POO — Programação Orientada a Objetos" data-blurb="Classe, objeto, new, this, encapsulamento, herança, polimorfismo, interface, enum e record — o modelo completo, com código literal.">
+<h2 class="mod-head"><span class="mod-num">17</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">POO — Programação Orientada a Objetos</span></span></h2>
 <p class="mod-intro">POO modela o programa em <b>objetos</b>: cada objeto tem <b>estado</b> (atributos) e <b>comportamento</b> (métodos), e esconde seus detalhes atrás de uma interface pública. Este módulo cobre tudo: classe, <span class="kbd">new</span>, <span class="kbd">this</span>, encapsulamento, <span class="kbd">static</span>, composição, herança, <span class="kbd">super</span>, sobrescrita, polimorfismo, classes abstratas, interfaces, <span class="kbd">final</span>, <span class="kbd">toString</span>/<span class="kbd">equals</span>/<span class="kbd">hashCode</span>, <span class="kbd">enum</span> e <span class="kbd">record</span> — sempre com código literal.</p>
 <div class="topics">
-<div class="topic" id="m17-01"><h3><span class="tnum">17.1</span>Classe e objeto — o molde e a peça</h3>
-<p>Uma <b>classe</b> é o molde: define atributos (estado) e métodos (comportamento). Um <b>objeto</b> é uma instância concreta daquele molde, criada em memória. Cada objeto tem sua própria cópia dos atributos de instância.</p>
-<pre class="code">// Classe = o molde
+<div class="topic" id="m17-01"><h3><span class="tnum">17.1</span>Classe e objeto — definição e instância</h3>
+<p>Uma <b>classe</b> define atributos (estado) e métodos (comportamento). Um <b>objeto</b> é uma instância concreta daquela classe, criada em memória. Cada objeto tem sua própria cópia dos atributos de instância.</p>
+<pre class="code">// Classe = a definição
 public class Caneta {
     String cor;                 // atributo (estado)
 
@@ -4876,7 +4854,7 @@ public class Caneta {
         c2.escrever();              // Escrevendo com caneta vermelha
     }
 }</pre>
-<div class="callout"><span class="ci">✓</span><div><b>Decore para a prova:</b> classe é o <b>tipo</b>, objeto é a <b>instância</b>. Duas instâncias da mesma classe não compartilham atributos de instância — <span class="kbd">c1.cor</span> e <span class="kbd">c2.cor</span> são variáveis diferentes.</div></div>
+<div class="callout"><div><b>Decore para a prova:</b> classe é o <b>tipo</b>, objeto é a <b>instância</b>. Duas instâncias da mesma classe não compartilham atributos de instância — <span class="kbd">c1.cor</span> e <span class="kbd">c2.cor</span> são variáveis diferentes.</div></div>
 </div>
 <div class="topic" id="m17-02"><h3><span class="tnum">17.2</span>O construtor e o <span class="kbd">new</span></h3>
 <p>O <b>construtor</b> inicializa o objeto: tem o <b>mesmo nome da classe</b> e <b>nenhum tipo de retorno</b> (nem <span class="kbd">void</span>). O <span class="kbd">new</span> aloca memória para o objeto e chama o construtor. Sem construtor declarado, Java gera um construtor vazio padrão.</p>
@@ -4946,7 +4924,7 @@ public class Caneta {
         // c.saldo = -50;   // ERRO DE COMPILAÇÃO: saldo é private
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Regra de prova: atributo <span class="kbd">private</span> + métodos públicos de acesso. Se o enunciado pede "acesso controlado com validação", a resposta é <b>encapsulamento</b>, não <span class="kbd">public</span> no atributo.</div></div>
+<div class="callout warn"><div>Regra de prova: atributo <span class="kbd">private</span> + métodos públicos de acesso. Se o enunciado pede "acesso controlado com validação", a resposta é <b>encapsulamento</b>, não <span class="kbd">public</span> no atributo.</div></div>
 </div>
 <div class="topic" id="m17-06"><h3><span class="tnum">17.6</span><span class="kbd">static</span>: membros de classe</h3>
 <p><span class="kbd">static</span> faz o membro pertencer à <b>classe</b>, não às instâncias: existe <b>uma só cópia</b>, compartilhada por todos os objetos. Acessa-se pelo nome da classe. Um método <span class="kbd">static</span> <b>não pode</b> acessar atributos de instância (não existe "este objeto" dentro de um método de classe).</p>
@@ -5095,10 +5073,10 @@ public class TestePolimorfismo {
         }
     }
 }</pre>
-<div class="callout"><span class="ci">✓</span><div><b>Decore:</b> o tipo da <b>referência</b> decide o que <b>compila</b>; o tipo do <b>objeto</b> decide o que <b>executa</b> (para métodos sobrescritos).</div></div>
+<div class="callout"><div><b>Decore:</b> o tipo da <b>referência</b> decide o que <b>compila</b>; o tipo do <b>objeto</b> decide o que <b>executa</b> (para métodos sobrescritos).</div></div>
 </div>
 <div class="topic" id="m17-12"><h3><span class="tnum">17.12</span>Classes abstratas — <span class="kbd">abstract</span></h3>
-<p>Uma <b>classe abstrata</b> é um molde incompleto: <b>não pode ser instanciada</b> (<span class="kbd">new Forma()</span> não compila). Ela pode declarar <b>métodos abstratos</b> — sem corpo — que as subclasses concretas são <b>obrigadas</b> a implementar. Também pode ter atributos, construtores e métodos normais.</p>
+<p>Uma <b>classe abstrata</b> é uma definição incompleta: <b>não pode ser instanciada</b> (<span class="kbd">new Forma()</span> não compila). Ela pode declarar <b>métodos abstratos</b> — sem corpo — que as subclasses concretas são <b>obrigadas</b> a implementar. Também pode ter atributos, construtores e métodos normais.</p>
 <pre class="code">abstract class Forma {
     abstract double area();      // sem corpo: a subclasse É OBRIGADA a implementar
 
@@ -5124,7 +5102,7 @@ public class Quadrado extends Forma {
         // Forma f = new Forma();       // ERRO: classe abstrata não instancia
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Se uma subclasse não implementar todos os métodos abstratos, ela também deve ser declarada <span class="kbd">abstract</span>.</div></div>
+<div class="callout warn"><div>Se uma subclasse não implementar todos os métodos abstratos, ela também deve ser declarada <span class="kbd">abstract</span>.</div></div>
 </div>
 <div class="topic" id="m17-13"><h3><span class="tnum">17.13</span>Interfaces — o contrato puro</h3>
 <p>Uma <b>interface</b> define um <b>contrato</b>: o que a classe deve fazer, sem dizer como. Até Java 7, só assinaturas de métodos (todos públicos e abstratos por default). Java 8+ permite <span class="kbd">default</span> (método com corpo); Java 9+ permite métodos privados. Uma classe <b>implements</b> várias interfaces — é como herança múltipla de tipos.</p>
@@ -5149,7 +5127,7 @@ public class Aviao implements Voavel, Motorizado {   // várias interfaces
         a.acelerar();
     }
 }</pre>
-<div class="callout"><span class="ci">✓</span><div><b>interface × classe abstrata:</b> interface = contrato de tipos (sem atributos de instância, herança múltipla permitida); classe abstrata = molde com <b>estado</b> e construtores (herança simples). Use interface para o "papel", classe abstrata para o "corpo".</div></div>
+<div class="callout"><div><b>interface × classe abstrata:</b> interface = contrato de tipos (sem atributos de instância, herança múltipla permitida); classe abstrata = definição com <b>estado</b> e construtores (herança simples). Use interface para o "papel", classe abstrata para o "corpo".</div></div>
 </div>
 <div class="topic" id="m17-14"><h3><span class="tnum">17.14</span><span class="kbd">final</span> em POO</h3>
 <p><span class="kbd">final</span> em <b>classe</b> impede herança; em <b>método</b>, impede sobrescrita; em <b>variável</b>, torna o valor constante (atributo <span class="kbd">static final</span> = constante de classe).</p>
@@ -5238,7 +5216,7 @@ enum Moeda {
         System.out.println(p);           // Ponto[x=3, y=4]  — toString pronto
     }
 }</pre>
-<div class="callout warn"><span class="ci">⚠️</span><div>Confirmação de prova: record é <b>imutável</b> (campos são <span class="kbd">final</span>) e <b>não</b> é herdável (é final implicitamente). Use para transportar dados, não para lógica com estado mutável.</div></div>
+<div class="callout warn"><div>Confirmação de prova: record é <b>imutável</b> (campos são <span class="kbd">final</span>) e <b>não</b> é herdável (é final implicitamente). Use para transportar dados, não para lógica com estado mutável.</div></div>
 </div>
 <div class="topic" id="m17-18"><h3><span class="tnum">17.18</span>Exemplo completo — <span class="kbd">Banco</span> com tudo junto</h3>
 <p>Um programa compilável juntando os 17 tópicos anteriores: classe abstrata, encapsulamento, <span class="kbd">this</span>, <span class="kbd">static</span>, construtor, herança, <span class="kbd">super</span>, sobrescrita, polimorfismo, composição e <span class="kbd">toString</span>.</p>
@@ -5292,19 +5270,19 @@ class Cliente {                               // 11) composição: Conta TEM UM 
     String nome;
     Cliente(String nome) { this.nome = nome; }
 }</pre>
-<div class="callout"><span class="ci">✓</span><div>Saída: <span class="kbd">Ana — saldo R$ 1300,00</span> e <span class="kbd">Total no banco: R$ 1000.0</span>. Note que <span class="kbd">totalDoBanco</span> soma o saldo <b>inicial</b> (1000), não o saldo após as operações — o <span class="kbd">static</span> foi atualizado só no construtor.</div></div>
+<div class="callout"><div>Saída: <span class="kbd">Ana — saldo R$ 1300,00</span> e <span class="kbd">Total no banco: R$ 1000.0</span>. Note que <span class="kbd">totalDoBanco</span> soma o saldo <b>inicial</b> (1000), não o saldo após as operações — o <span class="kbd">static</span> foi atualizado só no construtor.</div></div>
 </div>
-<details class="quiz"><summary>🧩 Mini-quiz do módulo 17</summary>
+<details class="quiz"><summary>Mini-quiz do módulo 17</summary>
 <div class="q">1) O que <span class="kbd">new</span> faz?</div>
-<div class="ans"><b>Aloca memória</b> para o objeto e <b>chama o construtor</b> da classe. Sem <span class="kbd">new</span> não existe objeto — só a classe (o molde).</div>
+<div class="ans"><b>Aloca memória</b> para o objeto e <b>chama o construtor</b> da classe. Sem <span class="kbd">new</span> não existe objeto — só a classe (a definição).</div>
 <div class="q">2) Um atributo <span class="kbd">private double saldo;</span> pode ser lido de outra classe?</div>
 <div class="ans"><b>Não.</b> <span class="kbd">private</span> restringe o acesso à <b>própria classe</b>. De fora, só pelos métodos públicos (getter ou método de negócio como <span class="kbd">depositar()</span>).</div>
 <div class="q">3) Qual a diferença entre <span class="kbd">==</span> e <span class="kbd">equals()</span> em objetos?</div>
 <div class="ans"><span class="kbd">==</span> compara <b>referências</b> (são o mesmo objeto?); <span class="kbd">equals()</span> compara <b>conteúdo</b> — quando sobrescrito. Por padrão, <span class="kbd">equals()</span> herdada de Object também compara referências.</div>
 <div class="q">4) Posso fazer <span class="kbd">new Forma()</span> se <span class="kbd">Forma</span> é <span class="kbd">abstract</span>?</div>
-<div class="ans"><b>Não compila.</b> Classe abstrata é molde incompleto — só subclasses <b>concretas</b> (que implementam todos os métodos abstratos) podem ser instanciadas.</div>
+<div class="ans"><b>Não compila.</b> Classe abstrata é definição incompleta — só subclasses <b>concretas</b> (que implementam todos os métodos abstratos) podem ser instanciadas.</div>
 <div class="q">5) interface × classe abstrata: qual a diferença que cai em prova?</div>
-<div class="ans">Interface é <b>contrato</b>: sem atributos de instância (só <span class="kbd">static final</span>) e uma classe <b>implements várias</b>. Classe abstrata é <b>molde com estado</b>: tem atributos e construtores, e a classe <b>extends apenas uma</b>.</div>
+<div class="ans">Interface é <b>contrato</b>: sem atributos de instância (só <span class="kbd">static final</span>) e uma classe <b>implements várias</b>. Classe abstrata é <b>definição com estado</b>: tem atributos e construtores, e a classe <b>extends apenas uma</b>.</div>
 <div class="q">6) Uma subclasse não implementa um método abstrato da mãe. O que acontece?</div>
 <div class="ans">A subclasse <b>também deve ser declarada <span class="kbd">abstract</span></b> — senão não compila. A implementação fica para a próxima geração da hierarquia.</div>
 </details>
@@ -5312,8 +5290,8 @@ class Cliente {                               // 11) composição: Conta TEM UM 
 <div class="modnav"></div>
 </section>
 
-<section class="module pane" id="m18" data-num="✦" data-title="Resumo de prova" data-icon="i-flag" data-blurb="Tabelas de consulta rápida e os erros mais clássicos — para a véspera da prova.">
-<h2 class="mod-head"><span class="mod-num" style="font-size:clamp(48px,7vw,76px)">✦</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><svg class="mod-icon" viewBox="0 0 24 24"><use href="#i-flag"/></svg><span style="flex:1">Resumo de prova</span></span></h2>
+<section class="module pane" id="m18" data-num="✦" data-title="Resumo de prova" data-blurb="Tabelas de consulta rápida e os erros mais clássicos — para a véspera da prova.">
+<h2 class="mod-head"><span class="mod-num" style="font-size:clamp(48px,7vw,76px)">✦</span><span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="flex:1">Resumo de prova</span></span></h2>
 <p class="mod-intro">O "cola" permitido: as tabelas que você deve conseguir escrever de memória e os erros que mais aparecem. Revise na véspera e durma tranquilo.</p>
 <div class="topics">
 <div class="topic" id="m18-01"><h3><span class="tnum">✓</span>Os 8 tipos primitivos — decore</h3>
@@ -5394,7 +5372,7 @@ class Cliente {                               // 11) composição: Conta TEM UM 
 <tr><td>new, pilha × heap, null, aliasing, ArrayList</td><td><a href="#m16">16 · Memória</a></td></tr>
 <tr><td>classe, objeto, new, this, encapsulamento, herança, polimorfismo, interface, enum, record</td><td><a href="#m17">17 · POO</a></td></tr></table>
 </div>
-<details class="quiz"><summary>🧩 Quiz final — 5 perguntas rápidas</summary>
+<details class="quiz"><summary>Quiz final — 5 perguntas rápidas</summary>
 <div class="q">1) Qual a saída de <span class="kbd">System.out.println(2 + 3 + "x" + 4 + 5);</span>?</div>
 <div class="ans"><b>5x45</b> — 2+3=5 (inteiros), "5"+"x"="5x", "5x"+4="5x4", "5x4"+5="5x45".</div>
 <div class="q">2) <span class="kbd">String a = "x"; String b = a; b = b + "y";</span> — quanto vale <span class="kbd">a</span>?</div>
@@ -5412,8 +5390,8 @@ class Cliente {                               // 11) composição: Conta TEM UM 
 
 <section class="pane pane-final" id="fim">
 <div class="final">
-  <svg viewBox="0 0 24 24" style="width:54px;height:54px;color:#ffffff;margin:0 auto 14px"><use href="#i-flag"/></svg>
-  <h2>Fim da jornada! 🎉</h2>
+  
+  <h2>Fim da jornada!</h2>
   <p>Você percorreu os 17 módulos de conteúdo — da compilação ao ArrayList e daí à <b>POO</b> completa: classes, objetos, herança e polimorfismo. Bom estudo e boa prova!</p>
   <a class="pn" href="#m01" data-go="m01"><small>revisitar</small><b>↺ Voltar ao módulo 1</b></a>
 </div>
@@ -5421,7 +5399,7 @@ class Cliente {                               // 11) composição: Conta TEM UM 
 </main>
 </div>
 <footer class="pagefoot">
-  <span>☕ Java — pré-POO + POO · guia direto de estudos</span>
+  <span>Java — pré-POO + POO · guia direto de estudos</span>
   <span>18 módulos · 249 tópicos · feito para a sua prova</span>
 </footer>
 <button id="toTop" type="button" aria-label="Voltar ao topo">↑</button>
@@ -5467,9 +5445,9 @@ document.addEventListener("click", function(e){
 
 /* ═══════════════ SISTEMA DE ABAS ═══════════════ */
 var TABS = MODS.map(function(m){
-  return { id:m.id, num:m.dataset.num, title:m.dataset.title, icon:m.dataset.icon };
+  return { id:m.id, num:m.dataset.num, title:m.dataset.title, };
 });
-TABS.push({ id:"fim", num:"★", title:"Fim da jornada", icon:"i-flag" });
+TABS.push({ id:"fim", num:"★", title:"Fim da jornada" });
 
 /* rótulos curtos para a barra (o título completo fica no title/nav) */
 var SHORT = {
@@ -5487,7 +5465,6 @@ tabIn.innerHTML = TABS.map(function(t,i){
   return '<button class="tab" role="tab" id="tab-'+t.id+'" aria-selected="'+(i===0)+'"'+
     ' tabindex="'+(i===0?0:-1)+'" data-id="'+t.id+'" title="'+t.title+'">'+
     '<span class="tn">'+t.num+'</span>'+
-    '<svg class="ticon" viewBox="0 0 24 24"><use href="#'+t.icon+'"/></svg>'+
     '<span class="tlabel">'+(SHORT[t.id] || t.title)+'</span>'+
     '<span class="bdg" data-bdg="'+t.id+'" hidden></span>'+
     '</button>';

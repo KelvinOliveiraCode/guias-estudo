@@ -6,7 +6,7 @@
 <title>Sistemas Operacionais — Guia Direto para a Prova</title>
 <style>
 /* ============================================================
-   PALETA ESCURA — matiz única (~210°), fundo escuro
+   PALETA ESCURA — preto, branco e cinza, fundo preto
    Regra: --ink-900 = texto mais forte (claro), --paper = fundo
    ============================================================ */
 :root{
@@ -260,11 +260,7 @@ td b,td strong{color:var(--ink-900)}
   letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px}
 .def p{font-size:15px;color:var(--ink-700);margin:0}
 
-/* Analogia highlight */
-.analogy{background:linear-gradient(180deg,var(--ink-50),var(--white));
-  border:1px solid var(--ink-100);border-radius:var(--r-lg);padding:28px 30px;margin:0 0 26px}
-.analogy .ah{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-400);margin-bottom:16px}
+
 
 /* Pills / tags */
 .pills{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
@@ -493,10 +489,11 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   </div>
 
   <h3>A situação-problema que funda tudo</h3>
-  <p>Imagine o primeiro dia na empresa. O chefe te leva a uma sala vazia e aponta para
-    um processador bruto, memórias RAM soltas, um cabo e um disco rígido. Nenhum software
-    instalado. O pedido: <strong>escreva um programa simples em Java que leia um arquivo de
-    texto desse disco e o imprima numa impressora USB.</strong></p>
+  <p>O ponto de partida: uma máquina só com hardware — processador, memórias RAM,
+    disco, sem nenhum software instalado. A tarefa: <strong>escrever um programa em Java que
+    leia um arquivo de texto desse disco e o imprima numa impressora USB.</strong> Sem um
+    Sistema Operacional, o próprio programa teria que controlar cada dispositivo — drivers,
+    interrupções, temporização. É esse trabalho que o SO assume.</p>
 
   <div class="note">
     <span class="lbl">A questão</span>
@@ -610,11 +607,11 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 
   <h3>Para casa, próximo encontro e reflexão</h3>
   <div class="grid g3">
-    <div class="card"><div class="ico">📚</div><h5>Para Casa</h5><p>Acesse o AVA/SIGAA e participe do
+    <div class="card"><h5>Para Casa</h5><p>Acesse o AVA/SIGAA e participe do
       <strong>fórum de acolhimento</strong> da disciplina. Leia o <strong>Capítulo 1</strong> do Machado &amp; Maia.</p></div>
-    <div class="card"><div class="ico">🔬</div><h5>Próximo Encontro</h5><p>Laboratório conceitual: debate sobre
+    <div class="card"><h5>Próximo Encontro</h5><p>Laboratório conceitual: debate sobre
       o <strong>Kernel</strong>, os <strong>modos de acesso</strong> e a estrutura interna dos processos.</p></div>
-    <div class="card"><div class="ico">💡</div><h5>Reflexão</h5><p>Observe hoje o SO do seu smartphone.
+    <div class="card"><h5>Reflexão</h5><p>Observe hoje o SO do seu smartphone.
       Quantas vezes ele atua gerenciando apps concorrentes?</p></div>
   </div>
 <div class="modquiz" data-mod="m0"></div>
@@ -719,9 +716,9 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <p>O kernel inteiro é escrito como um <strong>binário monolítico único</strong>. Todo o código (drivers,
     escalonador, rede) reside em um <strong>único espaço de endereçamento de memória</strong>.</p>
   <div class="vs">
-    <div><h6 style="color:var(--ink-900)">✅ Vantagem</h6><p><strong>Desempenho máximo</strong> — sem
+    <div><h6 style="color:var(--ink-900)">Vantagem</h6><p><strong>Desempenho máximo</strong> — sem
       overhead de comunicação interna. Tudo ocorre por chamadas de funções baratas em C.</p></div>
-    <div><h6 style="color:var(--ink-900)">❌ Desvantagem</h6><p><strong>Difícil manutenção</strong> e
+    <div><h6 style="color:var(--ink-900)">Desvantagem</h6><p><strong>Difícil manutenção</strong> e
       fragilidade física: se um driver de vídeo falhar, o kernel inteiro cai. Exemplos: MS-DOS, Linux original.</p></div>
   </div>
 
@@ -730,9 +727,9 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <strong>Camada N (junto ao usuário)</strong>. Cada camada só pode invocar serviços das camadas
     <strong>diretamente inferiores</strong>.</p>
   <div class="vs">
-    <div><h6 style="color:var(--ink-900)">✅ Vantagem</h6><p><strong>Alta modularidade</strong> e
+    <div><h6 style="color:var(--ink-900)">Vantagem</h6><p><strong>Alta modularidade</strong> e
       facilidade de depuração — cada camada pode ser testada e verificada de forma isolada.</p></div>
-    <div><h6 style="color:var(--ink-900)">❌ Desvantagem</h6><p><strong>Menor eficiência</strong> —
+    <div><h6 style="color:var(--ink-900)">Desvantagem</h6><p><strong>Menor eficiência</strong> —
       overhead alto para atravessar múltiplas camadas de parâmetros a cada chamada de serviço.</p></div>
   </div>
 
@@ -744,11 +741,11 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     mecanismos de comunicação entre processos (IPC) e mecanismo de mensagens. A comunicação entre clientes
     e servidores é feita por <strong>troca de mensagens gerenciada pelo Microkernel</strong>.</p>
   <div class="grid g2">
-    <div class="card"><h5>✅ Vantagens</h5><p><strong>Confiabilidade:</strong> se o servidor de arquivos
+    <div class="card"><h5>Vantagens</h5><p><strong>Confiabilidade:</strong> se o servidor de arquivos
       falhar por um bug, o resto do SO continua funcionando normalmente.<br><br>
       <strong>Extensibilidade e portabilidade:</strong> novos serviços são criados no espaço de usuário
       sem alterar o kernel.</p></div>
-    <div class="card dark"><h5>❌ Desvantagem</h5><p>Queda de desempenho expressiva devido ao
+    <div class="card dark"><h5>Desvantagem</h5><p>Queda de desempenho expressiva devido ao
       <strong>overhead constante</strong> de cópia e troca de mensagens entre as fronteiras do sistema.</p></div>
   </div>
 
@@ -837,11 +834,11 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   
 
   <div class="grid g3">
-    <div class="card"><h5>🆕 Novo (New)</h5><p>Em fase de <strong>criação e alocação de recursos</strong> pelo SO.</p></div>
+    <div class="card"><h5>Novo (New)</h5><p>Em fase de <strong>criação e alocação de recursos</strong> pelo SO.</p></div>
     <div class="card dark"><h5>▶️ Em Execução</h5><p>As instruções estão sendo <strong>ativamente processadas</strong> pelos núcleos da CPU.</p></div>
     <div class="card"><h5>⏹ Terminado</h5><p>Encerrou a execução; seus <strong>recursos na RAM serão liberados</strong> pelo SO.</p></div>
     <div class="card"><h5>⏸ Em Espera / Bloqueado</h5><p>Pausado aguardando um <strong>evento externo</strong> (conclusão de leitura em disco, entrada do teclado).</p></div>
-    <div class="card"><h5>⏳ Pronto (Ready)</h5><p>Apto para rodar, <strong>esperando que o escalonador</strong> o selecione para ocupar a CPU.</p></div>
+    <div class="card"><h5>Pronto (Ready)</h5><p>Apto para rodar, <strong>esperando que o escalonador</strong> o selecione para ocupar a CPU.</p></div>
   </div>
 
   <div class="note">
@@ -1054,13 +1051,13 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   
 
   <div class="grid g3">
-    <div class="card"><h5>🔄 Inversão de Prioridades</h5><p>Um processo de prioridade <strong>média</strong>
+    <div class="card"><h5>Inversão de Prioridades</h5><p>Um processo de prioridade <strong>média</strong>
       bloqueia um de <strong>alta</strong> prioridade que aguarda um recurso retido por um de
       <strong>baixa</strong> prioridade.</p></div>
-    <div class="card dark"><h5>💀 Inanição (Starvation)</h5><p>Processos de baixa prioridade podem esperar
+    <div class="card dark"><h5>Inanição (Starvation)</h5><p>Processos de baixa prioridade podem esperar
       <strong>indefinidamente</strong>. <br><strong>A lenda do MIT:</strong> um processo enviado em
       <strong>1967</strong> nunca executou até o <strong>IBM 7094 ser desligado em 1973</strong>!</p></div>
-    <div class="card"><h5>🌱 Envelhecimento (Aging)</h5><p>Aumenta <strong>gradualmente</strong> a prioridade
+    <div class="card"><h5>Envelhecimento (Aging)</h5><p>Aumenta <strong>gradualmente</strong> a prioridade
       dos processos conforme o tempo acumulado na fila de prontos — <strong>a cura para a Starvation</strong>.</p></div>
   </div>
 
@@ -1168,14 +1165,14 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <h3>O que as threads dividem e o que elas isolam</h3>
   <div class="vs">
     <div>
-      <h6>🔗 Recursos Compartilhados</h6>
+      <h6>Recursos Compartilhados</h6>
       <p><b>Seção de Código</b> — todas as threads leem as mesmas funções.</p>
       <p><b>Seção de Dados (globais)</b> — se uma altera uma global, <b>todas as outras enxergam imediatamente</b>.</p>
       <p><b>Recursos do SO</b> — arquivos abertos, sockets de rede e permissões.</p>
       <p><b>Memória Heap</b> — área de alocação dinâmica (objetos com <code>new</code> em Java).</p>
     </div>
     <div>
-      <h6>🔒 Recursos Privados (de cada thread)</h6>
+      <h6>Recursos Privados (de cada thread)</h6>
       <p><b>ID da Thread</b> — identificador único no sistema.</p>
       <p><b>Contador de Programa (PC)</b> — qual instrução aquela thread está executando.</p>
       <p><b>Conjunto de Registradores da CPU</b> — valores de cálculo temporários da thread.</p>
@@ -1235,12 +1232,12 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="vs">
     <div><h6>Threads de Nível de Usuário</h6><p><b>Gerenciamento por biblioteca</b> — criadas e gerenciadas
       inteiramente por bibliotecas no espaço de usuário (ex.: <b>Java Threads</b>).</p>
-      <p>✅ Rápidas de criar, <b>sem chamadas de sistema</b>.</p>
+      <p>Rápidas de criar, <b>sem chamadas de sistema</b>.</p>
       <p>⚠️ <b>O calcanhar de Aquiles:</b> se uma única thread de usuário fizer uma chamada bloqueadora ao SO
       (como ler do disco), <b>o processo inteiro é pausado</b>.</p></div>
     <div><h6>Threads de Nível de Kernel</h6><p><b>Gerenciamento pelo SO</b> — o núcleo reconhece e gerencia as
       threads diretamente. Se uma thread bloqueia, o SO agenda outra do mesmo processo.</p>
-      <p>✅ <b>Suporte nativo a multicore</b>.</p>
+      <p><b>Suporte nativo a multicore</b>.</p>
       <p>⚠️ Maior custo de criação (cada uma é uma syscall).</p></div>
   </div>
 
@@ -1267,7 +1264,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <h4>O clássico exemplo da conta bancária conjunta</h4>
   <div class="bank">
     <div class="tx">
-      <div class="th">👩 Thread Esposa</div>
+      <div class="th">Thread Esposa</div>
       <div class="steps">
         <div>lê saldo = <span class="hl">R$ 1.000,00</span></div>
         <div>calcula 1.000 + 10</div>
@@ -1275,7 +1272,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
       </div>
     </div>
     <div class="tx">
-      <div class="th">👨 Thread Marido</div>
+      <div class="th">Thread Marido</div>
       <div class="steps">
         <div>lê saldo = <span class="hl">R$ 1.000,00</span></div>
         <div>calcula 1.000 − 10</div>
@@ -1311,7 +1308,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     </ol>
   </div>
   <div class="note soft">
-    <span class="lbl">💡 Dica de leitura desta aula</span>
+    <span class="lbl">Dica de leitura desta aula</span>
     <p>Leia as seções <strong>4.1 e 4.2</strong> do Silberschatz para aprofundar os conceitos de
     concorrência multicore.</p>
   </div>
@@ -1340,7 +1337,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     
   </div>
   <div class="note">
-    <span class="lbl">A questão 🤔</span>
+    <span class="lbl">A questão </span>
     <p>As threads ficam paradas, cada uma segurando 1 recurso e esperando pelo outro <strong>eternamente</strong>?
     O que acontece com a CPU? Elas <strong>morrem de fome</strong>?</p>
   </div>
@@ -1373,7 +1370,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <div><h6>Spinlocks — Espera Ocupada</h6><p>Enquanto a região crítica está ocupada, a thread fica
       em <strong>loop contínuo</strong> testando a variável:</p>
       <pre style="margin:10px 0 0;background:var(--ink-50);color:var(--ink-800);border-color:var(--ink-200);font-size:12.5px;padding:10px 12px"><code>while (lock == 1);</code></pre>
-      <p style="margin-top:10px">❌ Desperdiça ciclos preciosos de CPU em <strong>busy waiting</strong>.</p></div>
+      <p style="margin-top:10px">Desperdiça ciclos preciosos de CPU em <strong>busy waiting</strong>.</p></div>
   </div>
   <div class="note tip">
     <span class="lbl">Quando usar spinlocks?</span>
@@ -1411,7 +1408,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="grid g3">
     <div class="card"><h5>Operação Atômica</h5><p>Decrementa o valor: <code>S.value--</code>. Se
       <code>S.value &lt; 0</code>, a thread é suspensa na fila e adormece (<code>block()</code>).</p></div>
-    <div class="card dark"><h5>🌟 O Trunfo</h5><p>A thread <strong>abre mão da CPU espontaneamente</strong>
+    <div class="card dark"><h5>O Trunfo</h5><p>A thread <strong>abre mão da CPU espontaneamente</strong>
       e dorme — eliminando completamente a <strong>espera ocupada</strong>!</p></div>
     <div class="card"><h5>Atomicidade Garantida</h5><p>Ambas as operações são <strong>indivisíveis</strong> —
       o SO garante que nunca são interrompidas no meio da execução.</p></div>
@@ -1475,7 +1472,7 @@ remove o item;
 
   <h3>Estratégias do Kernel contra o Deadlock</h3>
   <div class="grid g2">
-    <div class="card"><span class="stamp">1</span><h5>🦤 Algoritmo do Avestruz</h5><p><strong>Fingir que nunca
+    <div class="card"><span class="stamp">1</span><h5>Algoritmo do Avestruz</h5><p><strong>Fingir que nunca
       ocorre.</strong> Abordagem pragmática adotada pelo <strong>Windows e Linux</strong>: se a probabilidade
       for muito baixa, <strong>reiniciar é mais barato</strong> do que rodar prevenção em cada alocação.</p></div>
     <div class="card"><span class="stamp">2</span><h5>Prevenção Ativa</h5><p><strong>Quebra estrita de uma das 4
@@ -1521,7 +1518,7 @@ remove o item;
 
   <div class="sim">
     <div class="sim-h">
-      <span class="t">🗓 Simulador de Escalonamento</span>
+      <span class="t">Simulador de Escalonamento</span>
       <span class="s">FCFS · SJF · Prioridade · Round-Robin</span>
     </div>
     <div class="sim-b">
@@ -1547,9 +1544,9 @@ remove o item;
       </div>
 
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-        <button class="btn" onclick="loadPreset(1)">📋 Exemplo da aula — ordem P₁P₂P₃P₄</button>
-        <button class="btn" onclick="loadPreset(2)">📋 Exemplo da aula — P₂ chega primeiro</button>
-        <button class="btn" onclick="loadPreset(3)">📋 Tanenbaum — A8 B4 C4 D4</button>
+        <button class="btn" onclick="loadPreset(1)">Exemplo da aula — ordem P₁P₂P₃P₄</button>
+        <button class="btn" onclick="loadPreset(2)">Exemplo da aula — P₂ chega primeiro</button>
+        <button class="btn" onclick="loadPreset(3)">Tanenbaum — A8 B4 C4 D4</button>
       </div>
 
       <div class="gantt-box" id="ganttBox">
@@ -1576,7 +1573,7 @@ remove o item;
 
   <div class="sim">
     <div class="sim-h">
-      <span class="t">🔒 Máquina de Semáforos</span>
+      <span class="t">Máquina de Semáforos</span>
       <span class="s">Valor inicial: 1</span>
     </div>
     <div class="sim-b">
@@ -1604,13 +1601,13 @@ remove o item;
     com o saldo errado</strong>. Este é o T₁ na prática.</p>
 
   <div class="sim">
-    <div class="sim-h"><span class="t">🏦 Duas threads, uma conta</span>
+    <div class="sim-h"><span class="t">Duas threads, uma conta</span>
       <span class="s">R$ 1.000,00 · +10 e −10 simultâneos</span></div>
     <div class="sim-b">
       <div class="bank">
-        <div class="tx"><div class="th">👩 Esposa · Depósito</div>
+        <div class="tx"><div class="th">Esposa · Depósito</div>
           <div class="steps" id="t1"><div>lê saldo</div><div>calcula +10</div><div>grava</div></div></div>
-        <div class="tx"><div class="th">👨 Marido · Saque</div>
+        <div class="tx"><div class="th">Marido · Saque</div>
           <div class="steps" id="t2"><div>lê saldo</div><div>calcula −10</div><div>grava</div></div></div>
       </div>
       <div class="balance" id="balBox">
@@ -1636,7 +1633,7 @@ remove o item;
 
   <h3>Simulador 4 — O Jantar dos Filósofos (deadlock)</h3>
   <div class="sim">
-    <div class="sim-h"><span class="t">🍝 Cinco filósofos, cinco pares de hashis</span>
+    <div class="sim-h"><span class="t">Cinco filósofos, cinco pares de hashis</span>
       <span class="s">Veja o sistema travar</span></div>
     <div class="sim-b">
       <div style="text-align:center;padding:10px 0 18px">
@@ -2191,8 +2188,8 @@ function runBank(){
 
   const box = document.getElementById('balBox');
   box.className = 'balance ' + (bal===1000?'good':'bad');
-  const seq = order.map(s=>s[0]==='e'?'👩':'👨').join(' ');
-  box.innerHTML = `<div class="bl">Esta execução: ${seq}</div>
+  const seq = order.map(s=>s[0]==='e'?'E':'M').join(' ');
+  box.innerHTML = `<div class="bl">Esta execução (E = esposa, M = marido): ${seq}</div>
     <div class="bv">R$ ${bal.toLocaleString('pt-BR',{minimumFractionDigits:2})}</div>
     <div class="bmsg" style="font-size:12px;margin-top:14px">${order.map(s=>NAMES[s]).join(' → ')}</div>
     <div class="bmsg">${bal===1000
@@ -2227,7 +2224,7 @@ function runBankMany(){
            e quem roda o programa uma vez só provavelmente vai ver "funcionando".`}</p>
       <div class="tbl-wrap" style="margin:16px 0 0;background:var(--white)"><table>
         <thead><tr><th>Ordem de execução</th><th>Saldo final</th><th>Está certo?</th></tr></thead>
-        <tbody>${rows.map(r=>`<tr><td style="font-size:12px">${r.o.map(s=>s[0]==='e'?'👩':'👨').join(' → ')} <span style="color:var(--ink-300);font-size:11px">${r.o.map(s=>NAMES[s]).join(' → ')}</span></td>
+        <tbody>${rows.map(r=>`<tr><td style="font-size:12px">${r.o.map(s=>s[0]==='e'?'E':'M').join(' → ')} <span style="color:var(--ink-300);font-size:11px">${r.o.map(s=>NAMES[s]).join(' → ')}</span></td>
         <td><b>R$ ${r.bal.toLocaleString('pt-BR',{minimumFractionDigits:2})}</b></td>
         <td>${r.ok?'✓ sim':'<b style="color:var(--ink-900)">✗ não</b>'}</td></tr>`).join('')}</tbody>
       </table></div>
@@ -2255,8 +2252,8 @@ function philoRender(msg){
           <text x="${x}" y="${y+5}" text-anchor="middle" fill="${has?'#000000':'#ececec'}" font-size="13" font-weight="700" font-family="system-ui">P${i+1}</text>`;
     if(has){
       const [bx,by] = bowl[i];
-      g += `<text x="${bx}" y="${by}" text-anchor="middle" font-size="15" font-family="system-ui">🍜</text>
-            <text x="${bx}" y="${by-13}" text-anchor="middle" fill="#a4a4a4" font-size="9.5" font-family="system-ui">prato</text>`;
+      g += `<text x="${bx}" y="${by}" text-anchor="middle" font-size="15" font-family="system-ui">H</text>
+            <text x="${bx}" y="${by-13}" text-anchor="middle" fill="#a4a4a4" font-size="9.5" font-family="system-ui">hashi</text>`;
     }
   }
   if(pState.every(s=>s===1)){
@@ -2276,7 +2273,7 @@ philoReset();
 
 /* ══════════════════ QUIZZES POR MÓDULO ══════════════════ */
 const MODS = [
-  {id:'m0', icon:'🎓', title:'Quiz do Módulo 0', sub:'Fundamentos · Aula 01 — o que é o SO', qs:[
+  {id:'m0', icon:'', title:'Quiz do Módulo 0', sub:'Fundamentos · Aula 01 — o que é o SO', qs:[
     {q:'Um sistema sem Sistema Operacional é possível. O que acontece com o programador?',
      o:['Ele escreve código normalmente, sem diferenças','Ele teria que programar o comportamento elétrico de cada pino da placa-mãe','Ele usa apenas bibliotecas de terceiros','O compilador gera as instruções de baixo nível automaticamente'],
      a:1, e:'Sem SO, cada programador teria de ser engenheiro de hardware. É o caos completo — e o motivo de o SO existir.'},
@@ -2296,7 +2293,7 @@ const MODS = [
      o:['Porque abstrai o hardware para o usuário e aloca recursos de forma justa e protegida','Porque é instalado em todos os computadores','Porque substitui o processador','Porque foi criado pela Microsoft'],
      a:0, e:'São as duas visões clássicas: a do usuário (abstração, conveniência) e a do sistema (gerência justa e segura).'}
   ]},
-  {id:'m1', icon:'🔐', title:'Quiz do Módulo 1', sub:'Kernel e linha de fronteira · Aula 02', qs:[
+  {id:'m1', icon:'', title:'Quiz do Módulo 1', sub:'Kernel e linha de fronteira · Aula 02', qs:[
     {q:'No Modo Kernel o bit de modalidade vale:',
      o:['0 — supervisor/privilegiado','1 — usuário, com instruções limitadas','2 — modo seguro','Depende do sistema operacional'],
      a:0, e:'Kernel = Bit 0 (privilegiado, instruções privilegiadas). Usuário = Bit 1; tentar instrução privilegiada gera trap.'},
@@ -2316,7 +2313,7 @@ const MODS = [
      o:['Monolítico com microkernel','A velocidade dos monolíticos com o isolamento dos microkernels','Exclusivamente software com o hardware','Modo usuário e modo kernel independentes'],
      a:1, e:'macOS = microkernel Mach + componentes BSD no mesmo espaço de kernel. Windows NT = microkernel com serviços em modo kernel.'}
   ]},
-  {id:'m2', icon:'🍰', title:'Quiz do Módulo 2', sub:'Processos · Aula 03 — programa em execução', qs:[
+  {id:'m2', icon:'', title:'Quiz do Módulo 2', sub:'Processos · Aula 03 — programa em execução', qs:[
     {q:'O PCB (Bloco de Controle de Processo) NÃO guarda:',
      o:['O PID do processo','O contador de programa (PC)','A duração total do processo em segundos de relógio','Os limites de memória (base e limite)'],
      a:2, e:'O PCB guarda estado, PID, PC, registradores, limites de memória e status de I/O — mas não “tempo total”.'},
@@ -2336,7 +2333,7 @@ const MODS = [
      o:['admitted','scheduler dispatch','I/O ou espera por evento','exit'],
      a:2, e:'running →--[I/O ou espera por evento]--> waiting. Depois, quando o evento completa, volta a ready.'}
   ]},
-  {id:'m3', icon:'⏱️', title:'Quiz do Módulo 3', sub:'Escalonamento de CPU · Aula 04 — ordem de execução', qs:[
+  {id:'m3', icon:'', title:'Quiz do Módulo 3', sub:'Escalonamento de CPU · Aula 04 — ordem de execução', qs:[
     {q:'Em FCFS, quando um processo longo de CPU (CPU-bound) ocupa a CPU, os processos curtos (I/O-bound)…',
      o:['São executados na CPU ao mesmo tempo','Ficam bloqueados esperando — Efeito Comboio','São descartados pelo sistema','Trocam de prioridade automaticamente'],
      a:1, e:'É o Efeito Comboio: baixa utilização de E/S, latência alta e dependência da ordem de chegada.'},
@@ -2356,7 +2353,7 @@ const MODS = [
      o:['Picos longos e raros','Picos curtos e frequentes','Sempre esperar E/S','Não usar a CPU'],
      a:0, e:'CPU-bound = picos longos e raros (IA, renderização). I/O-bound = picos curtos e frequentes (editores, navegadores, IDEs).'}
   ]},
-  {id:'m4', icon:'🧵', title:'Quiz do Módulo 4', sub:'Threads e concorrência · Aula 05 — execução concorrente', qs:[
+  {id:'m4', icon:'', title:'Quiz do Módulo 4', sub:'Threads e concorrência · Aula 05 — execução concorrente', qs:[
     {q:'Concorrência e paralelismo. Qual afirmação é verdadeira?',
      o:['São sinônimos','Paralelismo exige múltiplos núcleos; concorrência é uma questão de estrutura','Concorrência exige sempre multicore','Paralelismo pode existir em CPU de núcleo único'],
      a:1, e:'Concorrência = estrutura (ilusão de simultaneidade). Paralelismo = execução física real, exige multicore.'},
@@ -2373,7 +2370,7 @@ const MODS = [
      o:['Várias threads de usuário vão para 1 de kernel','Cada thread de usuário ganha uma de kernel (Windows e Linux)','M threads de usuário vão para N de kernel','Não há threads de kernel'],
      a:1, e:'Um-para-um é usado por Windows e Linux; oferece suporte nativo a multicore e troca correta quando uma thread bloqueia.'}
   ]},
-  {id:'m5', icon:'🔒', title:'Quiz do Módulo 5', sub:'Sincronização e deadlock · Aula 06 — controle de acesso', qs:[
+  {id:'m5', icon:'', title:'Quiz do Módulo 5', sub:'Sincronização e deadlock · Aula 06 — controle de acesso', qs:[
     {q:'Qual condição NÃO é necessária para a existência de um deadlock, segundo Coffman?',
      o:['Exclusão mútua','Retenção e espera','Preempção forçada do recurso','Espera circular'],
      a:2, e:'A 3ª condição é justamente a INEXISTÊNCIA de preempção. As 4 necessárias: exclusão mútua, hold-and-wait, não-preempção e espera circular.'},
