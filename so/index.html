@@ -100,6 +100,10 @@ main{padding:0 0 120px;min-width:0}
 .tab .bdg.ok{background:#ffffff;color:#000000;border-color:#ffffff}
 .tab .bdg.mid{background:var(--ink-100);color:var(--ink-700);border-color:var(--ink-200)}
 
+.box{border:1px solid var(--ink-100);border-radius:var(--r-md);padding:20px 22px;
+  margin:0 0 18px;background:var(--white)}
+  .box .bh{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-500);margin-bottom:14px}
 /* ---------- Panes ---------- */
 .pane{display:none}
 .pane.active{display:block;animation:paneIn .3s cubic-bezier(.22,.61,.36,1) both}
@@ -446,7 +450,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   .card,.note,.def{box-shadow:none}
   .qfb{display:block!important}
   h1,h2,h3,h4,b,strong,th,td{color:#000000!important}
-  .card,.note,.def,.q,.sim,.tx,.sema,.analogy,.calcbox,.vs,.qscore,.endcap,.balance,.metric.hero,.card.dark,.note.tip{background:#ffffff;color:#292929;border-color:#e6e6e6}
+  .card,.note,.def,.q,.sim,.tx,.sema,.box,.calcbox,.vs,.qscore,.endcap,.balance,.metric.hero,.card.dark,.note.tip{background:#ffffff;color:#292929;border-color:#e6e6e6}
   pre{background:#ffffff;color:#000000;border-color:#e6e6e6}
   pre .c{color:#555555}
   pre .k{color:#000000}
@@ -484,11 +488,11 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="sec-head">
     <span class="sec-num">MÓDULO 0 · AULA 01</span>
     <h2>O que é um Sistema Operacional
-      <span class="sub">O que é um Sistema Operacional, por que ele existe, e como ele nasceu em quatro gerações</span>
+      <span class="sub">O que é um Sistema Operacional, por que ele existe, e como ele evoluiu em quatro gerações</span>
     </h2>
   </div>
 
-  <h3>A situação-problema que funda tudo</h3>
+  <h3>A situação-problema inicial</h3>
   <p>O ponto de partida: uma máquina só com hardware — processador, memórias RAM,
     disco, sem nenhum software instalado. A tarefa: <strong>escrever um programa em Java que
     leia um arquivo de texto desse disco e o imprima numa impressora USB.</strong> Sem um
@@ -497,14 +501,14 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 
   <div class="note">
     <span class="lbl">A questão</span>
-    <p>Como o seu código Java vai dizer para a CPU: <em>rotacionar o motor físico do disco?</em>
+    <p>Como o seu código Java faz a CPU <em>rotacionar o motor físico do disco?</em>
     <em>Posicionar a agulha de leitura no cilindro magnético certo?</em> <em>Acionar os pulsos
     elétricos da porta USB da impressora?</em> — <strong>e se não houver um SO entre o código e o hardware?</strong></p>
   </div>
 
   <p>A resposta é o próprio motivo de a disciplina existir: sem o SO, cada programador do mundo
     teria que ser engenheiro de hardware e programar o comportamento elétrico de cada pino da
-    placa-mãe. Seria o caos completo.</p>
+    placa-mãe. Todo o controle do hardware ficaria dentro de cada programa.</p>
 
   <h3>O que é um Sistema Operacional (definição que cai na prova)</h3>
   <div class="def">
@@ -513,7 +517,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     servindo de <strong>intermediário e elo entre o usuário e o hardware físico</strong>.</p>
   </div>
 
-  <p>O SO tem uma <strong>dupla personalidade</strong>, descrita por duas visões clássicas.
+  <p>O SO é descrito por <strong>duas visões clássicas</strong> — a do usuário e a do sistema.
     Essa é a pergunta mais comum de prova conceitual sobre SO — decore os dois focos.</p>
 
   
@@ -524,9 +528,9 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     e <strong>aloca de forma justa e protegida</strong> os recursos de hardware (visão do sistema).</p>
   </div>
 
-  <h3>As camadas do sistema: por que seu programa não toca no hardware</h3>
-  <p>Seus aplicativos executam num ambiente com <strong>privilégios limitados</strong>. Para alcançar
-    a física, eles precisam bater na porta do Kernel — é a <strong>System Call</strong>.</p>
+  <h3>As camadas do sistema: por que seu programa não acessa o hardware</h3>
+  <p>Seus aplicativos executam num ambiente com <strong>privilégios limitados</strong>. Para acessar o
+    hardware, eles solicitam o serviço ao Kernel por meio de uma <strong>System Call</strong>.</p>
 
   
 
@@ -536,7 +540,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   </div>
 
   <h3>Evolução histórica: da válvula ao seu smartphone</h3>
-  <p>Os SOs não surgiram prontos. Cada geração nasceu de um <strong>problema prático da anterior</strong>.</p>
+  <p>Os SOs não surgiram prontos. Cada geração foi criada para resolver um <strong>problema prático da anterior</strong>.</p>
 
   <div class="vtl">
     <div class="it"><div class="dot">1ª</div><div class="bd">
@@ -548,14 +552,14 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     </div></div>
     <div class="it"><div class="dot">2ª</div><div class="bd">
       <div class="bt">1955 – 1965 · Transistores e Sistemas em Lote (Batch)</div>
-      <div class="bd2">Nasce o transistor e as primeiras linguagens (Assembly e Fortran). Surge o
+      <div class="bd2">Surgem o transistor e as primeiras linguagens (Assembly e Fortran). Surge o
         <strong>Sistema Batch</strong>, otimizando a CPU: o operador agrupava cartões perfurados em
         <strong>fitas magnéticas</strong> e o computador processava uma tarefa de cada vez, sequencialmente,
         via <strong>Monitor Residente</strong>. Para não desperdiçar a CPU esperando o operador trocar
         cartões, as tarefas ficavam gravadas em fita e rodavam uma atrás da outra.</div>
     </div></div>
     <div class="it"><div class="dot">3ª</div><div class="bd">
-      <div class="bt">1965 – 1980 · Circuitos Integrados e o Nascimento da Multitarefa</div>
+      <div class="bt">1965 – 1980 · Circuitos Integrados e o Surgimento da Multitarefa</div>
       <div class="bd2"><strong>Multiprogramação:</strong> vários processos residem na RAM ao mesmo tempo. Se o
         Job A espera a leitura de uma fita (operação de E/S), a CPU não fica ociosa — <strong>muda de
         contexto imediatamente</strong> e executa o Job B. <strong>Tempo Compartilhado (Timesharing):</strong>
@@ -577,7 +581,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     escala de <strong>nanossegundos</strong> — ficava completamente parado, ocioso, <strong>desperdiçando
     energia elétrica</strong>. Com a multiprogramação, o SO passou a manter vários programas na RAM e a
     chavear a CPU entre eles conforme necessário. <strong>Até hoje</strong>, multiprogramação e timesharing
-    governam os SOs modernos — do seu smartphone ao servidor em nuvem.</p>
+    são a base dos SOs modernos — do seu smartphone ao servidor em nuvem.</p>
   </div>
 
   <h3>Como a nota é composta (não deixe isso de fora)</h3>
@@ -612,7 +616,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <div class="card"><h5>Próximo Encontro</h5><p>Laboratório conceitual: debate sobre
       o <strong>Kernel</strong>, os <strong>modos de acesso</strong> e a estrutura interna dos processos.</p></div>
     <div class="card"><h5>Reflexão</h5><p>Observe hoje o SO do seu smartphone.
-      Quantas vezes ele atua gerenciando apps concorrentes?</p></div>
+      Quantas vezes ele precisa gerenciar apps concorrentes ao mesmo tempo?</p></div>
   </div>
 <div class="modquiz" data-mod="m0"></div>
   <div class="modnav"></div>
@@ -635,14 +639,14 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <li>Enviar comandos diretos de <strong>gravação nos setores físicos do disco</strong> para apagar dados de outros usuários.</li>
   </ul>
   <div class="note">
-    <span class="lbl">Se qualquer programa de usuário pudesse tocar no hardware sem restrição…</span>
+    <span class="lbl">Se qualquer programa de usuário pudesse acessar o hardware sem restrição…</span>
     <p>Como impedir que uma aplicação <strong>trave a CPU em um laço infinito</strong>? Como evitar que ela
     <strong>corrompa todo o sistema de arquivos</strong>? Como o processador e o SO cooperam para isolar e
     proteger as aplicações umas das outras?</p>
   </div>
 
   <h3>O bit de modalidade: a proteção é feita no hardware</h3>
-  <p>O SO não confia em si mesmo por educação — a proteção é <strong>imposta pelo processador</strong>
+  <p>A proteção não depende da cooperação do software: ela é <strong>imposta pelo processador</strong>
     através de um único <strong>bit físico</strong> chamado <strong>Mode Bit</strong>.</p>
 
   <div class="vs">
@@ -712,14 +716,14 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 
   <h3>Estruturas de SO: como o kernel é organizado</h3>
 
-  <h4>Monolítico — “A Grande Bagunça”</h4>
+  <h4>Monolítico</h4>
   <p>O kernel inteiro é escrito como um <strong>binário monolítico único</strong>. Todo o código (drivers,
     escalonador, rede) reside em um <strong>único espaço de endereçamento de memória</strong>.</p>
   <div class="vs">
     <div><h6 style="color:var(--ink-900)">Vantagem</h6><p><strong>Desempenho máximo</strong> — sem
       overhead de comunicação interna. Tudo ocorre por chamadas de funções baratas em C.</p></div>
     <div><h6 style="color:var(--ink-900)">Desvantagem</h6><p><strong>Difícil manutenção</strong> e
-      fragilidade física: se um driver de vídeo falhar, o kernel inteiro cai. Exemplos: MS-DOS, Linux original.</p></div>
+      fragilidade: se um driver de vídeo falhar, o kernel inteiro cai, porque todo o código compartilha o mesmo espaço de endereçamento. Exemplos: MS-DOS, Linux original.</p></div>
   </div>
 
   <h4>Em Camadas — Modularidade</h4>
@@ -775,7 +779,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="note soft">
     <span class="lbl">Para a aula de casa desta aula</span>
     <p>Leia o Capítulo 2 do Silberschatz. No terminal do Linux, execute <code>strace ls</code> e observe
-    as System Calls que um simples comando dispara — cada linha é uma batida na porta do Kernel.</p>
+    as System Calls que um simples comando dispara — cada linha é uma System Call que transfere a execução para o Modo Kernel.</p>
   </div>
 <div class="modquiz" data-mod="m1"></div>
   <div class="modnav"></div>
@@ -791,14 +795,14 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   </div>
 
   <h3>Programa vs. processo: a diferença que importa</h3>
-  <div class="analogy">
-    <div class="ah">Programa × processo — o mesmo código em dois estados</div>
+  <div class="box">
+    <div class="bh">Programa × processo — o mesmo código parado no disco e em execução</div>
     <div class="grid g2">
       <div class="card plain">
         <h5>O Programa <span style="font-weight:400;color:var(--ink-400)">(estático)</span></h5>
         <p>É o <strong>arquivo no disco</strong> (<span class="kbd">.exe</span>, <span class="kbd">.class</span>).
         Fica <strong>passivo no armazenamento</strong> (HD ou SSD) <strong>sem consumir CPU nem RAM</strong>
-        e não faz nada sozinho.</p>
+        e não executa instrução alguma.</p>
       </div>
       <div class="card plain">
         <h5>O Processo <span style="font-weight:400;color:var(--ink-400)">(dinâmico)</span></h5>
@@ -813,8 +817,8 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
       </div>
       <div class="card plain" style="background:var(--white)">
         <h5>Interrupção e retomada</h5>
-        <p>Um evento urgente chega. O SO: <strong>(1) salva o estado</strong> do processo,
-        <strong>(2) atende a urgência</strong> e <strong>(3) retoma exatamente do ponto</strong>
+        <p>Ocorre uma interrupção ou chamada de sistema. O SO: <strong>(1) salva o estado</strong> do processo,
+        <strong>(2) trata o evento</strong> e <strong>(3) retoma exatamente do ponto</strong>
         em que parou.</p>
       </div>
     </div>
@@ -822,8 +826,8 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 
   <div class="note tip">
     <span class="lbl">O conceito central</span>
-    <p>É exatamente isso que o escalonador faz: <strong>salvar o estado</strong> para
-    atender algo mais urgente e depois <strong>restaurar o processo exatamente de onde parou</strong>.
+    <p>É exatamente isso que o escalonador faz: <strong>salvar o estado</strong> de um processo para
+    executar outra tarefa mais urgente e depois <strong>restaurar o processo exatamente de onde parou</strong>.
     É o conceito de <strong>troca de contexto</strong>, que você vê em detalhe mais abaixo.</p>
   </div>
 
@@ -844,15 +848,15 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="note">
     <span class="lbl">A diferença que mais cai em prova</span>
     <p><strong>Em espera ≠ Pronto.</strong> O processo <strong>Bloqueado</strong> espera algo que
-    <em>nem ele</em> pode resolver (o disco terminar de ler) — a iniciativa é de fora. O processo
+    <em>ele não pode</em> resolver sozinho (o disco terminar de ler) — a causa do desbloqueio é um evento externo. O processo
     <strong>Pronto</strong> espera algo que <em>depende só do SO</em> — a CPU ficar livre. Só o
     escalonador decide quem sai do Pronto.</p>
   </div>
 
-  <h3>O “RG” do processo: o Bloco de Controle de Processo (PCB)</h3>
+  <h3>A estrutura de controle do processo: o Bloco de Controle de Processo (PCB)</h3>
   <p>Como o Kernel gerencia <strong>centenas de processos concorrentes</strong>? Cada processo possui
     uma estrutura de dados de controle — o <strong>PCB</strong> (Process Control Block), também chamado
-    de tabela de processos. É o <strong>documento de identidade</strong> do processo no Kernel.</p>
+    de tabela de processos. É a <strong>estrutura em que o Kernel guarda os dados de controle do processo</strong>.</p>
 
   <div class="tbl-wrap"><table>
     <thead><tr><th>Informação no PCB</th><th>O que guarda</th><th>Para que serve</th></tr></thead>
@@ -867,8 +871,9 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   </table></div>
 
   <h3>A engenharia por trás da troca de contexto</h3>
-  <p>O <strong>Context Switch</strong> é como o computador <strong>simula multitarefa</strong> criando o que
-    chamamos de <strong>pseudoparalelismo</strong>.</p>
+  <p>O <strong>Context Switch</strong> é a troca do processo em execução por outro na CPU. Como a CPU
+    executa um processo de cada vez, a <strong>alternância rápida</strong> entre eles produz o
+    <strong>pseudoparalelismo</strong>, que é o efeito de execução simultânea.</p>
   <div class="grid g4">
     <div class="card"><span class="stamp">1</span><h5>SO Suspende</h5><p>Suspende o processo em execução por fim do tempo ou por interrupção de hardware.</p></div>
     <div class="card"><span class="stamp">2</span><h5>Salva o Estado</h5><p>O Kernel salva o estado atual da CPU <strong>no PCB do processo que sai</strong>.</p></div>
@@ -881,9 +886,9 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <strong>microssegundos</strong>, o processador <strong>não executa nenhum código útil do usuário</strong> —
     consome processamento apenas com a administração interna do Kernel.</p>
   <div class="vs">
-    <div><h6>Multiprogramação</h6><p>Executar Spotify e a IDE simultaneamente é um
-      <strong>chaveamento ultrarrápido que cria a ilusão de paralelismo</strong>.</p></div>
-    <div><h6>Puro Overhead</h6><p>Durante a troca, a CPU <strong>não processa apps do usuário</strong> —
+    <div><h6>Multiprogramação</h6><p>Executar Spotify e a IDE ao mesmo tempo não é execução simultânea: a CPU alterna
+      <strong>entre os dois processos em intervalos muito curtos</strong>.</p></div>
+    <div><h6>Puro Overhead</h6><p>Durante a troca, a CPU <strong>não executa código do usuário</strong> —
       apenas gerencia o estado interno do Kernel.</p></div>
   </div>
 <div class="modquiz" data-mod="m2"></div>
@@ -900,8 +905,8 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   </div>
 
   <h3>A situação-problema: qual processo usa a CPU agora?</h3>
-  <div class="analogy">
-    <div class="ah">Três processos na fila de prontos, um só CPU</div>
+  <div class="box">
+    <div class="bh">Três processos na fila de prontos, um só CPU</div>
     <div class="grid g3">
       <div class="card plain"><h5>P₁ — CPU-bound</h5><p><strong>Surto longo</strong><br>Tempo de CPU: <strong>25 ms</strong></p></div>
       <div class="card plain"><h5>P₂ — I/O-bound</h5><p><strong>Surto curto</strong><br>Tempo de CPU: <strong>1 ms</strong></p></div>
@@ -964,7 +969,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="note">
     <span class="lbl">O grande gargalo: Efeito Comboio (Convoy Effect)</span>
     <p>Ocorre quando processos curtos (I/O-bound) ficam bloqueados aguardando um único processo
-    <strong>gigantesco (CPU-bound)</strong> que domina o processador. Resulta em:
+    <strong>de surto longo (CPU-bound)</strong> que mantém a CPU ocupada. Resulta em:
     <strong>baixa utilização</strong> dos dispositivos de E/S, <strong>latência média de espera</strong>
     inaceitável e <strong>alta dependência da ordem de chegada</strong> dos processos.</p>
   </div>
@@ -989,7 +994,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 
   <h4>Exemplo resolvido 2 — os MESMOS processos, mas com P₂ chegando primeiro</h4>
   <p>Mesmos 4 processos e os mesmos surtos de CPU. A <strong>única</strong> mudança é a ordem de chegada:
-    P₂, P₃, P₄ e só depois P₁. Repare como os tempos médios caem — isso é o Efeito Comboio na prática.</p>
+    P₂, P₃, P₄ e só depois P₁. Repare como os tempos médios caem: mudar a ordem de execução elimina o Efeito Comboio.</p>
   <div class="tbl-wrap"><table>
     <thead><tr><th>Processo</th><th>Chegada</th><th>Surto de CPU</th><th>Executou de</th><th>até</th><th>Espera (TE)</th><th>Turnaround (TT)</th></tr></thead>
     <tbody>
@@ -1007,7 +1012,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="note tip">
     <span class="lbl">Lição que a banca gosta de cobrar</span>
     <p>Com os <strong>mesmos processos e os mesmos tempos de CPU</strong>, só a ordem de chegada mudou
-    e a espera média caiu pela metade. Isso prova que o <strong>FCFS é pré-histórico e não justo</strong>
+    e a espera média caiu pela metade. Isso prova que o <strong>FCFS é ineficiente e não é justo</strong>
     — a alta dependência da ordem de chegada é exatamente o Efeito Comboio.</p>
   </div>
 
@@ -1035,7 +1040,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     pico real t = 13 → τ' = 0,5(13) + 0,5(5) = <span class="r">9</span>
   </div>
   <p style="font-size:13.5px;color:var(--ink-400)">Repare no exemplo: quando o pico real salta de 4 para 13,
-    a estimativa τ só sobe suavemente de 5 até 12 — o Kernel não “acredita” num pico isolado.</p>
+    a estimativa τ só sobe suavemente de 5 até 12 — um pico isolado não define a estimativa: ela é ponderada com a estimativa anterior.</p>
 
   <div class="grid g2">
     <div class="card"><h5>Não-Preemptiva</h5><p>O processo em execução <strong>conclui seu surto</strong>
@@ -1058,7 +1063,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
       <strong>indefinidamente</strong>. <br><strong>A lenda do MIT:</strong> um processo enviado em
       <strong>1967</strong> nunca executou até o <strong>IBM 7094 ser desligado em 1973</strong>!</p></div>
     <div class="card"><h5>Envelhecimento (Aging)</h5><p>Aumenta <strong>gradualmente</strong> a prioridade
-      dos processos conforme o tempo acumulado na fila de prontos — <strong>a cura para a Starvation</strong>.</p></div>
+      dos processos conforme o tempo acumulado na fila de prontos — <strong>a solução para a Starvation</strong>.</p></div>
   </div>
 
   <h3>Algoritmo 4 — Round-Robin (RR)</h3>
@@ -1075,10 +1080,9 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 
   <h4>A sensibilidade do quantum — o que acontece nos dois extremos</h4>
   <div class="vs">
-    <div><h6>q muito grande</h6><p>O RR <strong>perde sua natureza interativa</strong> e se comporta
-      exatamente como um <strong>FCFS sequencial</strong>. Ninguém sente falta de resposta, porque ninguém
-      é interrompido.</p></div>
-    <div><h6>q muito pequeno</h6><p><strong>Número absurdo de trocas de contexto.</strong> O processador
+    <div><h6>q muito grande</h6><p>Cada processo termina seu surto dentro do quantum e <strong>nunca é
+      preemptado</strong>: o RR passa a <strong>equivaler ao FCFS</strong>, sem ganho de tempo de resposta.</p></div>
+    <div><h6>q muito pequeno</h6><p><strong>Excesso de trocas de contexto.</strong> O processador
       gasta <strong>mais tempo com overhead de Kernel</strong> do que processando código útil.</p></div>
   </div>
 
@@ -1131,8 +1135,8 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   </div>
 
   <h3>A situação-problema: o navegador congelado</h3>
-  <div class="analogy">
-    <div class="ah">Três tarefas pesadas rodando ao mesmo tempo</div>
+  <div class="box">
+    <div class="bh">Três tarefas pesadas rodando ao mesmo tempo</div>
     <div class="grid g3">
       <div class="card plain"><h5>Tarefa 1</h5><p><strong>Videoaula de programação</strong><br>
         Reprodução contínua de vídeo em streaming de alta definição.</p></div>
@@ -1167,7 +1171,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <div>
       <h6>Recursos Compartilhados</h6>
       <p><b>Seção de Código</b> — todas as threads leem as mesmas funções.</p>
-      <p><b>Seção de Dados (globais)</b> — se uma altera uma global, <b>todas as outras enxergam imediatamente</b>.</p>
+      <p><b>Seção de Dados (globais)</b> — se uma altera uma global, <b>todas as outras leem o novo valor</b>.</p>
       <p><b>Recursos do SO</b> — arquivos abertos, sockets de rede e permissões.</p>
       <p><b>Memória Heap</b> — área de alocação dinâmica (objetos com <code>new</code> em Java).</p>
     </div>
@@ -1182,9 +1186,9 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="note">
     <span class="lbl">Por que isso importa para a prova</span>
     <p>É exatamente porque <strong>código e dados são compartilhados</strong> que duas threads podem
-    <strong>atacar o mesmo recurso ao mesmo tempo</strong> — e é por isso que a <strong>Região Crítica</strong>
-    (Módulo 5) precisa existir. A pilha e os registradores serem privados é o que garante que uma thread
-    não embaralhe a execução da outra.</p>
+    <strong>acessar e modificar o mesmo recurso ao mesmo tempo</strong> — e é por isso que a <strong>Região Crítica</strong>
+    (Módulo 5) precisa existir. A pilha e os registradores serem privados é o que garante que as variáveis
+    locais e o estado de execução de uma thread não sejam alterados pela outra.</p>
   </div>
 
   <h3>Os quatro pilares de benefício das threads</h3>
@@ -1204,15 +1208,15 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
 
   <h3>Concorrência versus Paralelismo</h3>
   <div class="vs">
-    <div><h6>Concorrência (Concurrency)</h6><p>Existência de múltiplas tarefas que dão a
-      <strong>ilusão de execução simultânea</strong>. Em uma CPU de núcleo único, o escalonador faz o
-      chaveamento rápido no tempo entre os fluxos. <b>Apenas um fluxo executa por vez.</b></p></div>
+    <div><h6>Concorrência (Concurrency)</h6><p>Existência de múltiplas tarefas <strong>em andamento
+      ao mesmo tempo</strong>, alternadas na CPU. Em uma CPU de núcleo único, o escalonador troca a CPU
+      entre os fluxos em intervalos curtos. <b>Apenas um fluxo executa por vez.</b></p></div>
     <div><h6>Paralelismo (Parallelism)</h6><p><strong>Execução física e simultânea</strong> de duas ou mais
       tarefas ao mesmo tempo. Exige, obrigatoriamente, hardware com <strong>múltiplos núcleos (multicore)</strong>.
       As tarefas realmente executam ao mesmo tempo.</p></div>
   </div>
   <div class="note tip">
-    <span class="lbl">A frase que separa os dois concepts</span>
+    <span class="lbl">A frase que separa os dois conceitos</span>
     <p>Concorrência é uma questão de <strong>estrutura</strong> (como o programa é organizado).
     Paralelismo é uma questão de <strong>hardware</strong> (quantos núcleos existem).
     <strong>Um sistema pode ser concorrente sem ser paralelo</strong> — é o caso do seu notebook com 1 núcleo.</p>
@@ -1233,7 +1237,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <div><h6>Threads de Nível de Usuário</h6><p><b>Gerenciamento por biblioteca</b> — criadas e gerenciadas
       inteiramente por bibliotecas no espaço de usuário (ex.: <b>Java Threads</b>).</p>
       <p>Rápidas de criar, <b>sem chamadas de sistema</b>.</p>
-      <p>⚠️ <b>O calcanhar de Aquiles:</b> se uma única thread de usuário fizer uma chamada bloqueadora ao SO
+      <p>⚠️ <b>A principal limitação:</b> se uma única thread de usuário fizer uma chamada bloqueadora ao SO
       (como ler do disco), <b>o processo inteiro é pausado</b>.</p></div>
     <div><h6>Threads de Nível de Kernel</h6><p><b>Gerenciamento pelo SO</b> — o núcleo reconhece e gerencia as
       threads diretamente. Se uma thread bloqueia, o SO agenda outra do mesmo processo.</p>
@@ -1284,7 +1288,7 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <span class="lbl">Esperado vs. real</span>
     <p><strong>Esperado: R$ 1.000,00</strong> (depositou 10, sacou 10 — o saldo volta ao original).<br>
     <strong>Sem sincronização:</strong> se ambas leram R$ 1.000,00 ao mesmo tempo,
-    <strong>quem gravar por último apaga a operação do outro</strong> — saldo incorreto e inconsistente!</p>
+    <strong>a última gravação sobrescreve o valor calculado pela outra thread</strong> — saldo incorreto e inconsistente!</p>
   </div>
 
   <div class="note tip">
@@ -1321,13 +1325,13 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   <div class="sec-head">
     <span class="sec-num">MÓDULO 5 · AULA 06</span>
     <h2>Sincronização e Deadlock
-      <span class="sub">Região crítica, semáforos, produtor-consumidor e o monstro do Deadlock</span>
+      <span class="sub">Região crítica, semáforos, produtor-consumidor e deadlock</span>
     </h2>
   </div>
 
   <h3>A situação-problema: o jantar dos filósofos</h3>
-  <div class="analogy">
-    <div class="ah">Dijkstra, 1965 — 5 threads, 5 recursos</div>
+  <div class="box">
+    <div class="bh">Dijkstra, 1965 — 5 threads, 5 recursos</div>
     <p style="font-size:15px">Cinco <strong>threads</strong> alternam entre <strong>pensar</strong> e <strong>comer</strong>.
       Para comer, cada uma precisa de <strong>dois recursos</strong> (os hashis) — o da esquerda e o da direita.
       Pegam <strong>um recurso de cada vez</strong>; não podem pegar o da outra thread.</p>
@@ -1338,8 +1342,8 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   </div>
   <div class="note">
     <span class="lbl">A questão </span>
-    <p>As threads ficam paradas, cada uma segurando 1 recurso e esperando pelo outro <strong>eternamente</strong>?
-    O que acontece com a CPU? Elas <strong>morrem de fome</strong>?</p>
+    <p>As threads ficam paradas, cada uma segurando 1 recurso e esperando pelo outro <strong>indefinidamente</strong>?
+    O que acontece com a CPU? Elas <strong>nunca mais a recebem</strong>?</p>
   </div>
 
   <h3>A anatomia da Região Crítica</h3>
@@ -1376,11 +1380,11 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
     <span class="lbl">Quando usar spinlocks?</span>
     <p>Apenas quando o tempo de espera for <strong>extremamente curto</strong> — comum em
     <strong>multiprocessadores</strong>, onde a troca de contexto seria <strong>mais cara do que o giro</strong>.
-    Em uma CPU de núcleo único, o giro é sempre errado: a outra thread precisa da CPU para liberar o lock,
-    mas está esperando ela.</p>
+    Em uma CPU de núcleo único, o giro não funciona: a thread que detém o lock precisa da CPU
+    para liberá-lo, mas a CPU está com a thread que gira no laço de teste.</p>
   </div>
 
-  <h3>As engrenagens do Semáforo</h3>
+  <h3>Como o semáforo funciona</h3>
   <p>Um semáforo contém um <strong>contador inteiro (value)</strong> e uma <strong>fila de processos
     suspensos (list)</strong>. Foi proposto por <strong>Dijkstra (1965)</strong>.</p>
   <div class="vs">
@@ -1407,9 +1411,9 @@ footer{margin-top:60px;padding:34px 0;border-top:1px solid var(--ink-100);
   </div>
   <div class="grid g3">
     <div class="card"><h5>Operação Atômica</h5><p>Decrementa o valor: <code>S.value--</code>. Se
-      <code>S.value &lt; 0</code>, a thread é suspensa na fila e adormece (<code>block()</code>).</p></div>
-    <div class="card dark"><h5>O Trunfo</h5><p>A thread <strong>abre mão da CPU espontaneamente</strong>
-      e dorme — eliminando completamente a <strong>espera ocupada</strong>!</p></div>
+      <code>S.value &lt; 0</code>, a thread é suspensa na fila e perde a CPU (<code>block()</code>).</p></div>
+    <div class="card dark"><h5>O Trunfo</h5><p>A thread <strong>abre mão da CPU</strong>
+      e entra na lista de bloqueados — eliminando completamente a <strong>espera ocupada</strong>!</p></div>
     <div class="card"><h5>Atomicidade Garantida</h5><p>Ambas as operações são <strong>indivisíveis</strong> —
       o SO garante que nunca são interrompidas no meio da execução.</p></div>
   </div>
@@ -1440,13 +1444,13 @@ remove o item;
 <span class="k">up</span>(&empty);    <span class="c">// sinaliza espaço livre</span></code></pre></div>
   </div>
   <div class="note soft">
-    <span class="lbl">A simetria que a banca adora perguntar</span>
+    <span class="lbl">A simetria mais cobrada em prova</span>
     <p>O produtor <strong>consome um espaço vazio</strong> e <strong>libera um espaço ocupado</strong>.
     O consumidor faz o caminho inverso. Note que <code>mutex</code> é sempre o mesmo para os dois — é ele
     que serializa o acesso aos ponteiros, e nunca fica negativo (é binário).</p>
   </div>
 
-  <h3>O Monstro do Deadlock e o Kansas de 1900</h3>
+  <h3>O Deadlock e o caso dos trens do Kansas (1900)</h3>
   <div class="note">
     <span class="lbl">O problema real que inspirou o conceito</span>
     <p>“Quando dois trens se aproximarem em um cruzamento, ambos devem <strong>parar completamente</strong>
@@ -1507,7 +1511,7 @@ remove o item;
   <div class="sec-head">
     <span class="sec-num">MÃO NA MASSA</span>
     <h2>Simuladores Interativos
-      <span class="sub">Treine os algoritmos de escalonamento e os semáforos até virar automático — é literalmente o que pede o T₁</span>
+      <span class="sub">Treine os algoritmos de escalonamento e os semáforos até resolver os exercícios sem consultar — é o que o T₁ cobra</span>
     </h2>
   </div>
 
@@ -1567,9 +1571,10 @@ remove o item;
     </div>
   </div>
 
-  <h3>Simulador 2 — Semáforos: o trinco que ninguém pode quebrar</h3>
+  <h3>Simulador 2 — Semáforos: DOWN, UP e a fila de bloqueados</h3>
   <p>Execute operações de semáforo e veja o contador e a fila de espera em tempo real. Compare
-    <code>block()</code> (dormir) com o <code>spinlock</code> (girar).</p>
+    <code>block()</code> (a thread perde a CPU e não consome ciclos) com o <code>spinlock</code>
+    (a thread fica em laço de teste e consome ciclos de CPU).</p>
 
   <div class="sim">
     <div class="sim-h">
@@ -1588,8 +1593,8 @@ remove o item;
     </div>
     <div class="sim-c">
       <span class="k">Regra:</span>
-      <span>DOWN decrementa e, se ficar negativo, a thread <b>dorme</b>. UP incrementa e, se continuar
-      ≤ 0, acorda uma thread da fila. Observe que <b>nenhuma thread espera ocupando a CPU</b> — é a
+      <span>DOWN decrementa e, se ficar negativo, a thread é <b>bloqueada</b> e sai da CPU. UP incrementa
+      e, se continuar ≤ 0, <b>libera</b> uma thread da fila. Nenhuma thread espera ocupando a CPU — é a
       vantagem do semáforo sobre o spinlock.</span>
     </div>
   </div>
@@ -1626,8 +1631,9 @@ remove o item;
     <div class="sim-c">
       <span class="k">O que acontece:</span>
       <span>Sem sincronização, as duas threads às vezes leem o mesmo saldo antes de qualquer uma gravar.
-      A última a escrever apaga a operação da outra — o saldo fica errado. Com <code>synchronized</code>,
-      as regiões críticas nunca se sobrepõem e o resultado é <b>sempre</b> R$ 1.000,00.</span>
+      A última a gravar sobrescreve o saldo e a operação da outra thread é perdida — o saldo fica
+      errado. Com <code>synchronized</code>, as regiões críticas nunca se sobrepõem e o resultado é
+      <b>sempre</b> R$ 1.000,00.</span>
     </div>
   </div>
 
@@ -1796,9 +1802,10 @@ remove o item;
 
   <div class="endcap">
     <h3>Você chegou ao fim — e sabe muito mais do que no dia 1.</h3>
-    <p>Do Kernel que nega o disco ao seu jogo Java, ao jantar de cinco filósofos que trava a mesa
-    inteira. Refaça os quizzes, rode os simuladores e vá para a prova com a linha do tempo, os 5 estados,
-    as 4 condições de Coffman e as fórmulas todas na ponta da língua.</p>
+    <p>Do kernel, que impede o programa de acessar o disco e a impressora diretamente, ao seu jogo
+    Java; do jantar dos cinco filósofos, em que todas as threads ficam bloqueadas ao mesmo tempo.
+    Refaça os quizzes, rode os simuladores e vá para a prova com a linha do tempo, os 5 estados,
+    as 4 condições de Coffman e as fórmulas todas decoradas.</p>
   </div>
 
   <footer>
@@ -2276,7 +2283,7 @@ const MODS = [
   {id:'m0', icon:'', title:'Quiz do Módulo 0', sub:'Fundamentos · Aula 01 — o que é o SO', qs:[
     {q:'Um sistema sem Sistema Operacional é possível. O que acontece com o programador?',
      o:['Ele escreve código normalmente, sem diferenças','Ele teria que programar o comportamento elétrico de cada pino da placa-mãe','Ele usa apenas bibliotecas de terceiros','O compilador gera as instruções de baixo nível automaticamente'],
-     a:1, e:'Sem SO, cada programador teria de ser engenheiro de hardware. É o caos completo — e o motivo de o SO existir.'},
+     a:1, e:'Sem SO, cada programador teria de ser engenheiro de hardware. O resultado é inviável — e esse é o motivo de o SO existir.'},
     {q:'A “Visão do Sistema” do SO (Gerenciador de Recursos / Síndico) tem como foco principal:',
      o:['Conveniência e facilidade de uso','Eficiência e segurança na alocação de recursos','Somente a abstração de hardware','Interface gráfica amigável'],
      a:1, e:'Usuário = abstração e conveniência. Sistema = eficiência e segurança, evitando conflitos e abuso entre programas concorrentes.'},
@@ -2341,11 +2348,11 @@ const MODS = [
      o:['Utilização da CPU','Tempo médio de espera','Tempo de resposta','Throughput sempre maior'],
      a:1, e:'O SJF fornece o tempo médio de espera mínimo para qualquer conjunto de processos. É a única garantia matemática da aula.'},
     {q:'No Round-Robin, se o quantum for muito pequeno, o problema é:',
-     o:['O processo pode não terminar nunca','Número absurdo de trocas de contexto; mais overhead que trabalho útil','A CPU fica ociosa esperando','Perde-se a exclusão mútua entre processos'],
+     o:['O processo pode não terminar nunca','Excesso de trocas de contexto; mais overhead que trabalho útil','A CPU fica ociosa esperando','Perde-se a exclusão mútua entre processos'],
      a:1, e:'Muito pequeno → excesso de trocas de contexto. Muito grande → degenera em FCFS. O ideal é que ~80% dos picos sejam menores que q.'},
     {q:'O Envelhecimento (Aging) existe para resolver qual problema?',
      o:['O Efeito Comboio','A Inanição (Starvation)','A Inversão de Prioridades','O consumo de memória da RAM'],
-     a:1, e:'Aging aumenta gradualmente a prioridade conforme o tempo na fila — é a cura clássica para a inanição.'},
+     a:1, e:'Aging aumenta gradualmente a prioridade conforme o tempo na fila — é a solução clássica para a inanição.'},
     {q:'No exemplo da aula (FCFS, P₁=20ms · P₂=5ms · P₃=7ms · P₄=2ms, todos chegando em t=0), o tempo médio de espera é:',
      o:['9,00 ms','19,25 ms','27,75 ms','15,50 ms'],
      a:1, e:'Espera: P₁=0, P₂=20, P₃=25, P₄=32 → (0+20+25+32)/4 = 19,25 ms. Turnaround médio = 27,75 ms.'},
@@ -2356,11 +2363,11 @@ const MODS = [
   {id:'m4', icon:'', title:'Quiz do Módulo 4', sub:'Threads e concorrência · Aula 05 — execução concorrente', qs:[
     {q:'Concorrência e paralelismo. Qual afirmação é verdadeira?',
      o:['São sinônimos','Paralelismo exige múltiplos núcleos; concorrência é uma questão de estrutura','Concorrência exige sempre multicore','Paralelismo pode existir em CPU de núcleo único'],
-     a:1, e:'Concorrência = estrutura (ilusão de simultaneidade). Paralelismo = execução física real, exige multicore.'},
+     a:1, e:'Concorrência = estrutura (tarefas em andamento ao mesmo tempo, alternadas na CPU). Paralelismo = execução física real, exige multicore.'},
     {q:'Qual recurso NÃO é compartilhado entre threads do mesmo processo?',
      o:['Seção de código','Memória Heap','Memória Stack (pilha) e registradores','Variáveis globais'],
      a:2, e:'Código, dados, heap e recursos do SO são compartilhados. Cada thread tem pilha, registradores, PC e ID próprios.'},
-    {q:'O “calcanhar de Aquiles” das threads de usuário é que:',
+    {q:'A principal limitação das threads de usuário é:',
      o:['São lentas para criar','Uma chamada bloqueadora ao SO pausa o processo inteiro','Não compartilham memória','Não rodam em modo usuário'],
      a:1, e:'Se uma thread de usuário faz uma chamada bloqueadora (ler disco), o SO não sabe troca-la — o processo inteiro pausa.'},
     {q:'Uma Condição de Corrida (race condition) ocorre quando:',
@@ -2382,13 +2389,13 @@ const MODS = [
      a:1, e:'Adotado por Windows e Linux: se a probabilidade for baixa, reiniciar é mais barato do que rodar prevenção a cada alocação.'},
     {q:'Na operação DOWN(S) de um semáforo, quando a thread é suspensa?',
      o:['Sempre, independente do valor','Quando S.value fica negativo (S.value < 0)','Quando S.value chega a zero','Nunca — DOWN nunca bloqueia'],
-     a:1, e:'DOWN decrementa; se o resultado for negativo, a thread entra em S.list e dorme (block()), liberando a CPU.'},
+     a:1, e:'DOWN decrementa; se o resultado for negativo, a thread entra em S.list e bloqueia (block()), liberando a CPU.'},
     {q:'No Produtor-Consumidor, os valores iniciais dos semáforos são:',
      o:['mutex=0, empty=0, full=N','mutex=1, empty=N, full=0','mutex=N, empty=1, full=1','Todos iguais a 1'],
      a:1, e:'mutex=1 (binário, exclusão mútua); empty=N (espaços vazios = capacidade); full=0 (espaços ocupados).'},
     {q:'Em DOWN(S), o que block() faz com a CPU?',
-     o:['A thread gira testando a variável (busy waiting)','A thread abre mão da CPU e dorme','A thread é encerrada','A thread ganha prioridade máxima'],
-     a:1, e:'block() adormece a thread na fila — elimina completamente a espera ocupada, ao contrário do spinlock.'},
+     o:['A thread gira testando a variável (busy waiting)','A thread abre mão da CPU e bloqueia','A thread é encerrada','A thread ganha prioridade máxima'],
+     a:1, e:'block() coloca a thread na fila de bloqueados — elimina a espera ocupada, ao contrário do spinlock.'},
     {q:'O Algoritmo do Banqueiro (Dijkstra) é um exemplo de:',
      o:['Prevenção ativa','Impedimento dinâmico (avoidance)','Detecção e recuperação','Algoritmo do Avestruz'],
      a:1, e:'O SO analisa cada alocação e só concede o recurso se isso mantiver o sistema em um estado seguro.'}
